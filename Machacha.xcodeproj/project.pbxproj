@@ -14,6 +14,20 @@
 		C4A587492975A77300B04A98 /* MachachaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587482975A77300B04A98 /* MachachaTests.swift */; };
 		C4A587532975A77300B04A98 /* MachachaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587522975A77300B04A98 /* MachachaUITests.swift */; };
 		C4A587552975A77300B04A98 /* MachachaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587542975A77300B04A98 /* MachachaUITestsLaunchTests.swift */; };
+		C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587632975A8D300B04A98 /* BtnModifier.swift */; };
+		C4A587752975A8D300B04A98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587652975A8D300B04A98 /* Constants.swift */; };
+		C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587672975A8D300B04A98 /* Ex+String.swift */; };
+		C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587682975A8D300B04A98 /* Ex+Color.swift */; };
+		C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876B2975A8D300B04A98 /* Pretendard-Regular.otf */; };
+		C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876C2975A8D300B04A98 /* Pretendard-Black.otf */; };
+		C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876D2975A8D300B04A98 /* Pretendard-Medium.otf */; };
+		C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876E2975A8D300B04A98 /* Pretendard-Light.otf */; };
+		C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876F2975A8D300B04A98 /* Pretendard-ExtraBold.otf */; };
+		C4A5877E2975A8D300B04A98 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587702975A8D300B04A98 /* Pretendard-Bold.otf */; };
+		C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587712975A8D300B04A98 /* Pretendard-Thin.otf */; };
+		C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587722975A8D300B04A98 /* Pretendard-ExtraLight.otf */; };
+		C4A587812975A8D300B04A98 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */; };
+		C4A587872975AA0700B04A98 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A587862975AA0700B04A98 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +58,20 @@
 		C4A5874E2975A77300B04A98 /* MachachaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MachachaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587522975A77300B04A98 /* MachachaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaUITests.swift; sourceTree = "<group>"; };
 		C4A587542975A77300B04A98 /* MachachaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C4A587632975A8D300B04A98 /* BtnModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BtnModifier.swift; sourceTree = "<group>"; };
+		C4A587652975A8D300B04A98 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C4A587672975A8D300B04A98 /* Ex+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+String.swift"; sourceTree = "<group>"; };
+		C4A587682975A8D300B04A98 /* Ex+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+Color.swift"; sourceTree = "<group>"; };
+		C4A5876B2975A8D300B04A98 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		C4A5876C2975A8D300B04A98 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		C4A5876D2975A8D300B04A98 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		C4A5876E2975A8D300B04A98 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		C4A5876F2975A8D300B04A98 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		C4A587702975A8D300B04A98 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		C4A587712975A8D300B04A98 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		C4A587722975A8D300B04A98 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		C4A587862975AA0700B04A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +122,9 @@
 		C4A587362975A77000B04A98 /* Machacha */ = {
 			isa = PBXGroup;
 			children = (
+				C4A587862975AA0700B04A98 /* Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
+				C4A587612975A8D300B04A98 /* Configuration */,
 				C4A587392975A77000B04A98 /* ContentView.swift */,
 				C4A5873B2975A77300B04A98 /* Assets.xcassets */,
 				C4A5873D2975A77300B04A98 /* Preview Content */,
@@ -125,6 +155,66 @@
 				C4A587542975A77300B04A98 /* MachachaUITestsLaunchTests.swift */,
 			);
 			path = MachachaUITests;
+			sourceTree = "<group>";
+		};
+		C4A587612975A8D300B04A98 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587642975A8D300B04A98 /* Constants */,
+				C4A587662975A8D300B04A98 /* Extensions */,
+				C4A5876A2975A8D300B04A98 /* Fonts */,
+				C4A587622975A8D300B04A98 /* Modifiers */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		C4A587622975A8D300B04A98 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587632975A8D300B04A98 /* BtnModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		C4A587642975A8D300B04A98 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587652975A8D300B04A98 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		C4A587662975A8D300B04A98 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587672975A8D300B04A98 /* Ex+String.swift */,
+				C4A587682975A8D300B04A98 /* Ex+Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C4A5876A2975A8D300B04A98 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587852975A9E300B04A98 /* Pretendard */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C4A587852975A9E300B04A98 /* Pretendard */ = {
+			isa = PBXGroup;
+			children = (
+				C4A5876B2975A8D300B04A98 /* Pretendard-Regular.otf */,
+				C4A5876C2975A8D300B04A98 /* Pretendard-Black.otf */,
+				C4A5876D2975A8D300B04A98 /* Pretendard-Medium.otf */,
+				C4A5876E2975A8D300B04A98 /* Pretendard-Light.otf */,
+				C4A5876F2975A8D300B04A98 /* Pretendard-ExtraBold.otf */,
+				C4A587702975A8D300B04A98 /* Pretendard-Bold.otf */,
+				C4A587712975A8D300B04A98 /* Pretendard-Thin.otf */,
+				C4A587722975A8D300B04A98 /* Pretendard-ExtraLight.otf */,
+				C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */,
+			);
+			path = Pretendard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +321,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A587812975A8D300B04A98 /* Pretendard-SemiBold.otf in Resources */,
 				C4A5873F2975A77300B04A98 /* Preview Assets.xcassets in Resources */,
+				C4A5877E2975A8D300B04A98 /* Pretendard-Bold.otf in Resources */,
+				C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */,
+				C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */,
+				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
+				C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */,
+				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
+				C4A587872975AA0700B04A98 /* Info.plist in Resources */,
+				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
 				C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */,
+				C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +359,10 @@
 			files = (
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
+				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
+				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
+				C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */,
+				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +523,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Machacha/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,6 +554,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Machacha/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
