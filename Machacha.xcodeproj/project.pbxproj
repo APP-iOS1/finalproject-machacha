@@ -125,7 +125,7 @@
 				C4A587862975AA0700B04A98 /* Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
 				C4A587612975A8D300B04A98 /* Configuration */,
-				C4A587392975A77000B04A98 /* ContentView.swift */,
+				C4A587892975AA6800B04A98 /* Sources */,
 				C4A5873B2975A77300B04A98 /* Assets.xcassets */,
 				C4A5873D2975A77300B04A98 /* Preview Content */,
 			);
@@ -215,6 +215,22 @@
 				C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */,
 			);
 			path = Pretendard;
+			sourceTree = "<group>";
+		};
+		C4A587882975AA5F00B04A98 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587392975A77000B04A98 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C4A587892975AA6800B04A98 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587882975AA5F00B04A98 /* Views */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
