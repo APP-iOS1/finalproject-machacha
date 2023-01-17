@@ -8,14 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+	//MARK: Property Wrapper
+	@ObservedObject var tabbarManager = TabBarManager.shared
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+		NavigationView {
+			ZStack {
+				ZStack {
+					switch tabbarManager.curTabSelection {
+					case .home:
+						HomeView()
+					case .mapSearch:
+						MapSearchView()
+					case .register:
+						RegisterView()
+					case .magazine:
+						MagazineView()
+					case .profile:
+						ProfileView()
+					}
+				} // ZStack
+				.padding(.bottom, tabbarManager.bottomPadding)
+				
+				if (tabbarManager.showTabBar) {
+					CustomTabView()
+				}
+			} // ZStack
+			.edgesIgnoringSafeArea(.bottom)
+		} // NavigationStack
     }
 }
 
