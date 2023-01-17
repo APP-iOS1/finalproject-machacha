@@ -76,7 +76,8 @@ struct CustomTabView: View {
 						.stroke(.gray, lineWidth: 2)
 
 					Rectangle()
-						.foregroundColor(Color(tabbarManager.curTabSelection == .register ? "" : "Color2"))
+//						.foregroundColor(Color(tabbarManager.curTabSelection == .register ? "" : .red))
+						.foregroundColor(tabbarManager.curTabSelection == .register ? .black : .red)
 						.frame(width: Screen.maxWidth * 0.15, height: 3)
 						.offset(x: tabbarManager.barOffset, y: -Screen.maxHeight * 0.10/2)
 						.animation(.spring(), value: tabbarManager.barOffset)
@@ -109,7 +110,7 @@ struct TabButton: View {
 			Spacer()
 		} // VStack
 		.padding(.vertical, 17)
-		.foregroundColor(isSelection ? Color("Color2") : .gray)
+		.foregroundColor(isSelection ? .red : .gray)
 	}
 }
 
