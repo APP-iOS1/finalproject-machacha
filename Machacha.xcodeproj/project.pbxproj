@@ -30,6 +30,15 @@
 		C4A587872975AA0700B04A98 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A587862975AA0700B04A98 /* Info.plist */; };
 		C4A5878D29768C4E00B04A98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878C29768C4E00B04A98 /* User.swift */; };
 		C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878F29768C6200B04A98 /* AuthViewModel.swift */; };
+		C4A5879D29768D4200B04A98 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5879C29768D4200B04A98 /* LoginView.swift */; };
+		C4A5879F29768D4800B04A98 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5879E29768D4800B04A98 /* SplashView.swift */; };
+		C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587A029768D5B00B04A98 /* HomeView.swift */; };
+		C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587A429768DE300B04A98 /* MapSearchView.swift */; };
+		C4A587A729768E2C00B04A98 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587A629768E2C00B04A98 /* RegisterView.swift */; };
+		C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587A829768E3400B04A98 /* MagazineView.swift */; };
+		C4A587AB29768E3E00B04A98 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AA29768E3E00B04A98 /* ProfileView.swift */; };
+		C4A587AD29768E4500B04A98 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AC29768E4500B04A98 /* DetailView.swift */; };
+		C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AE29768E6600B04A98 /* CustomTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +85,15 @@
 		C4A587862975AA0700B04A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A5878C29768C4E00B04A98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C4A5878F29768C6200B04A98 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		C4A5879C29768D4200B04A98 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C4A5879E29768D4800B04A98 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		C4A587A029768D5B00B04A98 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C4A587A429768DE300B04A98 /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchView.swift; sourceTree = "<group>"; };
+		C4A587A629768E2C00B04A98 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		C4A587A829768E3400B04A98 /* MagazineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineView.swift; sourceTree = "<group>"; };
+		C4A587AA29768E3E00B04A98 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C4A587AC29768E4500B04A98 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C4A587AE29768E6600B04A98 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +243,15 @@
 			isa = PBXGroup;
 			children = (
 				C4A587392975A77000B04A98 /* ContentView.swift */,
+				C4A5879A29768D2100B04A98 /* Login */,
+				C4A5879929768D1500B04A98 /* Splash */,
+				C4A5879829768CFA00B04A98 /* Home */,
+				C4A5879729768CF300B04A98 /* MapSearch */,
+				C4A5879629768CE100B04A98 /* Register */,
+				C4A5879529768CC800B04A98 /* Magazine */,
+				C4A5879429768CC100B04A98 /* Profile */,
+				C4A5879329768CB700B04A98 /* Detail */,
+				C4A5879229768CB100B04A98 /* ETC. */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +280,78 @@
 				C4A5878F29768C6200B04A98 /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C4A5879229768CB100B04A98 /* ETC. */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587AE29768E6600B04A98 /* CustomTabView.swift */,
+			);
+			path = ETC.;
+			sourceTree = "<group>";
+		};
+		C4A5879329768CB700B04A98 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587AC29768E4500B04A98 /* DetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C4A5879429768CC100B04A98 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587AA29768E3E00B04A98 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C4A5879529768CC800B04A98 /* Magazine */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587A829768E3400B04A98 /* MagazineView.swift */,
+			);
+			path = Magazine;
+			sourceTree = "<group>";
+		};
+		C4A5879629768CE100B04A98 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587A629768E2C00B04A98 /* RegisterView.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		C4A5879729768CF300B04A98 /* MapSearch */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587A429768DE300B04A98 /* MapSearchView.swift */,
+			);
+			path = MapSearch;
+			sourceTree = "<group>";
+		};
+		C4A5879829768CFA00B04A98 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587A029768D5B00B04A98 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C4A5879929768D1500B04A98 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				C4A5879E29768D4800B04A98 /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		C4A5879A29768D2100B04A98 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C4A5879C29768D4200B04A98 /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,10 +496,19 @@
 			files = (
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
+				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
+				C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */,
+				C4A587A729768E2C00B04A98 /* RegisterView.swift in Sources */,
 				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
+				C4A5879D29768D4200B04A98 /* LoginView.swift in Sources */,
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
+				C4A587AB29768E3E00B04A98 /* ProfileView.swift in Sources */,
+				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
+				C4A587AD29768E4500B04A98 /* DetailView.swift in Sources */,
+				C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */,
 				C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */,
 				C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */,
+				C4A5879F29768D4800B04A98 /* SplashView.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 			);
