@@ -28,6 +28,8 @@
 		C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587722975A8D300B04A98 /* Pretendard-ExtraLight.otf */; };
 		C4A587812975A8D300B04A98 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */; };
 		C4A587872975AA0700B04A98 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A587862975AA0700B04A98 /* Info.plist */; };
+		C4A5878D29768C4E00B04A98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878C29768C4E00B04A98 /* User.swift */; };
+		C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878F29768C6200B04A98 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		C4A587722975A8D300B04A98 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		C4A587862975AA0700B04A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4A5878C29768C4E00B04A98 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C4A5878F29768C6200B04A98 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,9 +232,27 @@
 		C4A587892975AA6800B04A98 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C4A5878B29768C4100B04A98 /* Models */,
+				C4A5878E29768C5400B04A98 /* ViewModels */,
 				C4A587882975AA5F00B04A98 /* Views */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		C4A5878B29768C4100B04A98 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C4A5878C29768C4E00B04A98 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C4A5878E29768C5400B04A98 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C4A5878F29768C6200B04A98 /* AuthViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,8 +399,10 @@
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
+				C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */,
 				C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
+				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
