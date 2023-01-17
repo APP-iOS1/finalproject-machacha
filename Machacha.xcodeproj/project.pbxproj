@@ -27,7 +27,6 @@
 		C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587712975A8D300B04A98 /* Pretendard-Thin.otf */; };
 		C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587722975A8D300B04A98 /* Pretendard-ExtraLight.otf */; };
 		C4A587812975A8D300B04A98 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */; };
-		C4A587872975AA0700B04A98 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4A587862975AA0700B04A98 /* Info.plist */; };
 		C4A5878D29768C4E00B04A98 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878C29768C4E00B04A98 /* User.swift */; };
 		C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878F29768C6200B04A98 /* AuthViewModel.swift */; };
 		C4A5879D29768D4200B04A98 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5879C29768D4200B04A98 /* LoginView.swift */; };
@@ -466,7 +465,6 @@
 				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
 				C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */,
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
-				C4A587872975AA0700B04A98 /* Info.plist in Resources */,
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
 				C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */,
 				C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */,
