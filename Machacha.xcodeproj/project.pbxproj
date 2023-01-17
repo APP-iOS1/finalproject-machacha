@@ -38,6 +38,11 @@
 		C4A587AB29768E3E00B04A98 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AA29768E3E00B04A98 /* ProfileView.swift */; };
 		C4A587AD29768E4500B04A98 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AC29768E4500B04A98 /* DetailView.swift */; };
 		C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AE29768E6600B04A98 /* CustomTabView.swift */; };
+		C4A587B5297693FA00B04A98 /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B1297693F900B04A98 /* NanumSquareRoundOTFEB.otf */; };
+		C4A587B6297693FA00B04A98 /* NanumSquareRoundOTFR.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B2297693FA00B04A98 /* NanumSquareRoundOTFR.otf */; };
+		C4A587B7297693FA00B04A98 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */; };
+		C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */; };
+		C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587B92976960300B04A98 /* Ex+Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +98,11 @@
 		C4A587AA29768E3E00B04A98 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C4A587AC29768E4500B04A98 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C4A587AE29768E6600B04A98 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		C4A587B1297693F900B04A98 /* NanumSquareRoundOTFEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFEB.otf; sourceTree = "<group>"; };
+		C4A587B2297693FA00B04A98 /* NanumSquareRoundOTFR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFR.otf; sourceTree = "<group>"; };
+		C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
+		C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
+		C4A587B92976960300B04A98 /* Ex+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Font.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,8 +218,9 @@
 		C4A587662975A8D300B04A98 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C4A587672975A8D300B04A98 /* Ex+String.swift */,
 				C4A587682975A8D300B04A98 /* Ex+Color.swift */,
+				C4A587B92976960300B04A98 /* Ex+Font.swift */,
+				C4A587672975A8D300B04A98 /* Ex+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 		C4A5876A2975A8D300B04A98 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C4A587B02976936300B04A98 /* Nanum */,
 				C4A587852975A9E300B04A98 /* Pretendard */,
 			);
 			path = Fonts;
@@ -353,6 +365,17 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		C4A587B02976936300B04A98 /* Nanum */ = {
+			isa = PBXGroup;
+			children = (
+				C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */,
+				C4A587B1297693F900B04A98 /* NanumSquareRoundOTFEB.otf */,
+				C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */,
+				C4A587B2297693FA00B04A98 /* NanumSquareRoundOTFR.otf */,
+			);
+			path = Nanum;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -457,9 +480,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A587B6297693FA00B04A98 /* NanumSquareRoundOTFR.otf in Resources */,
+				C4A587B5297693FA00B04A98 /* NanumSquareRoundOTFEB.otf in Resources */,
 				C4A587812975A8D300B04A98 /* Pretendard-SemiBold.otf in Resources */,
 				C4A5873F2975A77300B04A98 /* Preview Assets.xcassets in Resources */,
+				C4A587B7297693FA00B04A98 /* NanumSquareRoundOTFL.otf in Resources */,
 				C4A5877E2975A8D300B04A98 /* Pretendard-Bold.otf in Resources */,
+				C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */,
 				C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */,
 				C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */,
 				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
@@ -495,6 +522,7 @@
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
+				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
 				C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */,
 				C4A587A729768E2C00B04A98 /* RegisterView.swift in Sources */,
 				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
