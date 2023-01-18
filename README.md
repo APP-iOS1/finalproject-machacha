@@ -4,6 +4,7 @@
 ![Xcode](https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![KakaoTalk](https://img.shields.io/badge/kakaotalk-ffcd00.svg?style=for-the-badge&logo=kakaotalk&logoColor=000000)
+![Naver](https://img.shields.io/badge/Naver-00C300?style=for-the-badge&logo=naver&logoColor=white)
 
 ## ⚖️ 앱 정의(ADS)
 ### 앱의 소개
@@ -28,12 +29,6 @@
 ```
 - 포장마차 관련 정보들(위치, 결제 수단, 기록 등)을 알려주기 위한 **사용자 니즈**를 파악하고 앱으로 구현하고자 한다.
 ```
-
-### ETC.
-- 최종프로젝트에서는 **명동, 을지로**의 정보만 다룰 예정이다.
-- 젊은층을 Target
-- 네이버 Map SDK를 사용할 예정이다.
-- FireBase + Combine를 통해 Network 통신을 할 예정이다.
 
 ## 👨‍👩‍👧‍👦 참여자
 <div align="center">
@@ -86,6 +81,156 @@
 </div>
 
 ## 📱 주요기능과 스크린샷
+
+- 최종프로젝트에서는 **명동, 을지로**의 정보만 다룰 예정이다.
+- 젊은층을 Target
+- 네이버 Map SDK를 사용할 예정이다.
+- FireBase + Combine를 통해 Network 통신을 할 예정이다.
+
+<details>
+<summary>1. Tab1(Home)</summary>
+<div markdown="1">
+  
+```
+- 추천 (지역기반 - 사용자 필터 평점, 추천알고리즘 구현)
+- 마차챠가 추천하는 (계절, 시즌)
+- ’마챠킹’님을 위한 (2번째 Tab 검색어 기준)
+- 2000원으로 갈수 있는곳
+- 지역 (최근에 등록된 포장마차가 1건있다. 확인해주세요)
+```
+  
+</div>
+</details>
+<details>
+<summary>2. Tab2(검색)</summary>
+<div markdown="2">
+    
+```
+- '음식 이름(메뉴)'를 검색
+- Map 에서 포장마차의 pin(marker)로 알려주기
+- Map 필터 기능(거리순, 리뷰순, 평점순)
+- Marker를 Click하면, Modal을 통한 Detail 가게 정보
+- 길찾기 기능
+- 로드뷰 (포장마차를 찾기 위해서)
+- 현위치에서 재검색
+- 서비스 불가 지역 표시하기
+- 현재위치 표시/돌아가기
+- 음성으로 찾기
+- 즐겨찾기
+- Custom Marker를 제공(붕어빵, 고구마 등)
+- 이미지 클러스터링
+- 키워드로 분류하여 보기 (전체, 붕어빵, 고구마, 떡볶이, 닭꼬치, 타코야끼, 호떡, 핫도그, 계란빵, 옥수수, 오뎅, 와플, 토스트, 땅콩빵, 닭강정, 기타, 호두/땅콩, 마시멜로우 … 등)
+```
+  
+</div>
+</details>
+<details>
+<summary>3. Tab3(등록)</summary>
+<div markdown="3">
+    
+```
+- progress bar(1→2→3→4) 제공
+- 포장마차 등록 → 위치(map으로 pin을 꽃아서)를 찾기 → 상세정보(출몰시기, 메뉴, 의자 유무, 결제 수단, 영업시간…등) → 등록 완료!
+- OpenCV 메뉴판을 찍으면 메뉴를 OCR (지뢰)
+- 소리(진동)
+```
+  
+</div>
+</details>
+<details>
+<summary>4. Tab4(매거진)</summary>
+<div markdown="4">
+    
+```
+- 10,000원으로 길을 추천 (길찾기 기능) - 운영자가 직접 추천
+- 빵동여지도 참고!(표현되어야하는것들: 이미지들, title, Description, 좌표들(루트보기), 좋아요, 핫키워드(재방문을 멈출수 없는, 만원으로 즐기는)
+- 쇼츠로도 표현하면 좋을듯
+- 가게 정보를 영상으로
+```
+  
+</div>
+</details>
+<details>
+<summary>5. Tab5(프로필)</summary>
+<div markdown="5">
+    
+```
+- 즐겨찾기
+- 리뷰관리
+- 등록한곳
+- 프로필수정(닉네임, 비밀번호)
+- 로그아웃/회원탈퇴    - 개인정보 방침 & 라이센스 & 사용한 오픈소스
+- 가봤어요
+- 공지사항
+- 문의하기
+- 알림
+- FaceID
+- 언어설정(다국어)
+- 다크모드
+- 보안쪽 정보
+```
+  
+</div>
+</details>
+<details>
+<summary>6. Detail(Map, Home, 메거진에서 연결</summary>
+<div markdown="6">
+    
+```
+- 사진 (5개 중 여러개, 더보기를 통해)
+- 정보 (가게이름, 주소, 좌표, 가봤어요, 자기가 찜한곳, 출몰날짜, map, 결제 수단, 메뉴, 리뷰갯수, 좋아요, 의자여부,  등)
+- 신고기능 : 3번 (가봤어요, 룰을 정하자) → 정보 수정 요청, 사라진 곳을 신고, 사장님쫌…, 중복
+- 리뷰 목록(1~2개, 더보기 제공) → 담당자 판단
+```
+  
+</div>
+</details>
+<details>
+<summary>7. 로그인</summary>
+<div markdown="7">
+    
+```
+- 네이버, 구글, 카카오 + 틱톡, 애플
+```
+  
+</div>
+</details>
+<details>
+<summary>8. Splash</summary>
+<div markdown="8">
+    
+```
+- Lottie
+```
+  
+</div>
+</details>
+<details>
+<summary>9. 알림/Push 서버</summary>
+<div markdown="9">
+    
+```
+- 전체나 알림 → 개발자 계정
+- Push 서버(node.js)가 필요하다.
+- 내가 즐겨찾기한 가게가 사라질때 알림(살려야합니다. 인증)
+```
+  
+</div>
+</details><details>
+<summary>10. ETC.</summary>
+<div markdown="10">
+    
+```
+- 스케레톤뷰
+- 모든 기기 대응(frame)
+- infinite scroll (paging)
+- refresh
+- 다크고려
+```
+  
+</div>
+</details>
+<br>
 
 ## 📚 실행 가이드 및 설치 방법
 ### 설치/실행 방법
@@ -180,12 +325,12 @@
     ◦ 특강이 있을 경우, 끝난 다음 정각부터 시작
     ◦ 보이스 및 화상 의무
     ◦ 요일마다 돌아가면서 진행하기
-4. PR은 **pm 5:00**과 **am 2:00**에 각자 올리기
+4. PR은 'pm 5:00'과 'am 2:00'에 각자 올리기
     ◦ Reviewer는 팀원 전부(GeonHyeongKim, suekim999, jwoo820, jeoneeee, Heodoo)
     ◦ Merge는 2번째 사람이 Merge 해주기
 5. 개발도 중요하지만, 기록도 생각하기
     ◦ Project 카반보드 활용 
-7. 아!’ & ‘어?’ 참아보기
+7. '아!’ & ‘어?’ 참아보기
 8. 막힐때, @맨션을 걸어서 Pair 코딩하기
 9. 세미나(발표) - 자유주제(요청)
     ◦ 목(pm 10시)
