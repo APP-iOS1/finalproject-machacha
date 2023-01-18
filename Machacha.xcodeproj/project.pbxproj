@@ -10,6 +10,7 @@
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
+		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
+		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		C4A5878B29768C4100B04A98 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6A8EBDA92977A81B00964C9D /* FoodCart.swift */,
 				C4A5878C29768C4E00B04A98 /* User.swift */,
 			);
 			path = Models;
@@ -545,6 +548,7 @@
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
 				C4A587AB29768E3E00B04A98 /* ProfileView.swift in Sources */,
 				6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */,
+				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				C4A587AD29768E4500B04A98 /* DetailView.swift in Sources */,
 				C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */,
