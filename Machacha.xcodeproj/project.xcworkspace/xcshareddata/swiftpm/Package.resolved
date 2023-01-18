@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "nmapsmap-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jaemyeong/NMapsMap-SPM.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "839d2d2a76abc8e352ccec7d2ae5755bb4cf0387"
+      }
+    }
+  ],
+  "version" : 2
+}
