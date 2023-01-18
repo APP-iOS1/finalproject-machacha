@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://user-images.githubusercontent.com/48436020/213209241-66a73bea-bcda-4152-90b5-929f9a035e5f.png" width=30%></p>
 
-## 오늘의 기록 (23.01.16 월)
+## 오늘의 기록 (23.01.17 )
 
 ### 역할 분배
 
