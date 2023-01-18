@@ -51,7 +51,6 @@ class KaKaoAuthViewModel: ObservableObject {
                 }
                 else {
                     print("loginWithKakaoTalk() success.")
-
                     //do something
                     _ = oauthToken
                     continuation.resume(returning: true)
@@ -71,6 +70,9 @@ class KaKaoAuthViewModel: ObservableObject {
                     }
                     else {
                         print("loginWithKakaoAccount() success.")
+                        
+                        // 카카오 로그인 성공시 싱글톤으로 loginState 변경
+                        AuthViewModel.shared.loginState = .authenticated
                         //do something
                         guard let token = oauthToken else { return }
                         
