@@ -19,22 +19,22 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             
-
+            
             
             Image("tteokboki")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Screen.maxWidth * 1.2)
                 .offset(x: -32, y: 40 )
-                
+            
             
             Image("sweetpotato")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Screen.maxWidth * 0.7)
                 .offset(x: -14, y: -10 )
-                
-
+            
+            
             Image("fishcake")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -47,7 +47,7 @@ struct SplashView: View {
                 .frame(width: Screen.maxWidth * 0.5)
                 .rotationEffect(Angle(degrees: 100))
                 .offset(x: 58, y: 15)
-                
+            
             
             Image("store")
                 .resizable()
@@ -58,8 +58,9 @@ struct SplashView: View {
             // 손글씨
             // 폰트
             Text("마차챠")
+                .font(.custom("나눔손글씨 백의의 천사", size: 80))
+                .bold()
                 .offset(y: 100)
-                .font(.custom("나눔손글씨 백의의 천사", size: 40))
             
             Button {
                 test()
@@ -68,7 +69,7 @@ struct SplashView: View {
                     .font(.largeTitle)
             }
             .offset(y: 200)
-
+            
             
             
         }

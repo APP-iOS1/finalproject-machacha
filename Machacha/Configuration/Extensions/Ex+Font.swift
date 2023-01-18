@@ -24,5 +24,5 @@ extension Font {
 	static let machachaFootnoteBold: Font = .custom("NanumSquareRoundOTFB", size: 13)
 	static let machachaCaptionBold: Font = .custom("NanumSquareRoundOTFB", size: 12)
     
-    static let whiteAngelTitle: Font = .custom("나눔손글씨 백의의 천사", size: 28)
+    static let whiteAngelTitle: Font = .custom("whiteAngel.ttf", size: 28)
 }
