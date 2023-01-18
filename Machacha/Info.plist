@@ -4,12 +4,57 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>zvl4jgdvym</string>
+	<key>KAKAO_NAVTIVE_APP_KEY</key>
+	<string>${KAKAO_NAVTIVE_APP_KEY}</string>
+	<key>GIDConfiguration</key>
+	<dict>
+		<key>clientID</key>
+		<string>${GOOGLE_CLIENT_ID}</string>
+	</dict>
+	<key>GIDClientID</key>
+	<string>${GOOGLE_CLIENT_ID}</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>https://onedaycodeing.tistory.com/176</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao${KAKAO_NATIVE_APP_KEY}</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>776381547473-r65r2vg0kgg006k79amkaf6l5h0n97tj.apps.googleusercontent.com</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>naversearchapp</string>
+		<string>naversearchthirdlogin</string>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NanumSquareRoundOTFB.otf</string>
 		<string>NanumSquareRoundOTFEB.otf</string>
 		<string>NanumSquareRoundOTFL.otf</string>
 		<string>NanumSquareRoundOTFR.otf</string>
+		<string>나눔손글씨 백의의 천사.ttf</string>
+		<string>나눔손글씨 느릿느릿체.ttf</string>
 	</array>
 </dict>
 </plist>

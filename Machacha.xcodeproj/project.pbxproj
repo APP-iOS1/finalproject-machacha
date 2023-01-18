@@ -11,6 +11,8 @@
 		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
 		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
+		1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
+		808E4D652977C32900D78854 /* 나눔손글씨 백의의 천사.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -47,6 +49,21 @@
 		C4A587B7297693FA00B04A98 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */; };
 		C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */; };
 		C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587B92976960300B04A98 /* Ex+Font.swift */; };
+		FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */; };
+		FAFDD47C29779202008E28AD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47B29779202008E28AD /* Alamofire */; };
+		FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47E2977B02D008E28AD /* KakaoSDK */; };
+		FAFDD4812977B02D008E28AD /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4802977B02D008E28AD /* KakaoSDKAuth */; };
+		FAFDD4832977B02D008E28AD /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4822977B02D008E28AD /* KakaoSDKCommon */; };
+		FAFDD4852977B02D008E28AD /* KakaoSDKCommonCore in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4842977B02D008E28AD /* KakaoSDKCommonCore */; };
+		FAFDD4872977B02D008E28AD /* KakaoSDKShare in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4862977B02D008E28AD /* KakaoSDKShare */; };
+		FAFDD4892977B02D008E28AD /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4882977B02D008E28AD /* KakaoSDKTalk */; };
+		FAFDD48B2977B02D008E28AD /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD48A2977B02D008E28AD /* KakaoSDKTemplate */; };
+		FAFDD48D2977B02D008E28AD /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD48C2977B02D008E28AD /* KakaoSDKUser */; };
+		FAFDD4902977B7B3008E28AD /* KaKaoAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */; };
+		FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */; };
+		FAFDD4952977C680008E28AD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4942977C680008E28AD /* GoogleSignIn */; };
+		FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4962977C680008E28AD /* GoogleSignInSwift */; };
+		FAFDD4992977CB8C008E28AD /* GoogleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +87,8 @@
 		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
+		1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 느릿느릿체.ttf"; sourceTree = "<group>"; };
+		808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 백의의 천사.ttf"; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +129,10 @@
 		C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
 		C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		C4A587B92976960300B04A98 /* Ex+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Font.swift"; sourceTree = "<group>"; };
+		FAFDD48E2977B11C008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
+		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
+		FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +141,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */,
+				FAFDD4872977B02D008E28AD /* KakaoSDKShare in Frameworks */,
+				FAFDD4892977B02D008E28AD /* KakaoSDKTalk in Frameworks */,
+				FAFDD4952977C680008E28AD /* GoogleSignIn in Frameworks */,
+				FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */,
+				FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */,
+				FAFDD47C29779202008E28AD /* Alamofire in Frameworks */,
+				FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */,
+				FAFDD48B2977B02D008E28AD /* KakaoSDKTemplate in Frameworks */,
+				FAFDD4832977B02D008E28AD /* KakaoSDKCommon in Frameworks */,
+				FAFDD4812977B02D008E28AD /* KakaoSDKAuth in Frameworks */,
+				FAFDD48D2977B02D008E28AD /* KakaoSDKUser in Frameworks */,
+				FAFDD4852977B02D008E28AD /* KakaoSDKCommonCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +173,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		808E4D632977C2D400D78854 /* 나눔손글씨 백의의 천사 */ = {
+			isa = PBXGroup;
+			children = (
+				808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */,
+			);
+			path = "나눔손글씨 백의의 천사";
+			sourceTree = "<group>";
+		};
 		C4A5872B2975A77000B04A98 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +210,7 @@
 				C4A587892975AA6800B04A98 /* Sources */,
 				C4A5873B2975A77300B04A98 /* Assets.xcassets */,
 				C4A5873D2975A77300B04A98 /* Preview Content */,
+				FAFDD48E2977B11C008E28AD /* Config.xcconfig */,
 			);
 			path = Machacha;
 			sourceTree = "<group>";
@@ -236,6 +280,8 @@
 		C4A5876A2975A8D300B04A98 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */,
+				808E4D632977C2D400D78854 /* 나눔손글씨 백의의 천사 */,
 				C4A587B02976936300B04A98 /* Nanum */,
 				C4A587852975A9E300B04A98 /* Pretendard */,
 			);
@@ -299,6 +345,9 @@
 			children = (
 				C4A5878F29768C6200B04A98 /* AuthViewModel.swift */,
 				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
+				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
+				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
+				FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -405,6 +454,18 @@
 			name = Machacha;
 			packageProductDependencies = (
 				6A8EBDA329778AB300964C9D /* NMapsMap */,
+				FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */,
+				FAFDD47B29779202008E28AD /* Alamofire */,
+				FAFDD47E2977B02D008E28AD /* KakaoSDK */,
+				FAFDD4802977B02D008E28AD /* KakaoSDKAuth */,
+				FAFDD4822977B02D008E28AD /* KakaoSDKCommon */,
+				FAFDD4842977B02D008E28AD /* KakaoSDKCommonCore */,
+				FAFDD4862977B02D008E28AD /* KakaoSDKShare */,
+				FAFDD4882977B02D008E28AD /* KakaoSDKTalk */,
+				FAFDD48A2977B02D008E28AD /* KakaoSDKTemplate */,
+				FAFDD48C2977B02D008E28AD /* KakaoSDKUser */,
+				FAFDD4942977C680008E28AD /* GoogleSignIn */,
+				FAFDD4962977C680008E28AD /* GoogleSignInSwift */,
 			);
 			productName = Machacha;
 			productReference = C4A587342975A77000B04A98 /* Machacha.app */;
@@ -480,6 +541,10 @@
 			mainGroup = C4A5872B2975A77000B04A98;
 			packageReferences = (
 				6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */,
+				FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */,
+				FAFDD47A29779202008E28AD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = C4A587352975A77000B04A98 /* Products */;
 			projectDirPath = "";
@@ -505,8 +570,10 @@
 				C4A5877E2975A8D300B04A98 /* Pretendard-Bold.otf in Resources */,
 				C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */,
 				C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */,
+				1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */,
 				C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */,
 				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
+				808E4D652977C32900D78854 /* 나눔손글씨 백의의 천사.ttf in Resources */,
 				C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */,
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
@@ -537,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
+				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
 				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
@@ -546,6 +614,7 @@
 				6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */,
 				C4A5879D29768D4200B04A98 /* LoginView.swift in Sources */,
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
+				FAFDD4902977B7B3008E28AD /* KaKaoAuthViewModel.swift in Sources */,
 				C4A587AB29768E3E00B04A98 /* ProfileView.swift in Sources */,
 				6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */,
 				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
@@ -555,6 +624,7 @@
 				C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */,
 				C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */,
 				C4A5879F29768D4800B04A98 /* SplashView.swift in Sources */,
+				FAFDD4992977CB8C008E28AD /* GoogleAuthViewModel.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 			);
@@ -595,6 +665,7 @@
 /* Begin XCBuildConfiguration section */
 		C4A587562975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -655,6 +726,7 @@
 		};
 		C4A587572975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -709,6 +781,7 @@
 		};
 		C4A587592975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -741,6 +814,7 @@
 		};
 		C4A5875A2975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -900,6 +974,100 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
+		FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/naveridlogin-sdk-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		FAFDD47A29779202008E28AD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */;
+			productName = NaverThirdPartyLogin;
+		};
+		FAFDD47B29779202008E28AD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47A29779202008E28AD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		FAFDD47E2977B02D008E28AD /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		FAFDD4802977B02D008E28AD /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		FAFDD4822977B02D008E28AD /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		FAFDD4842977B02D008E28AD /* KakaoSDKCommonCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommonCore;
+		};
+		FAFDD4862977B02D008E28AD /* KakaoSDKShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKShare;
+		};
+		FAFDD4882977B02D008E28AD /* KakaoSDKTalk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKTalk;
+		};
+		FAFDD48A2977B02D008E28AD /* KakaoSDKTemplate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKTemplate;
+		};
+		FAFDD48C2977B02D008E28AD /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		FAFDD4942977C680008E28AD /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		FAFDD4962977C680008E28AD /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
