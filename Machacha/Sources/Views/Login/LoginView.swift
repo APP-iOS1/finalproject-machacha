@@ -39,55 +39,79 @@ struct LoginView: View {
     @StateObject var googleAuthVM = GoogleAuthModel()
     var viewModel = NaverLoginViewModel()
     var body: some View{
-        VStack{
-            
-            //네이버 로그인 버튼
-            Button {
-                if NaverThirdPartyLoginConnection
-                    .getSharedInstance()
-                    .isPossibleToOpenNaverApp() // Naver App이 깔려있는지 확인하는 함수
-                {
-                    NaverThirdPartyLoginConnection.getSharedInstance().delegate = viewModel.self
-                    NaverThirdPartyLoginConnection
-                        .getSharedInstance()
-                        .requestThirdPartyLogin()
-                } else { // 네이버 앱 안깔려져 있을때
-                    // Appstore에서 네이버앱 열기
-                    NaverThirdPartyLoginConnection.getSharedInstance().openAppStoreForNaverApp()
+        ZStack{
+            Color.init("bgColor")
+                .ignoresSafeArea()
+            VStack{
+                Image("machachalogo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 340)
+                    .padding(.bottom,40)
+                
+                VStack(spacing: 18) {
+                    //네이버 로그인 버튼
+                    Button {
+                        if NaverThirdPartyLoginConnection
+                            .getSharedInstance()
+                            .isPossibleToOpenNaverApp() // Naver App이 깔려있는지 확인하는 함수
+                        {
+                            NaverThirdPartyLoginConnection.getSharedInstance().delegate = viewModel.self
+                            NaverThirdPartyLoginConnection
+                                .getSharedInstance()
+                                .requestThirdPartyLogin()
+                        } else { // 네이버 앱 안깔려져 있을때
+                            // Appstore에서 네이버앱 열기
+                            NaverThirdPartyLoginConnection.getSharedInstance().openAppStoreForNaverApp()
+                            
+                        }
+                    } label : {
+                        Image("naver_login")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 320)
+                    }
                     
+                    //카카오 로그인 버튼
+                    Button {
+                        kakaoAuthVM.handleKaKaoLogin()
+                    } label: {
+                        Image("kakaologin")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 320)
+                    }
+                    
+                    //구글 로그인 버튼
+                    //GoogleSignInButton(action: googleAuthVM.signIn)
+                    Button {
+                        googleAuthVM.signIn()
+                    } label: {
+                        Image("googlelogin")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 320)
+                    }
+                    
+                    Button {
+                        loginState = .pass
+                    } label: {
+                        Text("로그인 건너뛰기")
+                            .foregroundColor(.secondary)
+                            .font(.machachaHeadline)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
                 }
-            } label : {
-                Image("naver_login")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 320,height: 80)
-            }.padding(20)
-            
-            //카카오 로그인 버튼
-            Button {
-                kakaoAuthVM.handleKaKaoLogin()
-            } label: {
-                Image("kakaologin")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 320,height: 80)
-            }.padding(20)
-            
-            //구글 로그인 버튼
-            GoogleSignInButton(action: googleAuthVM.signIn)
-            
-            Button {
-                loginState = .pass
-            } label: {
-                Text("건너뛰기")
-                    .frame(width: 320,height: 80)
-            }.padding(20)
+                
+            }
         }
     }
 }
 
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView()
-//    }
-//}
+struct LoginView_Previews: PreviewProvider {
+    @State static var loginState : LoginState = .unauthenticated
+    
+    static var previews: some View {
+        LoginView(loginState: $loginState)
+    }
+}
