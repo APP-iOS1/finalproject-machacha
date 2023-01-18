@@ -12,3 +12,4 @@
 KAKAO_NATIVE_APP_KEY = 6fe459c79785a83ca978ec8e718fc9de
 GOOGLE_CLIENT_ID = 776381547473-r65r2vg0kgg006k79amkaf6l5h0n97tj.apps.googleusercontent.com
 GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.776381547473-r65r2vg0kgg006k79amkaf6l5h0n97tj
+NAVER_URL_SCHEME = machacha

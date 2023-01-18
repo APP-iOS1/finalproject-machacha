@@ -41,7 +41,7 @@ struct LoginView: View {
     @EnvironmentObject var authVM : AuthViewModel
     @StateObject var kakaoAuthVM = KaKaoAuthViewModel()
     @StateObject var googleAuthVM = GoogleAuthModel()
-    var viewModel = NaverLoginViewModel()
+    var naverAuthVM = NaverLoginViewModel()
     var body: some View{
         ZStack{
             Color.init("bgColor")
@@ -60,7 +60,7 @@ struct LoginView: View {
                             .getSharedInstance()
                             .isPossibleToOpenNaverApp() // Naver App이 깔려있는지 확인하는 함수
                         {
-                            NaverThirdPartyLoginConnection.getSharedInstance().delegate = viewModel.self
+                            NaverThirdPartyLoginConnection.getSharedInstance().delegate = naverAuthVM.self
                             NaverThirdPartyLoginConnection
                                 .getSharedInstance()
                                 .requestThirdPartyLogin()
