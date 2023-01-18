@@ -10,7 +10,8 @@ class GoogleAuthModel: ObservableObject {
     @Published var errorMessage: String = ""
     
     init(){
-        check()
+        //check를 통해 구글로그인이 되어있으면 자동 로그인
+        //check()
     }
     
     func checkStatus(){
@@ -22,6 +23,8 @@ class GoogleAuthModel: ObservableObject {
             self.givenName = givenName ?? ""
             self.profilePicUrl = profilePicUrl
             self.isLoggedIn = true
+            // 구글 로그인 성공시 싱글톤으로 loginState 변경
+            AuthViewModel.shared.loginState = .authenticated
         }else{
             self.isLoggedIn = false
             self.givenName = "Not Logged In"
@@ -82,4 +85,6 @@ class GoogleAuthModel: ObservableObject {
                 
             }
     }
+    
+    
 }
