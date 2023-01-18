@@ -1,6 +1,0 @@
-framework module Pods_MachachaTests {
-  umbrella header "Pods-MachachaTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module Pods_Machacha_MachachaUITests {
-  umbrella header "Pods-Machacha-MachachaUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

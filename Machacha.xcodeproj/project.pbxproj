@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		524264E556A3C4D8EB4ACE17 /* Pods_Machacha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FB504C32748BFCFE0FC423 /* Pods_Machacha.framework */; };
-		5C6D30C7A229468EEB9046BC /* Pods_MachachaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC06A0F0CF337EAA1D5E76D /* Pods_MachachaTests.framework */; };
-		8F89968FBA8E5CCFE032F4EE /* Pods_Machacha_MachachaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB29B4429F0576D762BDF8C0 /* Pods_Machacha_MachachaUITests.framework */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -66,13 +63,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		115EA2B0F85CD8BDB43B5463 /* Pods-MachachaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachachaTests.release.xcconfig"; path = "Target Support Files/Pods-MachachaTests/Pods-MachachaTests.release.xcconfig"; sourceTree = "<group>"; };
-		178CE577D81CEC2B97540A12 /* Pods-Machacha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Machacha.release.xcconfig"; path = "Target Support Files/Pods-Machacha/Pods-Machacha.release.xcconfig"; sourceTree = "<group>"; };
-		30FB504C32748BFCFE0FC423 /* Pods_Machacha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Machacha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7596C85340029F4E9EF8C276 /* Pods-MachachaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachachaTests.debug.xcconfig"; path = "Target Support Files/Pods-MachachaTests/Pods-MachachaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9DC06A0F0CF337EAA1D5E76D /* Pods_MachachaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachachaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8E562DEDED46474EDC25DEB /* Pods-Machacha-MachachaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Machacha-MachachaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Machacha-MachachaUITests/Pods-Machacha-MachachaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		C314FEB98DC5D93EF458FFD7 /* Pods-Machacha-MachachaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Machacha-MachachaUITests.release.xcconfig"; path = "Target Support Files/Pods-Machacha-MachachaUITests/Pods-Machacha-MachachaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,8 +103,6 @@
 		C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
 		C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		C4A587B92976960300B04A98 /* Ex+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Font.swift"; sourceTree = "<group>"; };
-		F5D01532476F99EEA1D0873A /* Pods-Machacha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Machacha.debug.xcconfig"; path = "Target Support Files/Pods-Machacha/Pods-Machacha.debug.xcconfig"; sourceTree = "<group>"; };
-		FB29B4429F0576D762BDF8C0 /* Pods_Machacha_MachachaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Machacha_MachachaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +110,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				524264E556A3C4D8EB4ACE17 /* Pods_Machacha.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +117,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6D30C7A229468EEB9046BC /* Pods_MachachaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +124,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F89968FBA8E5CCFE032F4EE /* Pods_Machacha_MachachaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA651E94A4E836E14F9AD78B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				30FB504C32748BFCFE0FC423 /* Pods_Machacha.framework */,
-				FB29B4429F0576D762BDF8C0 /* Pods_Machacha_MachachaUITests.framework */,
-				9DC06A0F0CF337EAA1D5E76D /* Pods_MachachaTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C4A5872B2975A77000B04A98 = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +137,6 @@
 				C4A587472975A77300B04A98 /* MachachaTests */,
 				C4A587512975A77300B04A98 /* MachachaUITests */,
 				C4A587352975A77000B04A98 /* Products */,
-				CF49F682E30FE33457BCA273 /* Pods */,
-				BA651E94A4E836E14F9AD78B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -403,19 +376,6 @@
 			path = Nanum;
 			sourceTree = "<group>";
 		};
-		CF49F682E30FE33457BCA273 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F5D01532476F99EEA1D0873A /* Pods-Machacha.debug.xcconfig */,
-				178CE577D81CEC2B97540A12 /* Pods-Machacha.release.xcconfig */,
-				A8E562DEDED46474EDC25DEB /* Pods-Machacha-MachachaUITests.debug.xcconfig */,
-				C314FEB98DC5D93EF458FFD7 /* Pods-Machacha-MachachaUITests.release.xcconfig */,
-				7596C85340029F4E9EF8C276 /* Pods-MachachaTests.debug.xcconfig */,
-				115EA2B0F85CD8BDB43B5463 /* Pods-MachachaTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -423,7 +383,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A587582975A77300B04A98 /* Build configuration list for PBXNativeTarget "Machacha" */;
 			buildPhases = (
-				20E5341A4D4CA3469BFBF469 /* [CP] Check Pods Manifest.lock */,
 				C4A587302975A77000B04A98 /* Sources */,
 				C4A587312975A77000B04A98 /* Frameworks */,
 				C4A587322975A77000B04A98 /* Resources */,
@@ -441,11 +400,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A5875B2975A77300B04A98 /* Build configuration list for PBXNativeTarget "MachachaTests" */;
 			buildPhases = (
-				99481317369D4C0A7BCC06A4 /* [CP] Check Pods Manifest.lock */,
 				C4A587402975A77300B04A98 /* Sources */,
 				C4A587412975A77300B04A98 /* Frameworks */,
 				C4A587422975A77300B04A98 /* Resources */,
-				F6D1B495E0B5666FAC329287 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -461,7 +418,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A5875E2975A77300B04A98 /* Build configuration list for PBXNativeTarget "MachachaUITests" */;
 			buildPhases = (
-				9C12A9C22B5167D6DFF71B90 /* [CP] Check Pods Manifest.lock */,
 				C4A5874A2975A77300B04A98 /* Sources */,
 				C4A5874B2975A77300B04A98 /* Frameworks */,
 				C4A5874C2975A77300B04A98 /* Resources */,
@@ -557,92 +513,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		20E5341A4D4CA3469BFBF469 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Machacha-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99481317369D4C0A7BCC06A4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MachachaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C12A9C22B5167D6DFF71B90 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Machacha-MachachaUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6D1B495E0B5666FAC329287 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MachachaTests/Pods-MachachaTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MachachaTests/Pods-MachachaTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MachachaTests/Pods-MachachaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C4A587302975A77000B04A98 /* Sources */ = {
@@ -819,7 +689,6 @@
 		};
 		C4A587592975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5D01532476F99EEA1D0873A /* Pods-Machacha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -829,9 +698,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -853,7 +720,6 @@
 		};
 		C4A5875A2975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 178CE577D81CEC2B97540A12 /* Pods-Machacha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -863,9 +729,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -887,7 +751,6 @@
 		};
 		C4A5875C2975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7596C85340029F4E9EF8C276 /* Pods-MachachaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -907,7 +770,6 @@
 		};
 		C4A5875D2975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 115EA2B0F85CD8BDB43B5463 /* Pods-MachachaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -927,7 +789,6 @@
 		};
 		C4A5875F2975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8E562DEDED46474EDC25DEB /* Pods-Machacha-MachachaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -945,7 +806,6 @@
 		};
 		C4A587602975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C314FEB98DC5D93EF458FFD7 /* Pods-Machacha-MachachaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
