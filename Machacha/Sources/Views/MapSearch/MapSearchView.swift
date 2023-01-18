@@ -9,15 +9,15 @@ import SwiftUI
 import NMapsMap
 
 struct MapSearchView: View {
-    @State var coord: (Double, Double) = (126.9784147, 37.5666805)
+    @State var coord: (Double, Double) = (126.986418, 37.560840)
     var body: some View {
         ZStack {
             VStack {
-                Button(action: {coord = (129.05562775, 35.1379222)}) {
-                    Text("Move to Busan")
+                Button(action: {coord = (126.992227, 37.566249)}) {
+                    Text("을지로3가역")
                 }
-                Button(action: {coord = (127.269311, 37.413294)}) {
-                    Text("Move to Seoul somewhere")
+                Button(action: {coord = (126.986418, 37.560840)}) {
+                    Text("명동역")
                 }
                 Spacer()
             }
