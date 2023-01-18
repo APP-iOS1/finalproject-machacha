@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+//enum LoginState {
+//    case authenticated
+//    case unauthenticated
+//    case authenticating
+//    case pass
+//}
+
+class AuthViewModel : ObservableObject {
+    @Published var loginState : LoginState? = nil
+    
+    static let shared = AuthViewModel()
+    
+    
+}

@@ -18,23 +18,27 @@ enum LoginState {
 }
 
 struct AuthView : View {
-    @State var loginState : LoginState = .unauthenticated
-    
+    //@State var loginState : LoginState = .unauthenticated
+    @StateObject var authVM = AuthViewModel.shared
     var body: some View {
-        switch loginState {
-        case .unauthenticated :
-            LoginView(loginState: $loginState)
+        switch authVM.loginState {
+        case .unauthenticated, .none :
+            LoginView()
+                .environmentObject(authVM)
         case .authenticating :
             ProgressView()
         case .authenticated, .pass:
             ContentView()
+                .onAppear{
+                    print(authVM.loginState)
+                }
         }
     }
 }
 
 
 struct LoginView: View {
-    @Binding var loginState : LoginState
+    @EnvironmentObject var authVM : AuthViewModel
     @StateObject var kakaoAuthVM = KaKaoAuthViewModel()
     @StateObject var googleAuthVM = GoogleAuthModel()
     var viewModel = NaverLoginViewModel()
@@ -94,7 +98,7 @@ struct LoginView: View {
                     }
                     
                     Button {
-                        loginState = .pass
+                        authVM.loginState = .pass
                     } label: {
                         Text("로그인 건너뛰기")
                             .foregroundColor(.secondary)
@@ -109,9 +113,9 @@ struct LoginView: View {
 }
 
 struct LoginView_Previews: PreviewProvider {
-    @State static var loginState : LoginState = .unauthenticated
     
     static var previews: some View {
-        LoginView(loginState: $loginState)
+        LoginView()
+            .environmentObject(AuthViewModel())
     }
 }
