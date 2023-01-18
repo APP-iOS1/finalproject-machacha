@@ -17,7 +17,8 @@ struct ContentView: View {
 				ZStack {
 					switch tabbarManager.curTabSelection {
 					case .home:
-						HomeView()
+						//HomeView()
+                        SplashView()
 					case .mapSearch:
 						MapSearchView()
 					case .register:
