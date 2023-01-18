@@ -10,6 +10,8 @@ import NMapsMap
 
 struct MapSearchView: View {
     @State var coord: (Double, Double) = (126.986418, 37.560840)
+    @StateObject var mapSerachViewModel = MapSearchViewModel()
+    
     var body: some View {
         ZStack {
             VStack {
@@ -25,6 +27,9 @@ struct MapSearchView: View {
             
             UIMapView(coord: coord)
                 .edgesIgnoringSafeArea(.vertical)
+        }
+        .onAppear {
+            mapSerachViewModel.checkIfLocationServicesIsEnabled()
         }
     }
 }
