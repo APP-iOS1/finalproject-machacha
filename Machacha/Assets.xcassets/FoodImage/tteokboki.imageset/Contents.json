@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "tteokbokifinal.png",
+      "filename" : "tekkbokifinal2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tteokbokifinal@2x.png",
+      "filename" : "tekkbokifinal2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tteokbokifinal@3x.png",
+      "filename" : "tekkbokifinal2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
