@@ -95,4 +95,4 @@ iOSInjectionProject/
 **/GoogleService-Info.plist
 
 #config 파일 포함되지 않도록 함
-*.xcconfig
+# *.xcconfig
