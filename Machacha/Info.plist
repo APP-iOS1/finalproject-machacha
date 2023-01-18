@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GIDClientID</key>
+	<string>${GOOGLE_CLIENT_ID}</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -29,8 +31,8 @@
 			</array>
 		</dict>
 	</array>
-	<key>KAKAO_NAVTIVE_APP_KEY</key>
-	<string>${KAKAO_NAVTIVE_APP_KEY}</string>
+	<key>KAKAO_NATIVE_APP_KEY</key>
+	<string>${KAKAO_NATIVE_APP_KEY}</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>naversearchapp</string>
