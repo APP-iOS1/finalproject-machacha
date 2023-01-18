@@ -10,14 +10,15 @@ import NMapsMap
 
 struct NaverMap: UIViewRepresentable {
     var coord: (Double, Double)
-    
+    var foodCarts: [FoodCart]
     
     func makeCoordinator() -> Coordinator {
         Coordinator(coord)
     }
     
-    init(_ coord: (Double, Double)) {
+    init(_ coord: (Double, Double), foodCarts: [FoodCart]) {
         self.coord = coord
+        self.foodCarts = foodCarts
     }
     
     
@@ -48,19 +49,24 @@ struct NaverMap: UIViewRepresentable {
         view.showZoomControls = true
         let cameraPosition = view.mapView.cameraPosition
         
-        let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
-        marker.iconImage = NMF_MARKER_IMAGE_BLACK
-        marker.iconTintColor = UIColor.green
-        marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)
-        marker.height = CGFloat(NMF_MARKER_SIZE_AUTO)
-        
-        marker.captionRequestedWidth = 100
-        marker.captionText = "테스트 캡션"
-        marker.captionMinZoom = 12
-        marker.captionMaxZoom = 16
-        
-        marker.mapView = view.mapView
+        // Foodcart를 맵에 마커로 표현
+        for foodCart in foodCarts {
+            let marker = NMFMarker()
+            
+            marker.position = NMGLatLng(lat: foodCart.coordinate[0], lng: foodCart.coordinate[1])
+            marker.iconImage = NMF_MARKER_IMAGE_BLACK
+            marker.iconTintColor = UIColor.green
+            marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)
+            marker.height = CGFloat(NMF_MARKER_SIZE_AUTO)
+            marker.captionRequestedWidth = 100
+            marker.captionText = foodCart.name
+            marker.captionMinZoom = 12
+            marker.captionMaxZoom = 16
+            
+            marker.mapView = view.mapView
+        }
+
+
         
         print("camera pos: \(cameraPosition)")
         return view
