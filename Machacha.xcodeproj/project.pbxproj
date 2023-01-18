@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
 		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
-		1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
 		808E4D652977C32900D78854 /* 나눔손글씨 백의의 천사.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
@@ -64,6 +64,7 @@
 		FAFDD4952977C680008E28AD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4942977C680008E28AD /* GoogleSignIn */; };
 		FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4962977C680008E28AD /* GoogleSignInSwift */; };
 		FAFDD4992977CB8C008E28AD /* GoogleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */; };
+		FAFDD49D2977E8EC008E28AD /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,10 +85,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 느릿느릿체.ttf"; sourceTree = "<group>"; };
 		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
-		1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 느릿느릿체.ttf"; sourceTree = "<group>"; };
 		808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 백의의 천사.ttf"; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
@@ -129,10 +130,10 @@
 		C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
 		C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		C4A587B92976960300B04A98 /* Ex+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Font.swift"; sourceTree = "<group>"; };
-		FAFDD48E2977B11C008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthViewModel.swift; sourceTree = "<group>"; };
+		FAFDD49C2977E8EC008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A587362975A77000B04A98 /* Machacha */,
+				FAFDD49C2977E8EC008E28AD /* Config.xcconfig */,
 				C4A587472975A77300B04A98 /* MachachaTests */,
 				C4A587512975A77300B04A98 /* MachachaUITests */,
 				C4A587352975A77000B04A98 /* Products */,
@@ -210,7 +212,6 @@
 				C4A587892975AA6800B04A98 /* Sources */,
 				C4A5873B2975A77300B04A98 /* Assets.xcassets */,
 				C4A5873D2975A77300B04A98 /* Preview Content */,
-				FAFDD48E2977B11C008E28AD /* Config.xcconfig */,
 			);
 			path = Machacha;
 			sourceTree = "<group>";
@@ -566,6 +567,7 @@
 				C4A587B5297693FA00B04A98 /* NanumSquareRoundOTFEB.otf in Resources */,
 				C4A587812975A8D300B04A98 /* Pretendard-SemiBold.otf in Resources */,
 				C4A5873F2975A77300B04A98 /* Preview Assets.xcassets in Resources */,
+				FAFDD49D2977E8EC008E28AD /* Config.xcconfig in Resources */,
 				C4A587B7297693FA00B04A98 /* NanumSquareRoundOTFL.otf in Resources */,
 				C4A5877E2975A8D300B04A98 /* Pretendard-Bold.otf in Resources */,
 				C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */,
@@ -665,7 +667,6 @@
 /* Begin XCBuildConfiguration section */
 		C4A587562975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -726,7 +727,6 @@
 		};
 		C4A587572975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -781,7 +781,6 @@
 		};
 		C4A587592975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -814,7 +813,6 @@
 		};
 		C4A5875A2975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD48E2977B11C008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -967,13 +965,6 @@
 				kind = branch;
 			};
 		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6A8EBDA329778AB300964C9D /* NMapsMap */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
-			productName = NMapsMap;
 		FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/naveridlogin-sdk-ios-spm";
@@ -1009,6 +1000,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6A8EBDA329778AB300964C9D /* NMapsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
+			productName = NMapsMap;
+		};
 		FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */;
