@@ -49,6 +49,13 @@
 		C4A587B7297693FA00B04A98 /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */; };
 		C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */; };
 		C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587B92976960300B04A98 /* Ex+Font.swift */; };
+		C4D5C052297A73F7003CF061 /* Cluster in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C051297A73F7003CF061 /* Cluster */; };
+		C4D5C056297A7E22003CF061 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C055297A7E22003CF061 /* FirebaseAuth */; };
+		C4D5C058297A7E22003CF061 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C057297A7E22003CF061 /* FirebaseFirestore */; };
+		C4D5C05A297A7E22003CF061 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C059297A7E22003CF061 /* FirebaseFirestoreSwift */; };
+		C4D5C05C297A7E22003CF061 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C05B297A7E22003CF061 /* FirebaseStorage */; };
+		C4D5C05E297A7EBE003CF061 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05D297A7EBE003CF061 /* Review.swift */; };
+		C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05F297A7F4A003CF061 /* Magazine.swift */; };
 		FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */; };
 		FAFDD47C29779202008E28AD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47B29779202008E28AD /* Alamofire */; };
 		FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47E2977B02D008E28AD /* KakaoSDK */; };
@@ -130,6 +137,8 @@
 		C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFL.otf; sourceTree = "<group>"; };
 		C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundOTFB.otf; sourceTree = "<group>"; };
 		C4A587B92976960300B04A98 /* Ex+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Font.swift"; sourceTree = "<group>"; };
+		C4D5C05D297A7EBE003CF061 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		C4D5C05F297A7F4A003CF061 /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
 		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthViewModel.swift; sourceTree = "<group>"; };
@@ -142,12 +151,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */,
+				C4D5C05A297A7E22003CF061 /* FirebaseFirestoreSwift in Frameworks */,
+				C4D5C056297A7E22003CF061 /* FirebaseAuth in Frameworks */,
 				FAFDD4872977B02D008E28AD /* KakaoSDKShare in Frameworks */,
 				FAFDD4892977B02D008E28AD /* KakaoSDKTalk in Frameworks */,
 				FAFDD4952977C680008E28AD /* GoogleSignIn in Frameworks */,
+				C4D5C058297A7E22003CF061 /* FirebaseFirestore in Frameworks */,
 				FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */,
+				C4D5C052297A73F7003CF061 /* Cluster in Frameworks */,
 				FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */,
 				FAFDD47C29779202008E28AD /* Alamofire in Frameworks */,
+				C4D5C05C297A7E22003CF061 /* FirebaseStorage in Frameworks */,
 				FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */,
 				FAFDD48B2977B02D008E28AD /* KakaoSDKTemplate in Frameworks */,
 				FAFDD4832977B02D008E28AD /* KakaoSDKCommon in Frameworks */,
@@ -337,6 +351,8 @@
 			isa = PBXGroup;
 			children = (
 				6A8EBDA92977A81B00964C9D /* FoodCart.swift */,
+				C4D5C05F297A7F4A003CF061 /* Magazine.swift */,
+				C4D5C05D297A7EBE003CF061 /* Review.swift */,
 				C4A5878C29768C4E00B04A98 /* User.swift */,
 			);
 			path = Models;
@@ -475,6 +491,11 @@
 				FAFDD48C2977B02D008E28AD /* KakaoSDKUser */,
 				FAFDD4942977C680008E28AD /* GoogleSignIn */,
 				FAFDD4962977C680008E28AD /* GoogleSignInSwift */,
+				C4D5C051297A73F7003CF061 /* Cluster */,
+				C4D5C055297A7E22003CF061 /* FirebaseAuth */,
+				C4D5C057297A7E22003CF061 /* FirebaseFirestore */,
+				C4D5C059297A7E22003CF061 /* FirebaseFirestoreSwift */,
+				C4D5C05B297A7E22003CF061 /* FirebaseStorage */,
 			);
 			productName = Machacha;
 			productReference = C4A587342975A77000B04A98 /* Machacha.app */;
@@ -554,6 +575,8 @@
 				FAFDD47A29779202008E28AD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */,
+				C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C4A587352975A77000B04A98 /* Products */;
 			projectDirPath = "";
@@ -623,6 +646,7 @@
 				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
 				6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */,
 				C4A5879D29768D4200B04A98 /* LoginView.swift in Sources */,
+				C4D5C05E297A7EBE003CF061 /* Review.swift in Sources */,
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
 				FAFDD4902977B7B3008E28AD /* KaKaoAuthViewModel.swift in Sources */,
 				C4A587AB29768E3E00B04A98 /* ProfileView.swift in Sources */,
@@ -637,6 +661,7 @@
 				FAFDD4992977CB8C008E28AD /* GoogleAuthViewModel.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
+				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +1002,22 @@
 				kind = branch;
 			};
 		};
+		C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/efremidze/Cluster.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/naveridlogin-sdk-ios-spm";
@@ -1016,6 +1057,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
+		};
+		C4D5C051297A73F7003CF061 /* Cluster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */;
+			productName = Cluster;
+		};
+		C4D5C055297A7E22003CF061 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		C4D5C057297A7E22003CF061 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		C4D5C059297A7E22003CF061 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		C4D5C05B297A7E22003CF061 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */ = {
 			isa = XCSwiftPackageProductDependency;
