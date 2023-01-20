@@ -21,7 +21,6 @@ struct NaverMap: UIViewRepresentable {
         self.foodCarts = foodCarts
     }
     
-    
     class Coordinator: NSObject, NMFMapViewCameraDelegate {
         var coord: (Double, Double)
         init(_ coord: (Double, Double)) {
@@ -65,8 +64,6 @@ struct NaverMap: UIViewRepresentable {
             
             marker.mapView = view.mapView
         }
-
-
         
         print("camera pos: \(cameraPosition)")
         return view
@@ -79,5 +76,4 @@ struct NaverMap: UIViewRepresentable {
         cameraUpdate.animationDuration = 1
         uiView.mapView.moveCamera(cameraUpdate)
     }
-    
 }

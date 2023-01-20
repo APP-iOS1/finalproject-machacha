@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "붕어빵최종22.png",
+      "filename" : "bbungbread.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "붕어빵최종22@2x.png",
+      "filename" : "bbungbread@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "붕어빵최종22@3x.png",
+      "filename" : "bbungbread@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

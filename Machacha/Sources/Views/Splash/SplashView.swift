@@ -13,9 +13,6 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
-            
-            
-            
             Image("tteokboki")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -59,9 +56,6 @@ struct SplashView: View {
                     .bold()
                     .offset(y: 100)
             }
-            
-            
-            
         }
         .background {
             Color("cellColor")
