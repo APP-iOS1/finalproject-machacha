@@ -362,10 +362,10 @@
 			isa = PBXGroup;
 			children = (
 				C4A5878F29768C6200B04A98 /* AuthViewModel.swift */,
-				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
-				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
-				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
 				FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */,
+				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
+				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
+				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
