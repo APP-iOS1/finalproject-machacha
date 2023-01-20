@@ -52,7 +52,7 @@ struct NaverMap: UIViewRepresentable {
         for foodCart in foodCarts {
             let marker = NMFMarker()
             
-            marker.position = NMGLatLng(lat: foodCart.coordinate[0], lng: foodCart.coordinate[1])
+			marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
             marker.iconImage = NMF_MARKER_IMAGE_BLACK
             marker.iconTintColor = UIColor.green
             marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)

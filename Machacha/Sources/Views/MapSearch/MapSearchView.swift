@@ -28,7 +28,7 @@ struct MapSearchView: View {
             }
             .zIndex(1)
             
-            NaverMap((mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts: foodCartDummy)
+			NaverMap((mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts: FoodCart.getListDummy())
                 .ignoresSafeArea(.all, edges: .top)
         }
         .onAppear {

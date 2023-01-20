@@ -11,7 +11,7 @@ import CoreLocation
 final class MapSearchViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     @Published var coord = (0.0, 0.0)
-    @Published var foodCarts = foodCartDummy
+	@Published var foodCarts = FoodCart.getListDummy()
     
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {

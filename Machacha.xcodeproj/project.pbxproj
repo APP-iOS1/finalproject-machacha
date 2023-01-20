@@ -12,7 +12,6 @@
 		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
 		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
-		808E4D652977C32900D78854 /* 나눔손글씨 백의의 천사.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -96,7 +95,6 @@
 		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
-		808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 백의의 천사.ttf"; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */,
-				808E4D642977C32900D78854 /* 나눔손글씨 백의의 천사.ttf */,
 			);
 			path = "나눔손글씨";
 			sourceTree = "<group>";
@@ -296,7 +293,6 @@
 		C4A5876A2975A8D300B04A98 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				C4D5C04F297A1F0B003CF061 /* 나눔손글씨 느릿느릿체 */,
 				808E4D632977C2D400D78854 /* 나눔손글씨 */,
 				C4A587B02976936300B04A98 /* Nanum */,
 				C4A587852975A9E300B04A98 /* Pretendard */,
@@ -454,13 +450,6 @@
 			path = Nanum;
 			sourceTree = "<group>";
 		};
-		C4D5C04F297A1F0B003CF061 /* 나눔손글씨 느릿느릿체 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "나눔손글씨 느릿느릿체";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -606,7 +595,6 @@
 				1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */,
 				C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */,
 				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
-				808E4D652977C32900D78854 /* 나눔손글씨 백의의 천사.ttf in Resources */,
 				C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */,
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
