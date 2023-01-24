@@ -21,28 +21,13 @@ struct NaverMap: UIViewRepresentable {
         self.foodCarts = foodCarts
     }
     
-    class Coordinator: NSObject, NMFMapViewCameraDelegate {
-        var coord: (Double, Double)
-        init(_ coord: (Double, Double)) {
-            self.coord = coord
-        }
-        
-        
-        func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
-            print("카메라 변경 - reason: \(reason)")
-        }
-        
-        func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
-            print("카메라 변경 - reason: \(reason)")
-        }
-    }
-    
+
+    // MARK: - Map을 그리고 생성하는 메서드
     func makeUIView(context: Context) -> some NMFNaverMapView {
         let view = NMFNaverMapView()
         view.showZoomControls = false
         view.mapView.positionMode = .direction
         view.mapView.zoomLevel = 17
-        let locationOverlay = view.mapView.locationOverlay
         view.showLocationButton = true
         view.showCompass = true
         view.showZoomControls = true
@@ -53,27 +38,57 @@ struct NaverMap: UIViewRepresentable {
             let marker = NMFMarker()
             
 			marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
+            
+            let image = NMFOverlayImage(name: foodCart.markerImage)
+            
+//            marker.iconImage = image
+//
+//            marker.width = CGFloat(Screen.maxWidth/10)
+//            marker.height = CGFloat(Screen.maxHeight/10)
+            
             marker.iconImage = NMF_MARKER_IMAGE_BLACK
             marker.iconTintColor = UIColor.green
             marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)
             marker.height = CGFloat(NMF_MARKER_SIZE_AUTO)
-            marker.captionRequestedWidth = 100
-            marker.captionText = foodCart.name
-            marker.captionMinZoom = 12
-            marker.captionMaxZoom = 16
+            
+            // MARK: - Mark 터치 시 이벤트 발생
+            marker.touchHandler = { (overlay) -> Bool in
+                print("marker touched")
+                
+                return true
+            }
             
             marker.mapView = view.mapView
         }
-        
-        print("camera pos: \(cameraPosition)")
+     
+        view.mapView.addCameraDelegate(delegate: context.coordinator)
         return view
     }
     
+    // MARK: - Map이 업데이트 될 때 발생하는 메서드
     func updateUIView(_ uiView: UIViewType, context: Context) {
         let coord = NMGLatLng(lat: coord.0, lng: coord.1)
         let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
         cameraUpdate.animation = .fly
         cameraUpdate.animationDuration = 1
         uiView.mapView.moveCamera(cameraUpdate)
+    }
+}
+
+class Coordinator: NSObject {
+    var coord: (Double, Double)
+    init(_ coord: (Double, Double)) {
+        self.coord = coord
+    }
+}
+
+// MARK: - 카메라 이동시 발생하는 Delegate
+extension Coordinator: NMFMapViewCameraDelegate {
+    func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
+//        print("카메라 변경 - reason: \(reason)")
+    }
+    
+    func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
+//        print("카메라 변경 - reason: \(reason)")
     }
 }
