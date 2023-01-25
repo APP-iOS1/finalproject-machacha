@@ -90,8 +90,10 @@ struct CustomTabView: View {
 
 //MARK: - TabButton
 struct TabButton: View {
-	//MARK: Property
+	//MARK: Property Wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
+
+	//MARK: Property
 	let isSelection: Bool 	// 현재 Tab
 	let name: String		// Tab 이름
 	let systemName: String 	// 선택되었을때
@@ -114,6 +116,9 @@ struct TabButton: View {
 
 //MARK: - Plus TabButton
 struct PlusTabButton: View {
+	//MARK: Property Wrapper
+	@EnvironmentObject var profileVM: ProfileViewModel
+	
 	//MARK: Property
 	let isSelection: Bool 	// 현재 Tab
 	let name: String		// Tab 이름
@@ -125,7 +130,7 @@ struct PlusTabButton: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: 40)
-				.foregroundColor(Color("Color3"))
+				.foregroundColor(profileVM.isDarkMode ? Color("Color2") : Color("Color3"))
 			Spacer()
 		} // VStack
 		.padding(.vertical, 17)
