@@ -12,6 +12,7 @@
 		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
 		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
+		C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC1F298101B200819D98 /* ProfileViewModel.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
+		C414BC1F298101B200819D98 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
 				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
 				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
+				C414BC1F298101B200819D98 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
+				C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
 				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
 				C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */,
