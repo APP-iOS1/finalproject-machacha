@@ -33,7 +33,9 @@ struct ProfileView: View {
 				} // Button
 			} // if let user = userStateVM.currentUser
 			
-			WebViewSection() // 마차챠에 대한 WebView Section
+			SettingSection() // Setting Section
+			
+			WebViewSection() // WebView Section
 			
 			if userStateVM.currentUser != nil {
 				Button(role: .destructive) {
@@ -52,6 +54,24 @@ struct ProfileView: View {
 		} // List
 		.navigationTitle("프로필")
     }
+	
+	// 마차챠에 대한 WebView Section
+	@ViewBuilder
+	private func SettingSection() -> some View {
+		Section {
+			ForEach(Array(webInfo.enumerated()), id: \.offset) { i, web in
+				Button {
+					self.showSafari = i // 선택된 Web Safari 정보
+				} label: {
+					Text("\(web.display)")
+						.fixedSize(horizontal: false, vertical: true)
+						.frame(maxWidth: .infinity, alignment: .leading)
+				} // Button
+			} // ForEach
+		} header: {
+			Text("설정")
+		} // 마차챠에 대한 WebView Section
+	}
 	
 	// 마차챠에 대한 WebView Section
 	@ViewBuilder
