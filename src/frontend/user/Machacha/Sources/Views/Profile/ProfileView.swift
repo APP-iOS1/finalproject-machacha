@@ -33,7 +33,7 @@ struct ProfileView: View {
 				} // Button
 			} // if let user = userStateVM.currentUser
 			
-			WebViewInfo() // 마차챠에 대한 WebView Section
+			WebViewSection() // 마차챠에 대한 WebView Section
 			
 			if userStateVM.currentUser != nil {
 				Button(role: .destructive) {
@@ -55,7 +55,7 @@ struct ProfileView: View {
 	
 	// 마차챠에 대한 WebView Section
 	@ViewBuilder
-	private func WebViewInfo() -> some View {
+	private func WebViewSection() -> some View {
 		Section {
 			ForEach(Array(webInfo.enumerated()), id: \.offset) { i, web in
 				Button {
