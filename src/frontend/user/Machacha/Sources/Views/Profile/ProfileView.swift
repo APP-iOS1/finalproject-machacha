@@ -17,43 +17,43 @@ struct ProfileView: View {
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
 
     var body: some View {
-		List {
-			if let user = profileVM.currentUser { // 사용자 정보
-				VStack(alignment: .leading) {
-					Text(user.name)
-						.font(.title3)
-				} // VStack
-				.padding([.top, .bottom], 10)
-			} else { // 로그인 요청 버튼
-				Button {
-					profileVM.showLogin = true
-				} label: {
-					Text("로그인")
-						.fixedSize(horizontal: false, vertical: true)
-						.frame(maxWidth: .infinity, alignment: .center)
-				} // Button
-			} // if let user = userStateVM.currentUser
-			
-			SettingSection() // Setting Section
-			
-			WebViewSection() // WebView Section
-			
-			if profileVM.currentUser != nil {
-				Button(role: .destructive) {
-					Task {
-						try await profileVM.logout()
+		NavigationView {
+			List {
+				if let user = profileVM.currentUser { // 사용자 정보
+					VStack(alignment: .leading) {
+						Text(user.name)
+							.font(.title3)
+					} // VStack
+					.padding([.top, .bottom], 10)
+				} else { // 로그인 요청 버튼
+					Button {
 						profileVM.showLogin = true
-					}
-				} label: {
-					HStack {
-						Spacer()
+					} label: {
+						Text("로그인")
+							.fixedSize(horizontal: false, vertical: true)
+							.frame(maxWidth: .infinity, alignment: .center)
+					} // Button
+				} // if let user = userStateVM.currentUser
+				
+				SettingSection() // Setting Section
+				
+				WebViewSection() // WebView Section
+				
+				if profileVM.currentUser != nil {
+					Button(role: .destructive) {
+						Task {
+							try await profileVM.logout()
+							profileVM.showLogin = true
+						}
+					} label: {
 						Text("로그아웃")
-						Spacer()
-					} // HStack
-				} // Button
-			} // userStateVM.currentUser != nil
-		} // List
-		.navigationTitle("프로필")
+							.fixedSize(horizontal: false, vertical: true)
+							.frame(maxWidth: .infinity, alignment: .center)
+					} // Button
+				} // userStateVM.currentUser != nil
+			} // List
+			.navigationTitle("프로필")
+		} // NavigationView
     }
 	
 	// Setting Section
@@ -107,9 +107,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-		NavigationView {
-			ProfileView()
-				.environmentObject(ProfileViewModel())
-		}
-    }
+		ProfileView()
+			.environmentObject(ProfileViewModel())
+	}
 }
