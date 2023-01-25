@@ -10,13 +10,14 @@ import SwiftUI
 struct ProfileView: View {
 	//MARK: Property wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
+	@StateObject var faceIDVM = FaceIDViewModel()
 	@State private var showSafari: Int?
-
+	
 	//MARK: Property
 	let settings: [SettingType] = [.profile, .faceID, .alert, .darkMode, .language]
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
-
-    var body: some View {
+	
+	var body: some View {
 		NavigationView {
 			List {
 				if let user = profileVM.currentUser { // 사용자 정보
@@ -54,7 +55,7 @@ struct ProfileView: View {
 			} // List
 			.navigationTitle("프로필")
 		} // NavigationView
-    }
+	}
 	
 	// Setting Section
 	@ViewBuilder
@@ -81,6 +82,24 @@ struct ProfileView: View {
 		} header: {
 			Text("설정")
 		} // Section
+		.onChange(of: profileVM.isFaceID) { value in
+			if value { faceIDVM.authenticate() }
+		} // onChange
+		.alert(isPresented: $faceIDVM.showErrorAlert) {
+			// 허용안함, FaceID error
+			Alert(
+				title: Text(faceIDVM.showErrorAlertTitle),
+				message: Text(faceIDVM.showErrorAlertMessage),
+				primaryButton: .default(Text("설정")) { // 앱 설정으로 이동
+					if let appSettring = URL(string: UIApplication.openSettingsURLString) {
+						UIApplication.shared.open(appSettring, options: [:], completionHandler: nil)
+					}
+					profileVM.isFaceID = false
+				},
+				secondaryButton: .default(Text("확인")) {
+					profileVM.isFaceID = false
+				})
+		}
 	}
 	
 	// 마차챠에 대한 WebView Section
@@ -106,7 +125,7 @@ struct ProfileView: View {
 }
 
 struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		ProfileView()
 			.environmentObject(ProfileViewModel())
 	}

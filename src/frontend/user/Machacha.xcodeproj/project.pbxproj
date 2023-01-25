@@ -17,6 +17,8 @@
 		C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC23298106FC00819D98 /* WebInfoType.swift */; };
 		C414BC262981120C00819D98 /* Ex+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC252981120C00819D98 /* Ex+Int.swift */; };
 		C414BC28298116D000819D98 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC27298116D000819D98 /* SettingType.swift */; };
+		C414BC2A29817C6300819D98 /* FaceIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2929817C6300819D98 /* FaceIDViewModel.swift */; };
+		C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -105,6 +107,8 @@
 		C414BC23298106FC00819D98 /* WebInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebInfoType.swift; sourceTree = "<group>"; };
 		C414BC252981120C00819D98 /* Ex+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Int.swift"; sourceTree = "<group>"; };
 		C414BC27298116D000819D98 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
+		C414BC2929817C6300819D98 /* FaceIDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDViewModel.swift; sourceTree = "<group>"; };
+		C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDErrorType.swift; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -369,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A5878F29768C6200B04A98 /* AuthViewModel.swift */,
+				C414BC2929817C6300819D98 /* FaceIDViewModel.swift */,
 				FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */,
 				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
 				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
@@ -399,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A587AA29768E3E00B04A98 /* ProfileView.swift */,
+				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
 				C414BC27298116D000819D98 /* SettingType.swift */,
 				C414BC23298106FC00819D98 /* WebInfoType.swift */,
 			);
@@ -643,7 +649,9 @@
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */,
+				C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
+				C414BC2A29817C6300819D98 /* FaceIDViewModel.swift in Sources */,
 				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
 				C414BC262981120C00819D98 /* Ex+Int.swift in Sources */,
 				C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */,
@@ -831,10 +839,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
+				DEVELOPMENT_TEAM = SF6SBNPMLX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "저희 앱이 보안을 위해 FaceID를 사용할께요";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "해당 앱은 플레이스 정보 조회를 위해 사용자의 현위치를 조회합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -864,10 +874,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
+				DEVELOPMENT_TEAM = SF6SBNPMLX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "저희 앱이 보안을 위해 FaceID를 사용할께요";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "해당 앱은 플레이스 정보 조회를 위해 사용자의 현위치를 조회합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -21,7 +21,7 @@ enum SettingType: Hashable {
 		case .profile:
 			return "프로필 수정"
 		case .faceID:
-			return "FaceID"
+			return "Face ID"
 		case .alert:
 			return "알림"
 		case .darkMode:
