@@ -59,6 +59,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct MachachaApp: App {
+	@StateObject var profileVM: ProfileViewModel = ProfileViewModel()
+	
     init() {
         // Naver SDK Initializing
         
@@ -84,6 +86,7 @@ struct MachachaApp: App {
     var body: some Scene {
         WindowGroup {
             AuthView()
+				.environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
                 .onOpenURL { url in
                     
                     //네이버
