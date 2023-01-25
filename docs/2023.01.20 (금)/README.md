@@ -128,11 +128,10 @@ struct Magazine {
     1. 테스트 코드 작성, 발표준비, ppt
     2. 디자인 통일
 
-### 5. 추가 기능 고려
+## 5. 추가 기능 고려
 1. Map Zoom 기능 제한
 2. 검색 View (최근 검색어, 마이크 기능 등) 만들기
 3. 반납 불가 지역
 <p align="left"><img src="https://user-images.githubusercontent.com/48436020/214491743-931e0f27-96ad-48f6-973c-ff000efb6b13.png" width=30%></p>
-
 
 ## 🙋 건의사항
