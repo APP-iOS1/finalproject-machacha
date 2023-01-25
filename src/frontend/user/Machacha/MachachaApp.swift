@@ -86,6 +86,7 @@ struct MachachaApp: App {
     var body: some Scene {
         WindowGroup {
             AuthView()
+				.preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
 				.environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
                 .onOpenURL { url in
                     

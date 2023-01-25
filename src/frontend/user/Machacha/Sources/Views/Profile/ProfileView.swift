@@ -9,15 +9,16 @@ import SwiftUI
 
 struct ProfileView: View {
 	//MARK: Property wrapper
-	@EnvironmentObject var userStateVM: ProfileViewModel
+	@EnvironmentObject var profileVM: ProfileViewModel
 	@State private var showSafari: Int?
 
 	//MARK: Property
+	let settings: [SettingType] = [.profile, .faceID, .alert, .darkMode, .language]
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
 
     var body: some View {
 		List {
-			if let user = userStateVM.currentUser { // 사용자 정보
+			if let user = profileVM.currentUser { // 사용자 정보
 				VStack(alignment: .leading) {
 					Text(user.name)
 						.font(.title3)
@@ -25,7 +26,7 @@ struct ProfileView: View {
 				.padding([.top, .bottom], 10)
 			} else { // 로그인 요청 버튼
 				Button {
-					userStateVM.showLogin = true
+					profileVM.showLogin = true
 				} label: {
 					Text("로그인")
 						.fixedSize(horizontal: false, vertical: true)
@@ -37,11 +38,11 @@ struct ProfileView: View {
 			
 			WebViewSection() // WebView Section
 			
-			if userStateVM.currentUser != nil {
+			if profileVM.currentUser != nil {
 				Button(role: .destructive) {
 					Task {
-						try await userStateVM.logout()
-						userStateVM.showLogin = true
+						try await profileVM.logout()
+						profileVM.showLogin = true
 					}
 				} label: {
 					HStack {
@@ -55,22 +56,31 @@ struct ProfileView: View {
 		.navigationTitle("프로필")
     }
 	
-	// 마차챠에 대한 WebView Section
+	// Setting Section
 	@ViewBuilder
 	private func SettingSection() -> some View {
 		Section {
-			ForEach(Array(webInfo.enumerated()), id: \.offset) { i, web in
-				Button {
-					self.showSafari = i // 선택된 Web Safari 정보
-				} label: {
-					Text("\(web.display)")
-						.fixedSize(horizontal: false, vertical: true)
-						.frame(maxWidth: .infinity, alignment: .leading)
-				} // Button
+			ForEach(settings, id: \.self) { setting in
+				if setting.isToggle {
+					Toggle(setting.display, isOn: setting == .faceID ? $profileVM.isFaceID : setting == .alert ? $profileVM.isAlert : $profileVM.isDarkMode) // 다중 삼항 연산자
+				} else {
+					NavigationLink {
+						switch setting {
+						case .profile:
+							EmptyView()
+						case .language:
+							EmptyView()
+						default:
+							EmptyView()
+						}
+					} label: {
+						Text(setting.display)
+					}
+				} // else
 			} // ForEach
 		} header: {
 			Text("설정")
-		} // 마차챠에 대한 WebView Section
+		} // Section
 	}
 	
 	// 마차챠에 대한 WebView Section
@@ -88,7 +98,7 @@ struct ProfileView: View {
 			} // ForEach
 		} header: {
 			Text("Machacha 정보")
-		} // 마차챠에 대한 WebView Section
+		} // Section
 		.sheet(item: $showSafari) {
 			SafariView(url: URL(string: webInfo[$0].url)!)
 		}
