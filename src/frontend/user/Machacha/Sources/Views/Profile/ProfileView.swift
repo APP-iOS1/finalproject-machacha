@@ -19,69 +19,90 @@ struct ProfileView: View {
 	
 	var body: some View {
 		NavigationView {
-			List {
-				if let user = profileVM.currentUser { // 사용자 정보
-					VStack(alignment: .leading) {
-						Text(user.name)
-							.font(.title3)
-					} // VStack
-					.padding([.top, .bottom], 10)
-				} else { // 로그인 요청 버튼
-					Button {
-						profileVM.showLogin = true
-					} label: {
-						Text("로그인")
-							.fixedSize(horizontal: false, vertical: true)
-							.frame(maxWidth: .infinity, alignment: .center)
-					} // Button
-				} // if let user = userStateVM.currentUser
+			ScrollView {
+				UserInfo() // User Info
 				
 				SettingSection() // Setting Section
 				
 				WebViewSection() // WebView Section
 				
-				if profileVM.currentUser != nil {
-					Button(role: .destructive) {
-						Task {
-							try await profileVM.logout()
-							profileVM.showLogin = true
-						}
-					} label: {
-						Text("로그아웃")
-							.fixedSize(horizontal: false, vertical: true)
-							.frame(maxWidth: .infinity, alignment: .center)
-					} // Button
-				} // userStateVM.currentUser != nil
-			} // List
+//				if profileVM.currentUser != nil {
+//					Button(role: .destructive) {
+//						Task {
+//							try await profileVM.logout()
+//							profileVM.showLogin = true
+//						}
+//					} label: {
+//						Text("로그아웃")
+//							.fixedSize(horizontal: false, vertical: true)
+//							.frame(maxWidth: .infinity, alignment: .center)
+//					} // Button
+//				} // userStateVM.currentUser != nil
+			}
 			.navigationTitle("프로필")
+			.background(Color("bgColor"))
 		} // NavigationView
+	}
+	
+	// FoodCart List By User Action
+	@ViewBuilder
+	private func UserInfo() -> some View {
+		if let user = profileVM.currentUser { // 사용자 정보
+			VStack(alignment: .leading) {
+				Text(user.name)
+					.font(.title3)
+			} // VStack
+			.padding([.top, .bottom], 10)
+		} else { // 로그인 요청 버튼
+			VStack {
+				Button {
+					profileVM.showLogin = true
+				} label: {
+					Text("로그인")
+						.foregroundColor(Color("textColor"))
+						.fixedSize(horizontal: false, vertical: true)
+						.frame(maxWidth: .infinity, alignment: .center)
+				} // Button
+				.padding()
+				.background(Color("cellColor"))
+				.cornerRadius(20)
+			} // VStack
+			.padding(.horizontal, 10)
+		} // if let user = userStateVM.currentUser
 	}
 	
 	// Setting Section
 	@ViewBuilder
 	private func SettingSection() -> some View {
 		Section {
-			ForEach(settings, id: \.self) { setting in
-				if setting.isToggle {
-					Toggle(setting.display, isOn: setting == .faceID ? $profileVM.isFaceID : setting == .alert ? $profileVM.isAlert : $profileVM.isDarkMode) // 다중 삼항 연산자
-				} else {
-					NavigationLink {
-						switch setting {
-						case .profile:
-							EmptyView()
-						case .language:
-							EmptyView()
-						default:
-							EmptyView()
+			VStack(alignment: .leading, spacing: 15) {
+				ForEach(settings, id: \.self) { setting in
+					if setting.isToggle {
+						Toggle(setting.display, isOn: setting == .faceID ? $profileVM.isFaceID : setting == .alert ? $profileVM.isAlert : $profileVM.isDarkMode) // 다중 삼항 연산자
+					} else {
+						NavigationLink {
+							switch setting {
+							case .profile:
+								EmptyView()
+							case .language:
+								EmptyView()
+							default:
+								EmptyView()
+							}
+						} label: {
+							Text(setting.display)
+								.foregroundColor(Color("textColor"))
 						}
-					} label: {
-						Text(setting.display)
-					}
-				} // else
-			} // ForEach
+					} // else
+				} // ForEach
+			} // VStack
+			.padding()
+			.background(Color("cellColor"))
+			.cornerRadius(20)
 		} header: {
-			Text("설정")
+			SectionHeaderView(name: "설정")
 		} // Section
+		.padding(.horizontal, 10)
 		.onChange(of: profileVM.isFaceID) { value in
 			if value { faceIDVM.authenticate() }
 		} // onChange
@@ -106,18 +127,25 @@ struct ProfileView: View {
 	@ViewBuilder
 	private func WebViewSection() -> some View {
 		Section {
-			ForEach(Array(webInfo.enumerated()), id: \.offset) { i, web in
-				Button {
-					self.showSafari = i // 선택된 Web Safari 정보
-				} label: {
-					Text("\(web.display)")
-						.fixedSize(horizontal: false, vertical: true)
-						.frame(maxWidth: .infinity, alignment: .leading)
-				} // Button
-			} // ForEach
+			VStack(alignment: .leading, spacing: 30) {
+				ForEach(Array(webInfo.enumerated()), id: \.offset) { i, web in
+					Button {
+						self.showSafari = i // 선택된 Web Safari 정보
+					} label: {
+						Text("\(web.display)")
+							.foregroundColor(Color("textColor"))
+							.fixedSize(horizontal: false, vertical: true)
+							.frame(maxWidth: .infinity, alignment: .leading)
+					} // Button
+				} // ForEach
+			} // VStack
+			.padding()
+			.background(Color("cellColor"))
+			.cornerRadius(20)
 		} header: {
-			Text("Machacha 정보")
+			SectionHeaderView(name: "Machacha 정보")
 		} // Section
+		.padding(.horizontal, 10)
 		.sheet(item: $showSafari) {
 			SafariView(url: URL(string: webInfo[$0].url)!)
 		}
@@ -128,5 +156,21 @@ struct ProfileView_Previews: PreviewProvider {
 	static var previews: some View {
 		ProfileView()
 			.environmentObject(ProfileViewModel())
+	}
+}
+
+//MARK: - SectionHeaderView
+struct SectionHeaderView: View {
+	//MARK: Property
+	var name: String
+	
+	var body: some View {
+		HStack {
+			Text(name)
+				.font(.headline)
+				.foregroundColor(Color(uiColor: .darkGray))
+			Spacer()
+		} // HStack
+		.padding([.horizontal, .top])
 	}
 }
