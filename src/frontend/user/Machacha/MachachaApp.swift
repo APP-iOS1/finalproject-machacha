@@ -10,12 +10,13 @@ import NaverThirdPartyLogin
 import KakaoSDKCommon
 import KakaoSDKAuth
 import GoogleSignIn
+import FirebaseCore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        //FirebaseApp.configure()
+        FirebaseApp.configure()
         // 원격 알림 등록
         //UNUserNotificationCenter.current().delegate = self
         
@@ -59,6 +60,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct MachachaApp: App {
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 	@StateObject var profileVM: ProfileViewModel = ProfileViewModel()
 	
     init() {

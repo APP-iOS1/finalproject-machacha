@@ -20,6 +20,7 @@
 		C414BC2A29817C6300819D98 /* FaceIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2929817C6300819D98 /* FaceIDViewModel.swift */; };
 		C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
 		C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */; };
+		C414BC302982573C00819D98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C414BC2F2982573C00819D98 /* GoogleService-Info.plist */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		C414BC2929817C6300819D98 /* FaceIDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDViewModel.swift; sourceTree = "<group>"; };
 		C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDErrorType.swift; sourceTree = "<group>"; };
 		C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartOfUserType.swift; sourceTree = "<group>"; };
+		C414BC2F2982573C00819D98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A587862975AA0700B04A98 /* Info.plist */,
+				C414BC2F2982573C00819D98 /* GoogleService-Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
 				C4A587612975A8D300B04A98 /* Configuration */,
 				C4A587892975AA6800B04A98 /* Sources */,
@@ -618,6 +621,7 @@
 				C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */,
 				1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */,
 				C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */,
+				C414BC302982573C00819D98 /* GoogleService-Info.plist in Resources */,
 				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
 				C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */,
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,

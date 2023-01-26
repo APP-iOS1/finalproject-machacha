@@ -31,6 +31,13 @@ struct ProfileView: View {
 			}
 //			.navigationTitle("프로필")
 			.background(Color("bgColor"))
+			.onAppear {
+				UserDefaults.standard.set("egmqxtTT1Zani0UkJpUW", forKey: "userIdToken") // 임시: 로그인시
+				Task {
+					profileVM.currentUser = try await profileVM.fetchUser()
+					profileVM.reviewUser = try await profileVM.fetchReivews()
+				} // Task
+			} // ScrollView
 		} // NavigationView
 	}
 	
@@ -68,11 +75,11 @@ struct ProfileView: View {
 										switch info {
 										case .favorite:
 											Text("\(user.favoriteId.count)")
-										case .review: // 임시: 통신
-											Text("\(user.favoriteId.count)")
+										case .review:
+											Text("\(profileVM.reviewUser.count)")
 										case .visited:
 											Text("\(user.visitedId.count)")
-										case .register: // 임시: 통신
+										case .register: // 임시: 통신 필요
 											Text("\(user.favoriteId.count)")
 										} // switch
 									} // HStack
