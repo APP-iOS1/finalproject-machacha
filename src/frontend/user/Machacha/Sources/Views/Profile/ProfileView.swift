@@ -85,6 +85,7 @@ struct ProfileView: View {
 									} // HStack
 									Text(info.display)
 								} // VStack
+								.font(.machachaSubhead)
 							} // NavigationLink
 							.foregroundColor(Color("textColor"))
 						} // ForEach
@@ -103,6 +104,7 @@ struct ProfileView: View {
 						profileVM.currentUser = User.getDummy() // 임시: 로그인 했다고 임시로 가정
 					} label: {
 						Text("로그인")
+							.font(.machachaSubhead)
 							.foregroundColor(Color("textColor"))
 							.fixedSize(horizontal: false, vertical: true)
 							.frame(maxWidth: .infinity, alignment: .center)
@@ -137,6 +139,7 @@ struct ProfileView: View {
 							}
 						} label: {
 							Text(setting.display)
+								.font(.machachaSubhead)
 								.foregroundColor(Color("textColor"))
 						}
 					} // else
@@ -179,6 +182,7 @@ struct ProfileView: View {
 						self.showSafari = i // 선택된 Web Safari 정보
 					} label: {
 						Text("\(web.display)")
+							.font(.machachaCallout)
 							.foregroundColor(Color("textColor"))
 							.fixedSize(horizontal: false, vertical: true)
 							.frame(maxWidth: .infinity, alignment: .leading)
