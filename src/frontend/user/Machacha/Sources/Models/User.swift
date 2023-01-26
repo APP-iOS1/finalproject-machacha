@@ -9,13 +9,13 @@ import Foundation
 
 struct User {
 	let id: String
-	let isFirstLogin: Bool      // 최초 로그인 여부
+	var isFirstLogin: Bool      // 최초 로그인 여부
 	let email: String
-	let name: String            // 사용자가 회원가입 시 등록한 이름
-	let profileId: String       // 유저의 프로필 사진
-	let favoriteId: [String]    // 즐겨찾기한 foodCart id
-	let visitedId: [String]     // 내가 가본 foodCart id
-	let updatedAt: Date
+	var name: String            // 사용자가 회원가입 시 등록한 이름
+	var profileId: String       // 유저의 프로필 사진
+	var favoriteId: [String]    // 즐겨찾기한 foodCart id
+	var visitedId: [String]     // 내가 가본 foodCart id
+	var updatedAt: Date
 	let createdAt: Date
 	
 	static func getDummy() -> Self {

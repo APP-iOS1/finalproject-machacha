@@ -110,7 +110,7 @@ struct TabButton: View {
 			Spacer()
 		} // VStack
 		.padding(.vertical, 17)
-		.foregroundColor(isSelection ? profileVM.isDarkMode ? Color("Color2") : Color("Color3") : profileVM.isDarkMode ? .white : .gray)
+		.foregroundColor(isSelection ? Color("Color3") : profileVM.isDarkMode ? .white : .gray)
 	}
 }
 
@@ -130,7 +130,7 @@ struct PlusTabButton: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: 40)
-				.foregroundColor(profileVM.isDarkMode ? Color("Color2") : Color("Color3"))
+				.foregroundColor(Color("Color3"))
 			Spacer()
 		} // VStack
 		.padding(.vertical, 17)

@@ -131,7 +131,7 @@ struct ProfileView: View {
 						NavigationLink {
 							switch setting {
 							case .profile:
-								EmptyView()
+								ProfileEditView(user: .constant(profileVM.currentUser ?? User.getDummy()))
 							case .language:
 								EmptyView()
 							default:
@@ -139,8 +139,10 @@ struct ProfileView: View {
 							}
 						} label: {
 							Text(setting.display)
-								.font(.machachaSubhead)
+								.font(.machachaCallout)
 								.foregroundColor(Color("textColor"))
+								.fixedSize(horizontal: false, vertical: true)
+								.frame(maxWidth: .infinity, alignment: .leading)
 						}
 					} // else
 				} // ForEach
