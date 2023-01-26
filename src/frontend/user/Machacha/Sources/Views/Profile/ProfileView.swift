@@ -12,63 +12,102 @@ struct ProfileView: View {
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@StateObject var faceIDVM = FaceIDViewModel()
 	@State private var showSafari: Int?
-	
+
 	//MARK: Property
+	let profileInfo: [FoodCartOfUserType] = [.favorite, .review, .visited, .register]
 	let settings: [SettingType] = [.profile, .faceID, .alert, .darkMode, .language]
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
 	
 	var body: some View {
 		NavigationView {
 			ScrollView {
-				UserInfo() // User Info
+				UserLoginStatus() // User Login Status
 				
 				SettingSection() // Setting Section
 				
 				WebViewSection() // WebView Section
 				
-//				if profileVM.currentUser != nil {
-//					Button(role: .destructive) {
-//						Task {
-//							try await profileVM.logout()
-//							profileVM.showLogin = true
-//						}
-//					} label: {
-//						Text("로그아웃")
-//							.fixedSize(horizontal: false, vertical: true)
-//							.frame(maxWidth: .infinity, alignment: .center)
-//					} // Button
-//				} // userStateVM.currentUser != nil
+				UserLogoutStatus() // User Logout Status
 			}
-			.navigationTitle("프로필")
+//			.navigationTitle("프로필")
 			.background(Color("bgColor"))
 		} // NavigationView
 	}
 	
 	// FoodCart List By User Action
 	@ViewBuilder
-	private func UserInfo() -> some View {
-		if let user = profileVM.currentUser { // 사용자 정보
-			VStack(alignment: .leading) {
-				Text(user.name)
-					.font(.title3)
-			} // VStack
-			.padding([.top, .bottom], 10)
-		} else { // 로그인 요청 버튼
-			VStack {
-				Button {
-					profileVM.showLogin = true
-				} label: {
-					Text("로그인")
-						.foregroundColor(Color("textColor"))
-						.fixedSize(horizontal: false, vertical: true)
-						.frame(maxWidth: .infinity, alignment: .center)
-				} // Button
+	private func UserLoginStatus() -> some View {
+		GeometryReader { geometry in
+			if let user = profileVM.currentUser { 	// 사용자 정보
+				VStack(alignment: .leading) {
+					Spacer()
+					VStack(alignment: .leading, spacing: 10) {
+						Text(user.name)
+							.font(.machachaTitleBold)
+						Text(user.email)
+							.font(.machachaSubhead)
+					} // VStack
+					Spacer()
+					HStack(spacing: 30) {
+						ForEach(profileInfo, id: \.self) { info in
+							NavigationLink {
+								switch info {
+								case .favorite:
+									EmptyView()
+								case .review:
+									EmptyView()
+								case .visited:
+									EmptyView()
+								case .register:
+									EmptyView()
+								} // switch
+							} label: {
+								VStack(spacing: 10) {
+									HStack {
+										Image(systemName: info.image)
+										switch info {
+										case .favorite:
+											Text("\(user.favoriteId.count)")
+										case .review: // 임시: 통신
+											Text("\(user.favoriteId.count)")
+										case .visited:
+											Text("\(user.visitedId.count)")
+										case .register: // 임시: 통신
+											Text("\(user.favoriteId.count)")
+										} // switch
+									} // HStack
+									Text(info.display)
+								} // VStack
+							} // NavigationLink
+							.foregroundColor(Color("textColor"))
+						} // ForEach
+					} // HStack
+				} // VStack
 				.padding()
+				.frame(
+					width: geometry.size.width,
+					height: Screen.maxHeight * 0.3
+				)
 				.background(Color("cellColor"))
-				.cornerRadius(20)
-			} // VStack
-			.padding(.horizontal, 10)
-		} // if let user = userStateVM.currentUser
+			} else { 								// 로그인 요청 버튼
+				VStack {
+					Button {
+						profileVM.showLogin = true
+						profileVM.currentUser = User.getDummy() // 임시: 로그인 했다고 임시로 가정
+					} label: {
+						Text("로그인")
+							.foregroundColor(Color("textColor"))
+							.fixedSize(horizontal: false, vertical: true)
+							.frame(maxWidth: .infinity, alignment: .center)
+					} // Button
+					.padding()
+					.background(Color("cellColor"))
+					.cornerRadius(20)
+				} // VStack
+				.padding()
+			} // if let user = userStateVM.currentUser
+		} // GeometryReader
+		.frame(minHeight: profileVM.currentUser == nil ? Screen.maxHeight * 0.08 : Screen.maxHeight * 0.3)
 	}
 	
 	// Setting Section
@@ -148,6 +187,30 @@ struct ProfileView: View {
 		.padding(.horizontal, 10)
 		.sheet(item: $showSafari) {
 			SafariView(url: URL(string: webInfo[$0].url)!)
+		}
+	}
+	
+	// User Logout Status
+	@ViewBuilder
+	private func UserLogoutStatus() -> some View {
+		if profileVM.currentUser != nil {
+			VStack {
+				Button(role: .destructive) {
+					Task {
+						try await profileVM.logout()
+						profileVM.showLogin = true
+					}
+					profileVM.currentUser = nil // 임시: 로그아웃 했다고 임시로 가정
+				} label: {
+					Text("로그아웃")
+						.fixedSize(horizontal: false, vertical: true)
+						.frame(maxWidth: .infinity, alignment: .center)
+				} // Button
+				.padding()
+				.background(Color("cellColor"))
+				.cornerRadius(20)
+			} // VStack
+			.padding()
 		}
 	}
 }
