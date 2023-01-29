@@ -21,7 +21,6 @@
 		C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
 		C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */; };
 		C414BC302982573C00819D98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C414BC2F2982573C00819D98 /* GoogleService-Info.plist */; };
-		C414BC322982638800819D98 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC312982638800819D98 /* ProfileEditView.swift */; };
 		C414BC342982682500819D98 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC332982682500819D98 /* Ex+View.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
@@ -115,7 +114,6 @@
 		C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDErrorType.swift; sourceTree = "<group>"; };
 		C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartOfUserType.swift; sourceTree = "<group>"; };
 		C414BC2F2982573C00819D98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C414BC312982638800819D98 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C414BC332982682500819D98 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 			isa = PBXGroup;
 			children = (
 				C4A587AA29768E3E00B04A98 /* ProfileView.swift */,
-				C414BC312982638800819D98 /* ProfileEditView.swift */,
 				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
 				C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */,
 				C414BC27298116D000819D98 /* SettingType.swift */,
@@ -660,7 +657,6 @@
 			files = (
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
-				C414BC322982638800819D98 /* ProfileEditView.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */,
 				C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */,

@@ -15,7 +15,7 @@ struct ProfileView: View {
 
 	//MARK: Property
 	let profileInfo: [FoodCartOfUserType] = [.favorite, .review, .visited, .register]
-	let settings: [SettingType] = [.profile, .faceID, .alert, .darkMode, .language]
+	let settings: [SettingType] = [.faceID, .alert, .darkMode, .language]
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
 	
 	var body: some View {
@@ -130,8 +130,6 @@ struct ProfileView: View {
 					} else {
 						NavigationLink {
 							switch setting {
-							case .profile:
-								ProfileEditView(user: .constant(profileVM.currentUser ?? User.getDummy()))
 							case .language:
 								EmptyView()
 							default:
