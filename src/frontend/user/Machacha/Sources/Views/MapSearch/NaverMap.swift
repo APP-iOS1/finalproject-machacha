@@ -39,6 +39,7 @@ struct NaverMap: UIViewRepresentable {
             
 			marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
             
+            
             let image = NMFOverlayImage(name: foodCart.markerImage)
             
 //            marker.iconImage = image
@@ -57,7 +58,6 @@ struct NaverMap: UIViewRepresentable {
                 
                 return true
             }
-            
             marker.mapView = view.mapView
         }
      
@@ -72,6 +72,10 @@ struct NaverMap: UIViewRepresentable {
         cameraUpdate.animation = .fly
         cameraUpdate.animationDuration = 1
         uiView.mapView.moveCamera(cameraUpdate)
+    }
+    
+    func setupMarker() {
+        
     }
 }
 

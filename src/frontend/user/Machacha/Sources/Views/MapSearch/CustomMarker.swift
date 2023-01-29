@@ -8,11 +8,3 @@
 import Foundation
 import NMapsMap
 
-class CustomMarker {
-    
-    
-    init() {
-        let marker = NMFMarker()
-        
-    }
-}
