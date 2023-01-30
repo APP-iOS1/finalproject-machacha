@@ -13,11 +13,13 @@ struct MapSearchView: View {
     var body: some View {
         ZStack {
             VStack {
-                Button {
-                    mapSerachViewModel.coord = (37.566249, 126.992227)
-                } label: {
-                    Text("을지로3가역")
-                }
+//                Button {
+//                    mapSerachViewModel.coord = (37.566249, 126.992227)
+//                } label: {
+//                    Text("을지로3가역")
+//                }
+                
+                MapHeader()
                 
                 Spacer()
             }
