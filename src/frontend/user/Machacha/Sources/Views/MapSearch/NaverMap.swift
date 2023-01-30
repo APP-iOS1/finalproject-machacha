@@ -9,18 +9,13 @@ import SwiftUI
 import NMapsMap
 
 struct NaverMap: UIViewRepresentable {
-    var coord: (Double, Double)
+    @State var coord: (Double, Double)
     var foodCarts: [FoodCart]
+    @Binding var isPresent: Bool
     
     func makeCoordinator() -> Coordinator {
         Coordinator(coord)
     }
-    
-    init(_ coord: (Double, Double), foodCarts: [FoodCart]) {
-        self.coord = coord
-        self.foodCarts = foodCarts
-    }
-    
 
     // MARK: - Map을 그리고 생성하는 메서드
     func makeUIView(context: Context) -> some NMFNaverMapView {
@@ -47,8 +42,11 @@ struct NaverMap: UIViewRepresentable {
             
             // MARK: - Mark 터치 시 이벤트 발생
             marker.touchHandler = { (overlay) -> Bool in
-                print("marker touched")
-                
+                print("\(foodCart.name) marker touched")
+                coord = (foodCart.geoPoint.latitude, foodCart.geoPoint.longitude)
+                marker.width = CGFloat(50)
+                marker.height = CGFloat(50)
+                isPresent.toggle()
                 return true
             }
             marker.mapView = view.mapView
@@ -63,12 +61,8 @@ struct NaverMap: UIViewRepresentable {
         let coord = NMGLatLng(lat: coord.0, lng: coord.1)
         let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
         cameraUpdate.animation = .easeIn
-        cameraUpdate.animationDuration = 1
+        cameraUpdate.animationDuration = 0.3
         uiView.mapView.moveCamera(cameraUpdate)
-    }
-    
-    func setupMarker() {
-        
     }
 }
 
@@ -86,6 +80,8 @@ extension Coordinator: NMFMapViewCameraDelegate {
     }
     
     func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
-//        print("카메라 변경 - reason: \(reason)")
+//        coord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
+        coord = (37.566249, 126.992227)
+        print(coord)
     }
 }

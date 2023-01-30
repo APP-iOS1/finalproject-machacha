@@ -9,25 +9,23 @@ import SwiftUI
 
 struct MapSearchView: View {
     @StateObject var mapSerachViewModel = MapSearchViewModel()
+    @State var showingSheet = false
     
     var body: some View {
         ZStack {
             VStack {
-//                Button {
-//                    mapSerachViewModel.coord = (37.566249, 126.992227)
-//                } label: {
-//                    Text("을지로3가역")
-//                }
-                
                 MapHeader()
-                
                 Spacer()
             }
             .zIndex(1)
             
-            NaverMap((mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts:  mapSerachViewModel.foodCarts)
+            NaverMap(coord: (mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts:  mapSerachViewModel.foodCarts, isPresent: $showingSheet)
                 .ignoresSafeArea(.all, edges: .top)
         }
+        .sheet(isPresented: $showingSheet, content: {
+            EmptyView()
+                .presentationDetents([.fraction(0.2), .fraction(1.0)])
+        })
         .onAppear {
             mapSerachViewModel.checkIfLocationServicesIsEnabled()
         }
