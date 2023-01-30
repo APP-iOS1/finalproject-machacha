@@ -10,23 +10,46 @@ import SwiftUI
 struct ProfileFavoriteView: View {
 	//MARK: Property wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
-
-    var body: some View {
+	@Environment(\.presentationMode) var presentation
+	
+	var body: some View {
 		ScrollView {
 			ForEach(profileVM.favoriteUser) { foodCart in
-				Text(foodCart.name)
+				ProfileCellView(foodCart: foodCart)
 			}
 		}
+		.navigationBarBackButtonHidden()
+		.navigationBarTitle("즐겨찾기", displayMode: .large)
+		.toolbarBackground(Color("Color3"), for: .navigationBar)
+		.toolbarBackground(.visible, for: .navigationBar)
+		.toolbarColorScheme(.dark, for: .navigationBar) // 글자색 변경
+		.toolbar(content: {
+			ToolbarItem(placement: .navigationBarLeading) {
+				Button {
+					self.presentation.wrappedValue.dismiss()
+				} label: {
+					Image(systemName: "chevron.left")
+				}
+			}
+		})
 		.onAppear {
 			Task {
 				profileVM.favoriteUser = try await profileVM.fetchFavorite()
 			}
 		}
-    }
+	}
 }
 
 struct ProfileFavoriteView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileFavoriteView()
-    }
+	static var previews: some View {
+		let profileVM = ProfileViewModel()
+		
+		NavigationView {
+			ProfileFavoriteView()
+				.environmentObject(profileVM)
+				.onAppear {
+					profileVM.currentUser = User.getDummy()
+				}
+		}
+	}
 }

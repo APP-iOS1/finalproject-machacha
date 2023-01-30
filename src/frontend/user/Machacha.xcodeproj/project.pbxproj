@@ -25,6 +25,7 @@
 		C414BC342982682500819D98 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC332982682500819D98 /* Ex+View.swift */; };
 		C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03A2987A11B00F0B620 /* AnimationModifier.swift */; };
 		C433E03F2987A37800F0B620 /* ProfileFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03E2987A37800F0B620 /* ProfileFavoriteView.swift */; };
+		C433E0432987B2DF00F0B620 /* ProfileCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E0422987B2DF00F0B620 /* ProfileCellView.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -121,6 +122,7 @@
 		C414BC332982682500819D98 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
 		C433E03A2987A11B00F0B620 /* AnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
 		C433E03E2987A37800F0B620 /* ProfileFavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFavoriteView.swift; sourceTree = "<group>"; };
+		C433E0422987B2DF00F0B620 /* ProfileCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellView.swift; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 			children = (
 				C4A587AA29768E3E00B04A98 /* ProfileView.swift */,
 				C433E03E2987A37800F0B620 /* ProfileFavoriteView.swift */,
+				C433E0422987B2DF00F0B620 /* ProfileCellView.swift */,
 				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
 				C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */,
 				C414BC27298116D000819D98 /* SettingType.swift */,
@@ -664,6 +667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C433E0432987B2DF00F0B620 /* ProfileCellView.swift in Sources */,
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
