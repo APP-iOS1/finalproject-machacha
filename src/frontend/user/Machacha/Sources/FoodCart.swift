@@ -43,7 +43,7 @@ struct FoodCart {
     }
     
 	static func getDummy() -> Self {
-		return FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "마차챠잇", address: "서울시 xx구 xx동 번지", visitedCnt: 32, favoriteCnt: 13, paymentOpt: ["카드", "현금", "계좌이체"], openingDays: [false, false, false, false, false, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 0, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"])
+        return FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "마차챠잇", address: "서울시 xx구 xx동 번지", visitedCnt: 32, favoriteCnt: 13, paymentOpt: ["카드", "현금", "계좌이체"], openingDays: [false, false, false, false, false, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 0, imageId: ["test.jpg", "test.jpg", "test.jpg", "test.jpg", "test.jpg", "test.jpg"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"])
 	}
 	
 	static func getListDummy() -> [Self] {
