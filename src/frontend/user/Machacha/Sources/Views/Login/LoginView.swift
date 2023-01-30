@@ -9,6 +9,7 @@ import SwiftUI
 import NaverThirdPartyLogin
 import GoogleSignInSwift
 import GoogleSignIn
+import _AuthenticationServices_SwiftUI
 
 enum LoginState {
     case authenticated
@@ -19,7 +20,7 @@ enum LoginState {
 
 struct AuthView : View {
     //@State var loginState : LoginState = .unauthenticated
-    @StateObject var authVM = AuthViewModel.shared
+    @StateObject var authVM = AuthViewModel()//.shared
     var body: some View {
         switch authVM.loginState {
         case .unauthenticated, .none :
@@ -30,7 +31,7 @@ struct AuthView : View {
         case .authenticated, .pass:
             ContentView()
                 .onAppear{
-                    print(authVM.loginState)
+                    print(authVM.loginState!)
                 }
         }
     }
@@ -55,30 +56,31 @@ struct LoginView: View {
                 
                 VStack(spacing: 18) {
                     //네이버 로그인 버튼
-                    Button {
-                        if NaverThirdPartyLoginConnection
-                            .getSharedInstance()
-                            .isPossibleToOpenNaverApp() // Naver App이 깔려있는지 확인하는 함수
-                        {
-                            NaverThirdPartyLoginConnection.getSharedInstance().delegate = naverAuthVM.self
-                            NaverThirdPartyLoginConnection
-                                .getSharedInstance()
-                                .requestThirdPartyLogin()
-                        } else { // 네이버 앱 안깔려져 있을때
-                            // Appstore에서 네이버앱 열기
-                            NaverThirdPartyLoginConnection.getSharedInstance().openAppStoreForNaverApp()
-                            
-                        }
-                    } label : {
-                        Image("naver_login")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 320)
-                    }
+                    //                    Button {
+                    //                        if NaverThirdPartyLoginConnection
+                    //                            .getSharedInstance()
+                    //                            .isPossibleToOpenNaverApp() // Naver App이 깔려있는지 확인하는 함수
+                    //                        {
+                    //                            NaverThirdPartyLoginConnection.getSharedInstance().delegate = naverAuthVM.self
+                    //                            NaverThirdPartyLoginConnection
+                    //                                .getSharedInstance()
+                    //                                .requestThirdPartyLogin()
+                    //                        } else { // 네이버 앱 안깔려져 있을때
+                    //                            // Appstore에서 네이버앱 열기
+                    //                            NaverThirdPartyLoginConnection.getSharedInstance().openAppStoreForNaverApp()
+                    //
+                    //                        }
+                    //                    } label : {
+                    //                        Image("naver_login")
+                    //                            .resizable()
+                    //                            .aspectRatio(contentMode: .fit)
+                    //                            .frame(width: 320)
+                    //                    }
                     
                     //카카오 로그인 버튼
                     Button {
-                        kakaoAuthVM.handleKaKaoLogin()
+                        authVM.kakaoLogin()
+                        //kakaoAuthVM.handleKaKaoLogin()
                     } label: {
                         Image("kakaologin")
                             .resizable()
@@ -89,13 +91,59 @@ struct LoginView: View {
                     //구글 로그인 버튼
                     //GoogleSignInButton(action: googleAuthVM.signIn)
                     Button {
-                        googleAuthVM.signIn()
+                        authVM.googleSignIn()
                     } label: {
                         Image("googlelogin")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 320)
                     }
+                    
+                    //애플 로그인 버튼
+                    HStack {
+                        Image(systemName: "applelogo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25)
+                            
+                        
+                        Text("Apple Sign in")
+                            .font(.callout)
+                            .lineLimit(1)
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal,15)
+                    .frame(width: 320, height: 50, alignment: .center)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .fill(.black)
+                    }
+                    .overlay {
+                        SignInWithAppleButton { request in
+                            authVM.nonce = randomNonceString()
+                            request.requestedScopes = [.fullName, .email]
+                            request.nonce = sha256(authVM.nonce)
+                            
+                        } onCompletion: { (result) in
+                            switch result {
+                            case .success(let user):
+                                print("success")
+                                guard let credential = user.credential as?
+                                        ASAuthorizationAppleIDCredential else {
+                                    print("error with firebase")
+                                    return
+                                }
+                                Task { await authVM.appleAuthenticate(credential: credential) }
+                            case.failure(let error):
+                                print(error.localizedDescription)
+                            }
+                        }
+                        .signInWithAppleButtonStyle(.white)
+                        .cornerRadius(8)
+                        .frame(height: 45)
+                        .blendMode(.overlay)
+                    }
+                    .clipped()
                     
                     Button {
                         authVM.loginState = .pass
