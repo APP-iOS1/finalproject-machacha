@@ -11,7 +11,6 @@ import NMapsMap
 struct NaverMap: UIViewRepresentable {
     @State var coord: (Double, Double)
     var foodCarts: [FoodCart]
-    @Binding var isPresent: Bool
     
     func makeCoordinator() -> Coordinator {
         Coordinator(coord)
@@ -23,7 +22,7 @@ struct NaverMap: UIViewRepresentable {
         view.showZoomControls = false
         view.mapView.positionMode = .direction
         view.mapView.zoomLevel = 17
-        view.showLocationButton = true
+//        view.showLocationButton = true
         // Foodcart를 맵에 마커로 표현
         for foodCart in foodCarts {
             let marker = NMFMarker()
@@ -43,7 +42,6 @@ struct NaverMap: UIViewRepresentable {
                 coord = (foodCart.geoPoint.latitude, foodCart.geoPoint.longitude)
                 marker.width = CGFloat(50)
                 marker.height = CGFloat(50)
-                isPresent.toggle()
                 return true
             }
             marker.mapView = view.mapView
