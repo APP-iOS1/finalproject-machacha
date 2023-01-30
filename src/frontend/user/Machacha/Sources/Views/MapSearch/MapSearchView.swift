@@ -19,16 +19,11 @@ struct MapSearchView: View {
                     Text("을지로3가역")
                 }
                 
-                Button {
-                    mapSerachViewModel.coord = (37.560840, 126.986418)
-                } label: {
-                    Text("명동역")
-                }
                 Spacer()
             }
             .zIndex(1)
             
-			NaverMap((mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts: FoodCart.getListDummy())
+            NaverMap((mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts:  mapSerachViewModel.foodCarts)
                 .ignoresSafeArea(.all, edges: .top)
         }
         .onAppear {
