@@ -95,7 +95,7 @@ class ProfileViewModel: ObservableObject {
 	
 	// Favorite Data Fetch
 	func fetchFavorite() async throws -> [FoodCart] {
-		guard let userId = UserInfo.token, let currentUser = currentUser else { return [] }
+		guard let currentUser = currentUser else { return [] }
 		var favorite = [FoodCart]() // 비동기 통신으로 받아올 Property
 		
 		for foodCart in currentUser.favoriteId {
