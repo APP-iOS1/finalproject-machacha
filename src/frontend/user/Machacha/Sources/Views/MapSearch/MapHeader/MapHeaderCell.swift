@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MapHeaderCell: View {
-    let cellList = ["bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "store2"]
+    let cellList = ["bbungbread", "fishcake", "sweetpotato", "tteokboki", "store"]
     
     var body: some View {
         
