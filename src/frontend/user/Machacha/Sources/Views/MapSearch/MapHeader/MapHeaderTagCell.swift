@@ -11,13 +11,13 @@ struct MapHeaderTagCell: View {
     let image: String
     var tag: String {
         switch image {
-        case "bbungbread":
+        case "bbungbread2":
             return "붕어빵"
-        case "fishcake":
+        case "fishcake2":
             return "어묵"
-        case "sweetpotato":
+        case "sweetpotato2":
             return "고구마"
-        case "tteokboki":
+        case "tteokboki2":
             return "떡볶이"
         default:
             return "기타"
