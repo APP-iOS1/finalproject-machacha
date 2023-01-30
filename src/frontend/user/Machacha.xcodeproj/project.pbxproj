@@ -56,6 +56,8 @@
 		C4D5C05C297A7E22003CF061 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C05B297A7E22003CF061 /* FirebaseStorage */; };
 		C4D5C05E297A7EBE003CF061 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05D297A7EBE003CF061 /* Review.swift */; };
 		C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05F297A7F4A003CF061 /* Magazine.swift */; };
+		FA0B449B298768A6005DB8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA0B449A298768A6005DB8AF /* GoogleService-Info.plist */; };
+		FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
 		FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */; };
 		FAFDD47C29779202008E28AD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47B29779202008E28AD /* Alamofire */; };
 		FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47E2977B02D008E28AD /* KakaoSDK */; };
@@ -70,7 +72,6 @@
 		FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */; };
 		FAFDD4952977C680008E28AD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4942977C680008E28AD /* GoogleSignIn */; };
 		FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4962977C680008E28AD /* GoogleSignInSwift */; };
-		FAFDD4992977CB8C008E28AD /* GoogleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */; };
 		FAFDD49D2977E8EC008E28AD /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
@@ -139,9 +140,10 @@
 		C4A587B92976960300B04A98 /* Ex+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Font.swift"; sourceTree = "<group>"; };
 		C4D5C05D297A7EBE003CF061 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		C4D5C05F297A7F4A003CF061 /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
+		FA0B449A298768A6005DB8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA0B449C2987A504005DB8AF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
-		FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD49C2977E8EC008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A587862975AA0700B04A98 /* Info.plist */,
+				FA0B449A298768A6005DB8AF /* GoogleService-Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
 				C4A587612975A8D300B04A98 /* Configuration */,
 				C4A587892975AA6800B04A98 /* Sources */,
@@ -360,10 +363,10 @@
 			isa = PBXGroup;
 			children = (
 				C4A5878F29768C6200B04A98 /* AuthViewModel.swift */,
-				FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */,
 				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
 				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
 				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
+				FA0B449C2987A504005DB8AF /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */,
 				1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */,
 				C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */,
+				FA0B449B298768A6005DB8AF /* GoogleService-Info.plist in Resources */,
 				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
 				C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */,
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
@@ -632,6 +636,7 @@
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
 				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
+				FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */,
 				C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */,
 				C4A587A729768E2C00B04A98 /* RegisterView.swift in Sources */,
 				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
@@ -650,7 +655,6 @@
 				C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */,
 				C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */,
 				C4A5879F29768D4800B04A98 /* SplashView.swift in Sources */,
-				FAFDD4992977CB8C008E28AD /* GoogleAuthViewModel.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
