@@ -14,9 +14,15 @@ struct ProfileFavoriteView: View {
 	
 	var body: some View {
 		ScrollView {
-			ForEach(profileVM.favoriteUser) { foodCart in
-				ProfileCellView(foodCart: foodCart)
-			} // ForEach
+			Section {
+				VStack(alignment: .leading, spacing: 15) {
+					ForEach(profileVM.favoriteUser) { foodCart in
+						ProfileCellView(isFavorite: .constant(true), foodCart: foodCart)
+					} // ForEach
+				} // VStack
+			} header: {
+				SectionHeaderView(name: "총 \(profileVM.favoriteUser.count)개")
+			} // Section
 		} // ScrollView
 		.navigationBarBackButtonHidden()
 		.navigationBarTitle("즐겨찾기", displayMode: .large)
