@@ -41,7 +41,6 @@ struct AuthView : View {
 struct LoginView: View {
     @EnvironmentObject var authVM : AuthViewModel
     @StateObject var kakaoAuthVM = KaKaoAuthViewModel()
-    @StateObject var googleAuthVM = GoogleAuthModel()
     var naverAuthVM = NaverLoginViewModel()
     var body: some View{
         ZStack{
