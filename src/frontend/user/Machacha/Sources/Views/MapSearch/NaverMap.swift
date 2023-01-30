@@ -24,9 +24,6 @@ struct NaverMap: UIViewRepresentable {
         view.mapView.positionMode = .direction
         view.mapView.zoomLevel = 17
         view.showLocationButton = true
-
-        let cameraPosition = view.mapView.cameraPosition
-        
         // Foodcart를 맵에 마커로 표현
         for foodCart in foodCarts {
             let marker = NMFMarker()
@@ -38,8 +35,8 @@ struct NaverMap: UIViewRepresentable {
 //
             marker.width = CGFloat(25)
             marker.height = CGFloat(25)
+            marker.isHideCollidedMarkers = true
 
-            
             // MARK: - Mark 터치 시 이벤트 발생
             marker.touchHandler = { (overlay) -> Bool in
                 print("\(foodCart.name) marker touched")
@@ -53,6 +50,7 @@ struct NaverMap: UIViewRepresentable {
         }
      
         view.mapView.addCameraDelegate(delegate: context.coordinator)
+        view.mapView.touchDelegate = context.coordinator
         return view
     }
     
@@ -81,7 +79,13 @@ extension Coordinator: NMFMapViewCameraDelegate {
     
     func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
 //        coord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
+    }
+}
+
+// MARK: - 지도 터치에 이용되는 Delegate
+extension Coordinator: NMFMapViewTouchDelegate {
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        print("Map Tapped")
         coord = (37.566249, 126.992227)
-        print(coord)
     }
 }
