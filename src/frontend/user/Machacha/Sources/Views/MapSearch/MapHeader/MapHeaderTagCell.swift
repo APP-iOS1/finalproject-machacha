@@ -9,33 +9,49 @@ import SwiftUI
 
 struct MapHeaderTagCell: View {
     let image: String
-    let tag: String
+    var tag: String {
+        switch image {
+        case "bbungbread":
+            return "붕어빵"
+        case "fishcake":
+            return "어묵"
+        case "sweetpotato":
+            return "고구마"
+        case "tteokboki":
+            return "떡볶이"
+        default:
+            return "기타"
+        }
+    }
     
     var body: some View {
         VStack {
-            HStack {
-                Image(image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: Screen.maxWidth/7)
-                    .offset(x: +10)
-                Text(tag)
-                    .offset(x: -20)
-                    .font(.machachaFootnote)
+            Button {
+                print("\(tag) tag Tapped")
+            } label: {
+                HStack {
+                    Image(image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 25)
+                        .offset(x: +10)
+                    Text(tag)
+                        .offset(x: -20)
+                        .font(.machachaFootnote)
+                }
             }
         }
         .foregroundColor(.gray)
         .background(Color.white)
         .cornerRadius(20)
         .shadow(radius: 3)
+        .padding(3)
     }
 }
 
 struct MapHeaderTagCell_Previews: PreviewProvider {
-    
     static var image = "tteokboki"
-    static var tag = "떡볶이"
     static var previews: some View {
-        MapHeaderTagCell(image: image, tag: tag)
+        MapHeaderTagCell(image: image)
     }
 }

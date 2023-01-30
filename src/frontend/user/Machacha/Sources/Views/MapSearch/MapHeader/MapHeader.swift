@@ -35,8 +35,10 @@ struct MapHeader: View {
             .background(Color.white)
             .cornerRadius(10)
             .shadow(radius: 3)
-            MapHeaderTagCell(image: "tteokboki", tag: "떡볶이")
-        }.padding()
+            .padding([.leading, .trailing, .top], 10)
+            MapHeaderCell()
+                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+        }
     }
 }
 
