@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct FoodCart {
+struct FoodCart: Identifiable {
 	let id: String
 	let createdAt: Date    		// 가게가 등록된 시간
 	let updatedAt: Date		    // 가게의 정보가 업데이트된 시간

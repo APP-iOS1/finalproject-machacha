@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Magazine {
+struct Magazine: Identifiable {
 	let id: String
 	let foodCartId: [String]        // foodCart들의 id
 	let pickTitle: String           // ~~~'s PICK
