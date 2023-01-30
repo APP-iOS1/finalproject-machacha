@@ -11,6 +11,7 @@ import FirebaseFirestore
 class ProfileViewModel: ObservableObject {
 	//MARK: Property wrapper
 	@Published var currentUser: User?
+	@Published var favoriteUser: [FoodCart] = []
 	@Published var reviewUser: [Review] = []
 	@Published var showLogin = false			// 로그인 관리
 	@Published var isFaceID: Bool = UserInfo.isFaceID {		// FaceID
@@ -36,6 +37,11 @@ class ProfileViewModel: ObservableObject {
 		UserDefaults.standard.set(false, forKey: "isFaceID")	// FaceID
 		UserDefaults.standard.set(false, forKey: "isAlert")		// 알림
 		UserDefaults.standard.set(false, forKey: "isDarkMode")	// 다크모드
+	}
+	
+	// 로그아웃
+	func logout() async throws {
+		currentUser = nil
 	}
 	
 	//MARK: - Read
@@ -87,8 +93,37 @@ class ProfileViewModel: ObservableObject {
 		return reviews
 	}
 	
-	// 로그아웃
-	func logout() async throws {
-		currentUser = nil
+	// Favorite Data Fetch
+	func fetchFavorite() async throws -> [FoodCart] {
+		guard let userId = UserInfo.token, let currentUser = currentUser else { return [] }
+		var favorite = [FoodCart]() // 비동기 통신으로 받아올 Property
+		
+		for foodCart in currentUser.favoriteId {
+			let favoriteSnapshot = try await database.collection("FoodCart").document(foodCart).getDocument() // 첫번째 비동기 통신
+
+			let docData = favoriteSnapshot.data()!
+			
+			let id: String = docData["id"] as? String ?? ""
+			let region: String = docData["region"] as? String ?? ""
+			let name: String = docData["name"] as? String ?? ""
+			let address: String = docData["address"] as? String ?? ""
+			let visitedCnt: Int = docData["visitedCnt"] as? Int ?? 0
+			let favoriteCnt: Int = docData["favoriteCnt"] as? Int ?? 0
+			let paymentOpt: [String] = docData["paymentOpt"] as? [String] ?? []
+			let openingDays: [Bool] = docData["openingDays"] as? [Bool] ?? []
+			let menu: [String: Int] = docData["menu"] as? [String: Int] ?? [String: Int]()
+			let bestMenu: Int = docData["bestMenu"] as? Int ?? 0
+			let imageId: [String] = docData["imageId"] as? [String] ?? []
+			let grade: Double = docData["grade"] as? Double ?? 0.0
+			let reportCnt: Int = docData["reportCnt"] as? Int ?? 0
+			let reviewId: [String] = docData["reviewId"] as? [String] ?? []
+			let geoPoint: GeoPoint = docData["geoPoint"] as! GeoPoint
+			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+
+			favorite.append(FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId))
+		}
+		
+		return favorite
 	}
 }

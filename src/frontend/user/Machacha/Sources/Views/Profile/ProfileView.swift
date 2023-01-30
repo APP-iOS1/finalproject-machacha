@@ -62,7 +62,7 @@ extension ProfileView {
 							NavigationLink {
 								switch info {
 								case .favorite:
-									EmptyView()
+									ProfileFavoriteView()
 								case .review:
 									EmptyView()
 								case .visited:
