@@ -16,8 +16,8 @@ struct ProfileFavoriteView: View {
 		ScrollView {
 			ForEach(profileVM.favoriteUser) { foodCart in
 				ProfileCellView(foodCart: foodCart)
-			}
-		}
+			} // ForEach
+		} // ScrollView
 		.navigationBarBackButtonHidden()
 		.navigationBarTitle("즐겨찾기", displayMode: .large)
 		.toolbarBackground(Color("Color3"), for: .navigationBar)
@@ -32,6 +32,7 @@ struct ProfileFavoriteView: View {
 				}
 			}
 		})
+		.background(Color("bgColor"))
 		.onAppear {
 			Task {
 				profileVM.favoriteUser = try await profileVM.fetchFavorite()
