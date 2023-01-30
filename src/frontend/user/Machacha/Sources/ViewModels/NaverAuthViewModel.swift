@@ -19,7 +19,7 @@ extension NaverLoginViewModel : UIApplicationDelegate, NaverThirdPartyLoginConne
     }
     
     func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        print("error: \(error)")
+        //print("error: \(error)")
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
@@ -51,12 +51,13 @@ extension NaverLoginViewModel : UIApplicationDelegate, NaverThirdPartyLoginConne
         
         let authorization = "\(tokenType) \(accessToken)"
         
-        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
+        // let req =
+        _ = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
         
-        req.responseJSON { [weak self] response in
-            let decoder = JSONDecoder()
-            
-            print("response: ",response)
-        }
+//        req.responseJSON { [weak self] response in
+//            let decoder = JSONDecoder()
+//            
+//            print("response: ",response)
+//        }
     }
 }
