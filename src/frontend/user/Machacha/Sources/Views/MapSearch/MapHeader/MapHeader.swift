@@ -29,13 +29,13 @@ struct MapHeader: View {
                     Image(systemName: "wave.3.backward.circle")
                         .foregroundColor(.black)
                 }
-
             }
             .padding()
             .foregroundColor(.gray)
             .background(Color.white)
             .cornerRadius(10)
             .shadow(radius: 3)
+            MapHeaderTagCell(image: "tteokboki", tag: "떡볶이")
         }.padding()
     }
 }
