@@ -11,13 +11,13 @@ struct MapHeaderTagCell: View {
     let image: String
     var tag: String {
         switch image {
-        case "bbungbread":
+        case "bbungbread2":
             return "붕어빵"
-        case "fishcake":
+        case "fishcake2":
             return "어묵"
-        case "sweetpotato":
+        case "sweetpotato2":
             return "고구마"
-        case "tteokboki":
+        case "tteokboki2":
             return "떡볶이"
         default:
             return "기타"
@@ -34,9 +34,9 @@ struct MapHeaderTagCell: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 25)
-                        .offset(x: +10)
+                        .padding([.top, .bottom], 2)
                     Text(tag)
-                        .offset(x: -20)
+                        .offset(x: -15)
                         .font(.machachaFootnote)
                 }
             }
@@ -52,6 +52,6 @@ struct MapHeaderTagCell: View {
 struct MapHeaderTagCell_Previews: PreviewProvider {
     static var image = "tteokboki"
     static var previews: some View {
-        MapHeaderTagCell(image: image)
+        MapHeaderCell()
     }
 }
