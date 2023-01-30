@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
-		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; settings = {ATTRIBUTES = (Required, ); }; };
+		6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */; };
+		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
 		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
@@ -102,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 느릿느릿체.ttf"; sourceTree = "<group>"; };
+		6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
@@ -439,6 +441,7 @@
 		C4A5879729768CF300B04A98 /* MapSearch */ = {
 			isa = PBXGroup;
 			children = (
+				6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */,
 				C4A587A429768DE300B04A98 /* MapSearchView.swift */,
 				6A8EBDA72977903700964C9D /* NaverMap.swift */,
 			);
@@ -676,6 +679,7 @@
 				C414BC342982682500819D98 /* Ex+View.swift in Sources */,
 				6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */,
 				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
+				6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				C4A587AD29768E4500B04A98 /* DetailView.swift in Sources */,
 				C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */,
