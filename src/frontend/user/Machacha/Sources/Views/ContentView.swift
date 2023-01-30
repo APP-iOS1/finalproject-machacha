@@ -13,7 +13,7 @@ struct ContentView: View {
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
-		NavigationView {
+		NavigationStack {
 			ZStack {
 				ZStack {
 					switch tabbarManager.curTabSelection {
@@ -31,9 +31,10 @@ struct ContentView: View {
 					}
 				} // ZStack
 				.padding(.bottom, tabbarManager.bottomPadding)
-				
-				if (tabbarManager.showTabBar) {
-					CustomTabView()
+				.overlay {
+					if tabbarManager.showTabBar {
+						CustomTabView()
+					}
 				}
 			} // ZStack
 			.edgesIgnoringSafeArea(.bottom)
