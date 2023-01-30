@@ -34,9 +34,9 @@ struct MapHeaderTagCell: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 25)
-                        .offset(x: +10)
+                        .padding([.top, .bottom], 3)
                     Text(tag)
-                        .offset(x: -20)
+                        .offset(x: -17)
                         .font(.machachaFootnote)
                 }
             }
@@ -50,8 +50,7 @@ struct MapHeaderTagCell: View {
 }
 
 struct MapHeaderTagCell_Previews: PreviewProvider {
-    static var image = "tteokboki"
     static var previews: some View {
-        MapHeaderTagCell(image: image)
+        MapHeaderCell()
     }
 }

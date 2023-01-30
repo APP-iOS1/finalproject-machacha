@@ -29,8 +29,7 @@ struct NaverMap: UIViewRepresentable {
         view.mapView.positionMode = .direction
         view.mapView.zoomLevel = 17
         view.showLocationButton = true
-        view.showCompass = true
-        view.showZoomControls = true
+
         let cameraPosition = view.mapView.cameraPosition
         
         // Foodcart를 맵에 마커로 표현
@@ -39,18 +38,12 @@ struct NaverMap: UIViewRepresentable {
             
 			marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
             
-            
-            let image = NMFOverlayImage(name: foodCart.markerImage)
-            
-//            marker.iconImage = image
+            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage())
+            marker.iconImage = image
 //
-//            marker.width = CGFloat(Screen.maxWidth/10)
-//            marker.height = CGFloat(Screen.maxHeight/10)
-            
-            marker.iconImage = NMF_MARKER_IMAGE_BLACK
-            marker.iconTintColor = UIColor.green
-            marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)
-            marker.height = CGFloat(NMF_MARKER_SIZE_AUTO)
+            marker.width = CGFloat(25)
+            marker.height = CGFloat(25)
+
             
             // MARK: - Mark 터치 시 이벤트 발생
             marker.touchHandler = { (overlay) -> Bool in
@@ -69,7 +62,7 @@ struct NaverMap: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         let coord = NMGLatLng(lat: coord.0, lng: coord.1)
         let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
-        cameraUpdate.animation = .fly
+        cameraUpdate.animation = .easeIn
         cameraUpdate.animationDuration = 1
         uiView.mapView.moveCamera(cameraUpdate)
     }
