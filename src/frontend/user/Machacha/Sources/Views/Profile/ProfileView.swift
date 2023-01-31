@@ -73,7 +73,7 @@ extension ProfileView {
 											Text("\(profileVM.reviewUser.count)")
 										case .visited:
 											Text("\(user.visitedId.count)")
-										case .register: // 임시: 통신 필요
+										case .register:
 											Text("\(profileVM.foodCartUser.count)")
 										} // switch
 									} // HStack

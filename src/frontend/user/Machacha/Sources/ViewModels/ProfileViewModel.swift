@@ -137,13 +137,13 @@ class ProfileViewModel: ObservableObject {
 		var foodCartIdList: [String]
 		
 		switch foodCartType {
-		case .favorite:
+		case .favorite:	// 즐겨찾기
 			foodCartIdList = currentUser.favoriteId
-		case .review:
+		case .review:	// 내가쓴리뷰
 			foodCartIdList = reviewUser.map{$0.foodCartId}
-		case .visited:
+		case .visited:	// 가봤어요
 			foodCartIdList = currentUser.visitedId
-		case .register:
+		case .register:	// 내가 등록한 가게
 			return try await fetchFoodCartByRegister()
 		}
 		
