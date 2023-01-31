@@ -9,21 +9,22 @@ import SwiftUI
 
 struct MapSearchView: View {
     @StateObject var mapSerachViewModel = MapSearchViewModel()
-    
+    @State var currentIndex: Int = 0
     var body: some View {
         ZStack {
             VStack {
                 MapHeader()
                 Spacer()
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(mapSerachViewModel.foodCarts) { foodCart in
-                            MapFooterCell(foodCart: foodCart)
-                        }
+                SnapCarousel(index: $currentIndex, items: mapSerachViewModel.foodCarts) { foodCart in
+                    GeometryReader { proxy in
+                        let size = proxy.size
+                        MapFooterCell(foodCart: foodCart)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: size.width)
                     }
+                    .padding(.vertical, Screen.maxHeight - 420)
                 }
-                
+
             }
             .zIndex(1)
             
