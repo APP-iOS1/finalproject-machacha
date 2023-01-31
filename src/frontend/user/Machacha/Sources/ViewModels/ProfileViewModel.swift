@@ -13,6 +13,7 @@ class ProfileViewModel: ObservableObject {
 	@Published var currentUser: User?
 	@Published var favoriteUser: [FoodCart] = []
 	@Published var reviewUser: [Review] = []
+	@Published var isLoading = false
 	@Published var showLogin = false			// 로그인 관리
 	@Published var isFaceID: Bool = UserInfo.isFaceID {		// FaceID
 		willSet { // 값이 변경되기 직전에 호출, newValue에는 새로 초기화하고자 하는 값이 들어감
@@ -109,7 +110,7 @@ class ProfileViewModel: ObservableObject {
 			let address: String = docData["address"] as? String ?? ""
 			let visitedCnt: Int = docData["visitedCnt"] as? Int ?? 0
 			let favoriteCnt: Int = docData["favoriteCnt"] as? Int ?? 0
-			let paymentOpt: [String] = docData["paymentOpt"] as? [String] ?? []
+			let paymentOpt: [Bool] = docData["paymentOpt"] as? [Bool] ?? []
 			let openingDays: [Bool] = docData["openingDays"] as? [Bool] ?? []
 			let menu: [String: Int] = docData["menu"] as? [String: Int] ?? [String: Int]()
 			let bestMenu: Int = docData["bestMenu"] as? Int ?? 0

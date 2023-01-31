@@ -17,13 +17,21 @@ struct ProfileFavoriteView: View {
 			Section {
 				VStack(alignment: .leading, spacing: 15) {
 					ForEach(profileVM.favoriteUser) { foodCart in
-						ProfileCellView(isFavorite: .constant(true), foodCart: foodCart)
+						ProfileCellView(isFavorite: .constant(true), foodCart: .constant(foodCart))
 					} // ForEach
 				} // VStack
 			} header: {
 				SectionHeaderView(name: "총 \(profileVM.favoriteUser.count)개")
 			} // Section
 		} // ScrollView
+		.refreshable(action: {
+			profileVM.isLoading = true
+			Task {
+				profileVM.favoriteUser = try await profileVM.fetchFavorite()
+				profileVM.isLoading = false
+			}
+		})
+		.redacted(reason: profileVM.isLoading ? .placeholder : [])
 		.navigationBarBackButtonHidden()
 		.navigationBarTitle("즐겨찾기", displayMode: .large)
 		.toolbarBackground(Color("Color3"), for: .navigationBar)
@@ -40,8 +48,10 @@ struct ProfileFavoriteView: View {
 		})
 		.background(Color("bgColor"))
 		.onAppear {
+			profileVM.isLoading = true
 			Task {
 				profileVM.favoriteUser = try await profileVM.fetchFavorite()
+				profileVM.isLoading = false
 			}
 		}
 	}
