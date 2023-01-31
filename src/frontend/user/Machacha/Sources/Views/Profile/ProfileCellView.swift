@@ -55,15 +55,6 @@ struct ProfileCellView: View {
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 
-						HStack(spacing: 13) { // 리뷰
-							Text("|")
-							Image(systemName: "applepencil")
-								.frame(width: 3)
-							Text("\(foodCart?.reviewId.count ?? 0)")
-								.fixedSize(horizontal: true, vertical: false)
-						} // HStack
-						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-						
 						HStack(spacing: 15) { // 즐겨찾기
 							Text("|")
 							Image(systemName: "heart.fill")
@@ -72,12 +63,21 @@ struct ProfileCellView: View {
 								.fixedSize(horizontal: true, vertical: false)
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-
+						
 						HStack(spacing: 15) { // 가봤어요
 							Text("|")
-							Image(systemName: "eye.fill")
+							Image(systemName: "checkmark.seal.fill")
 								.frame(width: 3)
 							Text("\(foodCart?.visitedCnt ?? 0)")
+								.fixedSize(horizontal: true, vertical: false)
+						} // HStack
+						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+						
+						HStack(spacing: 13) { // 리뷰
+							Text("|")
+							Image(systemName: "square.and.pencil")
+								.frame(width: 3)
+							Text("\(foodCart?.reviewId.count ?? 0)")
 								.fixedSize(horizontal: true, vertical: false)
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)

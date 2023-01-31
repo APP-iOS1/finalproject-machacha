@@ -32,11 +32,11 @@ enum FoodCartOfUserType: Hashable {
 	var image: String {
 		switch self {
 		case .favorite:
-			return "star.fill"
+			return "heart.fill"
 		case .review:
 			return "square.and.pencil"
 		case .visited:
-			return "figure.run"
+			return "checkmark.seal.fill"
 		case .register:
 			return "person.fill.badge.plus"
 		}

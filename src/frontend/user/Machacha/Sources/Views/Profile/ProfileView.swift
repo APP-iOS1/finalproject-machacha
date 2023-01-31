@@ -14,7 +14,7 @@ struct ProfileView: View {
 	@State private var showSafari: Int?
 
 	//MARK: Property
-	let profileInfo: [FoodCartOfUserType] = [.favorite, .review, .visited, .register]
+	let profileInfo: [FoodCartOfUserType] = [.favorite, .visited, .review, .register]
 	let settings: [SettingType] = [.faceID, .alert, .darkMode, .language]
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
 	
