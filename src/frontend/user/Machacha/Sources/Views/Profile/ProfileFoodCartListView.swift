@@ -1,5 +1,5 @@
 //
-//  ProfileFavoriteView.swift
+//  ProfileFoodCartListView.swift
 //  Machacha
 //
 //  Created by geonhyeong on 2023/01/30.
@@ -7,22 +7,25 @@
 
 import SwiftUI
 
-struct ProfileFavoriteView: View {
+struct ProfileFoodCartListView: View {
 	//MARK: Property wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@Environment(\.presentationMode) var presentation
+	
+	//MARK: Property
+	let foodCartOfUserType: FoodCartOfUserType
 	
 	var body: some View {
 		ScrollView {
 			Section {
 				VStack(alignment: .leading, spacing: 15) {
-					ForEach(profileVM.favoriteUser) { foodCart in
-						ProfileCellView(isFavorite: .constant(true), foodCart: .constant(foodCart))
+					ForEach(profileVM.foodCartUser) { foodCart in
+						ProfileFoodCartCellView(isFavorite: .constant(true), foodCart: foodCart)
 					} // ForEach
 				} // VStack
 			} header: {
 				HStack {
-					Text("총 \(profileVM.favoriteUser.count)개")
+					Text("총 \(profileVM.foodCartUser.count)개")
 						.font(.machachaHeadlineBold)
 						.setSkeletonView(opacity: 0.8, shouldShow: profileVM.isLoading)
 					Spacer()
@@ -33,7 +36,7 @@ struct ProfileFavoriteView: View {
 		.refreshable(action: {
 			profileVM.isLoading = true
 			Task {
-				profileVM.favoriteUser = try await profileVM.fetchFavorite()
+				profileVM.foodCartUser = try await profileVM.fetchFavorite()
 				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { // 스켈레톤 View를 위해
 					profileVM.isLoading = false
 				} // DispatchQueue
@@ -41,7 +44,7 @@ struct ProfileFavoriteView: View {
 		})
 		.redacted(reason: profileVM.isLoading ? .placeholder : [])
 		.navigationBarBackButtonHidden()
-		.navigationBarTitle("즐겨찾기", displayMode: .large)
+		.navigationBarTitle("\(foodCartOfUserType.display)", displayMode: .large)
 		.toolbarBackground(Color("Color3"), for: .navigationBar)
 		.toolbarBackground(.visible, for: .navigationBar)
 		.toolbarColorScheme(.dark, for: .navigationBar) // 글자색 변경
@@ -58,7 +61,7 @@ struct ProfileFavoriteView: View {
 		.onAppear {
 			profileVM.isLoading = true
 			Task {
-				profileVM.favoriteUser = try await profileVM.fetchFavorite()
+				profileVM.foodCartUser = try await profileVM.fetchFoodCart(foodCartType: foodCartOfUserType)
 				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { // 스켈레톤 View를 위해
 					profileVM.isLoading = false
 				} // DispatchQueue
@@ -67,12 +70,12 @@ struct ProfileFavoriteView: View {
 	}
 }
 
-struct ProfileFavoriteView_Previews: PreviewProvider {
+struct ProfileFoodCartListView_Previews: PreviewProvider {
 	static var previews: some View {
 		let profileVM = ProfileViewModel()
 		
 		NavigationView {
-			ProfileFavoriteView()
+			ProfileFoodCartListView(foodCartOfUserType: .favorite)
 				.environmentObject(profileVM)
 				.onAppear {
 					profileVM.currentUser = User.getDummy()

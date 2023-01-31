@@ -60,16 +60,7 @@ extension ProfileView {
 					HStack(spacing: 30) {
 						ForEach(profileInfo, id: \.self) { info in
 							NavigationLink {
-								switch info {
-								case .favorite:
-									ProfileFavoriteView()
-								case .review:
-									EmptyView()
-								case .visited:
-									EmptyView()
-								case .register:
-									EmptyView()
-								} // switch
+								ProfileFoodCartListView(foodCartOfUserType: info)
 							} label: {
 								VStack(spacing: 10) {
 									HStack {

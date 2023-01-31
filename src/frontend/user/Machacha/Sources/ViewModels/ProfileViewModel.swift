@@ -11,7 +11,7 @@ import FirebaseFirestore
 class ProfileViewModel: ObservableObject {
 	//MARK: Property wrapper
 	@Published var currentUser: User?
-	@Published var favoriteUser: [FoodCart] = []
+	@Published var foodCartUser: [FoodCart] = []
 	@Published var reviewUser: [Review] = []
 	@Published var isLoading = false
 	@Published var showLogin = false			// 로그인 관리
@@ -38,6 +38,20 @@ class ProfileViewModel: ObservableObject {
 		UserDefaults.standard.set(false, forKey: "isFaceID")	// FaceID
 		UserDefaults.standard.set(false, forKey: "isAlert")		// 알림
 		UserDefaults.standard.set(false, forKey: "isDarkMode")	// 다크모드
+	}
+	
+	// 즐겨찾기, 내가쓴 리뷰, 가봤어요, 내가 등록한 가게에 따라 fetchData를 다르게 반환
+	func fetchFoodCart(foodCartType: FoodCartOfUserType) async throws -> [FoodCart] {
+		switch foodCartType {
+		case .favorite: // 즐겨찾기
+			return try await fetchFavorite()
+		case .review:	// 내가 쓴 리뷰
+			return try await fetchFavorite()
+		case .visited: 	// 가봤어요
+			return try await fetchFavorite()
+		case .register:	// 내가 등록한 가게
+			return try await fetchFavorite()
+		}
 	}
 	
 	// 로그아웃

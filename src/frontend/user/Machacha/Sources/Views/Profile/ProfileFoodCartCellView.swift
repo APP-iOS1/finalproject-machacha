@@ -1,5 +1,5 @@
 //
-//  ProfileCellView.swift
+//  ProfileFoodCartCellView.swift
 //  Machacha
 //
 //  Created by geonhyeong on 2023/01/30.
@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct ProfileCellView: View {
+struct ProfileFoodCartCellView: View {
 	//MARK: Property wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@State var opacity : Double = 0.8
 	@Binding var isFavorite: Bool
-	@Binding var foodCart: FoodCart?
-
+	
+	//MARK: Property
+	let foodCart: FoodCart
+	
 	var body: some View {
 		NavigationLink {
 			
@@ -23,10 +25,10 @@ struct ProfileCellView: View {
 					.frame(width: 70, height: 70)
 					.foregroundColor(.gray)
 					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-
+				
 				VStack(alignment: .leading, spacing: 7) {
 					HStack {
-						Text(foodCart?.name ?? "가게 이름") // 가게 이름
+						Text(foodCart.name) // 가게 이름
 							.font(.machachaHeadlineBold)
 							.foregroundColor(Color("textColor"))
 							.lineLimit(2)
@@ -39,8 +41,8 @@ struct ProfileCellView: View {
 						} // Button
 					} // HStack
 					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-
-					Text(foodCart?.address ?? "가게 주소") // 가게 주소
+					
+					Text(foodCart.address) // 가게 주소
 						.foregroundColor(.secondary)
 						.fixedSize(horizontal: true, vertical: false)
 						.frame(maxWidth: .infinity, alignment: .leading)
@@ -49,17 +51,17 @@ struct ProfileCellView: View {
 					
 					HStack {
 						HStack { // 평점
-							Text("★ \(foodCart?.gradeRounded ?? "")")
+							Text("★ \(foodCart.gradeRounded)")
 								.foregroundColor(Color("Color3"))
 								.bold()
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-
+						
 						HStack(spacing: 15) { // 즐겨찾기
 							Text("|")
 							Image(systemName: "heart.fill")
 								.frame(width: 3)
-							Text("\(foodCart?.favoriteCnt ?? 0)")
+							Text("\(foodCart.favoriteCnt)")
 								.fixedSize(horizontal: true, vertical: false)
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
@@ -68,7 +70,7 @@ struct ProfileCellView: View {
 							Text("|")
 							Image(systemName: "checkmark.seal.fill")
 								.frame(width: 3)
-							Text("\(foodCart?.visitedCnt ?? 0)")
+							Text("\(foodCart.visitedCnt)")
 								.fixedSize(horizontal: true, vertical: false)
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
@@ -77,7 +79,7 @@ struct ProfileCellView: View {
 							Text("|")
 							Image(systemName: "square.and.pencil")
 								.frame(width: 3)
-							Text("\(foodCart?.reviewId.count ?? 0)")
+							Text("\(foodCart.reviewId.count)")
 								.fixedSize(horizontal: true, vertical: false)
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
@@ -105,11 +107,11 @@ struct ProfileCellView: View {
 	}
 }
 
-struct ProfileCellView_Previews: PreviewProvider {
+struct ProfileFoodCartCellView_Previews: PreviewProvider {
 	static var previews: some View {
 		let profileVM = ProfileViewModel()
 		
-		ProfileCellView(isFavorite: .constant(true), foodCart: .constant(FoodCart.getDummy()))
+		ProfileFoodCartCellView(isFavorite: .constant(true), foodCart: FoodCart.getDummy())
 			.environmentObject(profileVM)
 			.onAppear {
 				profileVM.currentUser = User.getDummy()
