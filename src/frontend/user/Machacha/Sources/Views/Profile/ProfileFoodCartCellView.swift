@@ -97,7 +97,7 @@ struct ProfileFoodCartCellView: View {
 				RoundedRectangle(cornerRadius: 20)
 					.stroke(Color("Color3"), lineWidth: 2)
 			}
-			.padding()
+			.padding(.horizontal)
 			.onAppear {
 				withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
 					self.opacity = opacity == 0.4 ? 0.8 : 0.4

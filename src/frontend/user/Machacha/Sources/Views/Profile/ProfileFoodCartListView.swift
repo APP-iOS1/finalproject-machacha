@@ -36,7 +36,7 @@ struct ProfileFoodCartListView: View {
 		.refreshable(action: {
 			profileVM.isLoading = true
 			Task {
-				profileVM.foodCartUser = try await profileVM.fetchFavorite()
+				profileVM.foodCartUser = try await profileVM.fetchFoodCartByType(foodCartType: foodCartOfUserType)
 				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { // 스켈레톤 View를 위해
 					profileVM.isLoading = false
 				} // DispatchQueue
@@ -61,7 +61,7 @@ struct ProfileFoodCartListView: View {
 		.onAppear {
 			profileVM.isLoading = true
 			Task {
-				profileVM.foodCartUser = try await profileVM.fetchFoodCart(foodCartType: foodCartOfUserType)
+				profileVM.foodCartUser = try await profileVM.fetchFoodCartByType(foodCartType: foodCartOfUserType)
 				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { // 스켈레톤 View를 위해
 					profileVM.isLoading = false
 				} // DispatchQueue

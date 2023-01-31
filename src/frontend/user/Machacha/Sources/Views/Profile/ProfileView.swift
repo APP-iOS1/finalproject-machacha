@@ -35,6 +35,7 @@ struct ProfileView: View {
 				Task {
 					profileVM.currentUser = try await profileVM.fetchUser()
 					profileVM.reviewUser = try await profileVM.fetchReivews()
+					profileVM.foodCartUser = try await profileVM.fetchFoodCartByRegister()
 				} // Task
 			} // ScrollView
 		} // NavigationView
@@ -73,7 +74,7 @@ extension ProfileView {
 										case .visited:
 											Text("\(user.visitedId.count)")
 										case .register: // 임시: 통신 필요
-											Text("\(user.favoriteId.count)")
+											Text("\(profileVM.foodCartUser.count)")
 										} // switch
 									} // HStack
 									Text(info.display)

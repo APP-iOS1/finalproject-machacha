@@ -40,20 +40,6 @@ class ProfileViewModel: ObservableObject {
 		UserDefaults.standard.set(false, forKey: "isDarkMode")	// 다크모드
 	}
 	
-	// 즐겨찾기, 내가쓴 리뷰, 가봤어요, 내가 등록한 가게에 따라 fetchData를 다르게 반환
-	func fetchFoodCart(foodCartType: FoodCartOfUserType) async throws -> [FoodCart] {
-		switch foodCartType {
-		case .favorite: // 즐겨찾기
-			return try await fetchFavorite()
-		case .review:	// 내가 쓴 리뷰
-			return try await fetchFavorite()
-		case .visited: 	// 가봤어요
-			return try await fetchFavorite()
-		case .register:	// 내가 등록한 가게
-			return try await fetchFavorite()
-		}
-	}
-	
 	// 로그아웃
 	func logout() async throws {
 		currentUser = nil
@@ -108,12 +94,60 @@ class ProfileViewModel: ObservableObject {
 		return reviews
 	}
 	
-	// Favorite Data Fetch
-	func fetchFavorite() async throws -> [FoodCart] {
+	// Resgiste(등록한 가게) Data Fetch
+	func fetchFoodCartByRegister() async throws -> [FoodCart] {
+		guard let userId = UserInfo.token else { return [] }
+		var favorite = [FoodCart]() // 비동기 통신으로 받아올 Property
+		
+		let registerSnapshot = try await database.collection("FoodCart").whereField("registerId", isEqualTo: userId).getDocuments() // 첫번째 비동기 통신
+		
+		for foodCart in registerSnapshot.documents {
+			let docData = foodCart.data()
+			
+			let id: String = docData["id"] as? String ?? ""
+			let region: String = docData["region"] as? String ?? ""
+			let name: String = docData["name"] as? String ?? ""
+			let address: String = docData["address"] as? String ?? ""
+			let visitedCnt: Int = docData["visitedCnt"] as? Int ?? 0
+			let favoriteCnt: Int = docData["favoriteCnt"] as? Int ?? 0
+			let paymentOpt: [Bool] = docData["paymentOpt"] as? [Bool] ?? []
+			let openingDays: [Bool] = docData["openingDays"] as? [Bool] ?? []
+			let menu: [String: Int] = docData["menu"] as? [String: Int] ?? [:]
+			let bestMenu: Int = docData["bestMenu"] as? Int ?? 0
+			let imageId: [String] = docData["imageId"] as? [String] ?? []
+			let grade: Double = docData["grade"] as? Double ?? 0.0
+			let reportCnt: Int = docData["reportCnt"] as? Int ?? 0
+			let reviewId: [String] = docData["reviewId"] as? [String] ?? []
+			let registerId: String = docData["registerId"] as? String ?? ""
+			let geoPoint: GeoPoint = docData["geoPoint"] as! GeoPoint
+			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+
+			favorite.append(FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId))
+		}
+		
+		return favorite
+	}
+		
+	// 즐겨찾기, 내가쓴리뷰, 가봤어요, 내가 등록한 가게에 따라 fetchData를 다르게 반환
+	func fetchFoodCartByType(foodCartType: FoodCartOfUserType) async throws -> [FoodCart] {
 		guard let currentUser = currentUser else { return [] }
 		var favorite = [FoodCart]() // 비동기 통신으로 받아올 Property
 		
-		for foodCart in currentUser.favoriteId {
+		var foodCartIdList: [String]
+		
+		switch foodCartType {
+		case .favorite:
+			foodCartIdList = currentUser.favoriteId
+		case .review:
+			foodCartIdList = reviewUser.map{$0.foodCartId}
+		case .visited:
+			foodCartIdList = currentUser.visitedId
+		case .register:
+			return try await fetchFoodCartByRegister()
+		}
+		
+		for foodCart in foodCartIdList {
 			let favoriteSnapshot = try await database.collection("FoodCart").document(foodCart).getDocument() // 첫번째 비동기 통신
 
 			let docData = favoriteSnapshot.data()!
