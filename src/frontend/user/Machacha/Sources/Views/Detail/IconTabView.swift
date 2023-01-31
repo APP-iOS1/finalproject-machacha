@@ -21,7 +21,7 @@ struct IconTabView: View {
                     VStack(spacing: 10) {
                         Image(systemName: "heart.fill")
                             .font(.system(size: 30))
-                        Text("찜하기")
+                        Text("즐겨찾기")
                             .font(.headline)
                     }
                 }
@@ -32,7 +32,7 @@ struct IconTabView: View {
                         .font(.headline)
                 }
                 VStack(spacing: 10) {
-                    Image(systemName: "applepencil")
+                    Image(systemName: "square.and.pencil")
                         .font(.system(size: 32))
                     Text("리뷰쓰기")
                         .font(.headline)
