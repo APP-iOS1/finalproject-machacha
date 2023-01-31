@@ -9,18 +9,39 @@ import SwiftUI
 
 struct ReviewThumbnailView: View {
     var selectedStore: FoodCart
+    @EnvironmentObject var reviewViewModel: ReviewViewModel
     
     var body: some View {
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Divider()
+                .padding(.vertical, 15)
+            HStack {
+                Text("방문자 리뷰")
+                Text("\(reviewViewModel.reviews.count)")
+                    .foregroundColor(Color("Color3"))
+                Spacer()
+                NavigationLink {
+                    ReviewView(selectedStore: selectedStore)
+                } label: {
+                    Image(systemName: "chevron.forward")
+                        .foregroundColor(.gray)
+                        .font(.machachaTitle2)
+                }
+                .padding(.trailing, 14)
+                
+                }//HStack
             
+            var _ = print("reviews : \(reviewViewModel.reviews)")
         }
-        .navigationTitle(selectedStore.name)
+        .font(.machachaTitle2Bold)
+        .padding(.bottom)
+        .padding(.trailing, 5)
     }
 }
 
 struct ReviewThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewThumbnailView(selectedStore: FoodCart.getDummy())
+            .environmentObject(ReviewViewModel())
     }
 }
