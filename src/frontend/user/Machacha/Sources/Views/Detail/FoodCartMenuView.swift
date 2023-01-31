@@ -18,7 +18,7 @@ struct FoodCartMenuView: View {
             HStack {
                 Text("메뉴")
                 Text("\(selectedStore.menu.count)")
-                    .foregroundColor(Color("Color2"))
+                    .foregroundColor(Color("Color3"))
             }
             .font(.machachaTitle2)
             .padding(.bottom, 15)

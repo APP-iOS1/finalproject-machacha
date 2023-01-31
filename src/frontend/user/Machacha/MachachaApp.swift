@@ -20,11 +20,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // 원격 알림 등록
         //UNUserNotificationCenter.current().delegate = self
         
-//        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-//        UNUserNotificationCenter.current().requestAuthorization(
-//            options: authOptions,
-//            completionHandler: { _, _ in }
-//        )
+        //        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        //        UNUserNotificationCenter.current().requestAuthorization(
+        //            options: authOptions,
+        //            completionHandler: { _, _ in }
+        //        )
         
         //application.registerForRemoteNotifications()
         // 메세징 델리게이트
@@ -43,24 +43,25 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     // fcm 토큰이 등록 되었을 때
-//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        Messaging.messaging().apnsToken = deviceToken
-//    }
+    //    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    //        Messaging.messaging().apnsToken = deviceToken
+    //    }
     // SceneDelegate  연결을 위한 함수
-//    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-//
-//        let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
-//
-//        sceneConfiguration.delegateClass = SceneDelegate.self
-//
-//        return sceneConfiguration
-//    }
+    //    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    //
+    //        let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
+    //
+    //        sceneConfiguration.delegateClass = SceneDelegate.self
+    //
+    //        return sceneConfiguration
+    //    }
 }
 
-
-
-	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-	@StateObject var profileVM: ProfileViewModel = ProfileViewModel()
+@main
+struct MachachaApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
     init() {
         // Naver SDK Initializing
         
@@ -87,9 +88,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         WindowGroup {
             AuthView()
                 .environmentObject(FoodCartViewModel())
-//                .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
-//                .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
-
+                .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
+                .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
+            
                 .onOpenURL { url in
                     
                     //네이버
@@ -98,7 +99,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                         //임의로 아무거나 넣어봄
                         .isNaverAppOauthEnable
                     //.isInAppOauthEnable
-                        //.isNaverThirdPartyLoginAppschemeURL(url)
+                    //.isNaverThirdPartyLoginAppschemeURL(url)
                     {
                         // Token 발급 요청
                         NaverThirdPartyLoginConnection
@@ -115,10 +116,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                     GIDSignIn.sharedInstance.handle(url)
                 }
                 .onAppear {
-                          GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-                            // Check if `user` exists; otherwise, do something with `error`
-                          }
-                        }
+                    GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+                        // Check if `user` exists; otherwise, do something with `error`
+                    }
+                }
         }
     }
 }
+

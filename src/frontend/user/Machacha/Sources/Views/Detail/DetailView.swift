@@ -40,7 +40,7 @@ struct DetailView: View {
                         .font(.machachaTitle)
                     Spacer()
                     Text("★ \(String(format: "%.1f", selectedStore.grade))")
-                        .foregroundColor(Color("Color2"))
+                        .foregroundColor(Color("Color3"))
                         .font(.machachaTitle2Bold)
                         .padding(.trailing, 15)
                 }

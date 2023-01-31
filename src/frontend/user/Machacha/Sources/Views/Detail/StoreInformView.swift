@@ -33,7 +33,7 @@ struct StoreInformView: View {
                                 .opacity(0.1)
                         }
                         .foregroundColor(selectedStore.openingDays[day] ?
-                                                 Color("Color2") : Color(.gray))
+                                                 Color("Color3") : Color(.gray))
                 }
             }
             HStack {
@@ -48,7 +48,7 @@ struct StoreInformView: View {
                                 .opacity(0.1)
                         }
                         .foregroundColor(selectedStore.paymentOpt[payment] ?
-                                                 Color("Color2") : Color(.gray))
+                                                 Color("Color3") : Color(.gray))
                 }
             }
         }//VStack

@@ -45,7 +45,7 @@ struct IconTabView: View {
                 }
                 
             }//HStack
-            .foregroundColor(Color("Color2"))
+            .foregroundColor(Color("Color3"))
         }
     }
 }
