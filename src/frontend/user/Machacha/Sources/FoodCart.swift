@@ -34,15 +34,15 @@ struct FoodCart: Identifiable {
     var markerImage: String {
         switch bestMenu {
         case 0:
-            return "bbungbread"
+            return "bbungbread2"
         case 1:
-            return "fishcake"
+            return "fishcake2"
         case 2:
-            return "sweetpotato"
+            return "sweetpotato2"
         case 3:
-            return "tteokboki"
+            return "tteokboki2"
         default:
-            return "store"
+            return "store2"
         }
     }
     
