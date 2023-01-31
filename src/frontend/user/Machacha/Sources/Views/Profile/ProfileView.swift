@@ -246,8 +246,8 @@ struct SectionHeaderView: View {
 	var body: some View {
 		HStack {
 			Text(name)
-				.font(.headline)
-				.foregroundColor(Color(uiColor: .darkGray))
+				.font(.machachaHeadline)
+				.foregroundColor(.secondary)
 			Spacer()
 		} // HStack
 		.padding([.horizontal, .top])

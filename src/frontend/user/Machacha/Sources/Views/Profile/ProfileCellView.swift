@@ -10,13 +10,10 @@ import SwiftUI
 struct ProfileCellView: View {
 	//MARK: Property wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
-	@State var opacity : Double = 1.0
+	@State var opacity : Double = 0.8
 	@Binding var isFavorite: Bool
 	@Binding var foodCart: FoodCart?
-//
-//	//MARK: Property
-//	let foodCart: FoodCart?
-//
+
 	var body: some View {
 		NavigationLink {
 			
@@ -25,14 +22,14 @@ struct ProfileCellView: View {
 				RoundedRectangle(cornerRadius: 8) // 임시
 					.frame(width: 70, height: 70)
 					.foregroundColor(.gray)
-				
+					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+
 				VStack(alignment: .leading, spacing: 7) {
 					HStack {
 						Text(foodCart?.name ?? "가게 이름") // 가게 이름
 							.font(.machachaHeadlineBold)
 							.foregroundColor(Color("textColor"))
 							.lineLimit(2)
-							.setSkeletonView(opacity: opacity, shouldShow: foodCart == nil)
 						
 						Button {
 							
@@ -41,45 +38,49 @@ struct ProfileCellView: View {
 								.foregroundColor(isFavorite ? Color("Color3") : .gray)
 						} // Button
 					} // HStack
+					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 
 					Text(foodCart?.address ?? "가게 주소") // 가게 주소
 						.foregroundColor(.secondary)
 						.fixedSize(horizontal: true, vertical: false)
 						.frame(maxWidth: .infinity, alignment: .leading)
 						.lineLimit(2)
-						.setSkeletonView(opacity: opacity, shouldShow: foodCart == nil)
+						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 					
 					HStack {
 						HStack { // 평점
 							Text("★ \(foodCart?.gradeRounded ?? "")")
 								.foregroundColor(Color("Color3"))
 								.bold()
-								.setSkeletonView(opacity: opacity, shouldShow: foodCart == nil)
 						} // HStack
+						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+
 						HStack(spacing: 13) { // 리뷰
 							Text("|")
 							Image(systemName: "applepencil")
 								.frame(width: 3)
 							Text("\(foodCart?.reviewId.count ?? 0)")
 								.fixedSize(horizontal: true, vertical: false)
-								.setSkeletonView(opacity: opacity, shouldShow: foodCart == nil)
 						} // HStack
+						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+						
 						HStack(spacing: 15) { // 즐겨찾기
 							Text("|")
 							Image(systemName: "heart.fill")
 								.frame(width: 3)
 							Text("\(foodCart?.favoriteCnt ?? 0)")
 								.fixedSize(horizontal: true, vertical: false)
-								.setSkeletonView(opacity: opacity, shouldShow: foodCart == nil)
 						} // HStack
+						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+
 						HStack(spacing: 15) { // 가봤어요
 							Text("|")
 							Image(systemName: "eye.fill")
 								.frame(width: 3)
 							Text("\(foodCart?.visitedCnt ?? 0)")
 								.fixedSize(horizontal: true, vertical: false)
-								.setSkeletonView(opacity: opacity, shouldShow: foodCart == nil)
 						} // HStack
+						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 					} // HStack
 					.foregroundColor(Color(uiColor: UIColor.lightGray))
 				} // VStack
@@ -87,6 +88,7 @@ struct ProfileCellView: View {
 				
 				Image(systemName: "chevron.right")
 					.foregroundColor(.gray)
+					.unredacted()
 			} // HStack
 			.padding()
 			.overlay {
@@ -94,6 +96,11 @@ struct ProfileCellView: View {
 					.stroke(Color("Color3"), lineWidth: 2)
 			}
 			.padding()
+			.onAppear {
+				withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
+					self.opacity = opacity == 0.4 ? 0.8 : 0.4
+				}
+			}
 		} // NavigationLink
 	}
 }

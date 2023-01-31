@@ -28,7 +28,9 @@ struct ProfileFavoriteView: View {
 			profileVM.isLoading = true
 			Task {
 				profileVM.favoriteUser = try await profileVM.fetchFavorite()
-				profileVM.isLoading = false
+				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+					profileVM.isLoading = false
+				}
 			}
 		})
 		.redacted(reason: profileVM.isLoading ? .placeholder : [])
@@ -51,7 +53,9 @@ struct ProfileFavoriteView: View {
 			profileVM.isLoading = true
 			Task {
 				profileVM.favoriteUser = try await profileVM.fetchFavorite()
-				profileVM.isLoading = false
+				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+					profileVM.isLoading = false
+				}
 			}
 		}
 	}

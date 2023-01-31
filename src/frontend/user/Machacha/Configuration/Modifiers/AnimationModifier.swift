@@ -21,9 +21,9 @@ struct BlinkingAnimatinoModifier: AnimatableModifier {
 	func body(content: Content) -> some View {
 		content.overlay(
 			ZStack {
-				Color.white.zIndex(0)					// 뒤의 Conent가 보이지 않도록
+				Color("cellColor").zIndex(0)					// 뒤의 Conent가 보이지 않도록
 				RoundedRectangle(cornerRadius: 8)
-					.fill(.gray.opacity(0.5))
+					.fill(Color("lodingColor").opacity(0.5))
 					.opacity(self.opacity).zIndex(1)	// 우선순위 1
 			}.opacity(shouldShow ? 1 : 0)
 		)
