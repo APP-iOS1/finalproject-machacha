@@ -11,6 +11,7 @@ struct MapFooterCell: View {
     let foodCart: FoodCart
     
     var body: some View {
+        
         VStack(alignment: .leading) {
             HStack {
                 // Main Image

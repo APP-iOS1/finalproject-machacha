@@ -10,6 +10,7 @@ import NMapsMap
 
 struct NaverMap: UIViewRepresentable {
     @State var coord: (Double, Double)
+    @Binding var currentIndex: Int
     var foodCarts: [FoodCart]
     
     func makeCoordinator() -> Coordinator {
