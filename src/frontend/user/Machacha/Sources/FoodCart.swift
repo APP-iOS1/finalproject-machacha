@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct FoodCart {
+struct FoodCart: Identifiable {
 	let id: String
 	let createdAt: Date    		// 가게가 등록된 시간
 	let updatedAt: Date		    // 가게의 정보가 업데이트된 시간
@@ -30,16 +30,21 @@ struct FoodCart {
     var markerImage: String {
         switch bestMenu {
         case 0:
-            return "bbungbread"
+            return "bbungbread2"
         case 1:
-            return "fishcake"
+            return "fishcake2"
         case 2:
-            return "sweetpotato"
+            return "sweetpotato2"
         case 3:
-            return "tteokboki"
+            return "tteokboki2"
         default:
-            return "store"
+            return "store2"
         }
+    }
+    
+    // grade의 소수점 제거 + String 타입 변환
+    var gradeRounded: String {
+        return String(format: "%.1f", grade)
     }
     
 	static func getDummy() -> Self {
@@ -48,7 +53,7 @@ struct FoodCart {
 	
 	static func getListDummy() -> [Self] {
 		return [
-			FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "마차챠차차차", address: "서울시 xx구 xx동 번지", visitedCnt: 21, favoriteCnt: 10, paymentOpt: ["카드", "현금", "계좌이체"], openingDays: [false, false, false, false, false, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 1, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"]),
+			FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "마차챠차차차", address: "서울시 xx구 xx동 번지", visitedCnt: 21, favoriteCnt: 10, paymentOpt: ["카드", "현금", "계좌이체"], openingDays: [false, false, false, false, false, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 3, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"]),
 			FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.560840, longitude: 126.986418), region: "명동구", name: "마차챠잇", address: "서울시 xx구 xx동 번지", visitedCnt: 32, favoriteCnt: 13, paymentOpt: ["카드", "현금"], openingDays: [true, false, true, false, false, true, true], menu: ["붕어빵":2000, "떡볶이":5500], bestMenu: 0, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"])]
 	}
 }

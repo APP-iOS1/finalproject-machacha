@@ -13,17 +13,21 @@ struct MapSearchView: View {
     var body: some View {
         ZStack {
             VStack {
-                Button {
-                    mapSerachViewModel.coord = (37.566249, 126.992227)
-                } label: {
-                    Text("을지로3가역")
+                MapHeader()
+                Spacer()
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(mapSerachViewModel.foodCarts) { foodCart in
+                            MapFooterCell(foodCart: foodCart)
+                        }
+                    }
                 }
                 
-                Spacer()
             }
             .zIndex(1)
             
-            NaverMap((mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts:  mapSerachViewModel.foodCarts)
+            NaverMap(coord: (mapSerachViewModel.coord.0, mapSerachViewModel.coord.1), foodCarts:  mapSerachViewModel.foodCarts)
                 .ignoresSafeArea(.all, edges: .top)
         }
         .onAppear {
