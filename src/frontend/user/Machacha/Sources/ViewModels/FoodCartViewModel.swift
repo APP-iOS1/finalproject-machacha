@@ -94,13 +94,14 @@ class FoodCartViewModel: ObservableObject {
                 let reviewId: [String] = data["reviewId"] as? [String] ?? []
                 let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
                 let createdAt: Timestamp = data["createdAt"] as! Timestamp
+                let registerId: String = data["registerId"] as? String ?? ""
 
                 // fetch image set
                 for imageName in imageId {
                     self.fetchImage(foodCartId: id, imageName: imageName)
                 }
 
-                let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId)
+                let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId)
 
                 self.foodCarts.append(foodCart)
             }
