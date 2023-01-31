@@ -16,8 +16,21 @@
 		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
 		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
+<<<<<<< feat/10-map/MapUI
 		6A9792782988090B00459A45 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9792772988090B00459A45 /* SnapCarousel.swift */; };
 		6A97927B29880A2800459A45 /* MapFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A97927A29880A2800459A45 /* MapFooterCell.swift */; };
+=======
+		C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC1F298101B200819D98 /* ProfileViewModel.swift */; };
+		C414BC222981039C00819D98 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC212981039C00819D98 /* SafariView.swift */; };
+		C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC23298106FC00819D98 /* WebInfoType.swift */; };
+		C414BC262981120C00819D98 /* Ex+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC252981120C00819D98 /* Ex+Int.swift */; };
+		C414BC28298116D000819D98 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC27298116D000819D98 /* SettingType.swift */; };
+		C414BC2A29817C6300819D98 /* FaceIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2929817C6300819D98 /* FaceIDViewModel.swift */; };
+		C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
+		C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */; };
+		C414BC302982573C00819D98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C414BC2F2982573C00819D98 /* GoogleService-Info.plist */; };
+		C414BC342982682500819D98 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC332982682500819D98 /* Ex+View.swift */; };
+>>>>>>> main
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
 		C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
@@ -105,8 +118,21 @@
 		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
+<<<<<<< feat/10-map/MapUI
 		6A9792772988090B00459A45 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		6A97927A29880A2800459A45 /* MapFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFooterCell.swift; sourceTree = "<group>"; };
+=======
+		C414BC1F298101B200819D98 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C414BC212981039C00819D98 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		C414BC23298106FC00819D98 /* WebInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebInfoType.swift; sourceTree = "<group>"; };
+		C414BC252981120C00819D98 /* Ex+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Int.swift"; sourceTree = "<group>"; };
+		C414BC27298116D000819D98 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
+		C414BC2929817C6300819D98 /* FaceIDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDViewModel.swift; sourceTree = "<group>"; };
+		C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDErrorType.swift; sourceTree = "<group>"; };
+		C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartOfUserType.swift; sourceTree = "<group>"; };
+		C414BC2F2982573C00819D98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C414BC332982682500819D98 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
+>>>>>>> main
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
 		C4A587392975A77000B04A98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -250,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A587862975AA0700B04A98 /* Info.plist */,
+				C414BC2F2982573C00819D98 /* GoogleService-Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
 				C4A587612975A8D300B04A98 /* Configuration */,
 				C4A587892975AA6800B04A98 /* Sources */,
@@ -316,7 +343,9 @@
 			children = (
 				C4A587682975A8D300B04A98 /* Ex+Color.swift */,
 				C4A587B92976960300B04A98 /* Ex+Font.swift */,
+				C414BC252981120C00819D98 /* Ex+Int.swift */,
 				C4A587672975A8D300B04A98 /* Ex+String.swift */,
+				C414BC332982682500819D98 /* Ex+View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,10 +418,12 @@
 			isa = PBXGroup;
 			children = (
 				C4A5878F29768C6200B04A98 /* AuthViewModel.swift */,
+				C414BC2929817C6300819D98 /* FaceIDViewModel.swift */,
 				FAFDD4982977CB8C008E28AD /* GoogleAuthViewModel.swift */,
 				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
 				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
 				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
+				C414BC1F298101B200819D98 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -401,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A587AE29768E6600B04A98 /* CustomTabView.swift */,
+				C414BC212981039C00819D98 /* SafariView.swift */,
 			);
 			path = ETC.;
 			sourceTree = "<group>";
@@ -417,6 +449,10 @@
 			isa = PBXGroup;
 			children = (
 				C4A587AA29768E3E00B04A98 /* ProfileView.swift */,
+				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
+				C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */,
+				C414BC27298116D000819D98 /* SettingType.swift */,
+				C414BC23298106FC00819D98 /* WebInfoType.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -628,6 +664,7 @@
 				C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */,
 				1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */,
 				C4A5877B2975A8D300B04A98 /* Pretendard-Medium.otf in Resources */,
+				C414BC302982573C00819D98 /* GoogleService-Info.plist in Resources */,
 				C4A5877F2975A8D300B04A98 /* Pretendard-Thin.otf in Resources */,
 				C4A5877D2975A8D300B04A98 /* Pretendard-ExtraBold.otf in Resources */,
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
@@ -661,8 +698,12 @@
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
+				C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */,
+				C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
+				C414BC2A29817C6300819D98 /* FaceIDViewModel.swift in Sources */,
 				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
+				C414BC262981120C00819D98 /* Ex+Int.swift in Sources */,
 				C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */,
 				C4A587A729768E2C00B04A98 /* RegisterView.swift in Sources */,
 				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
@@ -675,21 +716,29 @@
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
 				FAFDD4902977B7B3008E28AD /* KaKaoAuthViewModel.swift in Sources */,
 				C4A587AB29768E3E00B04A98 /* ProfileView.swift in Sources */,
+				C414BC342982682500819D98 /* Ex+View.swift in Sources */,
 				6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */,
 				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
 				6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				C4A587AD29768E4500B04A98 /* DetailView.swift in Sources */,
+				C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */,
 				C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */,
+				C414BC222981039C00819D98 /* SafariView.swift in Sources */,
 				C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */,
 				C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */,
 				C4A5879F29768D4800B04A98 /* SplashView.swift in Sources */,
+				C414BC28298116D000819D98 /* SettingType.swift in Sources */,
 				FAFDD4992977CB8C008E28AD /* GoogleAuthViewModel.swift in Sources */,
 				6A97927B29880A2800459A45 /* MapFooterCell.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
+<<<<<<< feat/10-map/MapUI
 				6A159FC229877C4C0002E625 /* MapHeaderCell.swift in Sources */,
+=======
+				C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */,
+>>>>>>> main
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,10 +900,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
+				DEVELOPMENT_TEAM = SF6SBNPMLX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "저희 앱이 보안을 위해 FaceID를 사용할께요";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "해당 앱은 플레이스 정보 조회를 위해 사용자의 현위치를 조회합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -884,10 +935,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
+				DEVELOPMENT_TEAM = SF6SBNPMLX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "저희 앱이 보안을 위해 FaceID를 사용할께요";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "해당 앱은 플레이스 정보 조회를 위해 사용자의 현위치를 조회합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
