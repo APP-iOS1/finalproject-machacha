@@ -51,7 +51,7 @@ struct ProfileCellView: View {
 					
 					HStack {
 						HStack { // 평점
-							Text("★ \(String(format: "%0.1f", foodCart?.grade ?? "평점"))")
+							Text("★ \(foodCart?.gradeRounded ?? "")")
 								.foregroundColor(Color("Color3"))
 								.bold()
 								.setSkeletonView(opacity: opacity, shouldShow: foodCart == nil)

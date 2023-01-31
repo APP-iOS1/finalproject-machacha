@@ -26,6 +26,10 @@ struct FoodCart: Identifiable {
 	let grade: Double           // 가게의 평점
 	let reportCnt: Int          // 가게가 신고된 횟수
 	let reviewId: [String]      // 가게에 대한 리뷰 정보
+	let registerId: String		// 등록한 유저
+	var gradeRounded: String {
+		return String(format: "%.1f", grade)
+	}
 	
 	var markerImage: String {
 		switch bestMenu {
@@ -43,12 +47,12 @@ struct FoodCart: Identifiable {
 	}
 	
 	static func getDummy() -> Self {
-		return FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "명동역 3번출구 호떡", address: "서울특별시 중구 명동10길 29", visitedCnt: 32, favoriteCnt: 13, paymentOpt: [true, true, false], openingDays: [false, true, false, true, true, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 0, imageId: ["test.jpg", "test.jpg", "test.jpg", "test.jpg", "test.jpg", "test.jpg"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"])
+		return FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "명동역 3번출구 호떡", address: "서울특별시 중구 명동10길 29", visitedCnt: 32, favoriteCnt: 13, paymentOpt: [true, true, false], openingDays: [false, true, false, true, true, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 0, imageId: ["test.jpg", "test.jpg", "test.jpg", "test.jpg", "test.jpg", "test.jpg"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"], registerId: "egmqxtTT1Zani0UkJpUW")
 	}
 	
 	static func getListDummy() -> [Self] {
 		return [
-			FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "마차챠차차차", address: "서울시 xx구 xx동 번지", visitedCnt: 21, favoriteCnt: 10, paymentOpt: [true, true, false], openingDays: [false, false, false, false, false, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 1, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"]),
-			FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.560840, longitude: 126.986418), region: "명동구", name: "마차챠잇", address: "서울시 xx구 xx동 번지", visitedCnt: 32, favoriteCnt: 13, paymentOpt: [true, true, false], openingDays: [true, false, true, false, false, true, true], menu: ["붕어빵":2000, "떡볶이":5500], bestMenu: 0, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"])]
+			FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "마차챠차차차", address: "서울시 xx구 xx동 번지", visitedCnt: 21, favoriteCnt: 10, paymentOpt: [true, true, false], openingDays: [false, false, false, false, false, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 1, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"], registerId: "egmqxtTT1Zani0UkJpUW"),
+			FoodCart(id: "InzqNwgl15TytWNOdIZz", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.560840, longitude: 126.986418), region: "명동구", name: "마차챠잇", address: "서울시 xx구 xx동 번지", visitedCnt: 32, favoriteCnt: 13, paymentOpt: [true, true, false], openingDays: [true, false, true, false, false, true, true], menu: ["붕어빵":2000, "떡볶이":5500], bestMenu: 0, imageId: ["test"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"], registerId: "egmqxtTT1Zani0UkJpUW")]
 	}
 }

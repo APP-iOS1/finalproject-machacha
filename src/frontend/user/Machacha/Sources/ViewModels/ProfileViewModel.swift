@@ -112,17 +112,18 @@ class ProfileViewModel: ObservableObject {
 			let favoriteCnt: Int = docData["favoriteCnt"] as? Int ?? 0
 			let paymentOpt: [Bool] = docData["paymentOpt"] as? [Bool] ?? []
 			let openingDays: [Bool] = docData["openingDays"] as? [Bool] ?? []
-			let menu: [String: Int] = docData["menu"] as? [String: Int] ?? [String: Int]()
+			let menu: [String: Int] = docData["menu"] as? [String: Int] ?? [:]
 			let bestMenu: Int = docData["bestMenu"] as? Int ?? 0
 			let imageId: [String] = docData["imageId"] as? [String] ?? []
 			let grade: Double = docData["grade"] as? Double ?? 0.0
 			let reportCnt: Int = docData["reportCnt"] as? Int ?? 0
 			let reviewId: [String] = docData["reviewId"] as? [String] ?? []
+			let registerId: String = docData["registerId"] as? String ?? ""
 			let geoPoint: GeoPoint = docData["geoPoint"] as! GeoPoint
 			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
 			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
 
-			favorite.append(FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId))
+			favorite.append(FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId))
 		}
 		
 		return favorite
