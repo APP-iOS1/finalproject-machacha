@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct FoodCart {
+struct FoodCart: Identifiable {
 	let id: String
 	let createdAt: Date    		// 가게가 등록된 시간
 	let updatedAt: Date		    // 가게의 정보가 업데이트된 시간
@@ -30,16 +30,21 @@ struct FoodCart {
     var markerImage: String {
         switch bestMenu {
         case 0:
-            return "bbungbread"
+            return "bbungbread2"
         case 1:
-            return "fishcake"
+            return "fishcake2"
         case 2:
-            return "sweetpotato"
+            return "sweetpotato2"
         case 3:
-            return "tteokboki"
+            return "tteokboki2"
         default:
-            return "store"
+            return "store2"
         }
+    }
+    
+    // grade의 소수점 제거 + String 타입 변환
+    var gradeRounded: String {
+        return String(format: "%.1f", grade)
     }
     
 	static func getDummy() -> Self {
