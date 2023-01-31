@@ -21,17 +21,23 @@ struct ProfileFavoriteView: View {
 					} // ForEach
 				} // VStack
 			} header: {
-				SectionHeaderView(name: "총 \(profileVM.favoriteUser.count)개")
+				HStack {
+					Text("총 \(profileVM.favoriteUser.count)개")
+						.font(.machachaHeadlineBold)
+						.setSkeletonView(opacity: 0.8, shouldShow: profileVM.isLoading)
+					Spacer()
+				} // HStack
+				.padding([.horizontal, .top])
 			} // Section
 		} // ScrollView
 		.refreshable(action: {
 			profileVM.isLoading = true
 			Task {
 				profileVM.favoriteUser = try await profileVM.fetchFavorite()
-				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { // 스켈레톤 View를 위해
 					profileVM.isLoading = false
-				}
-			}
+				} // DispatchQueue
+			} // Task
 		})
 		.redacted(reason: profileVM.isLoading ? .placeholder : [])
 		.navigationBarBackButtonHidden()
@@ -46,18 +52,18 @@ struct ProfileFavoriteView: View {
 				} label: {
 					Image(systemName: "chevron.left")
 				}
-			}
+			} // ToolbarItem
 		})
 		.background(Color("bgColor"))
 		.onAppear {
 			profileVM.isLoading = true
 			Task {
 				profileVM.favoriteUser = try await profileVM.fetchFavorite()
-				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { // 스켈레톤 View를 위해
 					profileVM.isLoading = false
-				}
-			}
-		}
+				} // DispatchQueue
+			} // Task
+		} // ScrollView
 	}
 }
 
