@@ -10,7 +10,8 @@ import SwiftUI
 struct ProfileFoodCartCellView: View {
 	//MARK: Property wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
-	@State var opacity : Double = 0.8
+	@State var opacity: Double = 0.8
+	@State var image: UIImage?
 	@Binding var isFavorite: Bool
 	
 	//MARK: Property
@@ -21,10 +22,20 @@ struct ProfileFoodCartCellView: View {
 			
 		} label: {
 			HStack(spacing: 10) {
-				RoundedRectangle(cornerRadius: 8) // 임시
-					.frame(width: 70, height: 70)
-					.foregroundColor(.gray)
-					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+				VStack {
+					if let image = image {
+						Image(uiImage: image)
+							.resizable()
+							.frame(width: 70, height: 70)
+							.clipShape(RoundedRectangle(cornerRadius: 8))
+							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+					} else {
+						RoundedRectangle(cornerRadius: 8) // 임시
+							.foregroundColor(.gray)
+					}
+				}
+				.frame(width: 70, height: 70)
+				.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 				
 				VStack(alignment: .leading, spacing: 7) {
 					HStack {
@@ -101,6 +112,9 @@ struct ProfileFoodCartCellView: View {
 			.onAppear {
 				withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
 					self.opacity = opacity == 0.4 ? 0.8 : 0.4
+				}
+				Task {
+					image = try await profileVM.fetchImage(foodCartId: foodCart.id, imageName: foodCart.imageId.first ?? "test")
 				}
 			}
 		} // NavigationLink

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 import FirebaseFirestore
+import FirebaseStorage
 
 class ProfileViewModel: ObservableObject {
 	//MARK: Property wrapper
@@ -33,7 +35,8 @@ class ProfileViewModel: ObservableObject {
 	
 	//MARK: Property
 	private let database = Firestore.firestore()
-
+	private let storage = Storage.storage()
+	
 	init() { // 임시: 자동 로그인시 초기화 해줘야함
 		UserDefaults.standard.set(false, forKey: "isFaceID")	// FaceID
 		UserDefaults.standard.set(false, forKey: "isAlert")		// 알림
@@ -175,5 +178,14 @@ class ProfileViewModel: ObservableObject {
 		}
 		
 		return favorite
+	}
+	
+	// MARK: - 서버의 Storage에서 이미지를 가져오는 Method
+	func fetchImage(foodCartId: String, imageName: String) async throws -> UIImage {
+		let ref = storage.reference().child("images/\(foodCartId)/\(imageName)")
+		
+		let data = try await ref.data(maxSize: 1 * 1024 * 1024)
+		
+		return UIImage(data: data)!
 	}
 }
