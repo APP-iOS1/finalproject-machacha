@@ -58,11 +58,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 
-@main
-struct MachachaApp: App {
+
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 	@StateObject var profileVM: ProfileViewModel = ProfileViewModel()
-	
     init() {
         // Naver SDK Initializing
         
@@ -88,8 +86,10 @@ struct MachachaApp: App {
     var body: some Scene {
         WindowGroup {
             AuthView()
-				.preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
-				.environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
+                .environmentObject(FoodCartViewModel())
+//                .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
+//                .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
+
                 .onOpenURL { url in
                     
                     //네이버
