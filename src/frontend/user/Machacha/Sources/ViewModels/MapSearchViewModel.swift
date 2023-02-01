@@ -14,12 +14,16 @@ final class MapSearchViewModel: NSObject, ObservableObject, CLLocationManagerDel
 	@Published var foodCarts = FoodCart.getListDummy()
     
     func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager!.delegate = self
-            checkLocationAuthorization()
-        } else {
-            print("Show an alert letting them know this is off and to go turn i on.")
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                DispatchQueue.main.async {
+                    self.locationManager = CLLocationManager()
+                    self.locationManager!.delegate = self
+                    self.checkLocationAuthorization()
+                }
+            } else {
+                print("Show an alert letting them know this is off and to go turn i on.")
+            }
         }
     }
     
