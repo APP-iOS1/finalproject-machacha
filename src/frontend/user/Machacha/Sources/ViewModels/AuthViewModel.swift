@@ -25,12 +25,14 @@ import FirebaseAuth
 @MainActor
 class AuthViewModel : ObservableObject {
     @Published var loginState : LoginState? = nil
+    let userVM : UserViewModel = UserViewModel()
     
     //static let shared = AuthViewModel()
     
     @Published var currentUserProfile: User? = nil
     @Published var showError: Bool = false
     @Published var currentUser = Auth.auth().currentUser
+    @Published var userCheck : UserCheck = .checking
     
     // MARK: - google Sign in Properties
     //@Published var givenName: String = ""
@@ -49,7 +51,7 @@ class AuthViewModel : ObservableObject {
         let ref = Firestore.firestore().collection("User").document(userId)
         let snapshot = try await ref.getDocument()
         guard let docData = snapshot.data() else { return nil }
-        let name = docData["mame"] as? String ?? ""
+        let name = docData["name"] as? String ?? ""
         let email = docData["email"] as? String ?? ""
         let isFirstLogin = docData["isFirstLogin"] as? Bool ?? true
         
@@ -169,7 +171,7 @@ class AuthViewModel : ObservableObject {
                 //_ = oauthToken
                 if let oauthToken = oauthToken {
                     print("DEBUG: 카카오톡 \(oauthToken)")
-                    self.signUpInFirebase()
+                    self.signUpKaKaoInFirebase()
                 }
             }
         }
@@ -185,7 +187,7 @@ class AuthViewModel : ObservableObject {
                 print("웹 로그인 성공")
                 if let token {
                     print("\(token)")
-                    self.signUpInFirebase()
+                    self.signUpKaKaoInFirebase()
                 }
             }
         }
@@ -197,7 +199,7 @@ class AuthViewModel : ObservableObject {
                 await kakaoLoginWithApp()
             } else {
                 await kakaoLoginWithWeb()
-                
+                //await UserViewModel.shared.requestUserCheck()
             }
         }
     }
@@ -243,22 +245,28 @@ class AuthViewModel : ObservableObject {
                 } else {
                     UserDefaults.standard.set(result?.user.uid, forKey: "userIdToken")
                     withAnimation(.easeInOut){self.loginState = .authenticated}
+                    UserViewModel.shared.requestUserCheck()
                 }
             }
         }
     
-    func signUpInFirebase() {
+    func signUpKaKaoInFirebase() {
         UserApi.shared.me() { user, error in
             if let error = error {
                 print("error: \(error.localizedDescription)")
             } else {
                 // 파이어베이스 유저 생성
+                print("카카오계정 생성중")
                 Auth.auth().createUser(withEmail: (user?.kakaoAccount?.email ?? "")!, password: "\(String(describing: user?.id))") { result, error in
                     Task{
+                        if let error {
+                            print(error)
+                        }
                         let authResult = try await Auth.auth().signIn(withEmail: (user?.kakaoAccount?.email ?? "")!, password: "\(String(describing: user?.id))")
                         self.currentUserProfile = try await self.fetchUserInfo(_: authResult.user.uid)
                         self.currentUser = authResult.user
                         withAnimation(.easeInOut){self.loginState = .authenticated}
+                        UserViewModel.shared.requestUserCheck()
                     }
                 }
             }
