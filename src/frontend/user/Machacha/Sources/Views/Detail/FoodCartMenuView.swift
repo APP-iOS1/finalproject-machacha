@@ -20,11 +20,19 @@ struct FoodCartMenuView: View {
                 Text("\(selectedStore.menu.count)")
                     .foregroundColor(Color("Color3"))
             }
-            .font(.machachaTitle2)
+            .font(.machachaTitle2Bold)
             .padding(.bottom, 15)
-            .bold()
             
-
+            ForEach(selectedStore.menu.sorted(by: >), id: \.key) { menu, price in
+                HStack {
+                    Text(menu)
+                    Spacer()
+                    Text("￦\(price)")
+                }
+                .padding(.trailing, 14)
+                .padding(.bottom, 2)
+                .font(.machachaHeadline)
+            } //ForEach
         }
     }
 }

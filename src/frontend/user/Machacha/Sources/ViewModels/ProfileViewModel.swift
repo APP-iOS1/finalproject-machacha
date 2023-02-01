@@ -81,7 +81,7 @@ class ProfileViewModel: ObservableObject {
 			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
 			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
 
-			reviews.append(Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, upadtedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
+            reviews.append(Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, upadatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
 		}
 		
 		return reviews

@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     var selectedStore: FoodCart
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
+    @EnvironmentObject var reviewViewModel: ReviewViewModel
     
     var body: some View {
         ScrollView {
@@ -42,9 +43,9 @@ struct DetailView: View {
                     Text("★ \(String(format: "%.1f", selectedStore.grade))")
                         .foregroundColor(Color("Color3"))
                         .font(.machachaTitle2Bold)
-                        .padding(.trailing, 15)
+                        .padding(.trailing, 20)
                 }
-                .padding(.horizontal, 20)
+                .padding(.leading, 20)
                 .padding(.top, 20)
                 .padding(.bottom, 5)
                 
@@ -63,12 +64,15 @@ struct DetailView: View {
                     .padding(.leading, 20)
                 FoodCartMenuView(selectedStore: selectedStore) // 메뉴 정보
                     .padding(.leading, 20)
+                ReviewThumbnailView(selectedStore: selectedStore)
+                    .padding(.leading, 20)
                 
             }
             .onAppear {
                 foodCartViewModel.isLoading = true // progressview를 위해 선언
                 Task {
                     await foodCartViewModel.fetchFoodCarts()
+                    await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                     foodCartViewModel.isLoading = false
                 }
             }
@@ -80,5 +84,6 @@ struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(selectedStore: FoodCart.getDummy())
             .environmentObject(FoodCartViewModel())
+            .environmentObject(ReviewViewModel())
     }
 }
