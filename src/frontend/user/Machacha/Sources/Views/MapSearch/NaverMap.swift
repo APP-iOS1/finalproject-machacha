@@ -9,18 +9,13 @@ import SwiftUI
 import NMapsMap
 
 struct NaverMap: UIViewRepresentable {
-    var coord: (Double, Double)
+    @Binding var coord: (Double, Double)
+    @Binding var currentIndex: Int
     var foodCarts: [FoodCart]
     
     func makeCoordinator() -> Coordinator {
         Coordinator(coord)
     }
-    
-    init(_ coord: (Double, Double), foodCarts: [FoodCart]) {
-        self.coord = coord
-        self.foodCarts = foodCarts
-    }
-    
 
     // MARK: - Map을 그리고 생성하는 메서드
     func makeUIView(context: Context) -> some NMFNaverMapView {
@@ -28,40 +23,34 @@ struct NaverMap: UIViewRepresentable {
         view.showZoomControls = false
         view.mapView.positionMode = .direction
         view.mapView.zoomLevel = 17
-        view.showLocationButton = true
-        view.showCompass = true
-        view.showZoomControls = true
-        let cameraPosition = view.mapView.cameraPosition
-        
+//        view.showLocationButton = true
         // Foodcart를 맵에 마커로 표현
         for foodCart in foodCarts {
             let marker = NMFMarker()
             
 			marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
             
-            
-            let image = NMFOverlayImage(name: foodCart.markerImage)
-            
-//            marker.iconImage = image
+            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage())
+            marker.iconImage = image
 //
-//            marker.width = CGFloat(Screen.maxWidth/10)
-//            marker.height = CGFloat(Screen.maxHeight/10)
-            
-            marker.iconImage = NMF_MARKER_IMAGE_BLACK
-            marker.iconTintColor = UIColor.green
-            marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)
-            marker.height = CGFloat(NMF_MARKER_SIZE_AUTO)
-            
+            marker.width = CGFloat(25)
+            marker.height = CGFloat(25)
+            marker.isHideCollidedMarkers = true
+
             // MARK: - Mark 터치 시 이벤트 발생
             marker.touchHandler = { (overlay) -> Bool in
-                print("marker touched")
-                
+                print("\(foodCart.name) marker touched")
+                coord = (foodCart.geoPoint.latitude, foodCart.geoPoint.longitude)
+                print("geoPoint : \(coord)")
+                marker.width = CGFloat(50)
+                marker.height = CGFloat(50)
                 return true
             }
             marker.mapView = view.mapView
         }
      
         view.mapView.addCameraDelegate(delegate: context.coordinator)
+        view.mapView.touchDelegate = context.coordinator
         return view
     }
     
@@ -69,13 +58,9 @@ struct NaverMap: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         let coord = NMGLatLng(lat: coord.0, lng: coord.1)
         let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
-        cameraUpdate.animation = .fly
-        cameraUpdate.animationDuration = 1
+        cameraUpdate.animation = .easeIn
+        cameraUpdate.animationDuration = 0.3
         uiView.mapView.moveCamera(cameraUpdate)
-    }
-    
-    func setupMarker() {
-        
     }
 }
 
@@ -88,11 +73,26 @@ class Coordinator: NSObject {
 
 // MARK: - 카메라 이동시 발생하는 Delegate
 extension Coordinator: NMFMapViewCameraDelegate {
+    // 카메라의 움직임이 시작할 때 호출
     func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
 //        print("카메라 변경 - reason: \(reason)")
     }
     
+    // 카메라가 움직이고 있을 때 호출
     func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
-//        print("카메라 변경 - reason: \(reason)")
+
+    }
+    
+    // 카메라의 움직임이 끝났을 때 호출
+    func mapView(_ mapView: NMFMapView, cameraDidChangeByReason reason: Int, animated: Bool) {
+        coord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
+        print("현재 카메라 좌표 : \(coord)")
+    }
+}
+
+// MARK: - 지도 터치에 이용되는 Delegate
+extension Coordinator: NMFMapViewTouchDelegate {
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        print("Map Tapped")
     }
 }
