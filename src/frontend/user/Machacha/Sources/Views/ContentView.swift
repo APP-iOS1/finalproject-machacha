@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 	//MARK: Property Wrapper
+	@EnvironmentObject var profileVM: ProfileViewModel
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
@@ -17,7 +18,7 @@ struct ContentView: View {
 				ZStack {
 					switch tabbarManager.curTabSelection {
 					case .home:
-                        SplashView()
+                        DetailView(selectedStore: FoodCart.getDummy())
 						//HomeView()
 					case .mapSearch:
 						MapSearchView()
@@ -36,6 +37,7 @@ struct ContentView: View {
 				}
 			} // ZStack
 			.edgesIgnoringSafeArea(.bottom)
+			.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
 		} // NavigationStack
     }
 }
@@ -43,5 +45,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+			.environmentObject(ProfileViewModel())
     }
 }

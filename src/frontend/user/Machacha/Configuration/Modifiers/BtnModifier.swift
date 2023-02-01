@@ -8,8 +8,29 @@
 import Foundation
 import SwiftUI
 
-// MARK: - 제품 상세 페이지의 버튼들에 대한 Modifier
+// MARK: - TextFiled에 x 버튼으로 Clear
+struct TextFieldClearButton: ViewModifier {
+	@Binding var text: String
+	
+	func body(content: Content) -> some View {
+		HStack {
+			content
+			
+			if !text.isEmpty {
+				Button(
+					action: { self.text = "" },
+					label: {
+						Image(systemName: "xmark.circle")
+							.foregroundColor(Color(UIColor.opaqueSeparator))
+							.padding(.vertical, 10)
+					}
+				)
+			}
+		}
+	}
+}
 
+// MARK: - 제품 상세 페이지의 버튼들에 대한 Modifier
 struct ProductButtonModifier: ViewModifier {
 	var color: Color
 	

@@ -16,7 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        //FirebaseApp.configure()
+        FirebaseApp.configure()
         // 원격 알림 등록
         //UNUserNotificationCenter.current().delegate = self
         
@@ -59,12 +59,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     //    }
 }
 
-
 @main
 struct MachachaApp: App {
-    // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
+
     init() {
         // Naver SDK Initializing
         
@@ -90,8 +89,26 @@ struct MachachaApp: App {
     var body: some Scene {
         WindowGroup {
             AuthView()
+                .environmentObject(FoodCartViewModel())
+                .environmentObject(ReviewViewModel())
+                .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
+                .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
+            
                 .onOpenURL { url in
-                    
+                    //네이버
+                    if NaverThirdPartyLoginConnection
+                        .getSharedInstance()
+                        //임의로 아무거나 넣어봄
+                        .isNaverAppOauthEnable
+                    //.isInAppOauthEnable
+                    //.isNaverThirdPartyLoginAppschemeURL(url)
+                    {
+                        // Token 발급 요청
+                        NaverThirdPartyLoginConnection
+                            .getSharedInstance()
+                            .receiveAccessToken(url)
+                    }
+
                     //카카오
                     if (AuthApi.isKakaoTalkLoginUrl(url)){
                         _ = AuthController.handleOpenUrl(url: url)
@@ -108,3 +125,4 @@ struct MachachaApp: App {
         }
     }
 }
+
