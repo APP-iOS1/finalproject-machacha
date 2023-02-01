@@ -21,7 +21,7 @@ struct MapSearchView: View {
                     
                     
                     SnapCarousel(index: $currentIndex, items: mapSerachViewModel.foodCarts, coord: $mapSerachViewModel.coord) { foodCart in
-                        MapFooterCell(foodCart: foodCart)
+                        MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
                             .padding(.vertical, Screen.maxHeight - 420)
                             .onTapGesture {

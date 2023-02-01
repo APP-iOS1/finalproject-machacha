@@ -33,8 +33,8 @@ struct NaverMap: UIViewRepresentable {
             let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage())
             marker.iconImage = image
 //
-            marker.width = CGFloat(25)
-            marker.height = CGFloat(25)
+            marker.width = CGFloat(50)
+            marker.height = CGFloat(50)
             marker.isHideCollidedMarkers = true
 
             // MARK: - Mark 터치 시 이벤트 발생
@@ -42,8 +42,7 @@ struct NaverMap: UIViewRepresentable {
                 print("\(foodCart.name) marker touched")
                 coord = (foodCart.geoPoint.latitude, foodCart.geoPoint.longitude)
                 print("geoPoint : \(coord)")
-                marker.width = CGFloat(50)
-                marker.height = CGFloat(50)
+
                 print("naverMap Index : \(currentIndex)")
                 currentIndex = index
                 
@@ -65,6 +64,10 @@ struct NaverMap: UIViewRepresentable {
         cameraUpdate.animation = .easeIn
         cameraUpdate.animationDuration = 0.3
         uiView.mapView.moveCamera(cameraUpdate)
+        
+        // 이부분에서 Marker가 커지는 작업을 처리해줘야함 -> 마커 생성을 밖에서 해줘야할 거 같음
+        
+        print("udateUIView")
     }
 }
 
