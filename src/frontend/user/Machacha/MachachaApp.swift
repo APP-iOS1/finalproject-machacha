@@ -10,7 +10,7 @@ import NaverThirdPartyLogin
 import KakaoSDKCommon
 import KakaoSDKAuth
 import GoogleSignIn
-import FirebaseCore
+import Firebase
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
@@ -33,15 +33,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // 푸시 포그라운드 설정
         //UNUserNotificationCenter.current().delegate = self
         
-        
-        let kakaoAppKey = Bundle.main.infoDictionary?["KAKAO_NAVTIVE_APP_KEY"] ?? ""
-        
-        //print("kakaoAppKey: \(kakaoAppKey)")
-        //Kakao SDK 초기화
-        KakaoSDK.initSDK(appKey: kakaoAppKey as! String)
+        //파이어베이스 초기화
+        FirebaseApp.configure()
         
         return true
     }
+    
+    //구글의 인증프로세스가 끝날때 앱이 수신하는 URL을 처리하는 역활
+    //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    //        return GIDSignIn.sharedInstance.handle(url)
+    //    }
+    
     // fcm 토큰이 등록 되었을 때
     //    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     //        Messaging.messaging().apnsToken = deviceToken
@@ -59,9 +61,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct MachachaApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
+
     init() {
         // Naver SDK Initializing
         
@@ -93,7 +95,6 @@ struct MachachaApp: App {
                 .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
             
                 .onOpenURL { url in
-                    
                     //네이버
                     if NaverThirdPartyLoginConnection
                         .getSharedInstance()
@@ -107,7 +108,7 @@ struct MachachaApp: App {
                             .getSharedInstance()
                             .receiveAccessToken(url)
                     }
-                    
+
                     //카카오
                     if (AuthApi.isKakaoTalkLoginUrl(url)){
                         _ = AuthController.handleOpenUrl(url: url)
