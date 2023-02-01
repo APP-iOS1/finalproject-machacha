@@ -4,44 +4,19 @@
 //
 //  Created by geonhyeong on 2023/01/17.
 //
-
+import Foundation
 import SwiftUI
 import NaverThirdPartyLogin
 import GoogleSignInSwift
 import GoogleSignIn
 import _AuthenticationServices_SwiftUI
 
-enum LoginState {
-    case authenticated
-    case unauthenticated
-    case authenticating
-    case pass
-}
-
-struct AuthView : View {
-    //@State var loginState : LoginState = .unauthenticated
-    @StateObject var authVM = AuthViewModel()//.shared
-    var body: some View {
-        switch authVM.loginState {
-        case .unauthenticated, .none :
-            LoginView()
-                .environmentObject(authVM)
-        case .authenticating :
-            ProgressView()
-        case .authenticated, .pass:
-            ContentView()
-                .onAppear{
-                    print(authVM.loginState!)
-                }
-        }
-    }
-}
-
 
 struct LoginView: View {
     @EnvironmentObject var authVM : AuthViewModel
     @StateObject var kakaoAuthVM = KaKaoAuthViewModel()
     var naverAuthVM = NaverLoginViewModel()
+    
     var body: some View{
         ZStack{
             Color.init("bgColor")
@@ -159,10 +134,10 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        LoginView()
-            .environmentObject(AuthViewModel())
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        LoginView()
+//            .environmentObject(AuthViewModel())
+//    }
+//}
