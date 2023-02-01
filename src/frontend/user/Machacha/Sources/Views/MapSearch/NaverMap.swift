@@ -25,7 +25,7 @@ struct NaverMap: UIViewRepresentable {
         view.mapView.zoomLevel = 17
 //        view.showLocationButton = true
         // Foodcart를 맵에 마커로 표현
-        for foodCart in foodCarts {
+        for (index, foodCart) in foodCarts.enumerated() {
             let marker = NMFMarker()
             
 			marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
@@ -44,6 +44,10 @@ struct NaverMap: UIViewRepresentable {
                 print("geoPoint : \(coord)")
                 marker.width = CGFloat(50)
                 marker.height = CGFloat(50)
+                print("naverMap Index : \(currentIndex)")
+                currentIndex = index
+                
+                
                 return true
             }
             marker.mapView = view.mapView
