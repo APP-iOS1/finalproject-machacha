@@ -42,7 +42,7 @@ struct ProfileFoodCartListView: View {
 				} // DispatchQueue
 			} // Task
 		})
-		.redacted(reason: profileVM.isLoading ? .placeholder : [])
+		.redacted(reason: profileVM.isLoading ? .placeholder : [])	// 콘텐츠 모자이크
 		.navigationBarBackButtonHidden()
 		.navigationBarTitle("\(foodCartOfUserType.display)", displayMode: .large)
 		.toolbarBackground(Color("Color3"), for: .navigationBar)
@@ -61,7 +61,7 @@ struct ProfileFoodCartListView: View {
 		.onAppear {
 			profileVM.isLoading = true
 			Task {
-				profileVM.foodCartUser = try await profileVM.fetchFoodCartByType(foodCartType: foodCartOfUserType)
+				profileVM.foodCartUser = try await profileVM.fetchFoodCartByType(foodCartType: foodCartOfUserType) // 타입별로 데이터를 비동기로 불러오는 값이 다르게 처리
 				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { // 스켈레톤 View를 위해
 					profileVM.isLoading = false
 				} // DispatchQueue
