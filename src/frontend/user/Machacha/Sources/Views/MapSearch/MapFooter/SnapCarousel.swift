@@ -14,12 +14,13 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
     //Properties
     var spacing: CGFloat
     var trailingSpace: CGFloat
+    @Binding var index: Int
     
-    
-    init(spacing: CGFloat = 0, trailingSpace: CGFloat = 70,  items: [T], @ViewBuilder content: @escaping (T)->Content) {
+    init(spacing: CGFloat = 30, trailingSpace: CGFloat = 100, index: Binding<Int> , items: [T], @ViewBuilder content: @escaping (T)->Content) {
         self.list = items
         self.spacing = spacing
         self.trailingSpace = trailingSpace
+        self._index = index
         self.content = content
     }
     
@@ -27,6 +28,7 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
     @State var currentIndex: Int = 0
     
     var body: some View {
+        
         GeometryReader { proxy in
             
             // Setting correct Width for snap Carousel
@@ -42,41 +44,30 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
             }
             // Spacing will be horizontal padding
             .padding(.horizontal, spacing)
-            // setting only after 0th index
-            .offset(x: (CGFloat(currentIndex) * -width) + adjustMentWidth + offset)
+            .offset(x: (CGFloat(currentIndex) * -width) + (currentIndex != 0 ? adjustMentWidth : 0) + offset)
             .gesture(
                 DragGesture()
                     .updating($offset, body: { value, out, _ in
                         out = value.translation.width
                     })
                     .onEnded( { value in
-                        // Updating Current Index
+                        // 인덱스 이동
                         let offsetX = value.translation.width
-                        
-                        // were going to convert the tranlsation into progress (0 - 1)
-                        // and round the value
-                        // based on the prgoress increasing or decreasing the currentIndex
-                        
+                        // 0~1의 값으로 변환 후 인덱스에 +1 or -1을 해줌
                         let progress = -offsetX / width
                         let roundIndex = progress.rounded()
-                        // setting min
-                        currentIndex = max(min(currentIndex + Int(roundIndex), list.count - 1), 0)
                         
-                        print("current index : \(currentIndex)")
+                        // 최대크기 만큼 페이징을 위해 계산
+                        currentIndex = max(min(currentIndex + Int(roundIndex), list.count - 1), 0)
+                        currentIndex = index
                     })
                     .onChanged( { value in
                         // updating only index
-                        // Updating Current Index
                         let offsetX = value.translation.width
-                        
-                        // were going to convert the tranlsation into progress (0 - 1)
-                        // and round the value
-                        // based on the prgoress increasing or decreasing the currentIndex
-                        
                         let progress = -offsetX / width
                         let roundIndex = progress.rounded()
-                        // setting min
-                        currentIndex = max(min(currentIndex + Int(roundIndex), list.count - 1), 0)
+                        
+                        index = max(min(currentIndex + Int(roundIndex), list.count - 1), 0)
                     })
             )
         }
