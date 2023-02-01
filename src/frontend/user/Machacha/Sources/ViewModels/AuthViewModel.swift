@@ -260,6 +260,7 @@ class AuthViewModel : ObservableObject {
                 Auth.auth().createUser(withEmail: (user?.kakaoAccount?.email ?? "")!, password: "\(String(describing: user?.id))") { result, error in
                     Task{
                         if let error {
+                            print("이미 계정이 존재합니다")
                             print(error)
                         }
                         let authResult = try await Auth.auth().signIn(withEmail: (user?.kakaoAccount?.email ?? "")!, password: "\(String(describing: user?.id))")

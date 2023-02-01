@@ -18,7 +18,7 @@ class UserViewModel: ObservableObject {
     @Published var users: [User] = []
     
     //로그인한 현재 유저아이디
-    let uid : String? = FirebaseAuth.Auth.auth().currentUser?.uid
+    @Published var uid : String? = FirebaseAuth.Auth.auth().currentUser?.uid
     //로그인한 유저정보
     @Published var user : User = User(id: "", isFirstLogin: true, email: "", name: "", profileId: "", favoriteId: [], visitedId: [], updatedAt: Date(), createdAt: Date())
     @Published var userCheck : UserCheck = .checking
@@ -88,9 +88,11 @@ class UserViewModel: ObservableObject {
     
     //로그인한 유저의 정보를 찾기
     func requestUserCheck() -> Void {
+        let uid = FirebaseAuth.Auth.auth().currentUser?.uid
         guard let uid else {
             return
         }
+        
         queryIdCheck(uid) { result in
             switch result {
             case .success(let isCheck) :
@@ -199,7 +201,10 @@ class UserViewModel: ObservableObject {
     
     //첫로그인시 이름 입력 및 isFirstLoign -> false
     func firstLogin(_ name: String) -> Bool {
-        guard let uid else { return false}
+        let uid = FirebaseAuth.Auth.auth().currentUser?.uid
+        guard let uid else {
+            return false
+        }
         
         let result = queryNameCheck(name)
         
