@@ -9,7 +9,7 @@ import SwiftUI
 import NMapsMap
 
 struct NaverMap: UIViewRepresentable {
-    @State var coord: (Double, Double)
+    @Binding var coord: (Double, Double)
     @Binding var currentIndex: Int
     var foodCarts: [FoodCart]
     
@@ -41,6 +41,7 @@ struct NaverMap: UIViewRepresentable {
             marker.touchHandler = { (overlay) -> Bool in
                 print("\(foodCart.name) marker touched")
                 coord = (foodCart.geoPoint.latitude, foodCart.geoPoint.longitude)
+                print("geoPoint : \(coord)")
                 marker.width = CGFloat(50)
                 marker.height = CGFloat(50)
                 return true
@@ -72,12 +73,20 @@ class Coordinator: NSObject {
 
 // MARK: - 카메라 이동시 발생하는 Delegate
 extension Coordinator: NMFMapViewCameraDelegate {
+    // 카메라의 움직임이 시작할 때 호출
     func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
 //        print("카메라 변경 - reason: \(reason)")
     }
     
+    // 카메라가 움직이고 있을 때 호출
     func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
-//        coord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
+
+    }
+    
+    // 카메라의 움직임이 끝났을 때 호출
+    func mapView(_ mapView: NMFMapView, cameraDidChangeByReason reason: Int, animated: Bool) {
+        coord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
+        print("현재 카메라 좌표 : \(coord)")
     }
 }
 
@@ -85,6 +94,5 @@ extension Coordinator: NMFMapViewCameraDelegate {
 extension Coordinator: NMFMapViewTouchDelegate {
     func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
         print("Map Tapped")
-        coord = (37.566249, 126.992227)
     }
 }
