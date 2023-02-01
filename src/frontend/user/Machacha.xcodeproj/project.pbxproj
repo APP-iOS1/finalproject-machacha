@@ -58,6 +58,8 @@
 		C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05F297A7F4A003CF061 /* Magazine.swift */; };
 		FA0B449B298768A6005DB8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA0B449A298768A6005DB8AF /* GoogleService-Info.plist */; };
 		FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
+		FA0B449F2988EBA4005DB8AF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449E2988EBA4005DB8AF /* SignUpView.swift */; };
+		FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B44A02988F489005DB8AF /* AuthView.swift */; };
 		FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */; };
 		FAFDD47C29779202008E28AD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47B29779202008E28AD /* Alamofire */; };
 		FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47E2977B02D008E28AD /* KakaoSDK */; };
@@ -142,6 +144,8 @@
 		C4D5C05F297A7F4A003CF061 /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
 		FA0B449A298768A6005DB8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA0B449C2987A504005DB8AF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		FA0B449E2988EBA4005DB8AF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FA0B44A02988F489005DB8AF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD49C2977E8EC008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -440,7 +444,9 @@
 		C4A5879A29768D2100B04A98 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FA0B44A02988F489005DB8AF /* AuthView.swift */,
 				C4A5879C29768D4200B04A98 /* LoginView.swift */,
+				FA0B449E2988EBA4005DB8AF /* SignUpView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -650,11 +656,13 @@
 				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
 				6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
+				FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */,
 				C4A587AD29768E4500B04A98 /* DetailView.swift in Sources */,
 				C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */,
 				C4A5879029768C6200B04A98 /* AuthViewModel.swift in Sources */,
 				C4A587772975A8D300B04A98 /* Ex+Color.swift in Sources */,
 				C4A5879F29768D4800B04A98 /* SplashView.swift in Sources */,
+				FA0B449F2988EBA4005DB8AF /* SignUpView.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
