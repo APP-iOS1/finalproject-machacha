@@ -28,10 +28,15 @@ struct ReviewThumbnailView: View {
                         .font(.machachaTitle2)
                 }
                 .padding(.trailing, 14)
-                
-                }//HStack
-            
-            var _ = print("reviews : \(reviewViewModel.reviews)")
+            }//HStack
+            ForEach(reviewViewModel.twoReviews, id: \.self) { review in
+                ReviewThumbnailListCellView(review: review)
+            }
+        }
+        .onAppear {
+            Task {
+                await reviewViewModel.fetchTwoReviews(foodCartId: selectedStore.id)
+            }
         }
         .font(.machachaTitle2Bold)
         .padding(.bottom)
