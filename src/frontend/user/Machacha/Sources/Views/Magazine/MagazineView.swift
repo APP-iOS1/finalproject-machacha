@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct MagazineView: View {
+    @StateObject var magazineVM = MagazineViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                ForEach(magazineVM.magazines) { magazine in
+               
+                    NavigationLink {
+                        Test(magazineVM: magazineVM, magazine: magazine)
+
+                    } label: {
+                        Text("\(magazine.thumbTitle)")
+                    }
+
+
+                }
+            }
+        }
+        .onAppear {
+            magazineVM.fetchMagazines()
+            
+        }
     }
 }
 
