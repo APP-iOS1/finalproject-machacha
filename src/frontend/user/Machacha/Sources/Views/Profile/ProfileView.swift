@@ -14,7 +14,7 @@ struct ProfileView: View {
 	@State private var showSafari: Int?
 
 	//MARK: Property
-	let profileInfo: [FoodCartOfUserType] = [.favorite, .review, .visited, .register]
+	let profileInfo: [FoodCartOfUserType] = [.favorite, .visited, .review, .register]
 	let settings: [SettingType] = [.faceID, .alert, .darkMode, .language]
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
 	
@@ -29,19 +29,22 @@ struct ProfileView: View {
 				
 				UserLogoutStatus() // User Logout Status
 			}
-//			.navigationTitle("프로필")
 			.background(Color("bgColor"))
 			.onAppear {
 				UserDefaults.standard.set("egmqxtTT1Zani0UkJpUW", forKey: "userIdToken") // 임시: 로그인시
 				Task {
 					profileVM.currentUser = try await profileVM.fetchUser()
 					profileVM.reviewUser = try await profileVM.fetchReivews()
+					profileVM.foodCartUser = try await profileVM.fetchFoodCartByRegister()
 				} // Task
 			} // ScrollView
 		} // NavigationView
 	}
-	
-	// FoodCart List By User Action
+}
+
+//MARK: - 유저 Login/Logout 상태일때 보이거나 사라지는 View
+extension ProfileView {
+	// User Login Status - FoodCart List By User Action
 	@ViewBuilder
 	private func UserLoginStatus() -> some View {
 		GeometryReader { geometry in
@@ -58,16 +61,7 @@ struct ProfileView: View {
 					HStack(spacing: 30) {
 						ForEach(profileInfo, id: \.self) { info in
 							NavigationLink {
-								switch info {
-								case .favorite:
-									EmptyView()
-								case .review:
-									EmptyView()
-								case .visited:
-									EmptyView()
-								case .register:
-									EmptyView()
-								} // switch
+								ProfileFoodCartListView(foodCartOfUserType: info)
 							} label: {
 								VStack(spacing: 10) {
 									HStack {
@@ -79,8 +73,8 @@ struct ProfileView: View {
 											Text("\(profileVM.reviewUser.count)")
 										case .visited:
 											Text("\(user.visitedId.count)")
-										case .register: // 임시: 통신 필요
-											Text("\(user.favoriteId.count)")
+										case .register:
+											Text("\(profileVM.foodCartUser.count)")
 										} // switch
 									} // HStack
 									Text(info.display)
@@ -119,6 +113,33 @@ struct ProfileView: View {
 		.frame(minHeight: profileVM.currentUser == nil ? Screen.maxHeight * 0.08 : Screen.maxHeight * 0.3)
 	}
 	
+	// User Logout Status
+	@ViewBuilder
+	private func UserLogoutStatus() -> some View {
+		if profileVM.currentUser != nil {
+			VStack {
+				Button(role: .destructive) {
+					Task {
+						try await profileVM.logout()
+						profileVM.showLogin = true
+					}
+					profileVM.currentUser = nil // 임시: 로그아웃 했다고 임시로 가정
+				} label: {
+					Text("로그아웃")
+						.fixedSize(horizontal: false, vertical: true)
+						.frame(maxWidth: .infinity, alignment: .center)
+				} // Button
+				.padding()
+				.background(Color("cellColor"))
+				.cornerRadius(20)
+			} // VStack
+			.padding()
+		}
+	}
+}
+
+//MARK: - ProfileView의 Settings와 WebView List Section View
+extension ProfileView {
 	// Setting Section
 	@ViewBuilder
 	private func SettingSection() -> some View {
@@ -200,30 +221,6 @@ struct ProfileView: View {
 			SafariView(url: URL(string: webInfo[$0].url)!)
 		}
 	}
-	
-	// User Logout Status
-	@ViewBuilder
-	private func UserLogoutStatus() -> some View {
-		if profileVM.currentUser != nil {
-			VStack {
-				Button(role: .destructive) {
-					Task {
-						try await profileVM.logout()
-						profileVM.showLogin = true
-					}
-					profileVM.currentUser = nil // 임시: 로그아웃 했다고 임시로 가정
-				} label: {
-					Text("로그아웃")
-						.fixedSize(horizontal: false, vertical: true)
-						.frame(maxWidth: .infinity, alignment: .center)
-				} // Button
-				.padding()
-				.background(Color("cellColor"))
-				.cornerRadius(20)
-			} // VStack
-			.padding()
-		}
-	}
 }
 
 struct ProfileView_Previews: PreviewProvider {
@@ -241,8 +238,8 @@ struct SectionHeaderView: View {
 	var body: some View {
 		HStack {
 			Text(name)
-				.font(.headline)
-				.foregroundColor(Color(uiColor: .darkGray))
+				.font(.machachaHeadline)
+				.foregroundColor(.secondary)
 			Spacer()
 		} // HStack
 		.padding([.horizontal, .top])

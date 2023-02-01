@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Review: Hashable {
+struct Review: Hashable, Identifiable {
 	let id: String
 	let reviewer: String            // 리뷰쓴 사람의 userID
 	let foodCartId: String          // foodCart id

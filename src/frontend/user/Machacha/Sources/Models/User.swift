@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User {
+struct User: Identifiable {
 	let id: String
 	var isFirstLogin: Bool      // 최초 로그인 여부
 	let email: String
