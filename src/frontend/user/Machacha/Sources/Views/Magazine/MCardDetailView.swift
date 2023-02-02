@@ -146,10 +146,11 @@ struct MCardDetailView: View {
                 .matchedGeometryEffect(id: "title\(magazine.id)", in: namespace)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(magazine.subtitle.uppercased()) //20 sections - 3 hours
+            Text(magazine.subtitle) //20 sections - 3 hours
                 .font(.machachaHeadlineBold)
+                .opacity(appear[1] ? 1 : 0)
 //                .font(.footnote.weight(.semibold))
-                .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
+//                .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
             
 //            Text("magazine.text") //Build an iOS app for iOS 15 with custom
 //                .font(.footnote)
