@@ -22,11 +22,11 @@ struct Magazine: Identifiable {
     static func getDummy() -> Self {
         return Magazine(id: "CvcZaUQTF7StFGa7omZL", title: "한입 간식 : 호떡", subtitle: "명동 & 을지로 호떡 대표 맛집 TOP 3", editorPickTitle: "꿀호떡냠냠's PICK", editorCommemt: "저만의 호떡 맛집들을 공유해보려고 합니다.", image: "Illustration 1", background: "Background 1", foodCartId: ["InzqNwgl15TytWNOdIZz"], createdAt: Date(), updatedAt: Date())
     }
-
-
 }
 
-
+class Model: ObservableObject {
+    @Published var showDetail: Bool = false
+}
 
 
 /*
