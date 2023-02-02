@@ -6,16 +6,7 @@
 //
 
 import SwiftUI
-/*
- ForEach(magazineVM.magazines) { magazine in }
- 
- .onAppear {
- magazineVM.fetchMagazines()
- 
- }
- 
- */
-//
+
 
 struct MagazineView: View {
     @Namespace var namespace // @Namespace : 관련있는 것들끼리 모아놓은 공간
@@ -39,10 +30,9 @@ struct MagazineView: View {
                 
                 ScrollView {
                     
-                    
-                    Text("Courses".uppercased())
-                        .font(.footnote.weight(.semibold))
-                        .foregroundColor(.secondary)
+                    Text("마차챠's Pick")
+                        .font(.machachaLargeTitleBold)
+                        .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 20)
                     
@@ -64,11 +54,11 @@ struct MagazineView: View {
                         }
                     }
                     .padding(.horizontal, 20)
+                    .padding(.top, 20)
                 }
                 // coordinateSpace?
                 // 특정 뷰의 좌표 공간 - scrollDetection
                 .coordinateSpace(name: "scroll")
-                .navigationTitle("마차챠's PICK")
                 .navigationBarHidden(show ? true : false)
                 .toolbar { // 딱히 필요없는 것 같지만 일단은 가지고 가겠음
                     //                NavigationBar()

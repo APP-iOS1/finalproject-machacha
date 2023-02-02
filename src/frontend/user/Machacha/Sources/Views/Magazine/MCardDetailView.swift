@@ -140,34 +140,36 @@ struct MCardDetailView: View {
 
     var overlayContent: some View {
         VStack(alignment: .leading, spacing: 12) {
+            
             Text(magazine.title) // SwiftUI for iOS 15
-                .font(.largeTitle.weight(.bold))
+                .font(.machachaLargeTitleBold)
                 .matchedGeometryEffect(id: "title\(magazine.id)", in: namespace)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             Text(magazine.subtitle.uppercased()) //20 sections - 3 hours
-                .font(.footnote.weight(.semibold))
+                .font(.machachaHeadlineBold)
+//                .font(.footnote.weight(.semibold))
                 .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
             
-//            Text(magazine.text) //Build an iOS app for iOS 15 with custom
+//            Text("magazine.text") //Build an iOS app for iOS 15 with custom
 //                .font(.footnote)
 //                .matchedGeometryEffect(id: "text\(magazine.id)", in: namespace)
 
             Divider()
                 .opacity(appear[0] ? 1 : 0)
+                .padding(.bottom, 3)
             
-            HStack {
-                //나는 이 이미지 부분은 필요없을 듯
-//                Image("Avatar Default")
-//                    .resizable()
-//                    .frame(width: 26, height: 26)
-//                    .cornerRadius(10)
-//                    .padding(8)
-//                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-//                    .strokeStyle(cornerRadius: 18)
-                // 에디터의 한마디를 여기에 넣어주면 될 듯
-                Text("Taught by Meng To")
-                    .font(.footnote)
+            VStack (alignment: .leading) {
+                /*
+                 Magazine(id: "CvcZaUQTF7StFGa7omZL", title: "한입 간식 : 호떡", subtitle: "명동 & 을지로 호떡 대표 맛집 TOP 3", editorPickTitle: "꿀호떡냠냠's PICK", editorCommemt: "저만의 호떡 맛집들을 공유해보려고 합니다.", image: "Illustration 1", background: "Background 1", foodCartId: ["InzqNwgl15TytWNOdIZz"], createdAt: Date(), updatedAt: Date()),
+                 show:  .constant(true)
+                 */
+                Text(magazine.editorPickTitle)
+                    .font(.machachaSubheadBold)
+                    .padding(.bottom, 2)
+                
+                Text("\"\(magazine.editorCommemt)\"")
+                    .font(.machachaSubhead)
             }
             .opacity(appear[1] ? 1 : 0)
         }

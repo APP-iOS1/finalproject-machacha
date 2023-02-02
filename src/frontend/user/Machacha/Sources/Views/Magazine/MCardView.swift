@@ -18,17 +18,19 @@ struct MCardView: View {
         VStack {
             Spacer()
             VStack(alignment: .leading, spacing: 12) {
+                
                 Text(magazine.title) // SwiftUI for iOS 15
-                    .font(.largeTitle.weight(.bold))
+                    .font(.machachaLargeTitleBold)
                     
                     // matchedGeometryEffect ?
                     // 같은 id를 가진 모든 View를 하나의 그룹으로 인식하여, 각기 다른 View라도 이 View들의 위치를 기반으로 애니메이션 궤적의 시작점과 끝점을 계산할 수 있도록 함
                     .matchedGeometryEffect(id: "title\(magazine.id)", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(magazine.subtitle.uppercased()) //20 sections - 3 hours
-                    .font(.footnote.weight(.semibold))
+                Text(magazine.subtitle) //20 sections - 3 hours
+                    .font(.machachaTitle3Bold)
                     .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
+                    .padding(.bottom, 10)
                 
 //                Text(magazine.text) // Build an iOS app for iOS 15 with custom layouts,
 //                    .font(.footnote)
