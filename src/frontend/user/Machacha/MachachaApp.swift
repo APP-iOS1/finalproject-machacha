@@ -62,7 +62,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct MachachaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
-
+    @State var splashIsActive = false
     init() {
         // Naver SDK Initializing
         
@@ -87,40 +87,51 @@ struct MachachaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthView()
-                .environmentObject(FoodCartViewModel())
-                .environmentObject(ReviewViewModel())
-                .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
-                .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
-            
-                .onOpenURL { url in
-                    //네이버
-                    if NaverThirdPartyLoginConnection
-                        .getSharedInstance()
-                        //임의로 아무거나 넣어봄
-                        .isNaverAppOauthEnable
-                    //.isInAppOauthEnable
-                    //.isNaverThirdPartyLoginAppschemeURL(url)
-                    {
-                        // Token 발급 요청
-                        NaverThirdPartyLoginConnection
+            if splashIsActive {
+                AuthView()
+                    .environmentObject(FoodCartViewModel())
+                    .environmentObject(ReviewViewModel())
+                    .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
+                    .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
+                
+                    .onOpenURL { url in
+                        //네이버
+                        if NaverThirdPartyLoginConnection
                             .getSharedInstance()
-                            .receiveAccessToken(url)
-                    }
+                            //임의로 아무거나 넣어봄
+                            .isNaverAppOauthEnable
+                        //.isInAppOauthEnable
+                        //.isNaverThirdPartyLoginAppschemeURL(url)
+                        {
+                            // Token 발급 요청
+                            NaverThirdPartyLoginConnection
+                                .getSharedInstance()
+                                .receiveAccessToken(url)
+                        }
 
-                    //카카오
-                    if (AuthApi.isKakaoTalkLoginUrl(url)){
-                        _ = AuthController.handleOpenUrl(url: url)
+                        //카카오
+                        if (AuthApi.isKakaoTalkLoginUrl(url)){
+                            _ = AuthController.handleOpenUrl(url: url)
+                        }
+                        
+                        // 구글
+                        GIDSignIn.sharedInstance.handle(url)
                     }
-                    
-                    // 구글
-                    GIDSignIn.sharedInstance.handle(url)
-                }
-                .onAppear {
-                    GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-                        // Check if `user` exists; otherwise, do something with `error`
+                    .onAppear {
+                        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+                            // Check if `user` exists; otherwise, do something with `error`
+                        }
                     }
-                }
+            } else {
+                SplashView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.splashIsActive = true
+                        }
+                    }
+            }
+            
+
         }
     }
 }
