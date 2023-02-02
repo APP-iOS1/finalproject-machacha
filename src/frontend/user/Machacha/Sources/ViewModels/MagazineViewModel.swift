@@ -34,17 +34,18 @@ class MagazineViewModel: ObservableObject {
                         
                         let docData = document.data()
                         
-                        let thumbTitle: String = docData["thumbTitle"] as? String ?? ""
-                        let thumbnail: String = docData["thumbnail"] as? String ?? ""
+                        let title: String = docData["title"] as? String ?? ""
+                        let subtitle: String = docData["subtitle"] as? String ?? ""
                         let editorPickTitle: String = docData["editorPickTitle"] as? String ?? ""
-                        let subTitle: String = docData["subTitle"] as? String ?? ""
-                        let comment: String = docData["comment"] as? String ?? ""
+                        let editorCommemt: String = docData["editorCommemt"] as? String ?? ""
+                        let image: String = docData["image"] as? String ?? ""
+                        let background: String = docData["background"] as? String ?? ""
                         let foodCartId: [String] = docData["foodCartId"] as? [String] ?? []
-                        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
                         let createdAt: Timestamp = docData["createdAt"] as! Timestamp
-                        let show: Bool = docData["show"] as? Bool ?? false
+                        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
 
-                        let magazine: Magazine = Magazine(id: id, thumbTitle: thumbTitle, thumbnail: thumbnail, editorPickTitle: editorPickTitle, subTitle: subTitle, comment: comment, foodCartId: foodCartId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue(), show: show)
+                        
+                        let magazine: Magazine = Magazine(id: id, title: title, subtitle: subtitle, editorPickTitle: editorPickTitle, editorCommemt: editorCommemt, image: image, background: background, foodCartId: foodCartId, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue())
                         
                         self.magazines.append(magazine)
                     }
