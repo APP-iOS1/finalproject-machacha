@@ -19,7 +19,7 @@ struct MagazineView: View {
                         Test(magazineVM: magazineVM, magazine: magazine)
 
                     } label: {
-                        Text("\(magazine.thumbTitle)")
+//                        Text("\(magazine.thumbTitle)")
                     }
 
 
