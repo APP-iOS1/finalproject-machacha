@@ -15,13 +15,14 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
     var spacing: CGFloat
     var trailingSpace: CGFloat
     @Binding var index: Int
-    
-    init(spacing: CGFloat = 30, trailingSpace: CGFloat = 100, index: Binding<Int> , items: [T], @ViewBuilder content: @escaping (T)->Content) {
+    @Binding var coord: (Double, Double)
+    init(spacing: CGFloat = 30, trailingSpace: CGFloat = 100, index: Binding<Int>, items: [T], coord: Binding<(Double, Double)>, @ViewBuilder content: @escaping (T)->Content) {
         self.list = items
         self.spacing = spacing
         self.trailingSpace = trailingSpace
         self._index = index
         self.content = content
+        self._coord = coord
     }
     
     @GestureState var offset: CGFloat = 0
@@ -44,7 +45,8 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
             }
             // Spacing will be horizontal padding
             .padding(.horizontal, spacing)
-            .offset(x: (CGFloat(currentIndex) * -width) + (currentIndex != 0 ? adjustMentWidth : 0) + offset)
+            .offset(x: (CGFloat(index) * -width) + (index != 0 ? adjustMentWidth : 0) + offset)
+            .animation(.easeInOut)
             .gesture(
                 DragGesture()
                     .updating($offset, body: { value, out, _ in
@@ -60,6 +62,12 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
                         // 최대크기 만큼 페이징을 위해 계산
                         currentIndex = max(min(currentIndex + Int(roundIndex), list.count - 1), 0)
                         currentIndex = index
+                        
+                        if let points = list as? [FoodCart] {
+                            coord = (points[index].geoPoint.latitude, points[index].geoPoint.longitude)
+                        }
+                        
+                        print("carousel index : \(index)")
                     })
                     .onChanged( { value in
                         // updating only index
