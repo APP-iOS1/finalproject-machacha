@@ -37,9 +37,10 @@ struct MCardDetailView: View {
             .coordinateSpace(name: "scroll")
             .onAppear { model.showDetail = true } //해당 뷰가 보이도록
             .onDisappear { model.showDetail = false }
-            .background(Color("Background"))
+//            .background(Color("Background"))
+            .background(Color.white)
             .mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
-            .shadow(color: .black.opacity(0.3), radius: 30, x: 0, y: 10)
+            .shadow(color: .black.opacity(0.17), radius: 7, x: 0, y: 10)
             .scaleEffect(viewState.width / -500 + 1)
             .background(.black.opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
@@ -147,10 +148,11 @@ struct MCardDetailView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             Text(magazine.subtitle) //20 sections - 3 hours
-                .font(.machachaHeadlineBold)
-                .opacity(appear[1] ? 1 : 0)
+//                .font(.machachaHeadlineBold)
+                .font(.machachaTitle3Bold)
+//                .opacity(appear[1] ? 1 : 0)
 //                .font(.footnote.weight(.semibold))
-//                .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
+                .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
             
 //            Text("magazine.text") //Build an iOS app for iOS 15 with custom
 //                .font(.footnote)
@@ -177,7 +179,7 @@ struct MCardDetailView: View {
         .padding(20)
         .background(
             Rectangle()
-                .fill(.ultraThinMaterial)
+                .fill(.thinMaterial)
                 .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .matchedGeometryEffect(id: "blur", in: namespace)
         )
@@ -185,6 +187,7 @@ struct MCardDetailView: View {
         .padding(20)
     }
 
+    
     var drag: some Gesture {
         DragGesture(minimumDistance: 30, coordinateSpace: .local)
             .onChanged { value in
