@@ -18,7 +18,7 @@ struct ProfileView: View {
 	let profileInfo: [FoodCartOfUserType] = [.favorite, .visited, .review, .register]
 	let settings: [SettingType] = [.faceID, .alert, .darkMode, .language]
 	let webInfo: [WebInfoType] = [.privacy, .openSource, .license]
-	
+
 	var body: some View {
 		NavigationView {
 			ScrollView {
@@ -40,6 +40,9 @@ struct ProfileView: View {
 					image = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
+			.toolbar {
+				
+			}
 		} // NavigationView
 	}
 }
@@ -128,7 +131,7 @@ extension ProfileView {
 		}
 	}
 	
-	// User Profile View
+	// User FoodCart View
 	@ViewBuilder
 	private func UserFoodCart(_ user: User) -> some View {
 		HStack(spacing: 0) {
@@ -148,7 +151,7 @@ extension ProfileView {
 										.resizable()
 										.scaledToFit()
 										.frame(width: 10)
-										.offset(x: -8, y: 8)
+										.offset(x: -9, y: 8)
 										.foregroundColor(info.color)
 								}
 							Text(info.display)
@@ -202,29 +205,54 @@ extension ProfileView {
 		Section {
 			VStack(alignment: .leading, spacing: 15) {
 				ForEach(settings, id: \.self) { setting in
-					if setting.isToggle {
-						Toggle(setting.display, isOn: setting == .faceID ? $profileVM.isFaceID : setting == .alert ? $profileVM.isAlert : $profileVM.isDarkMode) // 다중 삼항 연산자
-					} else {
-						NavigationLink {
-							switch setting {
-							case .language:
-								EmptyView()
-							default:
-								EmptyView()
-							}
-						} label: {
-							Text(setting.display)
-								.font(.machachaCallout)
-								.foregroundColor(Color("textColor"))
-								.fixedSize(horizontal: false, vertical: true)
-								.frame(maxWidth: .infinity, alignment: .leading)
+					switch setting {
+					case .faceID:
+						HStack {
+							Image(systemName: setting.image)
+							Toggle(setting.display, isOn: $profileVM.isFaceID)
 						}
-					} // else
+					case .alert:
+						HStack {
+							ZStack {
+								RoundedRectangle(cornerRadius: 5)
+									.trim(to: profileVM.isAlert ? 0 : 1)
+									.frame(width: 1, height: 20)
+									.rotationEffect(.degrees(-45))
+									.animation(.easeInOut, value: profileVM.isAlert)
+								
+								Image(systemName: setting.image)
+							}
+							
+							Toggle(setting.display, isOn: $profileVM.isAlert)
+						}
+					case .darkMode:
+						HStack {
+							Image(systemName: setting.image)
+								.rotationEffect(.degrees(profileVM.isDarkMode ? 90 : 0))
+								.animation(.easeOut(duration: 1), value: profileVM.isDarkMode) // 활성화 에니메이션
+							Toggle(setting.display, isOn: $profileVM.isDarkMode)
+						}
+					case .language:
+						NavigationLink {
+							EmptyView()
+						} label: {
+							HStack {
+								Image(systemName: setting.image)
+								
+								Text(setting.display)
+									.font(.machachaCallout)
+								Spacer()
+								Image(systemName: "chevron.right")
+									.foregroundColor(.gray)
+							}
+						}
+					} // switch
 				} // ForEach
+				.foregroundColor(Color("textColor"))
 			} // VStack
 			.padding()
 			.background(Color("cellColor"))
-			.cornerRadius(20)
+			.cornerRadius(16)
 		} header: {
 			SectionHeaderView(name: "설정")
 		} // Section
@@ -263,12 +291,14 @@ extension ProfileView {
 							.foregroundColor(Color("textColor"))
 							.fixedSize(horizontal: false, vertical: true)
 							.frame(maxWidth: .infinity, alignment: .leading)
+						Image(systemName: "link")
+							.foregroundColor(.gray)
 					} // Button
 				} // ForEach
 			} // VStack
 			.padding()
 			.background(Color("cellColor"))
-			.cornerRadius(20)
+			.cornerRadius(16)
 		} header: {
 			SectionHeaderView(name: "Machacha 정보")
 		} // Section
@@ -294,7 +324,7 @@ struct SectionHeaderView: View {
 	var body: some View {
 		HStack {
 			Text(name)
-				.font(.machachaHeadline)
+				.font(.machachaSubhead)
 				.foregroundColor(.secondary)
 			Spacer()
 		} // HStack
