@@ -88,6 +88,7 @@
 		FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
 		FA0B449F2988EBA4005DB8AF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449E2988EBA4005DB8AF /* SignUpView.swift */; };
 		FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B44A02988F489005DB8AF /* AuthView.swift */; };
+		FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */; };
 		FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */; };
 		FAFDD47C29779202008E28AD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47B29779202008E28AD /* Alamofire */; };
 		FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47E2977B02D008E28AD /* KakaoSDK */; };
@@ -202,6 +203,7 @@
 		FA0B449C2987A504005DB8AF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		FA0B449E2988EBA4005DB8AF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FA0B44A02988F489005DB8AF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNaverMap.swift; sourceTree = "<group>"; };
 		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD49C2977E8EC008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				6AA14FA72988DB2C0042E025 /* RegisterView.swift */,
+				FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */,
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
+				FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				1ABCA9362987AB8E00DD97C5 /* IconTabView.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
