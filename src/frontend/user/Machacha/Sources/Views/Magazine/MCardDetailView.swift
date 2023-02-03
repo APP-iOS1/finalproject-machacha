@@ -48,7 +48,11 @@ struct MCardDetailView: View {
             .gesture(isDraggable ? drag : nil)
             .ignoresSafeArea()
 
-            button // 저기 위에 x 버튼
+            button // 저기 위에 'x 버튼'
+            
+            mapButton // '지도로 보기' 버튼
+                .offset(x: 10 ,y: 300)
+            
         }
         .onAppear {
             fadeIn()
@@ -132,6 +136,27 @@ struct MCardDetailView: View {
         .padding(30)
         .ignoresSafeArea()
     }
+    
+    
+    var mapButton: some View {
+        Button {
+            
+        } label: {
+            Text("지도로 보기")
+                .font(.machachaTitle3Bold)
+                .foregroundColor(.white)
+                .padding()
+                .background(
+                  Capsule()
+                    .fill(Color("Color3"))
+                  )
+        }
+        .frame(maxWidth: .infinity,alignment: .bottomTrailing)
+        .padding(30)
+        .ignoresSafeArea()
+
+    }
+    
     
     //MARK: - [한입 간식: 호떡 ~ 에디터 한줄]까지의 뷰
     var overlayContent: some View {
