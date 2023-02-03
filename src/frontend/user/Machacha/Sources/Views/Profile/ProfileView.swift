@@ -12,7 +12,6 @@ struct ProfileView: View {
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@StateObject var faceIDVM = FaceIDViewModel()
 	@State private var showSafari: Int?
-	@State var image: UIImage?
 	
 	//MARK: Property
 	let profileInfo: [FoodCartOfUserType] = [.favorite, .visited, .review, .register]
@@ -27,17 +26,16 @@ struct ProfileView: View {
 				SettingSection() // Setting Section
 				
 				WebViewSection() // WebView Section
-				
-				UserLogoutStatus() // User Logout Status
 			}
 			.background(Color("bgColor"))
 			.onAppear {
 				UserDefaults.standard.set("egmqxtTT1Zani0UkJpUW", forKey: "userIdToken") // 임시: 로그인시
 				Task {
 					profileVM.currentUser = try await profileVM.fetchUser()
+					profileVM.name = profileVM.currentUser?.name ?? ""
 					profileVM.reviewUser = try await profileVM.fetchReivews()
 					profileVM.foodCartUser = try await profileVM.fetchFoodCartByRegister()
-					image = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
+					profileVM.profileImage = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
 			.navigationBarTitle("프로필", displayMode: .inline)
@@ -92,7 +90,7 @@ extension ProfileView {
 	@ViewBuilder
 	private func UserProfile(_ user: User) -> some View {
 		NavigationLink {
-			EmptyView()
+			ProfileEditView()
 		} label: {
 			HStack {
 				VStack(alignment: .leading, spacing: 8) {
@@ -100,7 +98,7 @@ extension ProfileView {
 						.font(.machachaHeadline)
 					HStack(spacing: 16) {
 						VStack {
-							if let image = image {
+							if let image = profileVM.profileImage {
 								Image(uiImage: image)
 									.resizable()
 									.cornerRadius(8)
@@ -182,30 +180,6 @@ extension ProfileView {
 		.fixedSize(horizontal: true, vertical: false)
 		.frame(maxWidth: .infinity, alignment: .center)
 		.background(Color("cellColor"))
-	}
-	
-	// User Logout Status
-	@ViewBuilder
-	private func UserLogoutStatus() -> some View {
-		if profileVM.currentUser != nil {
-			VStack {
-				Button(role: .destructive) {
-					Task {
-						try await profileVM.logout()
-						profileVM.showLogin = true
-					}
-					profileVM.currentUser = nil // 임시: 로그아웃 했다고 임시로 가정
-				} label: {
-					Text("로그아웃")
-						.fixedSize(horizontal: false, vertical: true)
-						.frame(maxWidth: .infinity, alignment: .center)
-				} // Button
-				.padding()
-				.background(Color("cellColor"))
-				.cornerRadius(20)
-			} // VStack
-			.padding()
-		}
 	}
 }
 

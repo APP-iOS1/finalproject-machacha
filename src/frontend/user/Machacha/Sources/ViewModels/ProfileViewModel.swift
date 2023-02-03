@@ -15,6 +15,12 @@ class ProfileViewModel: ObservableObject {
 	@Published var currentUser: User?
 	@Published var foodCartUser: [FoodCart] = []
 	@Published var reviewUser: [Review] = []
+	@Published var profileImage: UIImage?
+	@Published var name = "" {
+		willSet {
+			currentUser?.name = newValue
+		}
+	}
 	@Published var isLoading = false
 	@Published var showLogin = false			// 로그인 관리
 	@Published var isFaceID: Bool = UserInfo.isFaceID {		// FaceID

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ProfileFoodCartListView: View {
 	//MARK: Property wrapper
-	@EnvironmentObject var profileVM: ProfileViewModel
 	@Environment(\.presentationMode) var presentation
+	@EnvironmentObject var profileVM: ProfileViewModel
 	
 	//MARK: Property
 	let foodCartOfUserType: FoodCartOfUserType
