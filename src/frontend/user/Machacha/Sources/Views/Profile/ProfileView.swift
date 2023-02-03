@@ -105,7 +105,7 @@ extension ProfileView {
 									.resizable()
 									.cornerRadius(8)
 									.overlay(RoundedRectangle(cornerRadius: 8)
-											.stroke(Color.secondary, lineWidth: 0.2))
+											.stroke(Color("bgColor"), lineWidth: 2))
 							} else {
 								RoundedRectangle(cornerRadius: 8) // 임시
 									.foregroundColor(Color("bgColor"))
