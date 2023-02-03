@@ -40,9 +40,17 @@ struct ProfileView: View {
 					image = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
-			.toolbar {
-				
-			}
+			.toolbar(content: {
+				ToolbarItem(placement: .navigationBarTrailing) {
+					NavigationLink {
+						EmptyView()
+					} label: {
+						Image(systemName: "bell.badge")
+							.symbolRenderingMode(.multicolor)
+							.foregroundStyle(.orange)
+					}
+				} // ToolbarItem
+			})
 		} // NavigationView
 	}
 }
