@@ -121,7 +121,8 @@ extension ProfileView {
 									.font(.machachaHeadline)
 							} // HStack
 							.overlay {
-								Color("Color3").opacity(0.2)
+								RoundedRectangle(cornerRadius: 2)
+									.foregroundColor(profileVM.isDarkMode ? Color("Color2").opacity(0.3) : Color("Color3").opacity(0.2))
 									.frame(height: 10)
 									.offset(y: 5)
 							}
