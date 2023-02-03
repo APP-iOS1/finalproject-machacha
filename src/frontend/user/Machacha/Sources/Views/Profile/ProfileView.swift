@@ -40,6 +40,7 @@ struct ProfileView: View {
 					image = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
+			.navigationBarTitle("프로필", displayMode: .inline)
 			.toolbar(content: {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					NavigationLink {
