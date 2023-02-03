@@ -11,7 +11,9 @@ struct ProfileEditView: View {
 	//MARK: Property wrapper
 	@Environment(\.presentationMode) var presentation
 	@EnvironmentObject var profileVM: ProfileViewModel
-	@State var offset : CGFloat = 0
+	@State private var offset: CGFloat = 0
+	@State private var imagePickerVisible: Bool = false
+	@State private var profileImage: UIImage?
 	
 	//MARK: Property
 	let maxHeight = Screen.maxHeight * 0.35
@@ -22,6 +24,12 @@ struct ProfileEditView: View {
 			ProfileContentView(topEdge: topEdge)
 				.edgesIgnoringSafeArea(.top)
 				.navigationBarBackButtonHidden()
+				.onAppear {
+					profileImage = profileVM.profileImage
+				}
+		}
+		.sheet(isPresented: $imagePickerVisible) {
+			MyUIImagePicker(imagePickerVisible: $imagePickerVisible, selectedImage: $profileImage)
 		}
 	}
 	
@@ -76,7 +84,7 @@ struct ProfileEditView: View {
 			
 			HStack(spacing: 16) {
 				VStack {
-					if let image = profileVM.profileImage {
+					if let image = profileImage {
 						Image(uiImage: image)
 							.resizable()
 							.cornerRadius(50)
@@ -154,7 +162,7 @@ extension ProfileEditView {
 	private func UserProfile() -> some View {
 		VStack(spacing: 15) {
 			VStack {
-				if let image = profileVM.profileImage {
+				if let image = profileImage {
 					Image(uiImage: image)
 						.resizable()
 						.cornerRadius(50)
@@ -165,10 +173,10 @@ extension ProfileEditView {
 			} // VStack
 			.frame(width: 100, height: 100)
 			.overlay(RoundedRectangle(cornerRadius: 50)
-					.stroke(Color("bgColor"), lineWidth: 5))
+					.stroke(Color("cellColor"), lineWidth: 5))
 			.overlay {
 				Button {
-					
+					imagePickerVisible.toggle()
 				} label: {
 					Circle()
 						.scaleEffect(0.3)
