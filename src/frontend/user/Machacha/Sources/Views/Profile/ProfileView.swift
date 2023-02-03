@@ -99,7 +99,7 @@ extension ProfileView {
 						} // VStack
 						.frame(width: 40, height: 40)
 
-						VStack {
+						VStack(alignment: .leading) {
 							HStack {
 								Text(user.name)
 									.font(.machachaTitleBold)
@@ -111,7 +111,7 @@ extension ProfileView {
 									.frame(height: 10)
 									.offset(y: 5)
 							}
-							Text(user.email)
+							Text(user.email.maskEmail())
 								.font(.machachaFootnote)
 								.foregroundColor(.secondary)
 						} // VStack
