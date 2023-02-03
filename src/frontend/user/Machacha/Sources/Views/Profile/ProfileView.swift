@@ -294,15 +294,21 @@ extension ProfileView {
 					Button {
 						self.showSafari = i // 선택된 Web Safari 정보
 					} label: {
+						Image(systemName: web.image)
+							.overlay {
+								Image(systemName: web.badge)
+									.scaleEffect(0.5)
+							}
+						
 						Text("\(web.display)")
 							.font(.machachaCallout)
-							.foregroundColor(Color("textColor"))
 							.fixedSize(horizontal: false, vertical: true)
 							.frame(maxWidth: .infinity, alignment: .leading)
 						Image(systemName: "link")
 							.foregroundColor(.gray)
 					} // Button
 				} // ForEach
+				.foregroundColor(Color("textColor"))
 			} // VStack
 			.padding()
 			.background(Color("cellColor"))

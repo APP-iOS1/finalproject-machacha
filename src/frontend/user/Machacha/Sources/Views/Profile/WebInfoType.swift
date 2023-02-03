@@ -36,4 +36,26 @@ enum WebInfoType: Hashable {
 			return "https://glacier-bucket-5c2.notion.site/2a9494a4a8b94980a8d9691878da2ded"
 		}
 	}
+	
+	// System Image
+	var image: String {
+		switch self {
+		case .privacy:
+			return "lock.shield"
+		case .openSource:
+			return "square.stack.3d.up"
+		case .license:
+			return "seal"
+		}
+	}
+	
+	// Image badge
+	var badge: String {
+		switch self {
+		case .license:
+			return "checkmark"
+		default:
+			return ""
+		}
+	}
 }
