@@ -11,6 +11,8 @@ struct MapHeaderTagCell: View {
     let image: String
     var tag: String {
         switch image {
+        case "mainIcon":
+            return "전체"
         case "bbungbread2":
             return "붕어빵"
         case "fishcake2":
@@ -51,6 +53,6 @@ struct MapHeaderTagCell: View {
 
 struct MapHeaderTagCell_Previews: PreviewProvider {
     static var previews: some View {
-        MapHeaderCell()
+        MapHeaderTagCell(image: "mainIcon")
     }
 }

@@ -26,7 +26,7 @@ struct MapHeader: View {
                 Button {
                     print("Voice Search Button Tapped")
                 } label: {
-                    Image(systemName: "wave.3.backward.circle")
+                    Image(systemName: "mic")
                         .foregroundColor(.black)
                 }
             }
@@ -38,6 +38,18 @@ struct MapHeader: View {
             .padding([.leading, .trailing, .top], 10)
             MapHeaderCell()
                 .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+        }
+    }
+    
+    @ViewBuilder
+    private func MapHeaderCell() -> some View {
+        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "store2"]
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(cellList, id: \.self) { item in
+                    MapHeaderTagCell(image: item)
+                }
+            }
         }
     }
 }
