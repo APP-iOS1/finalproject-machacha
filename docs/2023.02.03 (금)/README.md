@@ -107,7 +107,7 @@
 </div>
 </details>
 
-## 🏃🏻 3주차 목표 달성 현황
+## 🏃🏻 3주차 목표
 <details>
 <summary>건형</summary>
 <div markdown="1">
