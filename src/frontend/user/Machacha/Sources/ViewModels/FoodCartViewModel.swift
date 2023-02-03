@@ -89,7 +89,7 @@ class FoodCartViewModel: ObservableObject {
                 let reportCnt: Int = data["reportCnt"] as? Int ?? 0
                 let menu: [String: Int] = data["menu"] as? [String: Int] ?? [:]
                 let bestMenu: Int = data["bestMenu"] as? Int ?? 0
-                let paymentOpt: [Bool] = data["paymentOpt"] as? [Bool] ?? []
+                let paymentOpt: [Bool] = data["isPaymentOpt"] as? [Bool] ?? []
                 let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
                 let reviewId: [String] = data["reviewId"] as? [String] ?? []
                 let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
@@ -103,7 +103,9 @@ class FoodCartViewModel: ObservableObject {
 
                 let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId)
 
-                self.foodCarts.append(foodCart)
+                DispatchQueue.main.async {
+                    self.foodCarts.append(foodCart)
+                }
             }
         } catch {
             print("fetchFoodCarts error: \(error.localizedDescription)")
