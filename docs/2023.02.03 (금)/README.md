@@ -3,8 +3,6 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/48436020/216527554-c581c4c6-51da-4da6-af1a-ad1732b0da6c.jpg" width=30%></p>
 
 ## 오늘의 기록 (23.02.03 금)
-### ☺️ 공유할  것
-
 ### 🥘 오늘의 기분
 - 건형: 바로 자서 좋다, 샤워해서 상쾌함~~
 - 수현: 어제 칼퇴해서 아주 좋다!!
