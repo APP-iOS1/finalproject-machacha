@@ -49,7 +49,7 @@ struct ProfileEditView: View {
 		ScrollView(.vertical , showsIndicators: false) {
 			VStack(spacing: 16) {
 				GeometryReader{ proxy in
-					UserProfile()
+					UserProfile(topEdge: topEdge)
 						.foregroundColor(.white)
 						.frame(maxWidth: .infinity)
 						.frame(height: getHeaderHeight(topEdge: topEdge) , alignment: .bottom)
@@ -107,12 +107,12 @@ struct ProfileEditView: View {
 				.frame(width: 35, height: 35)
 				.overlay(RoundedRectangle(cornerRadius: 50)
 						.stroke(Color("bgColor"), lineWidth: 2))
-				.opacity(topBartitleOpacity(topEdge: topEdge))
+				.opacity(topBarTitleOpacity(topEdge: topEdge))
 				
 				Text(profileVM.currentUser?.email ?? "")
 					.font(.machachaSubheadBold)
 					.foregroundColor(Color("cellColor"))
-					.opacity(topBartitleOpacity(topEdge: topEdge))
+					.opacity(topBarTitleOpacity(topEdge: topEdge))
 			} // HStack
 
 			Spacer()
@@ -125,7 +125,7 @@ struct ProfileEditView: View {
 						profileVM.isLoading = false
 						
 						if result { // 성공일 경우
-							self.profileVM.profileImage = profileImage
+							self.profileVM.profileImage = profileImage // UI Update
 							self.presentation.wrappedValue.dismiss()
 						}
 					}
@@ -171,17 +171,16 @@ struct ProfileEditView: View {
 		return topHeight > (60 + topEdge) ? topHeight : (60 + topEdge )
 	}
 
-	func topBartitleOpacity(topEdge: CGFloat) -> CGFloat {
+	func topBarTitleOpacity(topEdge: CGFloat) -> CGFloat {
 		let progress = -(offset + 20) / (maxHeight - (60 + topEdge))
 		return progress
-
 	}
 }
 
 //MARK: - User Profile View
 extension ProfileEditView {
 	@ViewBuilder
-	private func UserProfile() -> some View {
+	private func UserProfile(topEdge: CGFloat) -> some View {
 		VStack(spacing: 15) {
 			VStack {
 				if let image = profileImage {
@@ -215,6 +214,7 @@ extension ProfileEditView {
 				.font(.machachaSubhead)
 				.foregroundColor(Color("cellColor"))
 		} // VStack
+		.scaleEffect(getSize(topEdge: topEdge))
 		.padding()
 		.padding(.bottom)
 		.opacity(getOpacity())
@@ -226,6 +226,13 @@ extension ProfileEditView {
 		let opacity = 1 - progress
 
 		return offset < 0 ? opacity : 1
+	}
+	
+	// Size 계산
+	func getSize(topEdge: CGFloat) -> CGSize {
+		let progress = offset / (getHeaderHeight(topEdge: topEdge))
+
+		return CGSize(width: progress + 1, height: progress + 1)
 	}
 }
 
