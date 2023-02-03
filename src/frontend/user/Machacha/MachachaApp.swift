@@ -92,7 +92,6 @@ struct MachachaApp: App {
                 .environmentObject(ReviewViewModel())
                 .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
                 .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
-            
                 .onOpenURL { url in
                     //네이버
                     if NaverThirdPartyLoginConnection

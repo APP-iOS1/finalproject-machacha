@@ -40,6 +40,7 @@
 		80D9E76A298B8E4000C65CBF /* MCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E769298B8E4000C65CBF /* MCardDetailView.swift */; };
 		80D9E76C298BDBD800C65CBF /* MStoreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E76B298BDBD800C65CBF /* MStoreCellView.swift */; };
 		80D9E76E298CD8D000C65CBF /* MCardMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E76D298CD8D000C65CBF /* MCardMapView.swift */; };
+		80D9E770298D40C900C65CBF /* TopTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E76F298D40C900C65CBF /* TopTest.swift */; };
 		C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC1F298101B200819D98 /* ProfileViewModel.swift */; };
 		C414BC222981039C00819D98 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC212981039C00819D98 /* SafariView.swift */; };
 		C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC23298106FC00819D98 /* WebInfoType.swift */; };
@@ -162,6 +163,7 @@
 		80D9E769298B8E4000C65CBF /* MCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCardDetailView.swift; sourceTree = "<group>"; };
 		80D9E76B298BDBD800C65CBF /* MStoreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MStoreCellView.swift; sourceTree = "<group>"; };
 		80D9E76D298CD8D000C65CBF /* MCardMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCardMapView.swift; sourceTree = "<group>"; };
+		80D9E76F298D40C900C65CBF /* TopTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTest.swift; sourceTree = "<group>"; };
 		C414BC1F298101B200819D98 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C414BC212981039C00819D98 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C414BC23298106FC00819D98 /* WebInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebInfoType.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				80D9E769298B8E4000C65CBF /* MCardDetailView.swift */,
 				80D9E76B298BDBD800C65CBF /* MStoreCellView.swift */,
 				801853C6298A427200B33111 /* Test.swift */,
+				80D9E76F298D40C900C65CBF /* TopTest.swift */,
 				80D9E76D298CD8D000C65CBF /* MCardMapView.swift */,
 				80D9E765298B8A0C00C65CBF /* PreferenceKeys.swift */,
 			);
@@ -830,6 +833,7 @@
 				801853C5298A2EFA00B33111 /* MagazineViewModel.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
+				80D9E770298D40C900C65CBF /* TopTest.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
 				6A159FC229877C4C0002E625 /* MapHeaderCell.swift in Sources */,
 				1A30E15A2988D1910068C025 /* ReviewViewModel.swift in Sources */,

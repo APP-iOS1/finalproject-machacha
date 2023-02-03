@@ -25,7 +25,7 @@ struct ContentView: View {
 					case .register:
 						RegisterView()
 					case .magazine:
-						MagazineView()
+                        MagazineView()
 					case .profile:
 						ProfileView()
 					}

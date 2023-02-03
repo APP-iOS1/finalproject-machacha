@@ -14,6 +14,13 @@ struct MCardDetailView: View {
     
     @Binding var show: Bool
     @State var appear = [false, false, false] //이게 뭘까?
+    // 강사님 피드백
+    // 1. 카드가 열릴 때 :
+    // 2. 카드가 닫힐 때 : 안에 내용물들이 사라지고 카드가 닫혀야 한다.
+    
+    // appear[0] : Divider
+    // appear[1] : 에디터's PICK, 한 마디
+    // appear[2] : content 전체 (아래 리스트들)
     @StateObject var model: Model
     @StateObject var magazineVM: MagazineViewModel
     
@@ -28,11 +35,14 @@ struct MCardDetailView: View {
     var body: some View {
         ZStack {
             ScrollView {
+            
                 cover // 리스트와 버튼을 제외한 저기 상위 뷰
                 content // 얘가 아래 저 리스트들
                     .offset(y: 76)
                     .padding(.bottom, 200)
                     .opacity(appear[2] ? 1 : 0)
+                
+//                Text("\(magazine.foodCartId.count)")
             }
             // HomeView도 scroll이고 해당 뷰도 scroll이기 때문에 그거에 대한 처리같음
             .coordinateSpace(name: "scroll")
@@ -55,8 +65,18 @@ struct MCardDetailView: View {
             
         }
         .onAppear {
-            fadeIn()
-            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+//            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+//            print("\()")
+            Task {
+                fadeIn()
+                
+                magazineVM.magazineFoodCart = try await
+                magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+            }
+        }
+        .refreshable {
+//            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+
         }
         .onChange(of: show) { _ in
             fadeOut()
@@ -115,9 +135,10 @@ struct MCardDetailView: View {
     var content: some View {
         VStack {
             ForEach(magazineVM.magazineFoodCart) { foodcart in
+//                Text("\(foodcart.id)")
                 MStoreCellView(foodcart: foodcart, magazineVM: magazineVM)
                     .padding(.horizontal, 3)
-                
+
             }
         }
     }
@@ -227,7 +248,7 @@ struct MCardDetailView: View {
     }
 
     func fadeIn() {
-        var delay = 0.3
+        var delay = 0.2 //원래  0.3
         for i in 0 ..< appear.count {
             withAnimation(.easeOut.delay(delay)) {
                 appear[i] = true

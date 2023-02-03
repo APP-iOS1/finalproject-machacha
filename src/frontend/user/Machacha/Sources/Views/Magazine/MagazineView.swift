@@ -35,6 +35,7 @@ struct MagazineView: View {
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 20)
+                        .padding(.top, 20)
                     
                     // 내가 봐야할 곳
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 20) {
@@ -82,8 +83,13 @@ struct MagazineView: View {
                 }
         }//navigationview
         .onAppear {
-            magazineVM.fetchMagazines()
-            
+//            magazineVM.fetchMagazines()
+            Task {
+                magazineVM.magazines = try await magazineVM.fetchMagazines()
+            }
+        }
+        .refreshable {
+//            magazineVM.fetchMagazines()
         }
     }//body
     

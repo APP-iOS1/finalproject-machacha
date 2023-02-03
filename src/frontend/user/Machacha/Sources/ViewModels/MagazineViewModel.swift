@@ -21,84 +21,159 @@ class MagazineViewModel: ObservableObject {
     let database = Firestore.firestore()
     let storage = Storage.storage()
     
-    // 정렬 기준: 인덱스를 두던가, createdAt 기준으로 하던가
-    func fetchMagazines() {
-        database.collection("Magazine")
-            .getDocuments { (snapshot, error) in
-                self.magazines.removeAll()
-                //                self.imageDict.removeAll() // 얘도 비워야할 것 같음...
-                
-                if let snapshot {
-                    for document in snapshot.documents {
-                        let id: String = document.documentID
-                        
-                        let docData = document.data()
-                        
-                        let title: String = docData["title"] as? String ?? ""
-                        let subtitle: String = docData["subtitle"] as? String ?? ""
-                        let editorPickTitle: String = docData["editorPickTitle"] as? String ?? ""
-                        let editorCommemt: String = docData["editorCommemt"] as? String ?? ""
-                        let image: String = docData["image"] as? String ?? ""
-                        let background: String = docData["background"] as? String ?? ""
-                        let foodCartId: [String] = docData["foodCartId"] as? [String] ?? []
-                        let createdAt: Timestamp = docData["createdAt"] as! Timestamp
-                        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
-
-                        
-                        let magazine: Magazine = Magazine(id: id, title: title, subtitle: subtitle, editorPickTitle: editorPickTitle, editorCommemt: editorCommemt, image: image, background: background, foodCartId: foodCartId, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue())
-                        
-                        self.magazines.append(magazine)
-                    }
-                }
-            }
+    func fetchMagazines() async throws -> [Magazine] {
+        var magazines = [Magazine]()
+        
+        let magazineSnapshot = try await  database.collection("Magazine").getDocuments()
+        
+        for magazine in magazineSnapshot.documents {
+            let docData = magazine.data()
+            
+            let id: String = docData["id"] as? String ?? ""
+            let title: String = docData["title"] as? String ?? ""
+            let subtitle: String = docData["subtitle"] as? String ?? ""
+            let editorPickTitle: String = docData["editorPickTitle"] as? String ?? ""
+            let editorCommemt: String = docData["editorCommemt"] as? String ?? ""
+            let image: String = docData["image"] as? String ?? ""
+            let background: String = docData["background"] as? String ?? ""
+            let foodCartIds: [String] = docData["foodCartId"] as? [String] ?? []
+            let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+            let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+            
+            magazines.append(Magazine(id: id, title: title, subtitle: subtitle, editorPickTitle: editorPickTitle, editorCommemt: editorCommemt, image: image, background: background, foodCartId: foodCartIds, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue()))
+            
+        }
+        print("fetched Magazines: \(magazines)")
+        return magazines
     }
     
-    func fetchFoodCarts(foodCartIds: [String]) {
+    func fetchFoodCarts(foodCartIds: [String]) async throws -> [FoodCart] {
+        var foodcarts = [FoodCart]()
         
-        for footCardID in foodCartIds {
-            database.collection("FoodCart").document(footCardID).getDocument { [self] (snapshot, error) in
-                self.imageDict.removeAll()
-                self.magazineFoodCart.removeAll()
-                if let snapshot {
-                    
-                    let data = snapshot.data()!
-                    
-                    let id = data["id"] as? String ?? ""
-                    let name: String = data["name"] as? String ?? ""
-                    let region: String = data["region"] as? String ?? ""
-                    let address: String = data["address"] as? String ?? ""
-                    let geoPoint: GeoPoint = data["geoPoint"] as! GeoPoint
-                    let imageId: [String] = data["imageId"] as? [String] ?? []
-                    let grade: Double = data["grade"] as? Double ?? 0
-                    let visitedCnt: Int = data["visitedCnt"] as? Int ?? 0
-                    let favoriteCnt: Int = data["favoriteCnt"] as? Int ?? 0
-                    let reportCnt: Int = data["reportCnt"] as? Int ?? 0
-                    let menu: [String: Int] = data["menu"] as? [String: Int] ?? [:]
-                    let bestMenu: Int = data["bestMenu"] as? Int ?? 0
-                    let paymentOpt: [Bool] = data["paymentOpt"] as? [Bool] ?? []
-                    let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
-                    let reviewId: [String] = data["reviewId"] as? [String] ?? []
-                    let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
-                    let createdAt: Timestamp = data["createdAt"] as! Timestamp
-                    let registerId: String = data["registerId"] as? String ?? ""
-                    
-                    // fetch image set
-                    // imageId : ["test.jpg"]
-                    for imageName in imageId {
-                        self.fetchImage(foodCartId: id, imageName: imageName)
-                        // footCardId :  InzqNwgl15TytWNOdIZz
-                        // imageName : test.jpg
-                    }
-                    
-                    let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId)
-                    
-                    self.magazineFoodCart.append(foodCart)
-                    print("FoodCart: \(magazineFoodCart)")
-                }
+        for foodcartID in foodCartIds {
+            let foodcartSnapshot = try await database.collection("FoodCart").document(foodcartID).getDocument()
+            
+            let docData = foodcartSnapshot.data()!
+            
+            let id: String = docData["id"] as? String ?? ""
+            let region: String = docData["region"] as? String ?? ""
+            let name: String = docData["name"] as? String ?? ""
+            let address: String = docData["address"] as? String ?? ""
+            let visitedCnt: Int = docData["visitedCnt"] as? Int ?? 0
+            let favoriteCnt: Int = docData["favoriteCnt"] as? Int ?? 0
+            let paymentOpt: [Bool] = docData["paymentOpt"] as? [Bool] ?? []
+            let openingDays: [Bool] = docData["openingDays"] as? [Bool] ?? []
+            let menu: [String: Int] = docData["menu"] as? [String: Int] ?? [:]
+            let bestMenu: Int = docData["bestMenu"] as? Int ?? 0
+            let imageId: [String] = docData["imageId"] as? [String] ?? []
+            let grade: Double = docData["grade"] as? Double ?? 0.0
+            let reportCnt: Int = docData["reportCnt"] as? Int ?? 0
+            let reviewId: [String] = docData["reviewId"] as? [String] ?? []
+            let registerId: String = docData["registerId"] as? String ?? ""
+            let geoPoint: GeoPoint = docData["geoPoint"] as! GeoPoint
+            let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+            let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+            
+            // fetch image set
+            // imageId : ["test.jpg"]
+            for imageName in imageId {
+                self.fetchImage(foodCartId: id, imageName: imageName)
+                // footCardId :  InzqNwgl15TytWNOdIZz
+                // imageName : test.jpg
             }
+            
+            foodcarts.append(FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId))
+            
         }
-
+        
+        return foodcarts
     }
+    
+    // 정렬 기준: 인덱스를 두던가, createdAt 기준으로 하던가
+//    func fetchMagazines()  {
+//        database.collection("Magazine")
+//            .getDocuments { (snapshot, error) in
+//                self.magazines.removeAll()
+////                self.eachMagazineFoodCarts.removeAll()
+//                self.imageDict.removeAll() // 얘도 비워야할 것 같음...
+//
+//                if let snapshot {
+//                    for document in snapshot.documents {
+//                        let id: String = document.documentID
+//
+//                        let docData = document.data()
+//
+//                        let title: String = docData["title"] as? String ?? ""
+//                        let subtitle: String = docData["subtitle"] as? String ?? ""
+//                        let editorPickTitle: String = docData["editorPickTitle"] as? String ?? ""
+//                        let editorCommemt: String = docData["editorCommemt"] as? String ?? ""
+//                        let image: String = docData["image"] as? String ?? ""
+//                        let background: String = docData["background"] as? String ?? ""
+//                        let foodCartIds: [String] = docData["foodCartId"] as? [String] ?? []
+//                        let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+//                        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+//
+//
+//                        let magazine: Magazine = Magazine(id: id, title: title, subtitle: subtitle, editorPickTitle: editorPickTitle, editorCommemt: editorCommemt, image: image, background: background, foodCartId: foodCartIds, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue())
+//
+//                        self.magazines.append(magazine)
+//                        print("매거진 fetch")
+//
+//
+//
+//                    }
+//                }
+//            }
+//    }
+    
+//        func fetchFoodCarts(foodCartIds: [String]) {
+//
+//            for footCardID in foodCartIds {
+//                database.collection("FoodCart").document(footCardID).getDocument { [self] (snapshot, error) in
+//                    self.imageDict.removeAll()
+//                    self.magazineFoodCart.removeAll()
+//
+//                    if let snapshot {
+//
+//                        let data = snapshot.data()!
+//
+//                        let id = data["id"] as? String ?? ""
+//                        let name: String = data["name"] as? String ?? ""
+//                        let region: String = data["region"] as? String ?? ""
+//                        let address: String = data["address"] as? String ?? ""
+//                        let geoPoint: GeoPoint = data["geoPoint"] as! GeoPoint
+//                        let imageId: [String] = data["imageId"] as? [String] ?? []
+//                        let grade: Double = data["grade"] as? Double ?? 0
+//                        let visitedCnt: Int = data["visitedCnt"] as? Int ?? 0
+//                        let favoriteCnt: Int = data["favoriteCnt"] as? Int ?? 0
+//                        let reportCnt: Int = data["reportCnt"] as? Int ?? 0
+//                        let menu: [String: Int] = data["menu"] as? [String: Int] ?? [:]
+//                        let bestMenu: Int = data["bestMenu"] as? Int ?? 0
+//                        let paymentOpt: [Bool] = data["paymentOpt"] as? [Bool] ?? []
+//                        let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
+//                        let reviewId: [String] = data["reviewId"] as? [String] ?? []
+//                        let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
+//                        let createdAt: Timestamp = data["createdAt"] as! Timestamp
+//                        let registerId: String = data["registerId"] as? String ?? ""
+//
+//                        // fetch image set
+//                        // imageId : ["test.jpg"]
+//                        for imageName in imageId {
+//                            self.fetchImage(foodCartId: id, imageName: imageName)
+//                            // footCardId :  InzqNwgl15TytWNOdIZz
+//                            // imageName : test.jpg
+//                        }
+//
+//                        let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId)
+//
+//                        self.magazineFoodCart.append(foodCart)
+////                        print("Magazine FoodCart: \(magazineFoodCart)")
+//                        print("Magazine fetch food carts \(foodCart)")
+//                    }
+//                }
+//            }
+//
+//        }
     
     // imageName : imageID
     func fetchImage(foodCartId: String, imageName: String) {
@@ -106,7 +181,7 @@ class MagazineViewModel: ObservableObject {
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
-                print("error while downloading image\n\(error.localizedDescription)")
+                print("매거진 error while downloading image\n\(error.localizedDescription)")
                 return
             } else {
                 let image = UIImage(data: data!)

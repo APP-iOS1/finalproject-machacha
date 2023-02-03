@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MStoreCellView: View {
-    var foodcart: FoodCart = FoodCart.getDummy()
+    var foodcart: FoodCart 
     @StateObject var magazineVM: MagazineViewModel
     
     var body: some View {
         VStack (alignment: .leading) {
-            Spacer()
+
             HStack (alignment: .bottom, spacing: -1) {
    
                 Image("store")
@@ -38,13 +38,9 @@ struct MStoreCellView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 15)
                 }
-                
-                
-                Spacer()
+
             } // 포장마차 이름
-            
-            
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 5) {
                     ForEach(foodcart.imageId, id: \.self) { imageName in
@@ -56,7 +52,9 @@ struct MStoreCellView: View {
                                 .scaledToFit()
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
                                 
-                        } else { }
+                        } else {
+                            
+                        }
 
                     }
                 }
@@ -70,6 +68,6 @@ struct MStoreCellView: View {
 
 struct MStoreCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MStoreCellView(magazineVM: MagazineViewModel())
+        MStoreCellView(foodcart: FoodCart.getDummy(), magazineVM: MagazineViewModel())
     }
 }
