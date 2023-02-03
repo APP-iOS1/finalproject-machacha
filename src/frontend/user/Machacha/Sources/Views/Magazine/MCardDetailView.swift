@@ -17,13 +17,13 @@ struct MCardDetailView: View {
     @StateObject var model: Model
     @StateObject var magazineVM: MagazineViewModel
     
-    
     @State var viewState: CGSize = .zero
+    @State var showMap = false
+    
     @State var isDraggable = true
-    @State var showSection = false
     @State var selectedIndex = 0
     
-//    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ZStack {
@@ -61,6 +61,10 @@ struct MCardDetailView: View {
         .onChange(of: show) { _ in
             fadeOut()
         }
+        .sheet(isPresented: $showMap) {
+            MCardMapView(model: model)
+        }
+        
     } //body
 
     //MARK: - 이미지와 배경이 있는 상단 뷰
@@ -140,7 +144,7 @@ struct MCardDetailView: View {
     
     var mapButton: some View {
         Button {
-            
+            showMap = true
         } label: {
             Text("지도로 보기")
                 .font(.machachaTitle3Bold)
