@@ -15,6 +15,7 @@ struct MCardDetailView: View {
     @Binding var show: Bool
     @State var appear = [false, false, false] //이게 뭘까?
     @StateObject var model: Model
+    @StateObject var magazineVM: MagazineViewModel
     
     
     @State var viewState: CGSize = .zero
@@ -28,10 +29,10 @@ struct MCardDetailView: View {
         ZStack {
             ScrollView {
                 cover // 리스트와 버튼을 제외한 저기 상위 뷰
-//                content // 얘가 아래 저 리스트들
-//                    .offset(y: 120)
-//                    .padding(.bottom, 200)
-//                    .opacity(appear[2] ? 1 : 0)
+                content // 얘가 아래 저 리스트들
+                    .offset(y: 76)
+                    .padding(.bottom, 200)
+                    .opacity(appear[2] ? 1 : 0)
             }
             // HomeView도 scroll이고 해당 뷰도 scroll이기 때문에 그거에 대한 처리같음
             .coordinateSpace(name: "scroll")
@@ -40,7 +41,7 @@ struct MCardDetailView: View {
 //            .background(Color("Background"))
             .background(Color.white)
             .mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
-            .shadow(color: .black.opacity(0.17), radius: 7, x: 0, y: 10)
+            .shadow(color: .black.opacity(0.3), radius: 30, x: 0, y: 10)
             .scaleEffect(viewState.width / -500 + 1)
             .background(.black.opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
@@ -51,12 +52,14 @@ struct MCardDetailView: View {
         }
         .onAppear {
             fadeIn()
+            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
         }
         .onChange(of: show) { _ in
             fadeOut()
         }
     } //body
 
+    //MARK: - 이미지와 배경이 있는 상단 뷰
     var cover: some View {
         GeometryReader { proxy in
             let scrollY = proxy.frame(in: .named("scroll")).minY
@@ -68,7 +71,7 @@ struct MCardDetailView: View {
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
             .foregroundStyle(.black)
             .background(
-                Image(magazine.image) // 저 사람 머리 사진
+                Image(magazine.image) // 핸드폰 사진들
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(20)
@@ -100,27 +103,18 @@ struct MCardDetailView: View {
         .frame(height: 500)
     }
 
-//    var content: some View {
-//        VStack {
-//            ForEach(Array(CourseMockData.MockData.courseSections.enumerated()), id: \.offset) { index, section in
-//                if index != 0 {
-//                    Divider()
-//                }
-//                SectionRow(section: section)
-//                    .onTapGesture {
-//                        selectedIndex = index
-//                        showSection = true
-//                    }
-//            }
-//        }
-//        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//        .strokeStyle(cornerRadius: 30)
-//        .padding(20)
-//        .sheet(isPresented: $showSection) {
-//            SectionView(section: CourseMockData.MockData.courseSections[selectedIndex])
-//        }
-//    }
+    
+    var content: some View {
+        VStack {
+            ForEach(magazineVM.magazineFoodCart) { foodcart in
+                MStoreCellView(foodcart: foodcart, magazineVM: magazineVM)
+                    .padding(.horizontal, 3)
+                
+            }
+        }
+    }
 
+    //MARK: - xmark 버튼
     var button: some View {
         Button {
             withAnimation(.closeCard) {
@@ -138,7 +132,8 @@ struct MCardDetailView: View {
         .padding(30)
         .ignoresSafeArea()
     }
-
+    
+    //MARK: - [한입 간식: 호떡 ~ 에디터 한줄]까지의 뷰
     var overlayContent: some View {
         VStack(alignment: .leading, spacing: 12) {
             
@@ -148,25 +143,15 @@ struct MCardDetailView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             Text(magazine.subtitle) //20 sections - 3 hours
-//                .font(.machachaHeadlineBold)
                 .font(.machachaTitle3Bold)
-//                .opacity(appear[1] ? 1 : 0)
-//                .font(.footnote.weight(.semibold))
                 .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
-            
-//            Text("magazine.text") //Build an iOS app for iOS 15 with custom
-//                .font(.footnote)
-//                .matchedGeometryEffect(id: "text\(magazine.id)", in: namespace)
 
             Divider()
                 .opacity(appear[0] ? 1 : 0)
                 .padding(.bottom, 3)
             
             VStack (alignment: .leading) {
-                /*
-                 Magazine(id: "CvcZaUQTF7StFGa7omZL", title: "한입 간식 : 호떡", subtitle: "명동 & 을지로 호떡 대표 맛집 TOP 3", editorPickTitle: "꿀호떡냠냠's PICK", editorCommemt: "저만의 호떡 맛집들을 공유해보려고 합니다.", image: "Illustration 1", background: "Background 1", foodCartId: ["InzqNwgl15TytWNOdIZz"], createdAt: Date(), updatedAt: Date()),
-                 show:  .constant(true)
-                 */
+
                 Text(magazine.editorPickTitle)
                     .font(.machachaSubheadBold)
                     .padding(.bottom, 2)
@@ -248,6 +233,8 @@ struct MCardDetailView_Previews: PreviewProvider {
             namespace: namespace,
             magazine: Magazine(id: "CvcZaUQTF7StFGa7omZL", title: "한입 간식 : 호떡", subtitle: "명동 & 을지로 호떡 대표 맛집 TOP 3", editorPickTitle: "꿀호떡냠냠's PICK", editorCommemt: "저만의 호떡 맛집들을 공유해보려고 합니다.", image: "Illustration 1", background: "Background 1", foodCartId: ["InzqNwgl15TytWNOdIZz"], createdAt: Date(), updatedAt: Date()),
             show:  .constant(true),
-            model: Model())
+            model: Model(),
+            magazineVM: MagazineViewModel()
+        )
     }
 }

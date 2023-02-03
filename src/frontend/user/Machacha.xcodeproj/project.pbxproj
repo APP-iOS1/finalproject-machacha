@@ -38,6 +38,7 @@
 		80D9E766298B8A0C00C65CBF /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E765298B8A0C00C65CBF /* PreferenceKeys.swift */; };
 		80D9E768298B8AEF00C65CBF /* MCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E767298B8AEF00C65CBF /* MCardView.swift */; };
 		80D9E76A298B8E4000C65CBF /* MCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E769298B8E4000C65CBF /* MCardDetailView.swift */; };
+		80D9E76C298BDBD800C65CBF /* MStoreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E76B298BDBD800C65CBF /* MStoreCellView.swift */; };
 		C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC1F298101B200819D98 /* ProfileViewModel.swift */; };
 		C414BC222981039C00819D98 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC212981039C00819D98 /* SafariView.swift */; };
 		C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC23298106FC00819D98 /* WebInfoType.swift */; };
@@ -158,6 +159,7 @@
 		80D9E765298B8A0C00C65CBF /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		80D9E767298B8AEF00C65CBF /* MCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCardView.swift; sourceTree = "<group>"; };
 		80D9E769298B8E4000C65CBF /* MCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCardDetailView.swift; sourceTree = "<group>"; };
+		80D9E76B298BDBD800C65CBF /* MStoreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MStoreCellView.swift; sourceTree = "<group>"; };
 		C414BC1F298101B200819D98 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C414BC212981039C00819D98 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C414BC23298106FC00819D98 /* WebInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebInfoType.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				C4A587A829768E3400B04A98 /* MagazineView.swift */,
 				80D9E767298B8AEF00C65CBF /* MCardView.swift */,
 				80D9E769298B8E4000C65CBF /* MCardDetailView.swift */,
+				80D9E76B298BDBD800C65CBF /* MStoreCellView.swift */,
 				801853C6298A427200B33111 /* Test.swift */,
 				80D9E765298B8A0C00C65CBF /* PreferenceKeys.swift */,
 			);
@@ -769,6 +772,7 @@
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				1ABCA9362987AB8E00DD97C5 /* IconTabView.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
+				80D9E76C298BDBD800C65CBF /* MStoreCellView.swift in Sources */,
 				80D9E766298B8A0C00C65CBF /* PreferenceKeys.swift in Sources */,
 				1ABCA9312987602500DD97C5 /* FoodCartViewModel.swift in Sources */,
 				C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */,
