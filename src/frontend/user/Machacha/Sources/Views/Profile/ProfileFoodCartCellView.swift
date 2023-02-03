@@ -26,7 +26,6 @@ struct ProfileFoodCartCellView: View {
 					if let image = image {
 						Image(uiImage: image)
 							.resizable()
-							.frame(width: 70, height: 70)
 							.clipShape(RoundedRectangle(cornerRadius: 8))
 							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 					} else {

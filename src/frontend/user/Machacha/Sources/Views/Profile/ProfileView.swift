@@ -12,7 +12,8 @@ struct ProfileView: View {
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@StateObject var faceIDVM = FaceIDViewModel()
 	@State private var showSafari: Int?
-
+	@State var image: UIImage?
+	
 	//MARK: Property
 	let profileInfo: [FoodCartOfUserType] = [.favorite, .visited, .review, .register]
 	let settings: [SettingType] = [.faceID, .alert, .darkMode, .language]
@@ -36,6 +37,7 @@ struct ProfileView: View {
 					profileVM.currentUser = try await profileVM.fetchUser()
 					profileVM.reviewUser = try await profileVM.fetchReivews()
 					profileVM.foodCartUser = try await profileVM.fetchFoodCartByRegister()
+					image = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
 		} // NavigationView
@@ -47,70 +49,124 @@ extension ProfileView {
 	// User Login Status - FoodCart List By User Action
 	@ViewBuilder
 	private func UserLoginStatus() -> some View {
-		GeometryReader { geometry in
-			if let user = profileVM.currentUser { 	// 사용자 정보
-				VStack(alignment: .leading) {
-					Spacer()
-					VStack(alignment: .leading, spacing: 10) {
-						Text(user.name)
-							.font(.machachaTitleBold)
-						Text(user.email)
-							.font(.machachaSubhead)
-					} // VStack
-					Spacer()
-					HStack(spacing: 30) {
-						ForEach(profileInfo, id: \.self) { info in
-							NavigationLink {
-								ProfileFoodCartListView(foodCartOfUserType: info)
-							} label: {
-								VStack(spacing: 10) {
-									HStack {
-										Image(systemName: info.image)
-										switch info {
-										case .favorite:
-											Text("\(user.favoriteId.count)")
-										case .review:
-											Text("\(profileVM.reviewUser.count)")
-										case .visited:
-											Text("\(user.visitedId.count)")
-										case .register:
-											Text("\(profileVM.foodCartUser.count)")
-										} // switch
-									} // HStack
-									Text(info.display)
-								} // VStack
-								.font(.machachaSubhead)
-							} // NavigationLink
-							.foregroundColor(Color("textColor"))
-						} // ForEach
+		if let user = profileVM.currentUser { 	// 사용자 정보
+			VStack(spacing: 0) {
+				UserProfile(user)
+				Divider() // Profile View 로그인 부분과 구분
+				UserFoodCart(user)
+				Divider() // View가 끝나는 부분
+			} // VStack
+		} else { 								// 로그인 요청 버튼
+			VStack {
+				Button {
+					profileVM.showLogin = true
+					profileVM.currentUser = User.getDummy() // 임시: 로그인 했다고 임시로 가정
+				} label: {
+					Text("로그인")
+						.font(.machachaSubhead)
+						.foregroundColor(Color("textColor"))
+						.fixedSize(horizontal: false, vertical: true)
+						.frame(maxWidth: .infinity, alignment: .center)
+				} // Button
+				.padding()
+				.background(Color("cellColor"))
+				.cornerRadius(20)
+			} // VStack
+			.padding()
+		} // if let user = userStateVM.currentUser
+	}
+	
+	// User Profile View
+	@ViewBuilder
+	private func UserProfile(_ user: User) -> some View {
+		NavigationLink {
+			EmptyView()
+		} label: {
+			HStack {
+				VStack(alignment: .leading, spacing: 8) {
+					Text("우리 자주 만나요!")
+						.font(.machachaHeadline)
+					HStack(spacing: 16) {
+						VStack {
+							if let image = image {
+								Image(uiImage: image)
+									.resizable()
+									.clipShape(RoundedRectangle(cornerRadius: 8))
+							} else {
+								RoundedRectangle(cornerRadius: 8) // 임시
+									.foregroundColor(.gray)
+							}
+						} // VStack
+						.frame(width: 40, height: 40)
+
+						VStack {
+							HStack {
+								Text(user.name)
+									.font(.machachaTitleBold)
+								Text("님")
+									.font(.machachaHeadline)
+							} // HStack
+							.overlay {
+								Color("Color3").opacity(0.2)
+									.frame(height: 10)
+									.offset(y: 5)
+							}
+							Text(user.email)
+								.font(.machachaFootnote)
+								.foregroundColor(.secondary)
+						} // VStack
 					} // HStack
 				} // VStack
-				.padding()
-				.frame(
-					width: geometry.size.width,
-					height: Screen.maxHeight * 0.3
-				)
-				.background(Color("cellColor"))
-			} else { 								// 로그인 요청 버튼
-				VStack {
-					Button {
-						profileVM.showLogin = true
-						profileVM.currentUser = User.getDummy() // 임시: 로그인 했다고 임시로 가정
-					} label: {
-						Text("로그인")
-							.font(.machachaSubhead)
-							.foregroundColor(Color("textColor"))
-							.fixedSize(horizontal: false, vertical: true)
-							.frame(maxWidth: .infinity, alignment: .center)
-					} // Button
-					.padding()
-					.background(Color("cellColor"))
-					.cornerRadius(20)
-				} // VStack
-				.padding()
-			} // if let user = userStateVM.currentUser
-		} // GeometryReader
-		.frame(minHeight: profileVM.currentUser == nil ? Screen.maxHeight * 0.08 : Screen.maxHeight * 0.3)
+				Spacer()
+				Image(systemName: "chevron.right")
+					.foregroundColor(.gray)
+			} // HStack
+			.padding()
+			.foregroundColor(Color("textColor"))
+			.frame(maxWidth: .infinity)
+			.background(Color("cellColor"))
+		}
+	}
+	
+	// User Profile View
+	@ViewBuilder
+	private func UserFoodCart(_ user: User) -> some View {
+		HStack(spacing: 0) {
+			ForEach(profileInfo, id: \.self) { info in
+				NavigationLink {
+					ProfileFoodCartListView(foodCartOfUserType: info)
+				} label: {
+					HStack(spacing: 0) {
+						VStack(spacing: 10) {
+							Image(systemName: info.image)
+								.resizable()
+								.scaledToFit()
+								.frame(width: 20)
+								.foregroundColor(info.color)
+								.overlay {
+									Image(systemName: info.badge)
+										.resizable()
+										.scaledToFit()
+										.frame(width: 10)
+										.offset(x: -8, y: 8)
+										.foregroundColor(info.color)
+								}
+							Text(info.display)
+								.font(.machachaSubhead)
+								.foregroundColor(Color("textColor"))
+						} // VStack
+						.padding(.horizontal)
+					} // HStack
+				} // NavigationLink
+				if info != .register { // 각 항목과 구분
+					Divider().frame(height: 45)
+				}
+			} // ForEach
+		} // HStack
+		.padding()
+		.fixedSize(horizontal: true, vertical: false)
+		.frame(maxWidth: .infinity, alignment: .center)
+		.background(Color("cellColor"))
 	}
 	
 	// User Logout Status

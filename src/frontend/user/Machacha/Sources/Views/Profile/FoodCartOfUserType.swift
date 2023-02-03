@@ -48,7 +48,7 @@ enum FoodCartOfUserType: Hashable {
 		case .favorite:
 			return Color("Color3")
 		case .review:
-			return Color("Color4")
+			return Color("Color6")
 		case .visited:
 			return Color("Color5")
 		case .register:
