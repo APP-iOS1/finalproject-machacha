@@ -41,7 +41,7 @@ struct ProfileEditView: View {
 				.offset(y: -offset)
 				.zIndex(1)
 
-				VStack(spacing: 15){
+				VStack(spacing: 50){
 					TextField("", text: $profileVM.name)
 						.modifier(TextFieldClearButton(text: $profileVM.name))
 						.placeholder(when: profileVM.name.isEmpty) {
@@ -53,6 +53,8 @@ struct ProfileEditView: View {
 						.background(Color("cellColor"))
 						.cornerRadius(20)
 						.frame(height: 35)
+					
+					UserLogout() // 로그아웃, 회원탈퇴
 				}
 				.padding()
 				.zIndex(0)
@@ -110,7 +112,28 @@ struct ProfileEditView: View {
 		.padding(.horizontal)
 		.frame(height: 60)
 		.foregroundColor(.white)
-		.padding(.top, topEdge - 20)
+		.padding(.top, topEdge - 20) // 임시
+	}
+	
+	@ViewBuilder
+	private func UserLogout() -> some View {
+		HStack(spacing: 20) {
+			Button {
+				
+			} label: {
+				Text("로그아웃")
+					.underline()
+			}
+			Divider()
+			Button {
+				
+			} label: {
+				Text("회원탈퇴")
+					.underline()
+			}
+		}
+		.foregroundColor(.secondary)
+		.font(.machachaFootnote)
 	}
 
 	func getHeaderHeight(topEdge: CGFloat) -> CGFloat{
