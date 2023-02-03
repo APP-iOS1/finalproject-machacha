@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MapSearchView: View {
     @StateObject var mapSerachViewModel = MapSearchViewModel()
+    @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @State var coordinate: (Double, Double) = (37.566249, 126.992227)
     @State var currentIndex: Int = 0
     @State var isTap: Bool = false
@@ -20,10 +21,10 @@ struct MapSearchView: View {
                     Spacer()
                     
                     
-                    SnapCarousel(index: $currentIndex, items: mapSerachViewModel.foodCarts, coord: $mapSerachViewModel.coord) { foodCart in
+                    SnapCarousel(index: $currentIndex, items: foodCartViewModel.foodCarts, coord: $mapSerachViewModel.coord) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
-                            .padding(.vertical, Screen.maxHeight - 420)
+                            .padding(.vertical, Screen.maxHeight - 400)
                             .onTapGesture {
                                 self.isTap = true
                             }
@@ -43,10 +44,10 @@ struct MapSearchView: View {
                     
                 }
                 .navigationDestination(isPresented: $isTap) {
-                    DetailView(selectedStore: mapSerachViewModel.foodCarts[currentIndex])
+                    DetailView(selectedStore: foodCartViewModel.foodCarts[currentIndex])
                 }
                 .zIndex(1)
-                NaverMap(coord: $mapSerachViewModel.coord, currentIndex: $currentIndex, foodCarts: mapSerachViewModel.foodCarts)
+                NaverMap(coord: $mapSerachViewModel.coord, currentIndex: $currentIndex, foodCarts: foodCartViewModel.foodCarts)
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
