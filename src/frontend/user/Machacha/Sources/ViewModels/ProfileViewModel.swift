@@ -194,4 +194,53 @@ class ProfileViewModel: ObservableObject {
 		
 		return UIImage(data: data)!
 	}
+	
+	// MARK: - 서버의 Storage에 이미지를 업로드하는 Method
+	func uploadImage(image: UIImage, name: String) {
+		let storageRef = storage.reference().child("images/\(name)") // 수현님께 경로 관련 질문
+		let data = image.jpegData(compressionQuality: 0.1)
+		let metadata = StorageMetadata()
+		metadata.contentType = "image/jpg"
+		
+		// uploda data
+		if let data = data {
+			storageRef.putData(data, metadata: metadata) { (metadata, err) in
+				if let err = err {
+					print("err when uploading jpg\n\(err)")
+				}
+				
+				if let metadata = metadata {
+					print("metadata: \(metadata)")
+				}
+			}
+		}
+	}
+	
+	//MARK: - Update
+	// User Data
+	func updateUser(uiImage: UIImage, name: String) async -> Bool {
+		guard let currentUser = currentUser else { return false }
+		do {
+			let imgName = UUID().uuidString //imgName: 이미지마다 id를 만들어줌
+			
+			uploadImage(image: uiImage, name: (currentUser.id + "/" + imgName))
+			
+			try await database.collection("User")
+				.document(currentUser.id)
+				.setData(["id": currentUser.id,
+						  "isFirstLogin": currentUser.isFirstLogin,
+						  "email": currentUser.email,
+						  "name": name,
+						  "profileId": imgName,
+						  "favoriteId": currentUser.favoriteId,
+						  "visitedId": currentUser.visitedId,
+						  "updatedAt": Date(),
+						  "createdAt": currentUser.createdAt
+						 ])
+		} catch {
+			return false
+		}
+		
+		return true // 성공
+	}
 }

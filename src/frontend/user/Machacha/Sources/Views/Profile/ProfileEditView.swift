@@ -31,6 +31,17 @@ struct ProfileEditView: View {
 		.sheet(isPresented: $imagePickerVisible) {
 			MyUIImagePicker(imagePickerVisible: $imagePickerVisible, selectedImage: $profileImage)
 		}
+		.overlay {
+			if profileVM.isLoading { // 네트워크 통신의 로딩
+				ZStack {
+					Color(white: 0, opacity: 0.75)
+					ProgressView()
+						.scaleEffect(3)
+						.tint(.white)
+				}
+				.ignoresSafeArea()
+			}
+		}
 	}
 	
 	@ViewBuilder
@@ -107,7 +118,18 @@ struct ProfileEditView: View {
 			Spacer()
 			
 			Button {
-				self.presentation.wrappedValue.dismiss()
+				if let profileImage = profileImage {
+					profileVM.isLoading = true
+					Task {
+						let result = await profileVM.updateUser(uiImage: profileImage, name: profileVM.name)
+						profileVM.isLoading = false
+						
+						if result { // 성공일 경우
+							self.profileVM.profileImage = profileImage
+							self.presentation.wrappedValue.dismiss()
+						}
+					}
+				}
 			} label: {
 				Text("수정")
 			}
