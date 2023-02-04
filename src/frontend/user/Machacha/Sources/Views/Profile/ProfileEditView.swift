@@ -152,7 +152,7 @@ struct ProfileEditView: View {
 				profileVM.isLoading = true
 				Task {
 					try await profileVM.logout()
-					DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 임시
+					DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 임ㅅ
 						profileVM.isLoading = false
 						profileVM.currentUser = nil
 						self.presentation.wrappedValue.dismiss()
@@ -220,7 +220,7 @@ extension ProfileEditView {
 			
 			Text(profileVM.currentUser?.email ?? "")
 				.font(.machachaSubhead)
-				.foregroundColor(Color("cellColor"))
+				.foregroundColor(.white)
 		} // VStack
 		.scaleEffect(getSize(topEdge: topEdge))
 		.padding()
