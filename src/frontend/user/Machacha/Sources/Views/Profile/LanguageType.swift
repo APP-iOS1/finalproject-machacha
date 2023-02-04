@@ -17,4 +17,15 @@ enum LanguageType: String {
 			return rawValue
 		}
 	}
+	
+	// Fagekit을 위한 code
+	// 참고: https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
+	var flagCode: String {
+		switch self {
+		case .korean:
+			return "KR"
+		case .chinese_simplified:
+			return "CN"
+		}
+	}
 }

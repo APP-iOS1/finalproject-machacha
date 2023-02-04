@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FlagKit
 
 struct ProfileLanguageView: View {
 	//MARK: Property wrapper
@@ -19,15 +20,18 @@ struct ProfileLanguageView: View {
 		List {
 			ForEach(languageDict.sorted{$0.key < $1.key}, id: \.key) { languageDic in
 				Button {
-					LocalizationViewModel.shared.language = languageDic.value
+					LocalizationViewModel.shared.language = languageDic.value // 언어 변경 Action
 				} label: {
-					HStack {
+					HStack(spacing: 16) {
+						flagBy(countryCode: languageDic.value.flagCode) // 나라별 국기
+							.overlay(RoundedRectangle(cornerRadius: 50)
+								.stroke(Color("textColor"), lineWidth: 0.2))
 						Text(languageDic.key.localized(language))
 						Spacer()
-						if languageDic.value == language {
+						if languageDic.value == language { // 선택된 언어 표시
 							Image(systemName: "checkmark")
 						}
-					}
+					} // HStack
 				} // Button
 				.foregroundColor(Color("textColor"))
 			} // ForEach
@@ -46,6 +50,15 @@ struct ProfileLanguageView: View {
 				}
 			} // ToolbarItem
 		})
+	}
+}
+
+extension ProfileLanguageView {
+	func flagBy(countryCode: String) -> Image {
+		guard let flag = Flag(countryCode: countryCode) else {
+			return Image(systemName: "questionmark.circle")
+		}
+		return Image(uiImage: flag.image(style: .circle))
 	}
 }
 
