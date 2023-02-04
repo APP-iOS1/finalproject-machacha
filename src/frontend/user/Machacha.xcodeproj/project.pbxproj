@@ -96,6 +96,8 @@
 		C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05F297A7F4A003CF061 /* Magazine.swift */; };
 		C4F4202C298EABE000B615C6 /* ProfileLanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */; };
 		C4F42030298EACBC00B615C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4F42032298EACBC00B615C6 /* Localizable.strings */; };
+		C4F42036298EB55F00B615C6 /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F42035298EB55F00B615C6 /* LanguageType.swift */; };
+		C4F42038298EB70400B615C6 /* LocalizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F42037298EB70400B615C6 /* LocalizationViewModel.swift */; };
 		FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
 		FA0B449F2988EBA4005DB8AF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449E2988EBA4005DB8AF /* SignUpView.swift */; };
 		FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B44A02988F489005DB8AF /* AuthView.swift */; };
@@ -222,6 +224,8 @@
 		C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLanguageView.swift; sourceTree = "<group>"; };
 		C4F42031298EACBC00B615C6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4F42033298EACC000B615C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C4F42035298EB55F00B615C6 /* LanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageType.swift; sourceTree = "<group>"; };
+		C4F42037298EB70400B615C6 /* LocalizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationViewModel.swift; sourceTree = "<group>"; };
 		FA0B449C2987A504005DB8AF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		FA0B449E2988EBA4005DB8AF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FA0B44A02988F489005DB8AF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
@@ -485,6 +489,7 @@
 				C414BC2929817C6300819D98 /* FaceIDViewModel.swift */,
 				1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */,
 				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
+				C4F42037298EB70400B615C6 /* LocalizationViewModel.swift */,
 				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
 				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
 				C414BC1F298101B200819D98 /* ProfileViewModel.swift */,
@@ -528,6 +533,7 @@
 				C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */,
 				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
 				C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */,
+				C4F42035298EB55F00B615C6 /* LanguageType.swift */,
 				C414BC27298116D000819D98 /* SettingType.swift */,
 				C414BC23298106FC00819D98 /* WebInfoType.swift */,
 			);
@@ -805,6 +811,7 @@
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
 				C414BC2A29817C6300819D98 /* FaceIDViewModel.swift in Sources */,
 				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
+				C4F42038298EB70400B615C6 /* LocalizationViewModel.swift in Sources */,
 				FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */,
 				C414BC262981120C00819D98 /* Ex+Int.swift in Sources */,
 				C4A587AF29768E6600B04A98 /* CustomTabView.swift in Sources */,
@@ -851,6 +858,7 @@
 				6A97927B29880A2800459A45 /* MapFooterCell.swift in Sources */,
 				801853C5298A2EFA00B33111 /* MagazineViewModel.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
+				C4F42036298EB55F00B615C6 /* LanguageType.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
 				6A159FC229877C4C0002E625 /* MapHeaderCell.swift in Sources */,

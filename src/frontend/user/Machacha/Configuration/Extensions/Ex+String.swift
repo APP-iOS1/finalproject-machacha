@@ -41,8 +41,8 @@ extension String {
 	/// Language 열거형에서 지정된 언어를 사용하여 문자열을 현지화합니다.
 	/// - parameter language: 현지화된 문자열에 사용될 언어입니다.
 	/// - Returns: 현지화된 문자열.
-	func localized(_ language: Language) -> String {
-		let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj")
+	func localized(_ language: LanguageType) -> String {
+		let path = Bundle.main.path(forResource: language.userSymbol, ofType: "lproj")
 		let bundle: Bundle
 		if let path = path {
 			bundle = Bundle(path: path) ?? .main
@@ -57,8 +57,8 @@ extension String {
 	///  - language: 현지화된 문자열에 사용될 언어입니다.
 	///  - args:  현지화된 문자열에 대해 제공된 동적 인수입니다.
 	/// - Returns: 현지화된 문자열.
-	func localized(_ language: Language, args arguments: CVarArg...) -> String {
-		let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj")
+	func localized(_ language: LanguageType, args arguments: CVarArg...) -> String {
+		let path = Bundle.main.path(forResource: language.userSymbol, ofType: "lproj")
 		let bundle: Bundle
 		if let path = path {
 			bundle = Bundle(path: path) ?? .main

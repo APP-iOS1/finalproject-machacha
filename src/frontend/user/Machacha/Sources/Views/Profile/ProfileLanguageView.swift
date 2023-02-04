@@ -9,36 +9,27 @@ import SwiftUI
 
 struct ProfileLanguageView: View {
 	//MARK: Property wrapper
-	@AppStorage("selectedLanguage") private var selectedLanguage: String?
+	@AppStorage("language") private var language = LocalizationViewModel.shared.language
 	@Environment(\.presentationMode) var presentation
 
 	//MARK: Property
-	let languageDict: [String: String] = ["한국어": "Korean", "중국어": "Chinese"]
+	let languageDict: [String: LanguageType] = ["한국어": .korean, "중국어": .chinese_simplified]
 
 	var body: some View {
 		List {
-			ForEach(Array(languageDict.keys), id: \.self) { language in
+			ForEach(languageDict.sorted{$0.key < $1.key}, id: \.key) { languageDic in
 				Button {
-					self.selectedLanguage = languageDict[language]
-					//						showingOptions.toggle()
+					LocalizationViewModel.shared.language = languageDic.value
 				} label: {
 					HStack {
-						Text(LocalizedStringKey(language))
+						Text(languageDic.key.localized(language))
 						Spacer()
-						if selectedLanguage == language {
+						if languageDic.value == language {
 							Image(systemName: "checkmark")
 						}
 					}
 				}
 				.foregroundColor(Color("textColor"))
-				//					.confirmationDialog("언어설정을 바꾼뒤 앱을 재가동해야합니다. 선택된 언어로 바꾸시겠습니까?", isPresented: $showingOptions, titleVisibility: .visible) {
-				//						Button("변경") {
-				//							defaultLanguage = selectedLanguage ?? ""
-				//							UserDefaults.standard.set([defaultLanguage], forKey: "AppleLanguages")
-				//							//이코드 누가 씀...? 질문질문
-				//							UIApplication.shared.requestSceneSessionActivation(nil, userActivity: nil, options: nil, errorHandler: nil)
-				//						}
-				//					}
 			}
 		}
 		.navigationBarBackButtonHidden()
