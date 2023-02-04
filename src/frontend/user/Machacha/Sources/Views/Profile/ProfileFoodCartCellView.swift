@@ -66,6 +66,7 @@ struct ProfileFoodCartCellView: View {
 								.bold()
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+						.cornerRadius(8)
 						
 						HStack(spacing: 15) { // 즐겨찾기
 							Text("|")
@@ -103,10 +104,10 @@ struct ProfileFoodCartCellView: View {
 					.unredacted()
 			} // HStack
 			.padding()
-			.overlay {
-				RoundedRectangle(cornerRadius: 20)
-					.stroke(Color("Color3"), lineWidth: 2)
-			}
+			.background(Color("cellColor"))
+			.cornerRadius(8)
+			.overlay(RoundedRectangle(cornerRadius: 8)
+				.stroke(Color("textColor"), lineWidth: 0.1))
 			.padding(.horizontal)
 			.onAppear {
 				withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
@@ -124,10 +125,13 @@ struct ProfileFoodCartCellView_Previews: PreviewProvider {
 	static var previews: some View {
 		let profileVM = ProfileViewModel()
 		
-		ProfileFoodCartCellView(isFavorite: .constant(true), foodCart: FoodCart.getDummy())
-			.environmentObject(profileVM)
-			.onAppear {
-				profileVM.currentUser = User.getDummy()
-			}
+		ZStack {
+			Color("bgColor")
+			ProfileFoodCartCellView(isFavorite: .constant(true), foodCart: FoodCart.getDummy())
+				.environmentObject(profileVM)
+				.onAppear {
+					profileVM.currentUser = User.getDummy()
+				}
+		}
 	}
 }

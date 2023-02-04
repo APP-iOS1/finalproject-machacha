@@ -35,7 +35,6 @@ struct ProfileView: View {
 					profileVM.currentUser = try await profileVM.fetchUser()
 					profileVM.name = profileVM.currentUser?.name ?? ""
 					profileVM.reviewUser = try await profileVM.fetchReivews()
-					profileVM.foodCartUser = try await profileVM.fetchFoodCartByRegister()
 					profileVM.profileImage = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
@@ -239,7 +238,7 @@ extension ProfileView {
 			} // VStack
 			.padding()
 			.background(Color("cellColor"))
-			.cornerRadius(16)
+			.cornerRadius(8)
 		} header: {
 			SectionHeaderView(name: "설정")
 		} // Section
@@ -291,7 +290,9 @@ extension ProfileView {
 			} // VStack
 			.padding()
 			.background(Color("cellColor"))
-			.cornerRadius(16)
+			.cornerRadius(8)
+			.overlay(RoundedRectangle(cornerRadius: 8)
+				.stroke(Color("textCoor"), lineWidth: 0.1))
 		} header: {
 			SectionHeaderView(name: "Machacha 정보")
 		} // Section
