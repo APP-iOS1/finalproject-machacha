@@ -35,3 +35,44 @@ extension String {
 		return String(mask) + "@" + last
 	}
 }
+
+// Localizes(현지화) 처리
+extension String {
+	/// Language 열거형에서 지정된 언어를 사용하여 문자열을 현지화합니다.
+	/// - parameter language: 현지화된 문자열에 사용될 언어입니다.
+	/// - Returns: 현지화된 문자열.
+	func localized(_ language: Language) -> String {
+		let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj")
+		let bundle: Bundle
+		if let path = path {
+			bundle = Bundle(path: path) ?? .main
+		} else {
+			bundle = .main
+		}
+		return localized(bundle: bundle)
+	}
+
+	/// Language 열거형에서 지정된 언어를 사용하여 문자열을 현지화합니다.
+	///  - Parameters:
+	///  - language: 현지화된 문자열에 사용될 언어입니다.
+	///  - args:  현지화된 문자열에 대해 제공된 동적 인수입니다.
+	/// - Returns: 현지화된 문자열.
+	func localized(_ language: Language, args arguments: CVarArg...) -> String {
+		let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj")
+		let bundle: Bundle
+		if let path = path {
+			bundle = Bundle(path: path) ?? .main
+		} else {
+			bundle = .main
+		}
+		return String(format: localized(bundle: bundle), arguments: arguments)
+	}
+
+	/// self를 key로 사용하여 문자열을 현지화합니다.
+	/// - Parameters:
+	///   - bundle: Localizable.strings 파일이 있는 bundle.
+	/// - Returns: 현지화된 문자열.
+	private func localized(bundle: Bundle) -> String {
+		return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+	}
+}
