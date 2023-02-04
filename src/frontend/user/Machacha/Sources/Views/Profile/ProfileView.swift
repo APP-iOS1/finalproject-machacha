@@ -220,7 +220,7 @@ extension ProfileView {
 						}
 					case .language:
 						NavigationLink {
-							EmptyView()
+							ProfileLanguageView()
 						} label: {
 							HStack {
 								Image(systemName: setting.image)
