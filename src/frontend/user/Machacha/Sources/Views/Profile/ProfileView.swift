@@ -118,11 +118,11 @@ extension ProfileView {
 								Text("님")
 									.font(.machachaHeadline)
 							} // HStack
-							.overlay {
+							.overlay { // 이름 아래 형광색 밑줄
 								RoundedRectangle(cornerRadius: 2)
 									.foregroundColor(profileVM.isDarkMode ? Color("Color2").opacity(0.3) : Color("Color3").opacity(0.2))
 									.frame(height: 10)
-									.offset(y: 5)
+									.offset(y: 8)
 							}
 							Text(user.email.maskEmail())
 								.font(.machachaFootnote)
