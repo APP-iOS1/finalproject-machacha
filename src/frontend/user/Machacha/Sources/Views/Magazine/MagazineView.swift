@@ -40,6 +40,7 @@ struct MagazineView: View {
                     // 내가 봐야할 곳
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 20) {
                         if !show {
+                            // 카드를 tap하지 않았을 때 그냥 카드를 나열해주는
                             cards //컨텐츠들
                         } else {
                             // 카드를 선택했을 경우 카드가 나열된 화면 대신 Rectangle이 보이도록
@@ -83,13 +84,16 @@ struct MagazineView: View {
                 }
         }//navigationview
         .onAppear {
-//            magazineVM.fetchMagazines()
+            magazineVM.isLoading = true
             Task {
                 magazineVM.magazines = try await magazineVM.fetchMagazines()
+                magazineVM.isLoading = false
             }
         }
         .refreshable {
-//            magazineVM.fetchMagazines()
+            Task {
+                magazineVM.magazines = try await magazineVM.fetchMagazines()
+            }
         }
     }//body
     
