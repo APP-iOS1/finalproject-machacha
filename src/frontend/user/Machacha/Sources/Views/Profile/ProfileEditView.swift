@@ -47,7 +47,7 @@ struct ProfileEditView: View {
 	@ViewBuilder
 	private func ProfileContentView(topEdge: CGFloat) -> some View {
 		ScrollView(.vertical , showsIndicators: false) {
-			VStack(spacing: 16) {
+			VStack(spacing: 0) {
 				GeometryReader{ proxy in
 					UserProfile(topEdge: topEdge)
 						.foregroundColor(.white)
@@ -60,23 +60,26 @@ struct ProfileEditView: View {
 				.offset(y: -offset)
 				.zIndex(1)
 
-				VStack(spacing: 50){
-					TextField("", text: $profileVM.name)
-						.modifier(TextFieldClearButton(text: $profileVM.name))
-						.placeholder(when: profileVM.name.isEmpty) {
-							Text("사용할 이름을 알려주세요")
-								.foregroundColor(Color("Color3"))
-								.frame(height: 35)
-						}
-						.padding()
-						.background(Color("cellColor"))
-						.cornerRadius(20)
-						.frame(height: 35)
-					
-					UserLogout() // 로그아웃, 회원탈퇴
+				VStack(spacing: 25) {
+					SectionHeaderView(name: "이름")
+					VStack(spacing: 50) {
+						TextField("", text: $profileVM.name)
+							.modifier(TextFieldClearButton(text: $profileVM.name))
+							.placeholder(when: profileVM.name.isEmpty) {
+								Text("사용할 이름을 알려주세요")
+									.foregroundColor(Color("Color3"))
+									.frame(height: 35)
+							}
+							.padding()
+							.background(Color("cellColor"))
+							.cornerRadius(20)
+							.frame(height: 35)
+						
+						UserLogout() // 로그아웃, 회원탈퇴
+					}
+					.zIndex(0)
 				}
 				.padding()
-				.zIndex(0)
 				
 			}.modifier(OffsetModifier(offset: $offset))
 		}
@@ -223,7 +226,7 @@ extension ProfileEditView {
 			}
 			
 			Text(profileVM.currentUser?.email ?? "")
-				.font(.machachaSubhead)
+				.font(.machachaSubhead.bold())
 				.foregroundColor(.white)
 		} // VStack
 		.scaleEffect(getSize(topEdge: topEdge))
