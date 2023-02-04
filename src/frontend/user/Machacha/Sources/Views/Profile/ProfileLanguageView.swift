@@ -34,8 +34,11 @@ struct ProfileLanguageView: View {
 					} // HStack
 				} // Button
 				.foregroundColor(Color("textColor"))
+				.listRowBackground(Color("cellColor"))
 			} // ForEach
 		} // List
+		.background(Color("bgColor"))
+		.scrollContentBackground(.hidden)
 		.navigationBarBackButtonHidden()
 		.navigationBarTitle("언어 설정".localized(language), displayMode: .inline)
 		.toolbarBackground(Color("Color3"), for: .navigationBar)
