@@ -92,6 +92,7 @@ struct MachachaApp: App {
                     .environmentObject(LocationManager())
                     .environmentObject(FoodCartViewModel())
                     .environmentObject(ReviewViewModel())
+                    .environmentObject(MapViewModel())
                     .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
                     .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
                 

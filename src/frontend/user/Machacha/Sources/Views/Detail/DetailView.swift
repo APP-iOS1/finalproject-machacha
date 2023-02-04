@@ -11,6 +11,7 @@ struct DetailView: View {
     var selectedStore: FoodCart
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @EnvironmentObject var reviewViewModel: ReviewViewModel
+    @EnvironmentObject var mapViewModel: MapViewModel
     
     var body: some View {
         ScrollView {
@@ -74,6 +75,7 @@ struct DetailView: View {
                     await foodCartViewModel.fetchFoodCarts()
                     await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                     foodCartViewModel.isLoading = false
+                    mapViewModel.fetchMarkers()
                 }
             }
         }
@@ -85,5 +87,6 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(selectedStore: FoodCart.getDummy())
             .environmentObject(FoodCartViewModel())
             .environmentObject(ReviewViewModel())
+            .environmentObject(MapViewModel())
     }
 }

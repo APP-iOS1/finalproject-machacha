@@ -11,6 +11,7 @@ struct ContentView: View {
 	//MARK: Property Wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
     @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var mapViewModel: MapViewModel
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
@@ -42,7 +43,11 @@ struct ContentView: View {
 			.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
 		} // NavigationStack
         .onAppear {
-            locationManager.checkIfLocationServicesIsEnabled()
+            Task {
+                locationManager.checkIfLocationServicesIsEnabled()
+
+                mapViewModel.cameraPos = locationManager.coord
+            }
         }
     }
 }
@@ -51,5 +56,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
 			.environmentObject(ProfileViewModel())
+            .environmentObject(MapViewModel())
     }
 }
