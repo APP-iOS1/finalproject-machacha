@@ -13,7 +13,7 @@ struct NaverMap: UIViewRepresentable {
     @Binding var currentIndex: Int
     var foodCarts: [FoodCart]
     var markers: [NMFMarker] = []
-    @EnvironmentObject var mapViewModel: MapViewModel
+    @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     
     func makeCoordinator() -> Coordinator {
         Coordinator(coord)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MapSearchView: View {
     @EnvironmentObject var locationManager: LocationManager
-    @EnvironmentObject var foodCartViewModel: FoodCartViewModel
+    @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     @State var cameraCoord: (Double, Double) = (37.566249, 126.992227)
     @State var currentIndex: Int = 0
     @State var isTap: Bool = false
@@ -21,7 +21,7 @@ struct MapSearchView: View {
                     Spacer()
                     
                     
-                    SnapCarousel(index: $currentIndex, items: foodCartViewModel.foodCarts, coord: $cameraCoord) { foodCart in
+                    SnapCarousel(index: $currentIndex, items: mapSearchViewModel.foodCarts, coord: $cameraCoord) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
                             .padding(.vertical, Screen.maxHeight - 400)
@@ -32,11 +32,11 @@ struct MapSearchView: View {
                     
                 }
                 .navigationDestination(isPresented: $isTap) {
-                    DetailView()
-                    //                    DetailView(selectedStore: foodCartViewModel.foodCarts[currentIndex])
+//                    DetailView(name: mapSearchViewModel.foodCarts[currentIndex].name)
+                    DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
                 }
                 .zIndex(1)
-                NaverMap(coord: $cameraCoord, currentIndex: $currentIndex, foodCarts: foodCartViewModel.foodCarts)
+                NaverMap(coord: $cameraCoord, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts)
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
@@ -44,11 +44,11 @@ struct MapSearchView: View {
             }
         }
     }
-    @ViewBuilder private func DetailView() -> some View {
-        VStack {
-            Text("Detail View")
-        }
-    }
+//    @ViewBuilder private func DetailView(name: String) -> some View {
+//        VStack {
+//            Text("가게 이름 : \(name)")
+//        }
+//    }
     
 }
 
@@ -56,6 +56,6 @@ struct MapSearchView_Previews: PreviewProvider {
     static var previews: some View {
         MapSearchView()
             .environmentObject(LocationManager())
-            .environmentObject(FoodCartViewModel())
+            .environmentObject(MapSearchViewModel())
     }
 }

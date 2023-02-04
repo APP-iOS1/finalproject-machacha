@@ -7,8 +7,9 @@
 
 import Foundation
 import NMapsMap
+import Combine
 
-final class MapViewModel: ObservableObject {
+final class MapSearchViewModel: ObservableObject {
     typealias Pos = (Double, Double)
     
     var foodCarts: [FoodCart] = []
@@ -16,20 +17,29 @@ final class MapViewModel: ObservableObject {
     @Published var cameraPos: Pos = (0, 0)
     @Published var zoomLevel = 17
     
+    private var cancellables = Set<AnyCancellable>()
+    
 //    init(foodCarts: [FoodCart], cameraPos: Pos) {
 //        self.foodCarts = foodCarts
 //        self.cameraPos = cameraPos
 //    }
     
-    // MARK: - foodCart fetch 함수 -> 홈뷰와 합칠 예정
-//    @MainActor
-//    func fetchFoodCarts() async throws -> [FoodCart] {
-//        do {
-//
-//        } catch {
-//
-//        }
-//    }
+    // MARK: - combine을 이용한 foodCart Fetch
+    func fetchFoodCarts() {
+        FirebaseService.fetchFoodCarts()
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case.finished:
+                    return
+                }
+            } receiveValue: { [weak self] foodCarts in
+                self?.foodCarts = foodCarts
+            }
+            .store(in: &cancellables)
+
+    }
     
     
     // MARK: - 마커의 좌표를 fetch하여 영구적으로 저장

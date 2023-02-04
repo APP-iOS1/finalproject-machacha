@@ -11,7 +11,7 @@ struct ContentView: View {
 	//MARK: Property Wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
     @EnvironmentObject var locationManager: LocationManager
-    @EnvironmentObject var mapViewModel: MapViewModel
+    @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
@@ -45,8 +45,9 @@ struct ContentView: View {
         .onAppear {
             Task {
                 locationManager.checkIfLocationServicesIsEnabled()
-
-                mapViewModel.cameraPos = locationManager.coord
+                mapSearchViewModel.cameraPos = locationManager.coord
+                // 탭을 이동하더라도 data fetch 방지를 위해 상위뷰에서 fetch
+                mapSearchViewModel.fetchFoodCarts()
             }
         }
     }
@@ -56,6 +57,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
 			.environmentObject(ProfileViewModel())
-            .environmentObject(MapViewModel())
+            .environmentObject(MapSearchViewModel())
     }
 }
