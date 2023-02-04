@@ -91,6 +91,9 @@ struct ProfileEditView: View {
 				self.presentation.wrappedValue.dismiss()
 			} label: {
 				Image(systemName: "chevron.left")
+					.resizable()
+					.scaledToFit()
+					.frame(width: 10)
 			}
 			
 			HStack(spacing: 16) {
@@ -140,7 +143,7 @@ struct ProfileEditView: View {
 				.opacity(getOpacity())
 		}
 		.padding(.horizontal)
-		.frame(height: 60)
+		.frame(height: 70)
 		.foregroundColor(.white)
 		.padding(.top, topEdge - 20) // 임시
 	}
@@ -163,8 +166,9 @@ struct ProfileEditView: View {
 					.underline()
 			}
 			Divider()
-			Button {
-				
+			
+			NavigationLink {
+				ProfileSecessionView(parentsView: self)
 			} label: {
 				Text("회원탈퇴")
 					.underline()
@@ -248,10 +252,12 @@ struct ProfileEditView_Previews: PreviewProvider {
 	static var previews: some View {
 		let profileVM = ProfileViewModel()
 
-		ProfileEditView()
-			.environmentObject(profileVM)
-			.onAppear {
-				profileVM.currentUser = User.getDummy()
+		NavigationView {
+			ProfileEditView()
+				.environmentObject(profileVM)
+				.onAppear {
+					profileVM.currentUser = User.getDummy()
 			}
+		}
 	}
 }

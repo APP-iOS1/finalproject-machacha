@@ -99,6 +99,7 @@
 		C4F42036298EB55F00B615C6 /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F42035298EB55F00B615C6 /* LanguageType.swift */; };
 		C4F42038298EB70400B615C6 /* LocalizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F42037298EB70400B615C6 /* LocalizationViewModel.swift */; };
 		C4F4203B298EC1C200B615C6 /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = C4F4203A298EC1C200B615C6 /* FlagKit */; };
+		C4F4203D298EC95600B615C6 /* ProfileSecessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4203C298EC95600B615C6 /* ProfileSecessionView.swift */; };
 		FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
 		FA0B449F2988EBA4005DB8AF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449E2988EBA4005DB8AF /* SignUpView.swift */; };
 		FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B44A02988F489005DB8AF /* AuthView.swift */; };
@@ -227,6 +228,7 @@
 		C4F42033298EACC000B615C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C4F42035298EB55F00B615C6 /* LanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageType.swift; sourceTree = "<group>"; };
 		C4F42037298EB70400B615C6 /* LocalizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationViewModel.swift; sourceTree = "<group>"; };
+		C4F4203C298EC95600B615C6 /* ProfileSecessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSecessionView.swift; sourceTree = "<group>"; };
 		FA0B449C2987A504005DB8AF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		FA0B449E2988EBA4005DB8AF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FA0B44A02988F489005DB8AF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				C4A587AA29768E3E00B04A98 /* ProfileView.swift */,
 				C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */,
 				C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */,
+				C4F4203C298EC95600B615C6 /* ProfileSecessionView.swift */,
 				C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */,
 				C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */,
 				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
@@ -848,6 +851,7 @@
 				C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */,
 				C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */,
 				1A30E1622988D8A10068C025 /* Ex+Date.swift in Sources */,
+				C4F4203D298EC95600B615C6 /* ProfileSecessionView.swift in Sources */,
 				C414BC222981039C00819D98 /* SafariView.swift in Sources */,
 				C492FAA7298D3DF90081E3B9 /* ProfileEditView.swift in Sources */,
 				1A30E15E2988D3850068C025 /* ReviewView.swift in Sources */,
