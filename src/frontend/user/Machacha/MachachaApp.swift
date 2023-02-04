@@ -89,6 +89,7 @@ struct MachachaApp: App {
         WindowGroup {
             if splashIsActive {
                 AuthView()
+                    .environmentObject(LocationManager())
                     .environmentObject(FoodCartViewModel())
                     .environmentObject(ReviewViewModel())
                     .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)

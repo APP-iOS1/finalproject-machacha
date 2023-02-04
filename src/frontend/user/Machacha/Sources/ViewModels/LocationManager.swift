@@ -8,10 +8,9 @@
 import SwiftUI
 import CoreLocation
 
-final class MapSearchViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     @Published var coord = (37.566249, 126.992227)
-	@Published var foodCarts = FoodCart.getListDummy()
     
     func checkIfLocationServicesIsEnabled() {
         DispatchQueue.global().async {

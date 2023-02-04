@@ -24,7 +24,7 @@
 		6A159FBF298767630002E625 /* MapHeaderTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBE298767630002E625 /* MapHeaderTagCell.swift */; };
 		6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */; };
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
-		6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */; };
+		6A8EBDA629778F1500964C9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* LocationManager.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
 		6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
 		6A9792782988090B00459A45 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9792772988090B00459A45 /* SnapCarousel.swift */; };
@@ -141,7 +141,7 @@
 		6A159FBC2987604F0002E625 /* MapHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeader.swift; sourceTree = "<group>"; };
 		6A159FBE298767630002E625 /* MapHeaderTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderTagCell.swift; sourceTree = "<group>"; };
 		6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
-		6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
+		6A8EBDA529778F1500964C9D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
 		6A9792772988090B00459A45 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
@@ -464,7 +464,7 @@
 				C414BC2929817C6300819D98 /* FaceIDViewModel.swift */,
 				1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */,
 				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
-				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
+				6A8EBDA529778F1500964C9D /* LocationManager.swift */,
 				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
 				C414BC1F298101B200819D98 /* ProfileViewModel.swift */,
 				1A30E1592988D1910068C025 /* ReviewViewModel.swift */,
@@ -774,7 +774,7 @@
 				801853C7298A427200B33111 /* Test.swift in Sources */,
 				1A30E1602988D3BC0068C025 /* ReviewListCellView.swift in Sources */,
 				C4A587742975A8D300B04A98 /* BtnModifier.swift in Sources */,
-				6A8EBDA629778F1500964C9D /* MapSearchViewModel.swift in Sources */,
+				6A8EBDA629778F1500964C9D /* LocationManager.swift in Sources */,
 				6A159FBD2987604F0002E625 /* MapHeader.swift in Sources */,
 				6A159FBF298767630002E625 /* MapHeaderTagCell.swift in Sources */,
 				1A30E1642988F7C80068C025 /* ReviewThumbnailListCellView.swift in Sources */,

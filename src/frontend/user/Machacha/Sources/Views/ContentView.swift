@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
 	//MARK: Property Wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
+    @EnvironmentObject var locationManager: LocationManager
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
@@ -40,6 +41,9 @@ struct ContentView: View {
 			.edgesIgnoringSafeArea(.bottom)
 			.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
 		} // NavigationStack
+        .onAppear {
+            locationManager.checkIfLocationServicesIsEnabled()
+        }
     }
 }
 

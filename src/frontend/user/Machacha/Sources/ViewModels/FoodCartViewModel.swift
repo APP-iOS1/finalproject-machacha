@@ -71,6 +71,10 @@ class FoodCartViewModel: ObservableObject {
     // MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
     func fetchFoodCarts() async {
         do {
+            DispatchQueue.main.async {
+                self.foodCarts.removeAll()
+            }
+
             let querysnapshot = try await database.collection("FoodCart")
                 .getDocuments()
 
