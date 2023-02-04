@@ -20,7 +20,7 @@ struct ProfileFoodCartListView: View {
 			Section {
 				VStack(alignment: .leading, spacing: 15) {
 					ForEach(profileVM.foodCartUser) { foodCart in
-						ProfileFoodCartCellView(isFavorite: .constant(true), foodCart: foodCart)
+						ProfileFoodCartCellView(foodCart: foodCart, isFavorite: profileVM.currentUser!.favoriteId.contains(foodCart.id))
 					} // ForEach
 				} // VStack
 			} header: {
@@ -80,6 +80,8 @@ struct ProfileFoodCartListView_Previews: PreviewProvider {
 				.onAppear {
 					profileVM.currentUser = User.getDummy()
 				}
+				.environmentObject(FoodCartViewModel())
+				.environmentObject(ReviewViewModel())
 		}
 	}
 }

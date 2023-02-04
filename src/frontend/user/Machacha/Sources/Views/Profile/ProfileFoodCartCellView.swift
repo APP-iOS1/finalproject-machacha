@@ -12,14 +12,15 @@ struct ProfileFoodCartCellView: View {
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@State var opacity: Double = 0.8
 	@State var image: UIImage?
-	@Binding var isFavorite: Bool
+	@State private var showDetail = false
 	
 	//MARK: Property
 	let foodCart: FoodCart
+	let isFavorite: Bool
 	
 	var body: some View {
-		NavigationLink {
-			
+		Button {
+			showDetail.toggle()
 		} label: {
 			HStack(spacing: 10) {
 				VStack {
@@ -43,12 +44,8 @@ struct ProfileFoodCartCellView: View {
 							.foregroundColor(Color("textColor"))
 							.lineLimit(2)
 						
-						Button {
-							
-						} label: {
-							Image(systemName: "heart.fill")
-								.foregroundColor(isFavorite ? Color("Color3") : .gray)
-						} // Button
+						Image(systemName: "heart.fill")
+							.foregroundColor(isFavorite ? Color("Color3") : .gray)
 					} // HStack
 					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 					
@@ -117,6 +114,9 @@ struct ProfileFoodCartCellView: View {
 					image = try await profileVM.fetchImage(foodCartId: foodCart.id, imageName: foodCart.imageId.first ?? "test")
 				}
 			}
+			.navigationDestination(isPresented: $showDetail) {
+				DetailView(selectedStore: foodCart)
+			}
 		} // NavigationLink
 	}
 }
@@ -127,7 +127,7 @@ struct ProfileFoodCartCellView_Previews: PreviewProvider {
 		
 		ZStack {
 			Color("bgColor")
-			ProfileFoodCartCellView(isFavorite: .constant(true), foodCart: FoodCart.getDummy())
+			ProfileFoodCartCellView(foodCart: FoodCart.getDummy(), isFavorite: true)
 				.environmentObject(profileVM)
 				.onAppear {
 					profileVM.currentUser = User.getDummy()
