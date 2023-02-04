@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
 	//MARK: Property wrapper
+	@AppStorage("language") private var language = LocalizationViewModel.shared.language
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@StateObject var faceIDVM = FaceIDViewModel()
 	@State private var showSafari: Int?
@@ -38,7 +39,7 @@ struct ProfileView: View {
 					profileVM.profileImage = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
-			.navigationBarTitle("프로필", displayMode: .inline)
+			.navigationBarTitle("프로필".localized(language), displayMode: .inline)
 			.toolbar(content: {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					NavigationLink {
@@ -72,7 +73,7 @@ extension ProfileView {
 					profileVM.showLogin = true
 					profileVM.currentUser = User.getDummy() // 임시: 로그인 했다고 임시로 가정
 				} label: {
-					Text("로그인")
+					Text("로그인".localized(language))
 						.font(.machachaSubhead)
 						.foregroundColor(Color("textColor"))
 						.fixedSize(horizontal: false, vertical: true)
@@ -94,7 +95,7 @@ extension ProfileView {
 		} label: {
 			HStack {
 				VStack(alignment: .leading, spacing: 8) {
-					Text("우리 자주 만나요!")
+					Text("우리 자주 만나요!".localized(language))
 						.font(.machachaHeadline)
 					HStack(spacing: 16) {
 						VStack {
@@ -115,7 +116,7 @@ extension ProfileView {
 							HStack {
 								Text(user.name)
 									.font(.machachaTitleBold)
-								Text("님")
+								Text("님".localized(language))
 									.font(.machachaHeadline)
 							} // HStack
 							.overlay { // 이름 아래 형광색 밑줄
@@ -164,7 +165,7 @@ extension ProfileView {
 										.offset(x: -9, y: 8)
 										.foregroundColor(info.color)
 								}
-							Text(info.display)
+							Text(info.display.localized(language))
 								.font(.machachaSubhead)
 								.foregroundColor(Color("textColor"))
 						} // VStack
@@ -195,7 +196,7 @@ extension ProfileView {
 					case .faceID:
 						HStack {
 							Image(systemName: setting.image)
-							Toggle(setting.display, isOn: $profileVM.isFaceID)
+							Toggle(setting.display.localized(language), isOn: $profileVM.isFaceID)
 						}
 					case .alert:
 						HStack {
@@ -209,14 +210,14 @@ extension ProfileView {
 								Image(systemName: setting.image)
 							}
 							
-							Toggle(setting.display, isOn: $profileVM.isAlert)
+							Toggle(setting.display.localized(language), isOn: $profileVM.isAlert)
 						}
 					case .darkMode:
 						HStack {
 							Image(systemName: setting.image)
 								.rotationEffect(.degrees(profileVM.isDarkMode ? 90 : 0))
 								.animation(.easeOut(duration: 1), value: profileVM.isDarkMode) // 활성화 에니메이션
-							Toggle(setting.display, isOn: $profileVM.isDarkMode)
+							Toggle(setting.display.localized(language), isOn: $profileVM.isDarkMode)
 						}
 					case .language:
 						NavigationLink {
@@ -225,7 +226,7 @@ extension ProfileView {
 							HStack {
 								Image(systemName: setting.image)
 								
-								Text(setting.display)
+								Text(setting.display.localized(language))
 									.font(.machachaCallout)
 								Spacer()
 								Image(systemName: "chevron.right")
@@ -251,13 +252,13 @@ extension ProfileView {
 			Alert(
 				title: Text(faceIDVM.showErrorAlertTitle),
 				message: Text(faceIDVM.showErrorAlertMessage),
-				primaryButton: .default(Text("설정")) { // 앱 설정으로 이동
+				primaryButton: .default(Text("설정".localized(language))) { // 앱 설정으로 이동
 					if let appSettring = URL(string: UIApplication.openSettingsURLString) {
 						UIApplication.shared.open(appSettring, options: [:], completionHandler: nil)
 					}
 					profileVM.isFaceID = false
 				},
-				secondaryButton: .default(Text("확인")) {
+				secondaryButton: .default(Text("확인".localized(language))) {
 					profileVM.isFaceID = false
 				})
 		}
@@ -278,7 +279,7 @@ extension ProfileView {
 									.scaleEffect(0.5)
 							}
 						
-						Text("\(web.display)")
+						Text("\(web.display)".localized(language))
 							.font(.machachaCallout)
 							.fixedSize(horizontal: false, vertical: true)
 							.frame(maxWidth: .infinity, alignment: .leading)
@@ -310,12 +311,15 @@ struct ProfileView_Previews: PreviewProvider {
 
 //MARK: - SectionHeaderView
 struct SectionHeaderView: View {
+	//MARK: Property wrapper
+	@AppStorage("language") private var language = LocalizationViewModel.shared.language
+
 	//MARK: Property
 	var name: String
 	
 	var body: some View {
 		HStack {
-			Text(name)
+			Text(name.localized(language))
 				.font(.machachaSubhead)
 				.foregroundColor(.secondary)
 			Spacer()

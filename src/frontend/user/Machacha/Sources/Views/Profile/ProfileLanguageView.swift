@@ -28,12 +28,12 @@ struct ProfileLanguageView: View {
 							Image(systemName: "checkmark")
 						}
 					}
-				}
+				} // Button
 				.foregroundColor(Color("textColor"))
-			}
-		}
+			} // ForEach
+		} // List
 		.navigationBarBackButtonHidden()
-		.navigationBarTitle("언어 설정", displayMode: .inline)
+		.navigationBarTitle("언어 설정".localized(language), displayMode: .inline)
 		.toolbarBackground(Color("Color3"), for: .navigationBar)
 		.toolbarBackground(.visible, for: .navigationBar)
 		.toolbarColorScheme(.dark, for: .navigationBar) // 글자색 변경
