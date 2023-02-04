@@ -149,7 +149,15 @@ struct ProfileEditView: View {
 	private func UserLogout() -> some View {
 		HStack(spacing: 20) {
 			Button {
-				
+				profileVM.isLoading = true
+				Task {
+					try await profileVM.logout()
+					DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 임시
+						profileVM.isLoading = false
+						profileVM.currentUser = nil
+						self.presentation.wrappedValue.dismiss()
+					}
+				}
 			} label: {
 				Text("로그아웃")
 					.underline()

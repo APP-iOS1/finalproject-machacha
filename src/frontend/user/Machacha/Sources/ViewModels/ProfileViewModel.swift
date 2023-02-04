@@ -51,7 +51,7 @@ class ProfileViewModel: ObservableObject {
 	
 	// 로그아웃
 	func logout() async throws {
-		currentUser = nil
+//		currentUser = nil
 	}
 	
 	//MARK: - Read
