@@ -42,7 +42,7 @@ struct ProfileView: View {
 			.toolbar(content: {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					NavigationLink {
-						EmptyView()
+						ProfileNotificationView() // 알림 및 공지사항
 					} label: {
 						Image(systemName: "bell.badge")
 							.symbolRenderingMode(.multicolor)

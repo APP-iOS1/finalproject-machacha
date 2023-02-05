@@ -50,6 +50,7 @@
 		C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03A2987A11B00F0B620 /* AnimationModifier.swift */; };
 		C433E03F2987A37800F0B620 /* ProfileFoodCartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */; };
 		C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */; };
+		C43B1151298F778D00BE312A /* ProfileNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1150298F778D00BE312A /* ProfileNotificationView.swift */; };
 		C492FAA7298D3DF90081E3B9 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
@@ -179,6 +180,7 @@
 		C433E03A2987A11B00F0B620 /* AnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
 		C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartListView.swift; sourceTree = "<group>"; };
 		C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartCellView.swift; sourceTree = "<group>"; };
+		C43B1150298F778D00BE312A /* ProfileNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationView.swift; sourceTree = "<group>"; };
 		C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */,
 				C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */,
 				C4F4203C298EC95600B615C6 /* ProfileSecessionView.swift */,
+				C43B1150298F778D00BE312A /* ProfileNotificationView.swift */,
 				C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */,
 				C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */,
 			);
@@ -814,6 +817,7 @@
 				C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */,
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
+				C43B1151298F778D00BE312A /* ProfileNotificationView.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				1ABCA9362987AB8E00DD97C5 /* IconTabView.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
