@@ -16,6 +16,8 @@ class ReviewViewModel: ObservableObject {
     @Published var twoReviews: [Review] = []
     @Published var imageDict: [String : UIImage] = [:]
     @Published var isLoading: Bool = false
+    @Published var reviewer: User = User(id: "", isFirstLogin: true, email: "", name: "", profileId: "", favoriteId: [], visitedId: [], updatedAt: Date(), createdAt: Date())
+    @Published var reviewerImageDict: [String : UIImage] = [:]
     
     let database = Firestore.firestore()
     let storage = Storage.storage()
@@ -178,6 +180,54 @@ class ReviewViewModel: ObservableObject {
                 }
             }
             
+        }
+    }
+    
+    @MainActor
+    func fetchReviewer(userId: String) async {
+        do {
+            let querysnapshot = try await database.collection("User")
+                .whereField("id", isEqualTo: userId)
+                .getDocuments()
+
+            for document in querysnapshot.documents {
+                let data = document.data()
+
+                let id: String = data["id"] as? String ?? ""
+                let isFirstLogin: Bool = data["isFirstLogin"] as? Bool ?? false
+                let email: String = data["email"] as? String ?? ""
+                let name: String = data["name"] as? String ?? ""
+                let profileId: String = data["profileId"] as? String ?? ""
+                let favoriteId: [String] = data["favoriteId"] as? [String] ?? []
+                let visitedId: [String] = data["visitedId"] as? [String] ?? []
+                let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
+                let createdAt: Timestamp = data["createdAt"] as! Timestamp
+
+                // fetch image set
+                self.fetchReviewImage(userId: id, imageName: profileId)
+                print("profileId : \(profileId)")
+
+                reviewer = User(id: id, isFirstLogin: isFirstLogin, email: email, name: name, profileId: profileId, favoriteId: favoriteId, visitedId: visitedId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
+                print("imageDict : \(imageDict)")
+            }
+        } catch {
+            print("fetchReviews error: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - 서버의 Storage에서 이미지를 가져오는 Method
+    func fetchReviewImage(userId: String, imageName: String) {
+        print("userId = \(userId), imageName = \(imageName)")
+        let ref = storage.reference().child("images/\(userId)/\(imageName)")
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("review image error while downloading image\n\(error.localizedDescription)")
+                return
+            } else {
+                let image = UIImage(data: data!)
+                self.reviewerImageDict[imageName] = image
+            }
         }
     }
 }
