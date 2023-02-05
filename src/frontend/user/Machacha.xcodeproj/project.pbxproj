@@ -14,6 +14,8 @@
 		1A30E1622988D8A10068C025 /* Ex+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E1612988D8A10068C025 /* Ex+Date.swift */; };
 		1A30E1642988F7C80068C025 /* ReviewThumbnailListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E1632988F7C80068C025 /* ReviewThumbnailListCellView.swift */; };
 		1A30E166298903F30068C025 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E165298903F30068C025 /* MenuView.swift */; };
+		1A439E9129902A68000EF1A2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1A439E9029902A68000EF1A2 /* AlertToast */; };
+		1A439E9329903134000EF1A2 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A439E9229903134000EF1A2 /* ReportView.swift */; };
 		1ABCA9312987602500DD97C5 /* FoodCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */; };
 		1ABCA93229877D6200DD97C5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AC29768E4500B04A98 /* DetailView.swift */; };
 		1ABCA9362987AB8E00DD97C5 /* IconTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9352987AB8E00DD97C5 /* IconTabView.swift */; };
@@ -125,6 +127,7 @@
 		1A30E1612988D8A10068C025 /* Ex+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Date.swift"; sourceTree = "<group>"; };
 		1A30E1632988F7C80068C025 /* ReviewThumbnailListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewThumbnailListCellView.swift; sourceTree = "<group>"; };
 		1A30E165298903F30068C025 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		1A439E9229903134000EF1A2 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartViewModel.swift; sourceTree = "<group>"; };
 		1ABCA9352987AB8E00DD97C5 /* IconTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTabView.swift; sourceTree = "<group>"; };
 		1ABCA9372987AF7A00DD97C5 /* StoreInformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformView.swift; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 				C4D5C05C297A7E22003CF061 /* FirebaseStorage in Frameworks */,
 				FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */,
 				FAFDD48B2977B02D008E28AD /* KakaoSDKTemplate in Frameworks */,
+				1A439E9129902A68000EF1A2 /* AlertToast in Frameworks */,
 				FAFDD4832977B02D008E28AD /* KakaoSDKCommon in Frameworks */,
 				FAFDD4812977B02D008E28AD /* KakaoSDKAuth in Frameworks */,
 				FAFDD48D2977B02D008E28AD /* KakaoSDKUser in Frameworks */,
@@ -474,6 +478,7 @@
 				C4A587AC29768E4500B04A98 /* DetailView.swift */,
 				1ABCA9392987BE3400DD97C5 /* FoodCartMenuView.swift */,
 				1ABCA9352987AB8E00DD97C5 /* IconTabView.swift */,
+				1A439E9229903134000EF1A2 /* ReportView.swift */,
 				1ABCA93B2987FE1100DD97C5 /* ReviewThumbnailView.swift */,
 				1ABCA9372987AF7A00DD97C5 /* StoreInformView.swift */,
 			);
@@ -590,6 +595,7 @@
 				C4D5C057297A7E22003CF061 /* FirebaseFirestore */,
 				C4D5C059297A7E22003CF061 /* FirebaseFirestoreSwift */,
 				C4D5C05B297A7E22003CF061 /* FirebaseStorage */,
+				1A439E9029902A68000EF1A2 /* AlertToast */,
 			);
 			productName = Machacha;
 			productReference = C4A587342975A77000B04A98 /* Machacha.app */;
@@ -671,6 +677,7 @@
 				FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */,
 				C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = C4A587352975A77000B04A98 /* Products */;
 			projectDirPath = "";
@@ -780,6 +787,7 @@
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
+				1A439E9329903134000EF1A2 /* ReportView.swift in Sources */,
 				6A159FC229877C4C0002E625 /* MapHeaderCell.swift in Sources */,
 				1A30E15A2988D1910068C025 /* ReviewViewModel.swift in Sources */,
 				C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */,
@@ -1119,6 +1127,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
@@ -1178,6 +1194,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1A439E9029902A68000EF1A2 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
 		6A8EBDA329778AB300964C9D /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
