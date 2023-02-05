@@ -10,14 +10,14 @@ import SwiftUI
 struct ReviewThumbnailListCellView: View {
     var review: Review
     @EnvironmentObject var reviewViewModel: ReviewViewModel
-    @EnvironmentObject var profileViewModel: ProfileViewModel
+//    @EnvironmentObject var profileViewModel: ProfileViewModel
     
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
                 Text(review.description)
                     .padding(.bottom, 5)
-                Text(profileViewModel.reviewer.name)
+                Text(reviewViewModel.reviewer.name)
                     .font(.machachaHeadlineBold)
                 Text(review.createdAt.getDay())
                     .foregroundColor(.gray)
@@ -25,13 +25,15 @@ struct ReviewThumbnailListCellView: View {
             .font(.machachaHeadline)
             .padding(.trailing, 10)
             
-            if let image = profileViewModel.imageDict[profileViewModel.reviewer.profileId] {
+            //프로필 사진
+            if let image = reviewViewModel.reviewerImageDict[reviewViewModel.reviewer.profileId] {
                 Image(uiImage: image)
                     .resizable()
                     .frame(width: 120, height: 120)
                     .aspectRatio(contentMode: .fit)
             }
             
+            //리뷰 음식 사진
             if review.imageId.count > 0 {
                 if let image = reviewViewModel.imageDict[review.imageId[0]] {
                     Image(uiImage: image)
@@ -44,8 +46,7 @@ struct ReviewThumbnailListCellView: View {
         .padding(.trailing, 20)
         .onAppear {
             Task {
-//                await reviewViewModel.fetchReviews(foodCartId:"InzqNwgl15TytWNOdIZz")
-                await profileViewModel.fetchReviewer(userId: review.reviewer)
+                await reviewViewModel.fetchReviewer(userId: review.reviewer)
             }
         }
     }
