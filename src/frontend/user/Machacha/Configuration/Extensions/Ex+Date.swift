@@ -17,6 +17,14 @@ extension Date {
         return dateFormatter.string(from: self)
     }
 	
+	func getDay(format: String) -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = format
+		dateFormatter.timeZone = TimeZone(identifier: "ko_KR")
+		
+		return dateFormatter.string(from: self)
+	}
+	
 	// 방금전, 몇초전을 나타내는 함수
 	func renderTime() -> String {
 		if Calendar.current.dateComponents([.day], from: self, to: .now).day! > 7 { // 기준 7일

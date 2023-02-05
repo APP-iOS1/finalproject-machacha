@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserNotification: Identifiable {
+struct UserNotification: Hashable, Identifiable {
 	let id: String
 	let userId: [String]			// 알림을 받을 유저
 	var navigationType: String		// all, home, search, magazine
@@ -15,6 +15,29 @@ struct UserNotification: Identifiable {
 	var contents: String			// 표출될 내용
 	var updatedAt: Date
 	let createdAt: Date
+	
+	// 시간 차이로 나타내기
+	var descriptionDate: String {
+		let diff = Date().timeIntervalSince(createdAt)
+		
+		switch diff {
+		case 0..<60:
+			return "방금 전"
+		case 60..<3600:
+			return "\(Int(diff/60))분 전"
+		case 3600..<86400: // 24시간 이전
+			return "\(Int(diff/3600))시간 전"
+		case 86400..<604800: // 이번주 내
+			return "\(Int(diff/86400))일 전"
+		default:
+			return createdAt.getDay(format: "yy년 MM월 dd일")
+		}
+	}
+	
+	var getIntervalTime: Int {
+		let diff = Date().timeIntervalSince(createdAt)
+		return Int(diff)
+	}
 	
 	static func getDummy() -> Self {
 		return UserNotification(id: "0DkzxCKtVprJTu1IacSw", userId: ["egmqxtTT1Zani0UkJpUW"], navigationType: "all", contentType: "전체 알림", contents: "", updatedAt: Date(), createdAt: Date())
@@ -28,8 +51,4 @@ struct UserNotification: Identifiable {
 			UserNotification(id: "3DkzxCKtVprJTu1IacSw", userId: ["egmqxtTT1Zani0UkJpUW"], navigationType: "magazine", contentType: "new", contents: "", updatedAt: Date(), createdAt: Date())
 		]
 	}
-	
-	// 추천 맛집을 알아보세요
-	// 내 동내에 새로운 추가된 포장마차 발견!
-	// 마차챠의 새로운 매거진 추천이 도착했습니다
 }

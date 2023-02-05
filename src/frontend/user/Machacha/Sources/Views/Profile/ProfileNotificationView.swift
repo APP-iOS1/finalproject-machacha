@@ -13,14 +13,43 @@ struct ProfileNotificationView: View {
 	@Environment(\.presentationMode) var presentation
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
+	//MARK: Property
+	let userNoti: [UserNotification]
+	var periodArr = ["오늘", "이번 주", "이번 달"]
+	// notification 내 createDate 기준 날짜 필터링
+	var today: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 0 && $0.getIntervalTime < 86400 }}
+	var thisWeek: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 86400 && $0.getIntervalTime < 604800 }}
+	var thisMonth: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 604800 && $0.getIntervalTime < 2592000 }}
+
     var body: some View {
 		ScrollView(showsIndicators: false) {
-			Button {
-				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
-				self.tabbarManager.curTabSelection = .home
-			} label: {
-				Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-			}
+			LazyVStack {
+				ForEach(periodArr.indices, id: \.self) { i in
+					LazyVStack(spacing: 0) {
+						if getPeriodType(periodArr[i]).count > 0{ // 해당 기간에 없으면 표시 X
+							Rectangle()
+								.foregroundColor(Color("Color3").opacity(0.3))
+								.frame(height: 8)
+							VStack {
+								Text("\(periodArr[i])")
+									.font(.machachaFootnote)
+									.foregroundColor(Color(hex: "999899"))
+									.frame(maxWidth: .infinity, alignment: .leading)
+							}
+							.padding([.leading, .top], 16)
+							.background(Color("cellColor"))
+						}
+						
+						ForEach(getPeriodType(periodArr[i]), id: \.self) { notification in
+							ProfileNotificationCellView(notification: notification)
+						}
+					} // LazyVStack
+					.cornerRadius(8)
+					.overlay(RoundedRectangle(cornerRadius: 8)
+						.stroke(Color("textColor"), lineWidth: 0.1))
+				} // ForEach
+			} // LazyVStack
+			.padding()
 		} // ScrollView
 		.background(Color("bgColor"))
 		.scrollContentBackground(.hidden)
@@ -39,12 +68,98 @@ struct ProfileNotificationView: View {
 			} // ToolbarItem
 		})
     }
+	
+	func getPeriodType(_ periodType: String) -> [UserNotification] {
+		switch periodType {
+		case "오늘":
+			return today
+		case "이번 주":
+			return thisWeek
+		case "이번 달":
+			return thisMonth
+		default:
+			return today
+		}
+	}
+}
+
+extension ProfileNotificationView {
+	@ViewBuilder
+	private func ProfileNotificationCellView(notification: UserNotification) -> some View {
+		Button {
+			switch notification.navigationType {
+			case "all":
+				break
+			case "home":
+				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
+				self.tabbarManager.curTabSelection = .home
+			case "search":
+				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
+				self.tabbarManager.curTabSelection = .mapSearch
+			case "magazine":
+				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
+				self.tabbarManager.curTabSelection = .mapSearch
+			default:
+				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
+			}
+		} label: {
+			HStack(alignment: .top) {
+				RoundedRectangle(cornerRadius: 8)
+					.foregroundColor(Color("bgColor"))
+					.frame(width: 50, height: 50)
+					.overlay {
+						VStack {
+							switch notification.navigationType {
+							case "all":
+								Image(systemName: "mic")
+							case "home":
+								Image(systemName: "fork.knife")
+							case "search":
+								Image(systemName: "magnifyingglass")
+							case "magazine":
+								Image(systemName: "newspaper")
+							default:
+								Image(systemName: "bell")
+							}
+						} // VStack
+						.foregroundColor(Color("textColor"))
+					}
+				Spacer()
+				
+				HStack(alignment: .top) {
+					HStack {
+						switch notification.navigationType {
+						case "all":
+							CustomBoldLabelView(text1: " 의 새로운 ", text2: "이 있습니다.", user: "마차챠", task: "\(notification.contents)")
+						case "home":
+							CustomBoldLabelView(text1: " 에서 새로운 ", text2: "을 알아보세요.", user: "맛집찾기", task: "추천 맛집")
+						case "search":
+							CustomBoldLabelView(text1: " 에 새롭게 추가된 ", text2: "가 발견되었습니다.", user: "내 동내", task: "포장마차")
+						case "magazine":
+							CustomBoldLabelView(text1: " 님이 추천하는 새로운 ", text2: "이 올라왔어요", user: "마차챠 인프로언서", task: "매거진")
+						default:
+							CustomBoldLabelView(text1: " 의 새로운 ", text2: "이 있습니다", user: "마차챠", task: "알림")
+						}
+					}
+					
+					Text("\(notification.descriptionDate)")
+						.font(.machachaFootnote)
+						.foregroundColor(.secondary)
+				} // HStack
+				.frame(height: 40)
+			}
+			.padding(.horizontal)
+			.frame(height: 64)
+			.background(Color("cellColor"))
+
+		} // Button
+	}
 }
 
 struct ProfileNotificationView_Previews: PreviewProvider {
     static var previews: some View {
 		NavigationView {
-			ProfileNotificationView()
+			ProfileNotificationView(userNoti: UserNotification.getDummyList())
 		}
     }
 }
