@@ -16,7 +16,7 @@ struct ProfileNotificationView: View {
 	//MARK: Property
 	let userNoti: [UserNotification]
 	var periodArr = ["오늘", "이번 주", "이번 달", "오래된 알림"]
-	// notification 내 createDate 기준 날짜 필터링
+	// notification 내 createdAt 기준 날짜 필터링
 	var today: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 0 && $0.getIntervalTime < 86400 }}
 	var thisWeek: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 86400 && $0.getIntervalTime < 604800 }}
 	var thisMonth: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 604800 && $0.getIntervalTime < 2592000 }}
@@ -155,7 +155,6 @@ extension ProfileNotificationView {
 			.padding(.horizontal)
 			.frame(height: 64)
 			.background(Color("cellColor"))
-
 		} // Button
 	}
 }
