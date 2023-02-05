@@ -35,10 +35,12 @@ struct MagazineView: View {
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 20)
+                        .padding(.top, 20)
                     
                     // 내가 봐야할 곳
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 20) {
                         if !show {
+                            // 카드를 tap하지 않았을 때 그냥 카드를 나열해주는
                             cards //컨텐츠들
                         } else {
                             // 카드를 선택했을 경우 카드가 나열된 화면 대신 Rectangle이 보이도록
@@ -55,14 +57,15 @@ struct MagazineView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
+                    .padding(.bottom, 50)
+
                 }
                 // coordinateSpace?
-                // 특정 뷰의 좌표 공간 - scrollDetection
+                // "scroll"이라는 이름의 사용자 지정 좌표 공간
                 .coordinateSpace(name: "scroll")
                 .navigationBarHidden(show ? true : false)
                 .toolbar { // 딱히 필요없는 것 같지만 일단은 가지고 가겠음
                     //                NavigationBar()
-                    
                 }
                 // 내가 봐야할 부분
                 if show {
@@ -81,13 +84,26 @@ struct MagazineView: View {
                 }
         }//navigationview
         .onAppear {
-            magazineVM.fetchMagazines()
-            
+            magazineVM.isLoading = true
+            Task {
+                magazineVM.magazines = try await magazineVM.fetchMagazines()
+                magazineVM.isLoading = false
+            }
+        }
+        .refreshable {
+            Task {
+                magazineVM.magazines = try await magazineVM.fetchMagazines()
+            }
         }
     }//body
     
+    // scrollDetection을 어디에서 사용할까?
     var scrollDetection: some View {
+        // GeometryReader는 언제 사용하는 것인지?
+        //
         GeometryReader { proxy in
+            // Color.clear.preference?
+            //
             Color.clear.preference(key: ScrollPreferenceKey.self, value: proxy.frame(in: .named("scroll")).minY)
         }
         .frame(height: 0)
@@ -119,7 +135,7 @@ struct MagazineView: View {
             if magazine.id == selectedID {
                 // CourseItem 펼친 view
                 // model도 넘겨주자
-                MCardDetailView(namespace: namespace, magazine: magazine, show: $show, model: model)
+                MCardDetailView(namespace: namespace, magazine: magazine, show: $show, model: model, magazineVM: magazineVM)
                     .zIndex(1)
                     .transition(.asymmetric(
                         insertion: .opacity.animation(.easeInOut(duration: 0.1)),
