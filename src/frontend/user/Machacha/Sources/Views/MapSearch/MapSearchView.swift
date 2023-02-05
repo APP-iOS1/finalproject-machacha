@@ -19,23 +19,26 @@ struct MapSearchView: View {
                     MapHeader()
                     Spacer()
                     
-                    SnapCarousel(index: $currentIndex, items: mapSerachViewModel.foodCarts) { foodCart in
-                        
-                        MapFooterCell(foodCart: foodCart)
+                    
+                    SnapCarousel(index: $currentIndex, items: mapSerachViewModel.foodCarts, coord: $mapSerachViewModel.coord) { foodCart in
+                        MapFooterCell(foodCart: foodCart, isFocus: false)
+                            .aspectRatio(contentMode: .fill)
                             .padding(.vertical, Screen.maxHeight - 420)
                             .onTapGesture {
                                 self.isTap = true
-                                
                             }
-
                         
-                        //                        GeometryReader { proxy in
-                        //                            let size = proxy.size
-                        //                            MapFooterCell(foodCart: foodCart)
-                        //                                .aspectRatio(contentMode: .fill)
-                        //                                .frame(width: size.width)
-                        //                                .padding(.vertical, Screen.maxHeight - 420)
-                        //                        }
+                        
+//                        GeometryReader { proxy in
+//                            let size = proxy.size
+//                            MapFooterCell(foodCart: foodCart)
+//                                .aspectRatio(contentMode: .fill)
+//                                .frame(width: size.width)
+//                                .padding(.vertical, Screen.maxHeight - 420)
+//                                .onTapGesture {
+//                                    self.isTap = true
+//                                }
+//                        }
                     }
                     
                 }
@@ -43,7 +46,7 @@ struct MapSearchView: View {
                     DetailView(selectedStore: mapSerachViewModel.foodCarts[currentIndex])
                 }
                 .zIndex(1)
-                NaverMap(coord: $mapSerachViewModel.coord, currentIndex: $currentIndex, foodCarts:  mapSerachViewModel.foodCarts)
+                NaverMap(coord: $mapSerachViewModel.coord, currentIndex: $currentIndex, foodCarts: mapSerachViewModel.foodCarts)
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
