@@ -51,6 +51,7 @@
 		C433E03F2987A37800F0B620 /* ProfileFoodCartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */; };
 		C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */; };
 		C43B1151298F778D00BE312A /* ProfileNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1150298F778D00BE312A /* ProfileNotificationView.swift */; };
+		C43B1153298F7AEE00BE312A /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1152298F7AEE00BE312A /* UserNotification.swift */; };
 		C492FAA7298D3DF90081E3B9 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
@@ -181,6 +182,7 @@
 		C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartListView.swift; sourceTree = "<group>"; };
 		C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartCellView.swift; sourceTree = "<group>"; };
 		C43B1150298F778D00BE312A /* ProfileNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationView.swift; sourceTree = "<group>"; };
+		C43B1152298F7AEE00BE312A /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				C4D5C05F297A7F4A003CF061 /* Magazine.swift */,
 				C4D5C05D297A7EBE003CF061 /* Review.swift */,
 				C4A5878C29768C4E00B04A98 /* User.swift */,
+				C43B1152298F7AEE00BE312A /* UserNotification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */,
 				C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */,
+				C43B1153298F7AEE00BE312A /* UserNotification.swift in Sources */,
 				C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */,
 				1A30E1622988D8A10068C025 /* Ex+Date.swift in Sources */,
 				C4F4203D298EC95600B615C6 /* ProfileSecessionView.swift in Sources */,
