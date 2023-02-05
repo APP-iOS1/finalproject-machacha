@@ -18,6 +18,7 @@ class ReviewViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var reviewer: User = User(id: "", isFirstLogin: true, email: "", name: "", profileId: "", favoriteId: [], visitedId: [], updatedAt: Date(), createdAt: Date())
     @Published var reviewerImageDict: [String : UIImage] = [:]
+    @Published var isShowingAlert = false
     
     let database = Firestore.firestore()
     let storage = Storage.storage()
