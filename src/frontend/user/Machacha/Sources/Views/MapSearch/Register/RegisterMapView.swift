@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//보라색 에러때문인지 뷰 컴포넌트를 하나지우면 맵을 무한히 불러옴 (updateUIView 계속)
+
 struct RegisterMapView: View {
     @ObservedObject var mapSerachViewModel = MapSearchViewModel() //현재 위치
     @State var cameraCoord : (Double,Double) = (37.566249, 126.992227) // 카메라 위치
@@ -16,10 +18,13 @@ struct RegisterMapView: View {
     var body: some View {
         VStack {
             ZStack {
-                Circle()
-                    .foregroundColor(Color("Color3"))
-                    .frame(width: 20)
-                    .zIndex(1)
+//                VStack{
+//                    Spacer()
+//                    NavigationLink(destination: RegisterView(cameraCoord: cameraCoord)) {
+//                        Text("이 위치로 제보하기")
+//                    }
+//                }
+//                .zIndex(1)
                 RegisterNaverMap(coord: $mapSerachViewModel.coord, cameraCoord: $cameraCoord)
                     .ignoresSafeArea(.all, edges: .top)
             }
@@ -27,14 +32,20 @@ struct RegisterMapView: View {
                 mapSerachViewModel.checkIfLocationServicesIsEnabled()
                 cameraCoord = mapSerachViewModel.coord
             }
-            .onChange(of: cameraCoord.0) { coord in
-                print("변화중 : \(cameraCoord)")
-            }
             
             Text("카메라 위치: \(cameraCoord.0), \(cameraCoord.1)")
             NavigationLink(destination: RegisterView(cameraCoord: cameraCoord)) {
-                Text("등록")
+                Text("이 위치로 제보하기")
+                    .font(.machachaTitle3)
+                    .foregroundColor(Color("Color3"))
+                    .padding()
             }
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color("Color3"))
+                    .opacity(0.1)
+            }
+            .padding()
         }
     }
 }
@@ -59,3 +70,54 @@ struct Coord : Equatable {
         return left.latitude == right.latitude && left.longitude == right.longitude
     }
 }
+
+/*
+ //
+ //  RegisterView.swift
+ //  Machacha
+ //
+ //  Created by Park Jungwoo on 2023/01/31.
+ //
+
+ import SwiftUI
+
+ struct RegisterMapView: View {
+     @ObservedObject var mapSerachViewModel = MapSearchViewModel() //현재 위치
+     @State var cameraCoord : (Double,Double) = (37.566249, 126.992227) // 카메라 위치
+     @State var isTap: Bool = false
+     
+     var body: some View {
+         VStack {
+             ZStack {
+                 VStack{
+                     Spacer()
+                     NavigationLink(destination: RegisterView(cameraCoord: cameraCoord)) {
+                         Text("이 위치로 제보하기")
+                             .font(.machachaTitle3)
+                             .foregroundColor(Color("Color3"))
+                     }
+                     .tint(Color("Color3"))
+                 }
+                 .zIndex(1)
+                 RegisterNaverMap(coord: $mapSerachViewModel.coord, cameraCoord: $cameraCoord)
+                     .ignoresSafeArea(.all, edges: .top)
+             }
+             .onAppear {
+                 mapSerachViewModel.checkIfLocationServicesIsEnabled()
+                 cameraCoord = mapSerachViewModel.coord
+             }
+             NavigationLink(destination: RegisterView(cameraCoord: cameraCoord)) {
+                 Text("등록")
+             }
+         }
+     }
+ }
+
+ //struct RegisterMapView_Previews: PreviewProvider {
+ //    static var previews: some View {
+ //        RegisterMapView()
+ //    }
+ //}
+
+
+ */
