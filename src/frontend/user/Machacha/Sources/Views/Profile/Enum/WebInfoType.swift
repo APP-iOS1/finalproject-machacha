@@ -45,7 +45,7 @@ enum WebInfoType: Hashable {
 		case .openSource:
 			return "square.stack.3d.up"
 		case .license:
-			return "seal"
+			return "rosette"
 		}
 	}
 	

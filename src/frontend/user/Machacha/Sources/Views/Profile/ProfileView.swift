@@ -276,7 +276,8 @@ extension ProfileView {
 						Image(systemName: web.image)
 							.overlay {
 								Image(systemName: web.badge)
-									.scaleEffect(0.5)
+									.offset(y: -5)
+									.scaleEffect(0.4)
 							}
 						
 						Text("\(web.display)".localized(language))
