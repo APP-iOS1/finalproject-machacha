@@ -27,10 +27,7 @@ struct ReviewView: View {
             .padding(.top, 15)
             ScrollView {
                 ForEach(reviewViewModel.reviews, id: \.self) { review in
-                    Rectangle()
-                        .foregroundColor(.gray)
-                        .frame(height: 0.7)
-                        .padding(.bottom, 10)
+                    Divider()
                     ReviewListCellView(review: review)
                         .frame(width: 350, alignment: .leading)
                         .padding(.bottom, 10)
