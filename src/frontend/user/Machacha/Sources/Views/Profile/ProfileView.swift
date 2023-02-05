@@ -35,6 +35,7 @@ struct ProfileView: View {
 					profileVM.currentUser = try await profileVM.fetchUser()
 					profileVM.name = profileVM.currentUser?.name ?? ""
 					profileVM.reviewUser = try await profileVM.fetchReivews()
+					profileVM.notification = try await profileVM.fetchNotification()
 					profileVM.profileImage = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView
@@ -42,7 +43,7 @@ struct ProfileView: View {
 			.toolbar(content: {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					NavigationLink {
-//						ProfileNotificationView() // 알림 및 공지사항
+						ProfileNotificationView(userNoti: profileVM.notification) // 알림 및 공지사항
 					} label: {
 						Image(systemName: "bell.badge")
 							.symbolRenderingMode(.multicolor)

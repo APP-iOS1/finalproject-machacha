@@ -15,11 +15,12 @@ struct ProfileNotificationView: View {
 
 	//MARK: Property
 	let userNoti: [UserNotification]
-	var periodArr = ["오늘", "이번 주", "이번 달"]
+	var periodArr = ["오늘", "이번 주", "이번 달", "오래된 알림"]
 	// notification 내 createDate 기준 날짜 필터링
 	var today: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 0 && $0.getIntervalTime < 86400 }}
 	var thisWeek: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 86400 && $0.getIntervalTime < 604800 }}
 	var thisMonth: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 604800 && $0.getIntervalTime < 2592000 }}
+	var old: [UserNotification] { userNoti.filter { $0.getIntervalTime >= 2592000 }}
 
     var body: some View {
 		ScrollView(showsIndicators: false) {
@@ -35,14 +36,14 @@ struct ProfileNotificationView: View {
 									.font(.machachaFootnote)
 									.foregroundColor(Color(hex: "999899"))
 									.frame(maxWidth: .infinity, alignment: .leading)
-							}
+							} // VStack
 							.padding([.leading, .top], 16)
 							.background(Color("cellColor"))
 						}
 						
 						ForEach(getPeriodType(periodArr[i]), id: \.self) { notification in
 							ProfileNotificationCellView(notification: notification)
-						}
+						} // ForEach
 					} // LazyVStack
 					.cornerRadius(8)
 					.overlay(RoundedRectangle(cornerRadius: 8)
@@ -78,7 +79,7 @@ struct ProfileNotificationView: View {
 		case "이번 달":
 			return thisMonth
 		default:
-			return today
+			return old
 		}
 	}
 }
@@ -93,12 +94,15 @@ extension ProfileNotificationView {
 			case "home":
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 				self.tabbarManager.curTabSelection = .home
+				tabbarManager.barOffset = tabbarManager.offsetList[0]
 			case "search":
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 				self.tabbarManager.curTabSelection = .mapSearch
+				tabbarManager.barOffset = tabbarManager.offsetList[1]
 			case "magazine":
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
-				self.tabbarManager.curTabSelection = .mapSearch
+				self.tabbarManager.curTabSelection = .magazine
+				tabbarManager.barOffset = tabbarManager.offsetList[3]
 			default:
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 			}
@@ -130,15 +134,15 @@ extension ProfileNotificationView {
 					HStack {
 						switch notification.navigationType {
 						case "all":
-							CustomBoldLabelView(text1: " 의 새로운 ", text2: "이 있습니다.", user: "마차챠", task: "\(notification.contents)")
+							CustomBoldLabelView(text1: " 새로운 ", text2: "이 있어요.", user: "\(notification.contents)", task: "공지사항")
 						case "home":
 							CustomBoldLabelView(text1: " 에서 새로운 ", text2: "을 알아보세요.", user: "맛집찾기", task: "추천 맛집")
 						case "search":
-							CustomBoldLabelView(text1: " 에 새롭게 추가된 ", text2: "가 발견되었습니다.", user: "내 동내", task: "포장마차")
+							CustomBoldLabelView(text1: " 에 새롭게 추가된 ", text2: "를 발견했어요.", user: "내 동내", task: "포장마차")
 						case "magazine":
-							CustomBoldLabelView(text1: " 님이 추천하는 새로운 ", text2: "이 올라왔어요", user: "마차챠 인프로언서", task: "매거진")
+							CustomBoldLabelView(text1: " 님이 추천하는 새로운 ", text2: "이 올라왔어요.", user: "마차챠 인프로언서", task: "매거진")
 						default:
-							CustomBoldLabelView(text1: " 의 새로운 ", text2: "이 있습니다", user: "마차챠", task: "알림")
+							CustomBoldLabelView(text1: " 의 새로운 ", text2: "이 있어요.", user: "마차챠", task: "알림")
 						}
 					}
 					

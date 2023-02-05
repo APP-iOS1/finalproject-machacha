@@ -29,8 +29,10 @@ struct UserNotification: Hashable, Identifiable {
 			return "\(Int(diff/3600))시간 전"
 		case 86400..<604800: // 이번주 내
 			return "\(Int(diff/86400))일 전"
+		case 604800..<2592000:
+			return createdAt.getDay(format: "dd일")
 		default:
-			return createdAt.getDay(format: "yy년 MM월 dd일")
+			return createdAt.getDay(format: "MM월")
 		}
 	}
 	
@@ -45,7 +47,7 @@ struct UserNotification: Hashable, Identifiable {
 	
 	static func getDummyList() -> [Self] {
 		return [
-			UserNotification(id: "0DkzxCKtVprJTu1IacSw", userId: ["egmqxtTT1Zani0UkJpUW"], navigationType: "all", contentType: "all", contents: "이달의 공지사항", updatedAt: Date(), createdAt: Date()),
+			UserNotification(id: "0DkzxCKtVprJTu1IacSw", userId: ["egmqxtTT1Zani0UkJpUW"], navigationType: "all", contentType: "new", contents: "이달의 공지사항", updatedAt: Date(), createdAt: Date()),
 			UserNotification(id: "1DkzxCKtVprJTu1IacSw", userId: ["egmqxtTT1Zani0UkJpUW"], navigationType: "home", contentType: "new", contents: "", updatedAt: Date(), createdAt: Date()),
 			UserNotification(id: "2DkzxCKtVprJTu1IacSw", userId: ["egmqxtTT1Zani0UkJpUW"], navigationType: "search", contentType: "new", contents: "", updatedAt: Date(), createdAt: Date()),
 			UserNotification(id: "3DkzxCKtVprJTu1IacSw", userId: ["egmqxtTT1Zani0UkJpUW"], navigationType: "magazine", contentType: "new", contents: "", updatedAt: Date(), createdAt: Date())

@@ -15,6 +15,7 @@ class ProfileViewModel: ObservableObject {
 	@Published var currentUser: User?
 	@Published var foodCartUser: [FoodCart] = []
 	@Published var reviewUser: [Review] = []
+	@Published var notification: [UserNotification] = []
 	@Published var profileImage: UIImage?
 	@Published var name = "" {
 		willSet {
@@ -101,6 +102,30 @@ class ProfileViewModel: ObservableObject {
 		}
 		
 		return reviews
+	}
+	
+	// Notification Data Fetch
+	func fetchNotification() async throws -> [UserNotification] {
+		guard let userId = UserInfo.token else { return [] }
+		var notification = [UserNotification]() // 비동기 통신으로 받아올 Property
+		
+		let notiSnapshot = try await database.collection("Notification").whereField("userId", arrayContains: userId).getDocuments() // 첫번째 비동기 통신
+		
+		for noti in notiSnapshot.documents {
+			let docData = noti.data()
+			
+			let id: String = docData["id"] as? String ?? ""
+			let userId: [String] = docData["userId"] as? [String] ?? []
+			let navigationType: String = docData["navigationType"] as? String ?? ""
+			let contentType: String = docData["contentType"] as? String ?? ""
+			let contents: String = docData["contents"] as? String ?? ""
+			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+
+			notification.append(UserNotification(id: id, userId: userId, navigationType: navigationType, contentType: contentType, contents: contents, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
+		}
+		
+		return notification.sorted {$0.createdAt > $1.createdAt}
 	}
 	
 	// Resgiste(등록한 가게) Data Fetch
