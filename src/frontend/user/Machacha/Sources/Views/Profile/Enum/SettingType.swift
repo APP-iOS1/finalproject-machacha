@@ -18,7 +18,7 @@ enum SettingType: Hashable {
 	var display: String {
 		switch self {
 		case .faceID:
-			return "Face ID"
+			return "FaceID"
 		case .alert:
 			return "알림"
 		case .darkMode:
@@ -27,18 +27,18 @@ enum SettingType: Hashable {
 			return "언어"
 		}
 	}
-	
-	// NavigationLink or Toggle
-	var isToggle: Bool {
+
+	// System Image
+	var image: String {
 		switch self {
 		case .faceID:
-			return true
+			return "faceid"
 		case .alert:
-			return true
+			return "bell"
 		case .darkMode:
-			return true
+			return "gearshape"
 		case .language:
-			return false
+			return "globe"
 		}
 	}
 }

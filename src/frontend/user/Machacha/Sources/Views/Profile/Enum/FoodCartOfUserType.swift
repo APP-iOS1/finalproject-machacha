@@ -24,7 +24,7 @@ enum FoodCartOfUserType: Hashable {
 		case .visited:
 			return "가봤어요"
 		case .register:
-			return "등록한곳"
+			return "등록가게"
 		}
 	}
 	
@@ -38,7 +38,31 @@ enum FoodCartOfUserType: Hashable {
 		case .visited:
 			return "checkmark.seal.fill"
 		case .register:
-			return "person.fill.badge.plus"
+			return "house.fill"
+		}
+	}
+	
+	// system 이미지 color
+	var color: Color {
+		switch self {
+		case .favorite:
+			return Color("Color3")
+		case .review:
+			return Color("Color6")
+		case .visited:
+			return Color("Color5")
+		case .register:
+			return Color("Color1")
+		}
+	}
+	
+	// Register에 plus.circle.fill를 badge
+	var badge: String {
+		switch self {
+		case .register:
+			return "plus.circle.fill"
+		default:
+			return ""
 		}
 	}
 }
