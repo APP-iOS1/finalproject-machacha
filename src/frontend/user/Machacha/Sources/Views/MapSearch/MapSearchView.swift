@@ -20,6 +20,24 @@ struct MapSearchView: View {
                     MapHeader()
                     Spacer()
                     
+                    Button {
+                        print("현재 위치 조회")
+                        cameraCoord = locationManager.coord
+                    } label: {
+                        HStack {
+                            Spacer()
+                            ZStack {
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 30)
+                                    .shadow(radius: 10)
+                                Image(systemName: "scope")
+                                    .foregroundColor(Color("Color3"))
+                            }
+                        }.padding()
+
+                    }
+
                     
                     SnapCarousel(index: $currentIndex, items: mapSearchViewModel.foodCarts, coord: $cameraCoord) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
@@ -32,8 +50,9 @@ struct MapSearchView: View {
                     
                 }
                 .navigationDestination(isPresented: $isTap) {
-//                    DetailView(name: mapSearchViewModel.foodCarts[currentIndex].name)
-                    DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
+                    // content뷰에서 fetch를 하기 때문에 프리뷰에서 에러가 발생하기 때문에 주석처리함
+//                    TestView(name: mapSearchViewModel.foodCarts[currentIndex].name)
+//                    DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
                 }
                 .zIndex(1)
                 NaverMap(coord: $cameraCoord, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts)
@@ -44,12 +63,11 @@ struct MapSearchView: View {
             }
         }
     }
-//    @ViewBuilder private func DetailView(name: String) -> some View {
-//        VStack {
-//            Text("가게 이름 : \(name)")
-//        }
-//    }
-    
+    @ViewBuilder private func TestView(name: String) -> some View {
+        VStack {
+            Text("가게 이름 : \(name)")
+        }
+    }
 }
 
 struct MapSearchView_Previews: PreviewProvider {

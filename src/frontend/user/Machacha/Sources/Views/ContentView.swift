@@ -58,5 +58,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
 			.environmentObject(ProfileViewModel())
             .environmentObject(MapSearchViewModel())
+            .environmentObject(LocationManager())
     }
 }
