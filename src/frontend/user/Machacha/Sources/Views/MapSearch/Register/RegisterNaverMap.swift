@@ -5,11 +5,10 @@ import SwiftUI
 import NMapsMap
 
 struct RegisterNaverMap: UIViewRepresentable {
-    @Binding var coord: (Double, Double)
     @Binding var cameraCoord : (Double,Double)
     @State var markers : [NMFMarker] = [NMFMarker(position: NMGLatLng(lat: 37.566249, lng: 126.992227))]
     func makeCoordinator() -> NMCoordinator {
-        NMCoordinator(coord,$cameraCoord,$markers)
+        NMCoordinator($cameraCoord,$markers)
     }
 
     // MARK: - Map을 그리고 생성하는 메서드
@@ -22,7 +21,7 @@ struct RegisterNaverMap: UIViewRepresentable {
         
         view.mapView.addCameraDelegate(delegate: context.coordinator)
         view.mapView.touchDelegate = (context.coordinator)
-        let cameraCoord = NMGLatLng(lat: coord.0, lng: coord.1)
+        let cameraCoord = NMGLatLng(lat: cameraCoord.0, lng: cameraCoord.1)
         let cameraUpdate = NMFCameraUpdate(scrollTo: cameraCoord)
         view.mapView.moveCamera(cameraUpdate)
         //let a = view.mapView.projection.point(from: NMGLatLng(lat: coord.0, lng: coord.1))
@@ -40,12 +39,12 @@ struct RegisterNaverMap: UIViewRepresentable {
     }
     
     class NMCoordinator: NSObject ,NMFMapViewCameraDelegate,NMFMapViewTouchDelegate  {
-        var coord: (Double, Double)
+        //var coord: (Double, Double)
         @Binding var cameraCoord : (Double, Double)
         @Binding var markers : [NMFMarker]
         
-        init(_ coord: (Double, Double), _ cameraCoord: Binding<(Double, Double)>, _ markers : Binding<[NMFMarker]>) {
-            self.coord = coord
+        init(_ cameraCoord: Binding<(Double, Double)>, _ markers : Binding<[NMFMarker]>) {
+            //self.coord = coord
             self._cameraCoord = cameraCoord
             self._markers = markers
         }
@@ -63,9 +62,13 @@ struct RegisterNaverMap: UIViewRepresentable {
 
         // 카메라의 움직임이 끝났을 때 호출
         func mapView(_ mapView: NMFMapView, cameraDidChangeByReason reason: Int, animated: Bool) {
-            let point = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
-            if cameraCoord != point {
+            let point = (round(mapView.cameraPosition.target.lat*100000)/100000.0,
+                         round(mapView.cameraPosition.target.lng*100000)/100000.0)
+            if (round(cameraCoord.0*100000)/100000.0,
+                round(cameraCoord.1*100000)/100000.0) != point {
                 cameraCoord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
+                
+                //카메라 이동시 카메라 중앙 마커 이동
                 let marker = NMFMarker()
                 marker.position = NMGLatLng(lat: cameraCoord.0, lng: cameraCoord.1)
                 marker.isHideCollidedMarkers = true
@@ -77,7 +80,7 @@ struct RegisterNaverMap: UIViewRepresentable {
                 }
                 print("중앙 마커 이동")
             }
-            print("현재 카메라 좌표 : \(coord)")
+            print("현재 카메라 좌표 : \(cameraCoord)")
         }
         
         
