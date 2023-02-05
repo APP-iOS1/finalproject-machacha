@@ -7,9 +7,12 @@
 
 import SwiftUI
 import Combine
+import Firebase
 
 struct RegisterView: View {
+    
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var foodCartViewModel : FoodCartViewModel
     @ObservedObject var naverAPIVM : NaverAPIViewModel = NaverAPIViewModel()
     
     @State var name : String = ""
@@ -91,8 +94,9 @@ struct RegisterView: View {
                     MenuView()
                 }
                 Button(action: {
+                    let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
+                    foodCartViewModel.addFoodCart(foodCart)
                     dismiss()
-                    
                 }) {
                     Text("등록하기")
                         .font(.machachaTitle)
