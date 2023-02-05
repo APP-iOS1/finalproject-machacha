@@ -20,7 +20,7 @@ struct ProfileFoodCartListView: View {
 			Section {
 				VStack(alignment: .leading, spacing: 15) {
 					ForEach(profileVM.foodCartUser) { foodCart in
-						ProfileFoodCartCellView(foodCart: foodCart, isFavorite: profileVM.currentUser!.favoriteId.contains(foodCart.id))
+						ProfileFoodCartCellView(foodCartOfUserType: foodCartOfUserType, foodCart: foodCart, isFavorite: profileVM.currentUser!.favoriteId.contains(foodCart.id))
 					} // ForEach
 				} // VStack
 			} header: {

@@ -98,10 +98,10 @@ class ProfileViewModel: ObservableObject {
 			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
 			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
 
-            reviews.append(Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, upadatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
+            reviews.append(Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
 		}
 		
-		return reviews
+		return reviews.sorted {$0.updatedAt > $1.updatedAt}
 	}
 	
 	// Notification Data Fetch
@@ -160,7 +160,7 @@ class ProfileViewModel: ObservableObject {
 			favorite.append(FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId))
 		}
 		
-		return favorite
+		return favorite.sorted {$0.createdAt > $1.createdAt}
 	}
 		
 	// 즐겨찾기, 내가쓴리뷰, 가봤어요, 내가 등록한 가게에 따라 fetchData를 다르게 반환
@@ -208,7 +208,7 @@ class ProfileViewModel: ObservableObject {
 			favorite.append(FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId))
 		}
 		
-		return favorite
+		return favorite.sorted {$0.updatedAt > $1.updatedAt}
 	}
 	
 	// MARK: - 서버의 Storage에서 이미지를 가져오는 Method

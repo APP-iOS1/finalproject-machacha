@@ -15,6 +15,7 @@ struct ProfileFoodCartCellView: View {
 	@State private var showDetail = false
 	
 	//MARK: Property
+	let foodCartOfUserType: FoodCartOfUserType
 	let foodCart: FoodCart
 	let isFavorite: Bool
 	
@@ -22,84 +23,106 @@ struct ProfileFoodCartCellView: View {
 		Button {
 			showDetail.toggle()
 		} label: {
-			HStack(spacing: 10) {
-				VStack {
-					if let image = image {
-						Image(uiImage: image)
-							.resizable()
-							.clipShape(RoundedRectangle(cornerRadius: 8))
-							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-					} else {
-						RoundedRectangle(cornerRadius: 8) // 임시
-							.foregroundColor(.gray)
-					}
-				}
-				.frame(width: 70, height: 70)
-				.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-				
-				VStack(alignment: .leading, spacing: 7) {
+			VStack {
+				if foodCartOfUserType == .visited || foodCartOfUserType == .register { // 가봤어요 일경우
 					HStack {
-						Text(foodCart.name) // 가게 이름
-							.font(.machachaHeadlineBold)
-							.foregroundColor(Color("textColor"))
-							.lineLimit(2)
+						Image(systemName: foodCartOfUserType.image)
+							.foregroundColor(foodCartOfUserType.color)
+							.overlay {
+								Image(systemName: foodCartOfUserType.badge)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 10)
+									.offset(x: -9, y: 8)
+									.foregroundColor(foodCartOfUserType.color)
+									.opacity(profileVM.isLoading ? 0 : 1)
+							}
 						
-						Image(systemName: "heart.fill")
-							.foregroundColor(isFavorite ? Color("Color3") : .gray)
-					} // HStack
+						Text(foodCartOfUserType == .visited ? "\(foodCart.updatedAt.getDay(format: "yy.MM.dd")) 에 방문" : "\(foodCart.createdAt.getDay(format: "yy.MM.dd")) 에 등록")
+							.font(.machachaFootnote)
+							.foregroundColor(.secondary)
+						Spacer()
+					}
+					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+				}
+				HStack(spacing: 10) {
+					VStack {
+						if let image = image {
+							Image(uiImage: image)
+								.resizable()
+								.clipShape(RoundedRectangle(cornerRadius: 8))
+								.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+						} else {
+							RoundedRectangle(cornerRadius: 8) // 임시
+								.foregroundColor(.gray)
+						}
+					}
+					.frame(width: 70, height: 70)
 					.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 					
-					Text(foodCart.address) // 가게 주소
-						.foregroundColor(.secondary)
-						.fixedSize(horizontal: true, vertical: false)
-						.frame(maxWidth: .infinity, alignment: .leading)
-						.lineLimit(2)
-						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-					
-					HStack {
-						HStack { // 평점
-							Text("★ \(foodCart.gradeRounded)")
-								.foregroundColor(Color("Color3"))
-								.bold()
-						} // HStack
-						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-						.cornerRadius(8)
-						
-						HStack(spacing: 15) { // 즐겨찾기
-							Text("|")
+					VStack(alignment: .leading, spacing: 7) {
+						HStack(alignment: .top) {
+							Text(foodCart.name) // 가게 이름
+								.font(.machachaHeadlineBold)
+								.foregroundColor(Color("textColor"))
+								.lineLimit(2)
+							
 							Image(systemName: "heart.fill")
-								.frame(width: 3)
-							Text("\(foodCart.favoriteCnt)")
-								.fixedSize(horizontal: true, vertical: false)
+								.foregroundColor(isFavorite ? Color("Color3") : .gray)
 						} // HStack
 						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 						
-						HStack(spacing: 15) { // 가봤어요
-							Text("|")
-							Image(systemName: "checkmark.seal.fill")
-								.frame(width: 3)
-							Text("\(foodCart.visitedCnt)")
-								.fixedSize(horizontal: true, vertical: false)
-						} // HStack
-						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+						Text(foodCart.address) // 가게 주소
+							.foregroundColor(.secondary)
+							.fixedSize(horizontal: true, vertical: false)
+							.frame(maxWidth: .infinity, alignment: .leading)
+							.lineLimit(2)
+							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 						
-						HStack(spacing: 13) { // 리뷰
-							Text("|")
-							Image(systemName: "square.and.pencil")
-								.frame(width: 3)
-							Text("\(foodCart.reviewId.count)")
-								.fixedSize(horizontal: true, vertical: false)
+						HStack {
+							HStack { // 평점
+								Text("★ \(foodCart.gradeRounded)")
+									.foregroundColor(Color("Color3"))
+									.bold()
+							} // HStack
+							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+							
+							HStack(spacing: 15) { // 즐겨찾기
+								Text("|")
+								Image(systemName: "heart.fill")
+									.frame(width: 3)
+								Text("\(foodCart.favoriteCnt)")
+									.fixedSize(horizontal: true, vertical: false)
+							} // HStack
+							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+							
+							HStack(spacing: 15) { // 가봤어요
+								Text("|")
+								Image(systemName: "checkmark.seal.fill")
+									.frame(width: 3)
+								Text("\(foodCart.visitedCnt)")
+									.fixedSize(horizontal: true, vertical: false)
+							} // HStack
+							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
+							
+							HStack(spacing: 13) { // 리뷰
+								Text("|")
+								Image(systemName: "square.and.pencil")
+									.frame(width: 3)
+								Text("\(foodCart.reviewId.count)")
+									.fixedSize(horizontal: true, vertical: false)
+							} // HStack
+							.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
 						} // HStack
-						.setSkeletonView(opacity: opacity, shouldShow: profileVM.isLoading)
-					} // HStack
-					.foregroundColor(Color(uiColor: UIColor.lightGray))
-				} // VStack
-				.font(.machachaFootnote)
-				
-				Image(systemName: "chevron.right")
-					.foregroundColor(.gray)
-					.unredacted()
-			} // HStack
+						.foregroundColor(Color(uiColor: UIColor.lightGray))
+					} // VStack
+					.font(.machachaFootnote)
+					
+					Image(systemName: "chevron.right")
+						.foregroundColor(.gray)
+						.unredacted()
+				} // HStack
+			} // VStack
 			.padding()
 			.background(Color("cellColor"))
 			.cornerRadius(8)
@@ -127,7 +150,7 @@ struct ProfileFoodCartCellView_Previews: PreviewProvider {
 		
 		ZStack {
 			Color("bgColor")
-			ProfileFoodCartCellView(foodCart: FoodCart.getDummy(), isFavorite: true)
+			ProfileFoodCartCellView(foodCartOfUserType: .register, foodCart: FoodCart.getDummy(), isFavorite: true)
 				.environmentObject(profileVM)
 				.onAppear {
 					profileVM.currentUser = User.getDummy()
