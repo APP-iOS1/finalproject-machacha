@@ -11,6 +11,7 @@ struct DetailView: View {
     var selectedStore: FoodCart
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @EnvironmentObject var reviewViewModel: ReviewViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     
     var body: some View {
         ScrollView {
@@ -73,6 +74,7 @@ struct DetailView: View {
                 Task {
                     await foodCartViewModel.fetchFoodCarts()
                     await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
+                    profileViewModel.currentUser = try await profileViewModel.fetchUser()
                     foodCartViewModel.isLoading = false
                 }
             }
