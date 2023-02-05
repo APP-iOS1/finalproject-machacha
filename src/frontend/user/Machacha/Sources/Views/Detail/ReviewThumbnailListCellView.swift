@@ -10,28 +10,32 @@ import SwiftUI
 struct ReviewThumbnailListCellView: View {
     var review: Review
     @EnvironmentObject var reviewViewModel: ReviewViewModel
-//    @EnvironmentObject var profileViewModel: ProfileViewModel
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 5) {
                 Text(review.description)
-                    .padding(.bottom, 5)
-                Text(reviewViewModel.reviewer.name)
-                    .font(.machachaHeadlineBold)
-                Text(review.createdAt.getDay())
-                    .foregroundColor(.gray)
+                    .padding(.bottom, 13)
+                HStack {
+                    //프로필 사진
+                    if let image = reviewViewModel.reviewerImageDict[reviewViewModel.reviewer.profileId] {
+                        Image(uiImage: image)
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(40)
+                    }
+                    VStack(alignment: .leading) {
+                        Text(reviewViewModel.reviewer.name)
+                            .font(.machachaHeadlineBold)
+                        Text(review.upadatedAt.getDay())
+                            .foregroundColor(.gray)
+                    }
+                }
             }//VStack
             .font(.machachaHeadline)
-            .padding(.trailing, 10)
+            .padding(.trailing, 48)
             
-            //프로필 사진
-            if let image = reviewViewModel.reviewerImageDict[reviewViewModel.reviewer.profileId] {
-                Image(uiImage: image)
-                    .resizable()
-                    .frame(width: 120, height: 120)
-                    .aspectRatio(contentMode: .fit)
-            }
             
             //리뷰 음식 사진
             if review.imageId.count > 0 {
@@ -56,6 +60,5 @@ struct ReviewThumbnailListCellView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewThumbnailListCellView(review: Review.getDummy2())
             .environmentObject(ReviewViewModel())
-            .environmentObject(ProfileViewModel())
     }
 }

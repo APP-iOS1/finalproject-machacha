@@ -15,22 +15,28 @@ struct ReviewThumbnailView: View {
         VStack(alignment: .leading) {
             Divider()
                 .padding(.vertical, 15)
-            HStack {
-                Text("방문자 리뷰")
-                Text("\(reviewViewModel.reviews.count)")
-                    .foregroundColor(Color("Color3"))
-                Spacer()
                 NavigationLink {
                     ReviewView(selectedStore: selectedStore)
                 } label: {
-                    Image(systemName: "chevron.forward")
-                        .foregroundColor(.gray)
-                        .font(.machachaTitle2)
+                    HStack(alignment: .top) {
+                        Text("방문자 리뷰")
+                            .foregroundColor(.black)
+                        Text("\(reviewViewModel.reviews.count)")
+                            .foregroundColor(Color("Color3"))
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                            .foregroundColor(.gray)
+                            .font(.machachaTitle2)
+                    }//HStack
                 }
                 .padding(.trailing, 14)
-            }//HStack
+                .padding(.bottom, 7)
             ForEach(reviewViewModel.twoReviews, id: \.self) { review in
                 ReviewThumbnailListCellView(review: review)
+                if reviewViewModel.twoReviews.last != review {
+                    Divider()
+                        .padding(.vertical)
+                }
             }
         }
         .onAppear {
