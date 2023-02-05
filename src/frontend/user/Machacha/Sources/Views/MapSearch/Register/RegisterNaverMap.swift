@@ -6,6 +6,8 @@ import NMapsMap
 
 struct RegisterNaverMap: UIViewRepresentable {
     @Binding var cameraCoord : (Double,Double)
+    
+    //카메라가 이동할때마다 중앙 마커를 담아놓을 배열
     @State var markers : [NMFMarker] = [NMFMarker(position: NMGLatLng(lat: 37.566249, lng: 126.992227))]
     func makeCoordinator() -> NMCoordinator {
         NMCoordinator($cameraCoord,$markers)
@@ -62,6 +64,8 @@ struct RegisterNaverMap: UIViewRepresentable {
 
         // 카메라의 움직임이 끝났을 때 호출
         func mapView(_ mapView: NMFMapView, cameraDidChangeByReason reason: Int, animated: Bool) {
+            
+            // 카메라 좌표 위치가 미세하게 계속 변해서 소수점 다섯자리까지만 비교하여 카메라좌표 및 중앙마커 변경
             let point = (round(mapView.cameraPosition.target.lat*100000)/100000.0,
                          round(mapView.cameraPosition.target.lng*100000)/100000.0)
             if (round(cameraCoord.0*100000)/100000.0,
@@ -74,6 +78,7 @@ struct RegisterNaverMap: UIViewRepresentable {
                 marker.isHideCollidedMarkers = true
                 marker.mapView = mapView
                 markers.append(marker)
+                //이전 중앙 마커 해제
                 if !markers.isEmpty {
                     let removeMarker = markers.removeFirst()
                     removeMarker.mapView = nil
