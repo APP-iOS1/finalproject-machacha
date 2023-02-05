@@ -97,6 +97,10 @@
 		FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
 		FA0B449F2988EBA4005DB8AF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449E2988EBA4005DB8AF /* SignUpView.swift */; };
 		FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B44A02988F489005DB8AF /* AuthView.swift */; };
+		FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */; };
+		FAF3544D298E21560039085F /* RegisterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544C298E21560039085F /* RegisterMapView.swift */; };
+		FAF3544F298E878F0039085F /* ReverseGeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544E298E878F0039085F /* ReverseGeocodingService.swift */; };
+		FAF35451298F27880039085F /* ReverseGeocodingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF35450298F27880039085F /* ReverseGeocodingDTO.swift */; };
 		FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4782977873A008E28AD /* NaverThirdPartyLogin */; };
 		FAFDD47C29779202008E28AD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47B29779202008E28AD /* Alamofire */; };
 		FAFDD47F2977B02D008E28AD /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD47E2977B02D008E28AD /* KakaoSDK */; };
@@ -220,6 +224,10 @@
 		FA0B449C2987A504005DB8AF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		FA0B449E2988EBA4005DB8AF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FA0B44A02988F489005DB8AF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNaverMap.swift; sourceTree = "<group>"; };
+		FAF3544C298E21560039085F /* RegisterMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMapView.swift; sourceTree = "<group>"; };
+		FAF3544E298E878F0039085F /* ReverseGeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingService.swift; sourceTree = "<group>"; };
+		FAF35450298F27880039085F /* ReverseGeocodingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingDTO.swift; sourceTree = "<group>"; };
 		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD49C2977E8EC008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -543,6 +551,10 @@
 			isa = PBXGroup;
 			children = (
 				6AA14FA72988DB2C0042E025 /* RegisterView.swift */,
+				FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */,
+				FAF3544C298E21560039085F /* RegisterMapView.swift */,
+				FAF3544E298E878F0039085F /* ReverseGeocodingService.swift */,
+				FAF35450298F27880039085F /* ReverseGeocodingDTO.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -772,9 +784,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF3544F298E878F0039085F /* ReverseGeocodingService.swift in Sources */,
 				C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */,
 				C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */,
 				FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */,
+				FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				1ABCA9362987AB8E00DD97C5 /* IconTabView.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
@@ -832,11 +846,13 @@
 				6A97927B29880A2800459A45 /* MapFooterCell.swift in Sources */,
 				801853C5298A2EFA00B33111 /* MagazineViewModel.swift in Sources */,
 				C4A587752975A8D300B04A98 /* Constants.swift in Sources */,
+				FAF3544D298E21560039085F /* RegisterMapView.swift in Sources */,
 				C4A5878D29768C4E00B04A98 /* User.swift in Sources */,
 				80D9E770298D40C900C65CBF /* TopTest.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
 				6A159FC229877C4C0002E625 /* MapHeaderCell.swift in Sources */,
 				1A30E15A2988D1910068C025 /* ReviewViewModel.swift in Sources */,
+				FAF35451298F27880039085F /* ReverseGeocodingDTO.swift in Sources */,
 				C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */,
 				80D9E764298B89D200C65CBF /* Ex+Animation.swift in Sources */,
 			);
