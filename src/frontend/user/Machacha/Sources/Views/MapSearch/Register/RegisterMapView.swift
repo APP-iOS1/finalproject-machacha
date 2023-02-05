@@ -11,7 +11,7 @@ import SwiftUI
 
 struct RegisterMapView: View {
     @ObservedObject var mapSerachViewModel = MapSearchViewModel() //현재 위치
-    @State var cameraCoord : (Double,Double) = (37.566249, 126.992227) // 카메라 위치
+    @State var cameraCoord : (Double,Double) = (37.56621548663492, 126.99223256544298) // 카메라 위치
     //@State var coordinate: (Double, Double) = (37.566249, 126.992227)
     @State var isTap: Bool = false
     
@@ -25,12 +25,12 @@ struct RegisterMapView: View {
 //                    }
 //                }
 //                .zIndex(1)
-                RegisterNaverMap(coord: $mapSerachViewModel.coord, cameraCoord: $cameraCoord)
+                RegisterNaverMap(cameraCoord: $cameraCoord)
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
-                mapSerachViewModel.checkIfLocationServicesIsEnabled()
-                cameraCoord = mapSerachViewModel.coord
+                //mapSerachViewModel.checkIfLocationServicesIsEnabled()
+                //cameraCoord = mapSerachViewModel.coord
             }
             
             Text("카메라 위치: \(cameraCoord.0), \(cameraCoord.1)")
