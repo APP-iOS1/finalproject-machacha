@@ -11,12 +11,15 @@ struct Test: View {
     
     @StateObject var magazineVM: MagazineViewModel
     var magazine: Magazine
+
     
     var body: some View {
         VStack {
+
+            
             ForEach(magazineVM.magazineFoodCart) { foodcart in
 //                Text("\(foodcart.imageId[0])")
-                
+                Text("foodcart: \(foodcart.name)")
                 ForEach(foodcart.imageId, id: \.self) { imageName in
                     if let image = magazineVM.imageDict[imageName] {
                         Image(uiImage: image)
@@ -26,9 +29,9 @@ struct Test: View {
                             .cornerRadius(10.0)
                             .padding(.horizontal)
                     } else {
-                        
+
                     }
-                    
+
                 }
 //                Text("\(foodcartid)")
 //                if let image = magazineVM.imageDict[foodcartid] {
@@ -45,8 +48,11 @@ struct Test: View {
             
         }
         .onAppear {
-            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
-            print("TestView FoodCart: \(magazineVM.magazineFoodCart)")
+            Task {
+                magazineVM.magazineFoodCart = try await
+                magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+            }
+//            print("TestView FoodCart: \(magazineVM.magazineFoodCart)")
         }
         //            ForEach(magazineVM.magazineFoodCart) { i in
         //                if let image = magazineVM.imageDict[i.id] {

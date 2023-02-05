@@ -89,6 +89,7 @@ class UserViewModel: ObservableObject {
     //로그인한 유저의 정보를 찾기
     func requestUserCheck() -> Void {
         let uid = FirebaseAuth.Auth.auth().currentUser?.uid
+        self.uid = uid
         guard let uid else {
             return
         }
@@ -202,6 +203,7 @@ class UserViewModel: ObservableObject {
     //첫로그인시 이름 입력 및 isFirstLoign -> false
     func firstLogin(_ name: String) -> Bool {
         let uid = FirebaseAuth.Auth.auth().currentUser?.uid
+        self.uid = uid
         guard let uid else {
             return false
         }

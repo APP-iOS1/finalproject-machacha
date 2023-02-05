@@ -23,9 +23,9 @@ struct ContentView: View {
 					case .mapSearch:
 						MapSearchView()
 					case .register:
-						RegisterView()
+						RegisterMapView()
 					case .magazine:
-						MagazineView()
+                        MagazineView()
 					case .profile:
 						ProfileView()
 					}
