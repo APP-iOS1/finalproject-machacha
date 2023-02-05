@@ -319,6 +319,18 @@
 			path = "나눔손글씨";
 			sourceTree = "<group>";
 		};
+		C43B114F298F71FA00BE312A /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
+				C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */,
+				C4F42035298EB55F00B615C6 /* LanguageType.swift */,
+				C414BC27298116D000819D98 /* SettingType.swift */,
+				C414BC23298106FC00819D98 /* WebInfoType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		C4A5872B2975A77000B04A98 = {
 			isa = PBXGroup;
 			children = (
@@ -530,17 +542,13 @@
 		C4A5879429768CC100B04A98 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				C43B114F298F71FA00BE312A /* Enum */,
 				C4A587AA29768E3E00B04A98 /* ProfileView.swift */,
 				C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */,
 				C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */,
 				C4F4203C298EC95600B615C6 /* ProfileSecessionView.swift */,
 				C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */,
 				C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */,
-				C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */,
-				C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */,
-				C4F42035298EB55F00B615C6 /* LanguageType.swift */,
-				C414BC27298116D000819D98 /* SettingType.swift */,
-				C414BC23298106FC00819D98 /* WebInfoType.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
