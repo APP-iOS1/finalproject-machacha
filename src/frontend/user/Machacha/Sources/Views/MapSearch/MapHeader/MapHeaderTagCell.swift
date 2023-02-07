@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MapHeaderTagCell: View {
+    @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
+    
     let image: String
     var tag: String {
         switch image {
@@ -29,6 +31,15 @@ struct MapHeaderTagCell: View {
     var body: some View {
         VStack {
             Button {
+                Task {
+                    if tag == "mainIcon" {
+                        mapSearchViewModel.fetchFoodCarts()
+                    } else {
+                        mapSearchViewModel.fetchSortedMenu(by: tag)
+                    }
+                }
+
+                print("foodCarts \(mapSearchViewModel.foodCarts)")
                 print("\(tag) tag Tapped")
             } label: {
                 HStack {
@@ -54,5 +65,6 @@ struct MapHeaderTagCell: View {
 struct MapHeaderTagCell_Previews: PreviewProvider {
     static var previews: some View {
         MapHeaderTagCell(image: "mainIcon")
+            .environmentObject(MapSearchViewModel())
     }
 }

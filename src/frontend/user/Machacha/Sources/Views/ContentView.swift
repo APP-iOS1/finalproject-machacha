@@ -45,9 +45,8 @@ struct ContentView: View {
         .onAppear {
             Task {
                 locationManager.checkIfLocationServicesIsEnabled()
-                mapSearchViewModel.cameraPos = locationManager.coord
-                // 탭을 이동하더라도 data fetch 방지를 위해 상위뷰에서 fetch
-                mapSearchViewModel.fetchFoodCarts()
+                mapSearchViewModel.cameraPosition = locationManager.coord
+//                mapSearchViewModel.fetchSortedMenu(by: "떡볶이")
             }
         }
     }

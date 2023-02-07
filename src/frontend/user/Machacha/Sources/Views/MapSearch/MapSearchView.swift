@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import NMapsMap
 
 struct MapSearchView: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
-    @State var cameraCoord: (Double, Double) = (37.566249, 126.992227)
+    @State var cameraCoord: LatLng = (37.566249, 126.992227)
     @State var currentIndex: Int = 0
     @State var isTap: Bool = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -22,7 +24,7 @@ struct MapSearchView: View {
                     
                     Button {
                         print("현재 위치 조회")
-                        cameraCoord = locationManager.coord
+                        mapSearchViewModel.cameraPosition = locationManager.coord
                     } label: {
                         HStack {
                             Spacer()
@@ -39,10 +41,10 @@ struct MapSearchView: View {
                     }
 
                     
-                    SnapCarousel(index: $currentIndex, items: mapSearchViewModel.foodCarts, coord: $cameraCoord) { foodCart in
+                    SnapCarousel(index: $currentIndex, items: mapSearchViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
-                            .padding(.vertical, Screen.maxHeight - 400)
+                            .padding(.vertical, Screen.maxHeight - 460)
                             .onTapGesture {
                                 self.isTap = true
                             }
@@ -50,16 +52,21 @@ struct MapSearchView: View {
                     
                 }
                 .navigationDestination(isPresented: $isTap) {
-                    // content뷰에서 fetch를 하기 때문에 프리뷰에서 에러가 발생하기 때문에 주석처리함
 //                    TestView(name: mapSearchViewModel.foodCarts[currentIndex].name)
 //                    DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
                 }
                 .zIndex(1)
-                NaverMap(coord: $cameraCoord, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts)
+                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts)
                     .ignoresSafeArea(.all, edges: .top)
+                    .onChange(of: mapSearchViewModel.cameraPosition.0) { newValue in
+                        print("onchange \(newValue)")
+                    }
+                    .onChange(of: mapSearchViewModel.zoomLevel) { newValue in
+                        print("zoom : \(newValue)")
+                    }
             }
             .onAppear {
-                cameraCoord = locationManager.coord
+                mapSearchViewModel.fetchFoodCarts()
             }
         }
     }

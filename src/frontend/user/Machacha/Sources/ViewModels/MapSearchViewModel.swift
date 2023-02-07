@@ -10,12 +10,11 @@ import NMapsMap
 import Combine
 
 final class MapSearchViewModel: ObservableObject {
-    typealias Pos = (Double, Double)
     
     var foodCarts: [FoodCart] = []
     @Published var markers: [NMFMarker] = []
-    @Published var cameraPos: Pos = (0, 0)
-    @Published var zoomLevel = 17
+    @Published var cameraPosition: LatLng = (0, 0)
+    @Published var zoomLevel: Double = 17.0
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -26,7 +25,26 @@ final class MapSearchViewModel: ObservableObject {
     
     // MARK: - combine을 이용한 foodCart Fetch
     func fetchFoodCarts() {
+        foodCarts.removeAll()
         FirebaseService.fetchFoodCarts()
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case.finished:
+                    return
+                }
+            } receiveValue: { [weak self] foodCarts in
+                self?.foodCarts = foodCarts
+                print("fetchFoodcart \(foodCarts)")
+            }
+            .store(in: &cancellables)
+
+    }
+    
+    func fetchSortedMenu(by tag: String) {
+        foodCarts.removeAll()
+        FirebaseService.fetchSortedFoodCarts(by: tag)
             .sink { completion in
                 switch completion {
                 case .failure(let error):
@@ -38,10 +56,7 @@ final class MapSearchViewModel: ObservableObject {
                 self?.foodCarts = foodCarts
             }
             .store(in: &cancellables)
-
     }
-    
-    
     // MARK: - 마커의 좌표를 fetch하여 영구적으로 저장
     func fetchMarkers() {
         for foodCart in foodCarts {
