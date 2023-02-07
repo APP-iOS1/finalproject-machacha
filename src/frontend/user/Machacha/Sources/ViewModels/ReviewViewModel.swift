@@ -51,7 +51,7 @@ class ReviewViewModel: ObservableObject {
                     self.fetchImage(foodCartId: foodCartId, imageName: imageName)
                 }
                 
-                let review: Review = Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, upadatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
+                let review: Review = Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
                 
                 reviews.append(review)
                 
@@ -156,7 +156,7 @@ class ReviewViewModel: ObservableObject {
                       "grade": review.grade,
                       "description": review.description,
                       "imageId": imgNameList, //[diary.id + "/" + imgName]
-                      "upadatedAt": review.upadatedAt,
+                      "upadatedAt": review.updatedAt,
                       "createdAt": review.createdAt,
                      ])
         

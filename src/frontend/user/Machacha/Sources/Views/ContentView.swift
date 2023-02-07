@@ -13,7 +13,7 @@ struct ContentView: View {
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
-		NavigationView {
+		NavigationStack {
 			ZStack {
 				ZStack {
 					switch tabbarManager.curTabSelection {
@@ -23,17 +23,18 @@ struct ContentView: View {
 					case .mapSearch:
 						MapSearchView()
 					case .register:
-						RegisterView()
+						RegisterMapView()
 					case .magazine:
-						MagazineView()
+                        MagazineView()
 					case .profile:
 						ProfileView()
 					}
 				} // ZStack
 				.padding(.bottom, tabbarManager.bottomPadding)
-				
-				if (tabbarManager.showTabBar) {
-					CustomTabView()
+				.overlay {
+					if tabbarManager.showTabBar {
+						CustomTabView()
+					}
 				}
 			} // ZStack
 			.edgesIgnoringSafeArea(.bottom)
@@ -45,6 +46,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+			.environmentObject(FoodCartViewModel())
+			.environmentObject(ReviewViewModel())
 			.environmentObject(ProfileViewModel())
     }
 }
