@@ -62,15 +62,15 @@ struct MapFooterCell: View {
         }
         .frame(width: Screen.maxWidth-100, height: 100)
         .background(isFocus ? Color.black : Color.white)
-        .cornerRadius(20)
+        .cornerRadius(10)
         .shadow(radius: 3)
         .padding()
-        .cornerRadius(5)
     }
 }
 
 struct MapFooterCell_Previews: PreviewProvider {
     static var previews: some View {
         MapSearchView()
+            .environmentObject(MapSearchViewModel())
     }
 }
