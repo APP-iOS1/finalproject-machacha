@@ -47,7 +47,7 @@ struct FoodCart: Identifiable {
     }
     
     static func getDummy() -> Self {
-        return FoodCart(id: "CE3AF1BA-E63C-4C9B-B96C-B289626152EA", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "ABC 앞 떡볶이", address: "서울특별시 중구 명동10길 29", visitedCnt: 32, favoriteCnt: 13, paymentOpt: [true, true, false], openingDays: [false, true, false, true, true, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 0, imageId: ["IMG_2468.HEIC", "IMG_2470.HEIC", "IMG_4837.HEIC", "IMG_9431.HEIC", "IMG_9432.HEIC"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"], registerId: "egmqxtTT1Zani0UkJpUW")
+        return FoodCart(id: "CE3AF1BA-E63C-4C9B-B96C-B289626152EA", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.566249, longitude: 126.992227), region: "명동구", name: "ABC 앞 떡볶이", address: "서울특별시 중구 명동10길 29", visitedCnt: 32, favoriteCnt: 13, paymentOpt: [true, true, false], openingDays: [false, true, false, true, true, true, true], menu: ["붕어빵":1000, "떡볶이":2500], bestMenu: 0, imageId: ["IMG_2468.HEIC", "IMG_2470.HEIC", "IMG_4837.HEIC", "IMG_9431.HEIC", "IMG_9432.HEIC", "IMG_9447.HEIC"], grade: 3.2, reportCnt: 0, reviewId: ["qsPzae844YI3jljYVoaT"], registerId: "egmqxtTT1Zani0UkJpUW")
     }
     
     static func getListDummy() -> [Self] {
