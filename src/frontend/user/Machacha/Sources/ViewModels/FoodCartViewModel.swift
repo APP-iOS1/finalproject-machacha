@@ -16,6 +16,7 @@ class FoodCartViewModel: ObservableObject {
     @Published var imageDict: [String : UIImage] = [:]
     @Published var isLoading: Bool = false
     @Published var isShowingReportSheet = false
+    @Published var isShowingReviewSheet = false
 
     let database = Firestore.firestore()
     let storage = Storage.storage()
