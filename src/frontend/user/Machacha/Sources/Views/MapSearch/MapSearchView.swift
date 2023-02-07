@@ -53,7 +53,9 @@ struct MapSearchView: View {
                 }
                 .navigationDestination(isPresented: $isTap) {
 //                    TestView(name: mapSearchViewModel.foodCarts[currentIndex].name)
-//                    DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
+                    if !mapSearchViewModel.foodCarts.isEmpty {
+                        DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
+                    }
                 }
                 .zIndex(1)
                 NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts)
