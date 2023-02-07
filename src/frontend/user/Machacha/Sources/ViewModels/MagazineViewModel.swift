@@ -54,7 +54,7 @@ class MagazineViewModel: ObservableObject {
         for foodcartID in foodCartIds {
             let foodcartSnapshot = try await database.collection("FoodCart").document(foodcartID).getDocument()
             
-            let docData = foodcartSnapshot.data()!
+            guard let docData = foodcartSnapshot.data() else {return [] }
             
             let id: String = docData["id"] as? String ?? ""
             let region: String = docData["region"] as? String ?? ""

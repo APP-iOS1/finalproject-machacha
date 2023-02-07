@@ -49,8 +49,8 @@ struct Test: View {
         }
         .onAppear {
             Task {
-                magazineVM.magazineFoodCart = try await
-                magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+//                magazineVM.magazineFoodCart = try await
+//                magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
             }
 //            print("TestView FoodCart: \(magazineVM.magazineFoodCart)")
         }
