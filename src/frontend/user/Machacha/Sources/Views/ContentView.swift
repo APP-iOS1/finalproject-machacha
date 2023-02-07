@@ -25,9 +25,9 @@ struct ContentView: View {
 					case .mapSearch:
 						MapSearchView()
 					case .register:
-						RegisterView()
+						EmptyView()
 					case .magazine:
-						MagazineView()
+                        MagazineView()
 					case .profile:
 						ProfileView()
 					}
@@ -48,6 +48,9 @@ struct ContentView: View {
                 mapSearchViewModel.cameraPosition = locationManager.coord
 //                mapSearchViewModel.fetchSortedMenu(by: "떡볶이")
             }
+
+        .fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
+            RegisterMapView()
         }
     }
 }
@@ -55,6 +58,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+			.environmentObject(FoodCartViewModel())
+			.environmentObject(ReviewViewModel())
 			.environmentObject(ProfileViewModel())
             .environmentObject(MapSearchViewModel())
             .environmentObject(LocationManager())

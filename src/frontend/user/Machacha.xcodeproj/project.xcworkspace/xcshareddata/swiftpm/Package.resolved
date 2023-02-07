@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "alerttoast",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/elai950/AlertToast.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "b39252eacd159904afd7d718bba0afabb87f2f2f"
+      }
+    },
+    {
       "identity" : "appauth-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
@@ -52,6 +61,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "d9e19cd60d778f148c06d1c9b1d47d1faafa3221"
+      }
+    },
+    {
+      "identity" : "flagkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/madebybowtie/FlagKit",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f12111d91902d23fd1d9cc7ad9198030b049795d"
       }
     },
     {

@@ -15,13 +15,11 @@ class FoodCartViewModel: ObservableObject {
     @Published var foodCarts: [FoodCart] = []
     @Published var imageDict: [String : UIImage] = [:]
     @Published var isLoading: Bool = false
+    @Published var isShowingReportSheet = false
+    @Published var isShowingReviewSheet = false
 
     let database = Firestore.firestore()
     let storage = Storage.storage()
-    
-    init() {
-        foodCarts = []
-    }
     
     // MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
 //    func fetchFoodCarts() {
@@ -69,6 +67,7 @@ class FoodCartViewModel: ObservableObject {
     
     
     // MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
+    @MainActor
     func fetchFoodCarts() async {
         do {
             DispatchQueue.main.async {
@@ -107,9 +106,7 @@ class FoodCartViewModel: ObservableObject {
 
                 let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId)
 
-                DispatchQueue.main.async {
-                    self.foodCarts.append(foodCart)
-                }
+                foodCarts.append(foodCart)
             }
         } catch {
             print("fetchFoodCarts error: \(error.localizedDescription)")
@@ -122,13 +119,38 @@ class FoodCartViewModel: ObservableObject {
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
-                print("error while downloading image\n\(error.localizedDescription)")
+                print("foodcart image error while downloading image\n\(error.localizedDescription)")
                 return
             } else {
                 let image = UIImage(data: data!)
                 self.imageDict[imageName] = image
             }
         }
+    }
+    
+    // MARK: - 서버에 RegisterView에서 입력한 가게정보 데이터들을 쓰는 Method
+    func addFoodCart(_ foodCart: FoodCart) {
+        database.collection("FoodCart")
+            .document(foodCart.id)
+            .setData(["id": foodCart.id,
+                      "name": foodCart.name,
+                      "address": foodCart.address,
+                      "region": foodCart.region,
+                      "geoPoint": foodCart.geoPoint,
+                      "visitedCnt": foodCart.visitedCnt,
+                      "favoriteCnt": foodCart.favoriteCnt,
+                      "paymentOpt": foodCart.paymentOpt,
+                      "openingDays": foodCart.openingDays,
+                      "menu": foodCart.menu,
+                      "bestMenu": foodCart.bestMenu,
+                      "imageId": foodCart.imageId,
+                      "grade": foodCart.grade,
+                      "reportCnt": foodCart.reportCnt,
+                      "reviewId": foodCart.reviewId,
+                      "registerId": foodCart.registerId,
+                      "updatedAt": foodCart.updatedAt,
+                      "createdAt": foodCart.createdAt
+                     ])
     }
 }
 
