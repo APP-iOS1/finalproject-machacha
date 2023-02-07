@@ -88,19 +88,6 @@ struct ReportView: View {
                 }//VStack
                 .padding(.horizontal, 20)
                 .padding(.top, 30)
-                
-//                Button {
-//                    reviewViewModel.isShowingReportSheet.toggle()
-//                } label: {
-//                    Text("제출하기")
-//                        .foregroundColor(.white)
-//                        .font(.machachaTitle3)
-//                }
-//                .frame(width: 80, height: 20, alignment: .center)
-//                .padding()
-//                .background(Color("Color3"))
-//                .cornerRadius(40)
-//                .padding(.top, 20)
             } //VStack
             .navigationBarTitle("신고하기", displayMode: .inline)
             .toolbar {
