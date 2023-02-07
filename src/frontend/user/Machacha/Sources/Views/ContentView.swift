@@ -23,7 +23,7 @@ struct ContentView: View {
 					case .mapSearch:
 						MapSearchView()
 					case .register:
-						RegisterMapView()
+						EmptyView()
 					case .magazine:
                         MagazineView()
 					case .profile:
@@ -40,6 +40,9 @@ struct ContentView: View {
 			.edgesIgnoringSafeArea(.bottom)
 			.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
 		} // NavigationStack
+        .fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
+            RegisterMapView()
+        }
     }
 }
 
