@@ -15,13 +15,11 @@ class FoodCartViewModel: ObservableObject {
     @Published var foodCarts: [FoodCart] = []
     @Published var imageDict: [String : UIImage] = [:]
     @Published var isLoading: Bool = false
+    @Published var isShowingReportSheet = false
+    @Published var isShowingReviewSheet = false
 
     let database = Firestore.firestore()
     let storage = Storage.storage()
-    
-    init() {
-        foodCarts = []
-    }
     
     // MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
 //    func fetchFoodCarts() {
@@ -69,6 +67,7 @@ class FoodCartViewModel: ObservableObject {
     
     
     // MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
+    @MainActor
     func fetchFoodCarts() async {
         do {
             let querysnapshot = try await database.collection("FoodCart")
@@ -103,7 +102,7 @@ class FoodCartViewModel: ObservableObject {
 
                 let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId)
 
-                self.foodCarts.append(foodCart)
+                foodCarts.append(foodCart)
             }
         } catch {
             print("fetchFoodCarts error: \(error.localizedDescription)")
@@ -116,7 +115,7 @@ class FoodCartViewModel: ObservableObject {
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
-                print("error while downloading image\n\(error.localizedDescription)")
+                print("foodcart image error while downloading image\n\(error.localizedDescription)")
                 return
             } else {
                 let image = UIImage(data: data!)

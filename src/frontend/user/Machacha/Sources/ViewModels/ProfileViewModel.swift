@@ -10,6 +10,7 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseStorage
 
+
 class ProfileViewModel: ObservableObject {
 	//MARK: Property wrapper
 	@Published var currentUser: User?
@@ -39,6 +40,7 @@ class ProfileViewModel: ObservableObject {
 			UserDefaults.standard.set(newValue, forKey: "isDarkMode")
 		}
 	}
+
 	
 	//MARK: Property
 	private let database = Firestore.firestore()
@@ -268,4 +270,6 @@ class ProfileViewModel: ObservableObject {
 		
 		return true // 성공
 	}
+    
 }
+

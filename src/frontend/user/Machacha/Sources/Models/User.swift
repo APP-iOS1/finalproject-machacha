@@ -19,6 +19,6 @@ struct User: Identifiable {
 	let createdAt: Date
 	
 	static func getDummy() -> Self {
-		return User(id: "egmqxtTT1Zani0UkJpUW", isFirstLogin: false, email: "test@gmail.com", name: "마차킹", profileId: "test", favoriteId: ["InzqNwgl15TytWNOdIZz"], visitedId: ["InzqNwgl15TytWNOdIZz"], updatedAt: Date(), createdAt: Date())
+		return User(id: "egmqxtTT1Zani0UkJpUW", isFirstLogin: false, email: "test@gmail.com", name: "마차킹", profileId: "test.png", favoriteId: ["InzqNwgl15TytWNOdIZz"], visitedId: ["InzqNwgl15TytWNOdIZz"], updatedAt: Date(), createdAt: Date())
 	}
 }
