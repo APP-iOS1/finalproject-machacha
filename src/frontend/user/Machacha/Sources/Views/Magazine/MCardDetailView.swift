@@ -37,9 +37,11 @@ struct MCardDetailView: View {
             ScrollView {
             
                 cover // 리스트와 버튼을 제외한 저기 상위 뷰
+                // 스켈레톤 뷰 무조건 필요
+                // 데이터 완전히 로드되기 전까지 너무 텅비어 있음
                 content // 얘가 아래 저 리스트들
-                    .offset(y: 76)
-                    .padding(.bottom, 200)
+                    .offset(y: 90) //76
+                    .padding(.bottom, 220)
                     .opacity(appear[2] ? 1 : 0)
                 
 //                Text("\(magazine.foodCartId.count)")
@@ -60,6 +62,7 @@ struct MCardDetailView: View {
 
             button // 저기 위에 'x 버튼'
             
+            // 데이터 아직 로드 안되었을 때 버튼 enable 해놓기
             mapButton // '지도로 보기' 버튼
                 .offset(x: 10 ,y: 300)
             
@@ -74,15 +77,21 @@ struct MCardDetailView: View {
                 magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
             }
         }
-        .refreshable {
-//            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
-
+        .onDisappear {
+            magazineVM.magazineFoodCart = []
+            print("detail disappeared")
         }
+//        .refreshable {
+//            magazineVM.magazineFoodCart = try await
+//            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+//
+//        } //37.512483, 127.058934
         .onChange(of: show) { _ in
             fadeOut()
         }
         .sheet(isPresented: $showMap) {
-            MCardMapView(model: model)
+//            MCardMapView(model: model)
+            MagazineNaverMapView(model: model, showMap: $showMap, foodcart: magazineVM.magazineFoodCart)
         }
         
     } //body
@@ -140,6 +149,8 @@ struct MCardDetailView: View {
                     .padding(.horizontal, 3)
 
             }
+
+            Spacer()
         }
     }
 

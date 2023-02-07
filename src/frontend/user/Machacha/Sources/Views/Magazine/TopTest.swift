@@ -35,7 +35,7 @@ struct TopTest: View {
         }
         .onAppear {
             Task {
-                magazineVM.magazines = try await magazineVM.fetchMagazines()
+//                magazineVM.magazines = try await magazineVM.fetchMagazines()
             }
         }
         
