@@ -40,7 +40,7 @@ struct MCardDetailView: View {
                 // 스켈레톤 뷰 무조건 필요
                 // 데이터 완전히 로드되기 전까지 너무 텅비어 있음
                 content // 얘가 아래 저 리스트들
-                    .offset(y: 90) //76
+                    .offset(y: 118) //76
                     .padding(.bottom, 220)
                     .opacity(appear[2] ? 1 : 0)
                 
