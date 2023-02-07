@@ -12,6 +12,7 @@ import Firebase
 struct RegisterView: View {
     
     @Environment(\.presentationMode) var presentation
+    @ObservedObject var tabbarManager = TabBarManager.shared
     @EnvironmentObject var foodCartViewModel : FoodCartViewModel
     @ObservedObject var naverAPIVM : NaverAPIViewModel = NaverAPIViewModel()
     
@@ -92,12 +93,13 @@ struct RegisterView: View {
                     Spacer()
                     AddressView()
                     EditNameView()
-                    RatingView()
+                    //RatingView()
                     DaysView()
                     PayView()
                     BestMenuView()
                     MenuView()
                 }
+                // 등록하기 버튼
                 Button(action: {
                     isRegisterAlertShowing = true
                 }) {
@@ -110,10 +112,10 @@ struct RegisterView: View {
                 .tint(isRegisterDisable ? .secondary: Color("Color3"))
                 .padding()
                 .alert("새로운 포장마차를 등록하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
-                    Button("취소", role: .cancel) {
+                    Button("아니오", role: .cancel) {
                         //..
                     }
-                    Button("확인") {
+                    Button("예") {
                         let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
                         foodCartViewModel.addFoodCart(foodCart)
                         self.presentation.wrappedValue.dismiss()
@@ -128,31 +130,62 @@ struct RegisterView: View {
         }
         .padding()
         .navigationBarBackButtonHidden()
+        //툴바
         .toolbar(content: {
+            // 왼쪽 툴바 버튼 - 위치 수정
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    if (name != "") || (bestMenu != -1) || !isSelectedPaymentOpt || !isSelectedOpeningDays {
-                        isRegisterAlertShowing = true
-                    }else{
-                        self.presentation.wrappedValue.dismiss()
-                    }
+                    self.presentation.wrappedValue.dismiss()
                 } label: {
                     HStack{
                         Image(systemName: "chevron.left")
                             .fontWeight(.bold)
-                        Text("뒤로")
+                        Text("수정")
                             .font(.machachaHeadlineBold)
                     }
                 }
-                .alert("이전 화면으로 돌아가시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
-                    Button("취소", role: .cancel) {
+                .alert("위치 정보를 수정하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
+                    Button("아니오", role: .cancel) {
                         //..
                     }
-                    Button("확인",role: .destructive) {
+                    Button("예") {
                         self.presentation.wrappedValue.dismiss()
                     }
                 }, message: {
-                    Text("이전 화면으로 돌아가면 현재 작성한 가게 정보가 사라집니다.")
+                    Text("예 버튼을 누르면 지도 화면에서 위치 정보를 다시 선택해야 합니다.")
+                })
+            } // ToolbarItem
+            
+            // 오른쪽 툴바 버튼 - 등록 취소
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    if (name != "") || (bestMenu != -1) || !isSelectedPaymentOpt || !isSelectedOpeningDays {
+                        isDismissAlertShowing = true
+                    }else{
+                        tabbarManager.isShowingModal = false
+                        tabbarManager.curTabSelection = tabbarManager.preTabSelection
+                        tabbarManager.barOffset = tabbarManager.offsetList[tabbarManager.preIndex]
+                    }
+                } label: {
+                    HStack{
+                        Text("취소")
+                            .font(.machachaHeadlineBold)
+                        Image(systemName: "xmark")
+                            .fontWeight(.bold)
+                    }
+                    .foregroundColor(Color("Color1"))
+                }
+                .alert("가게 등록을 취소하시겠습니까?", isPresented: $isDismissAlertShowing, actions: {
+                    Button("아니오", role: .cancel) {
+                        //..
+                    }
+                    Button("예",role: .destructive) {
+                        tabbarManager.isShowingModal = false
+                        tabbarManager.curTabSelection = tabbarManager.preTabSelection
+                        tabbarManager.barOffset = tabbarManager.offsetList[tabbarManager.preIndex]
+                    }
+                }, message: {
+                    Text("예 버튼을 누르면 현재 작성한 가게 정보가 사라집니다.")
                 })
             } // ToolbarItem
         })
@@ -321,8 +354,14 @@ extension RegisterView {
     @ViewBuilder
     private func MenuView() -> some View {
         VStack(alignment: .leading){
-            Text("메뉴 정보")
-                .font(.machachaHeadlineBold)
+            HStack{
+                Text("메뉴 정보")
+                    .font(.machachaHeadlineBold)
+                Text("(선택)")
+                    .font(.machachaHeadline)
+                    .foregroundColor(.secondary)
+            
+            }
             //메뉴 입력
             HStack{
                 TextField("메뉴이름", text: $menuName)
