@@ -100,7 +100,6 @@ struct DetailView: View {
                     await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                     profileViewModel.currentUser = try await profileViewModel.fetchUser()
                     foodCartViewModel.isLoading = false
-                    mapSearchViewModel.fetchMarkers()
                 }
             }
         }

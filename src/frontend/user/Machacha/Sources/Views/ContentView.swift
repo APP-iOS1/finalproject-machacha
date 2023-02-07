@@ -46,9 +46,9 @@ struct ContentView: View {
             Task {
                 locationManager.checkIfLocationServicesIsEnabled()
                 mapSearchViewModel.cameraPosition = locationManager.coord
-//                mapSearchViewModel.fetchSortedMenu(by: "떡볶이")
+                //                mapSearchViewModel.fetchSortedMenu(by: "떡볶이")
             }
-
+        }
         .fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
             RegisterMapView()
         }
