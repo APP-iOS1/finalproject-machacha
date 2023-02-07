@@ -16,21 +16,22 @@ struct RegisterView: View {
     @EnvironmentObject var foodCartViewModel : FoodCartViewModel
     @ObservedObject var naverAPIVM : NaverAPIViewModel = NaverAPIViewModel()
     
-    @State private var name : String = ""
-    @State private var paymentOpt : [Bool] = Array(repeating: false, count: 3)
-    @State private var openingDays : [Bool] = Array(repeating: false, count: 7)
-    @State private var menu : [String : Int] = [:]
-    @State private var grade : Double = 0
-    @State private var imageId : [String] = []
-    @State private var bestMenu : Int = -1
+    // 위치 수정시 유지될 정보들
+    @Binding var name : String
+    @Binding var paymentOpt : [Bool]
+    @Binding var openingDays : [Bool]
+    @Binding var menu : [String : Int]
+    @Binding var grade : Double
+    @Binding var bestMenu : Int
     
-    @State private var menuCnt : Int = 1
-    @State private var menuName : String = ""
-    @State private var menuPrice : String = ""
+    @Binding var menuCnt : Int
+    @Binding var menuName : String
+    @Binding var menuPrice : String
     
     //Alert 변수
     @State private var isDismissAlertShowing : Bool = false
     @State private var isRegisterAlertShowing : Bool = false
+    @State private var isLocationAmendAlertShowing : Bool = false
     
     //주소를 불러올 위도/경도
     var cameraCoord : (Double,Double)
@@ -113,7 +114,7 @@ struct RegisterView: View {
                 .padding()
                 .alert("새로운 포장마차를 등록하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
                     Button("아니오", role: .cancel) {
-                        //..
+                        isRegisterAlertShowing = false
                     }
                     Button("예") {
                         let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
@@ -135,7 +136,7 @@ struct RegisterView: View {
             // 왼쪽 툴바 버튼 - 위치 수정
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    self.presentation.wrappedValue.dismiss()
+                    isLocationAmendAlertShowing = true
                 } label: {
                     HStack{
                         Image(systemName: "chevron.left")
@@ -144,9 +145,9 @@ struct RegisterView: View {
                             .font(.machachaHeadlineBold)
                     }
                 }
-                .alert("위치 정보를 수정하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
+                .alert("위치 정보를 수정하시겠습니까?", isPresented: $isLocationAmendAlertShowing, actions: {
                     Button("아니오", role: .cancel) {
-                        //..
+                        isLocationAmendAlertShowing = false
                     }
                     Button("예") {
                         self.presentation.wrappedValue.dismiss()

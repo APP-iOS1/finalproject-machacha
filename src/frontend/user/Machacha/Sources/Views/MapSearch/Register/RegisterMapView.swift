@@ -16,12 +16,24 @@ struct RegisterMapView: View {
     @ObservedObject var mapSerachViewModel = MapSearchViewModel() //현재 위치
     @State var cameraCoord : (Double,Double) = (37.56621548663492, 126.99223256544298) // 카메라 위치
     //@State var coordinate: (Double, Double) = (37.566249, 126.992227)
-    @State var isTap: Bool = false
+    
+    //RegisterView 에 전달할 변수
+    @State private var name : String = ""
+    @State private var paymentOpt : [Bool] = Array(repeating: false, count: 3)
+    @State private var openingDays : [Bool] = Array(repeating: false, count: 7)
+    @State private var menu : [String : Int] = [:]
+    @State private var grade : Double = 0
+    @State private var bestMenu : Int = -1
+    
+    @State private var menuCnt : Int = 1
+    @State private var menuName : String = ""
+    @State private var menuPrice : String = ""
     
     var body: some View {
         NavigationStack{
             ZStack {
-                    NavigationLink(destination: RegisterView(cameraCoord: cameraCoord)) {
+                    // 추후에 input model 새로만들어서 한번에 넘겨주는게 좋을듯
+                    NavigationLink(destination: RegisterView(name: $name, paymentOpt: $paymentOpt, openingDays: $openingDays, menu: $menu, grade: $grade, bestMenu: $bestMenu, menuCnt: $menuCnt, menuName: $menuName, menuPrice: $menuPrice, cameraCoord: cameraCoord)) {
                             HStack{
                                 Text("이 위치로 등록하기")
                                     .bold()
