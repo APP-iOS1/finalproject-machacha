@@ -23,6 +23,16 @@ struct MapHeaderTagCell: View {
             return "고구마"
         case "tteokboki2":
             return "떡볶이"
+        case "takoyaki":
+            return "타코야끼"
+        case "hotteok":
+            return "호떡"
+        case "skewers":
+            return "꼬치류"
+        case "dessert":
+            return "디저트"
+        case "beverage":
+            return "음료"
         default:
             return "기타"
         }
@@ -31,14 +41,36 @@ struct MapHeaderTagCell: View {
     var body: some View {
         VStack {
             Button {
-                Task {
-                    if tag == "mainIcon" {
-                        mapSearchViewModel.fetchFoodCarts()
-                    } else {
-                        mapSearchViewModel.fetchSortedMenu(by: tag)
-                    }
+                var bestMenu = 9
+                switch tag {
+                case "붕어빵":
+                    bestMenu = 0
+                case "어묵":
+                    bestMenu = 1
+                case "고구마":
+                    bestMenu = 2
+                case "떡볶이":
+                    bestMenu = 3
+                case "타코야끼":
+                    bestMenu = 4
+                case "호떡":
+                    bestMenu = 5
+                case "꼬치류":
+                    bestMenu = 6
+                case "디저트":
+                    bestMenu = 7
+                case "음료":
+                    bestMenu = 8
+                case "기타":
+                    bestMenu = 9
+                default:
+                    bestMenu = 9
                 }
-
+                if tag == "mainIcon" {
+                    mapSearchViewModel.fetchFoodCarts()
+                } else {
+                    mapSearchViewModel.fetchSortedMenu(by: bestMenu)
+                }
                 print("foodCarts \(mapSearchViewModel.foodCarts)")
                 print("\(tag) tag Tapped")
             } label: {

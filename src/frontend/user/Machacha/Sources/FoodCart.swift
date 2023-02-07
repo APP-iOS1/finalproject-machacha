@@ -41,6 +41,16 @@ struct FoodCart: Identifiable, Equatable {
             return "sweetpotato2"
         case 3:
             return "tteokboki2"
+        case 4:
+            return "takoyaki"
+        case 5:
+            return "hotteok"
+        case 6:
+            return "skewers"
+        case 7:
+            return "dessert"
+        case 8:
+            return "beverage"
         default:
             return "store2"
         }

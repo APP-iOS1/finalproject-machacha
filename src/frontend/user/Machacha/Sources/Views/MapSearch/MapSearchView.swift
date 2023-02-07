@@ -41,7 +41,7 @@ struct MapSearchView: View {
                     }
 
                     
-                    SnapCarousel(index: $currentIndex, items: FoodCart.getListDummy(), coord: $mapSearchViewModel.cameraPosition) { foodCart in
+                    SnapCarousel(index: $currentIndex, foodCarts: mapSearchViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
                             .padding(.vertical, Screen.maxHeight - 460)

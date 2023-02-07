@@ -63,10 +63,10 @@ struct FirebaseService {
     }
     
     // MARK: - tag에 따라 분류된 foodcart fetch (등록 Field에 menu 배열 필요)
-    static func fetchSortedFoodCarts(by tag: String) -> AnyPublisher<[FoodCart], Error> {
+    static func fetchSortedFoodCarts(by bestMenu: Int) -> AnyPublisher<[FoodCart], Error> {
         Future<[FoodCart], Error> { promise in
             // menu에 선택된 tag가 있는 가게를 전부 Fetch
-            db.collection("FoodCart").whereField("menuTag", arrayContains: tag)
+            db.collection("FoodCart").whereField("bestMenu", isEqualTo: bestMenu)
                 .getDocuments { snapshot, error in
                     if let error = error {
                         promise(.failure(error))

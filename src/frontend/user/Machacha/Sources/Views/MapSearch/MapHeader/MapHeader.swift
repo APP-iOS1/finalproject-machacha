@@ -43,7 +43,7 @@ struct MapHeader: View {
     
     @ViewBuilder
     private func MapHeaderCell() -> some View {
-        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "store2"]
+        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(cellList, id: \.self) { item in

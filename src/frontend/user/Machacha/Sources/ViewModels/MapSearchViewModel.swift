@@ -42,9 +42,9 @@ final class MapSearchViewModel: ObservableObject {
 
     }
     
-    func fetchSortedMenu(by tag: String) {
+    func fetchSortedMenu(by bestMenu: Int) {
         foodCarts.removeAll()
-        FirebaseService.fetchSortedFoodCarts(by: tag)
+        FirebaseService.fetchSortedFoodCarts(by: bestMenu)
             .sink { completion in
                 switch completion {
                 case .failure(let error):
