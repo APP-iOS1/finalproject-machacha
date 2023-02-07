@@ -81,8 +81,6 @@ enum ReverseGeocodeRouter {
         switch self {
         case .get :
             return .get
-        default:
-            return .get
         }
     }
     func asURLRequest(latitude: Double, longitude: Double) throws -> URLRequest {

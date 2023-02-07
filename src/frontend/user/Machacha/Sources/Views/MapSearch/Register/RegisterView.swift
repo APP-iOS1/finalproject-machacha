@@ -11,48 +11,55 @@ import Firebase
 
 struct RegisterView: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentation
+    @ObservedObject var tabbarManager = TabBarManager.shared
     @EnvironmentObject var foodCartViewModel : FoodCartViewModel
     @ObservedObject var naverAPIVM : NaverAPIViewModel = NaverAPIViewModel()
     
-    @State var name : String = ""
-    @State var paymentOpt : [Bool] = Array(repeating: false, count: 3)
-    @State var openingDays : [Bool] = Array(repeating: false, count: 7)
-    @State var menu : [String : Int] = [:]
-    @State var grade : Double = 0
-    @State var imageId : [String] = []
-    @State var bestMenu : Int = -1
+    // 위치 수정시 유지될 정보들
+    @Binding var name : String
+    @Binding var paymentOpt : [Bool]
+    @Binding var openingDays : [Bool]
+    @Binding var menu : [String : Int]
+    @Binding var grade : Double
+    @Binding var bestMenu : Int
     
-    @State private var menuCnt : Int = 1
-    @State private var menuName : String = ""
-    @State private var menuPrice : String = ""
+    @Binding var menuCnt : Int
+    @Binding var menuName : String
+    @Binding var menuPrice : String
+    
+    //Alert 변수
+    @State private var isDismissAlertShowing : Bool = false
+    @State private var isRegisterAlertShowing : Bool = false
+    @State private var isLocationAmendAlertShowing : Bool = false
     
     //주소를 불러올 위도/경도
     var cameraCoord : (Double,Double)
     //@State private var Address : String = ""
     //@State private var region : String = ""
     
+    
+    private var isSelectedPaymentOpt : Bool {
+        for opt in paymentOpt {
+            if opt == true {
+                return false
+            }
+        }
+        return true
+    }
+    
+    
+    private var isSelectedOpeningDays : Bool {
+        for day in openingDays {
+            if day == true {
+                return false
+            }
+        }
+        return true
+    }
+    
     //등록 버튼 비활성화 여부
     private var isRegisterDisable : Bool {
-        var isSelectedPaymentOpt : Bool {
-            for opt in paymentOpt {
-                if opt == true {
-                    return false
-                }
-            }
-            return true
-        }
-        
-        var isSelectedOpeningDays : Bool {
-            for day in openingDays {
-                if day == true {
-                    return false
-                }
-            }
-            return true
-        }
-        
-        
         return (name=="") || (bestMenu == -1) || isSelectedPaymentOpt || isSelectedOpeningDays
     }
     
@@ -87,16 +94,15 @@ struct RegisterView: View {
                     Spacer()
                     AddressView()
                     EditNameView()
-                    RatingView()
+                    //RatingView()
                     DaysView()
                     PayView()
                     BestMenuView()
                     MenuView()
                 }
+                // 등록하기 버튼
                 Button(action: {
-                    let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
-                    foodCartViewModel.addFoodCart(foodCart)
-                    dismiss()
+                    isRegisterAlertShowing = true
                 }) {
                     Text("등록하기")
                         .font(.machachaTitle)
@@ -106,10 +112,86 @@ struct RegisterView: View {
                 .buttonStyle(.bordered)
                 .tint(isRegisterDisable ? .secondary: Color("Color3"))
                 .padding()
+                .alert("새로운 포장마차를 등록하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
+                    Button("아니오", role: .cancel) {
+                        isRegisterAlertShowing = false
+                    }
+                    Button("예") {
+                        let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
+                        foodCartViewModel.addFoodCart(foodCart)
+                        self.presentation.wrappedValue.dismiss()
+                        SoundManager.instance.playSound(sound: .register)
+                        
+                    }
+                }, message: {
+                    Text("등록한 포장마차 위치가 지도에 표시되고, 포장마차 등록정보를 다른 유저들이 확인할 수 있습니다.")
+                })
                 
             }
         }
         .padding()
+        .navigationBarBackButtonHidden()
+        //툴바
+        .toolbar(content: {
+            // 왼쪽 툴바 버튼 - 위치 수정
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    isLocationAmendAlertShowing = true
+                } label: {
+                    HStack{
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.bold)
+                        Text("수정")
+                            .font(.machachaHeadlineBold)
+                    }
+                }
+                .alert("위치 정보를 수정하시겠습니까?", isPresented: $isLocationAmendAlertShowing, actions: {
+                    Button("아니오", role: .cancel) {
+                        isLocationAmendAlertShowing = false
+                    }
+                    Button("예") {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }, message: {
+                    Text("예 버튼을 누르면 지도 화면에서 위치 정보를 다시 선택해야 합니다.")
+                })
+            } // ToolbarItem
+            
+            // 오른쪽 툴바 버튼 - 등록 취소
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    if (name != "") || (bestMenu != -1) || !isSelectedPaymentOpt || !isSelectedOpeningDays {
+                        isDismissAlertShowing = true
+                    }else{
+                        tabbarManager.isShowingModal = false
+                        tabbarManager.curTabSelection = tabbarManager.preTabSelection
+                        tabbarManager.barOffset = tabbarManager.offsetList[tabbarManager.preIndex]
+                    }
+                } label: {
+                    HStack{
+                        Text("취소")
+                            .font(.machachaHeadlineBold)
+                        Image(systemName: "xmark")
+                            .fontWeight(.bold)
+                    }
+                    .foregroundColor(Color("Color1"))
+                }
+                .alert("가게 등록을 취소하시겠습니까?", isPresented: $isDismissAlertShowing, actions: {
+                    Button("아니오", role: .cancel) {
+                        //..
+                    }
+                    Button("예",role: .destructive) {
+                        tabbarManager.isShowingModal = false
+                        tabbarManager.curTabSelection = tabbarManager.preTabSelection
+                        tabbarManager.barOffset = tabbarManager.offsetList[tabbarManager.preIndex]
+                    }
+                }, message: {
+                    Text("예 버튼을 누르면 현재 작성한 가게 정보가 사라집니다.")
+                })
+            } // ToolbarItem
+        })
+        .background(Color("bgColor"))
+        
         .onAppear{
             naverAPIVM.fetchReverseGeocode(latitude: cameraCoord.0, longitude: cameraCoord.1)
         }
@@ -273,8 +355,14 @@ extension RegisterView {
     @ViewBuilder
     private func MenuView() -> some View {
         VStack(alignment: .leading){
-            Text("메뉴 정보")
-                .font(.machachaHeadlineBold)
+            HStack{
+                Text("메뉴 정보")
+                    .font(.machachaHeadlineBold)
+                Text("(선택)")
+                    .font(.machachaHeadline)
+                    .foregroundColor(.secondary)
+            
+            }
             //메뉴 입력
             HStack{
                 TextField("메뉴이름", text: $menuName)
