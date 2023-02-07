@@ -9,6 +9,7 @@ import SwiftUI
 
 struct IconTabView: View {
     @State var selectedStore: FoodCart
+    @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     
     var body: some View {
         VStack(alignment: .center) {
@@ -31,12 +32,17 @@ struct IconTabView: View {
                     Text("가봤어요")
                         .font(.headline)
                 }
-                VStack(spacing: 10) {
-                    Image(systemName: "square.and.pencil")
-                        .font(.system(size: 32))
-                    Text("리뷰쓰기")
-                        .font(.headline)
+                Button {
+                    foodCartViewModel.isShowingReviewSheet.toggle()
+                } label: {
+                    VStack(spacing: 10) {
+                        Image(systemName: "square.and.pencil")
+                            .font(.system(size: 32))
+                        Text("리뷰쓰기")
+                            .font(.headline)
+                    }
                 }
+
                 VStack(spacing: 10) {
                     Image(systemName: "map")
                         .font(.system(size: 28))
