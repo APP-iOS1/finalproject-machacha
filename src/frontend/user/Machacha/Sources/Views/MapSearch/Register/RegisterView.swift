@@ -11,48 +11,53 @@ import Firebase
 
 struct RegisterView: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentation
     @EnvironmentObject var foodCartViewModel : FoodCartViewModel
     @ObservedObject var naverAPIVM : NaverAPIViewModel = NaverAPIViewModel()
     
-    @State var name : String = ""
-    @State var paymentOpt : [Bool] = Array(repeating: false, count: 3)
-    @State var openingDays : [Bool] = Array(repeating: false, count: 7)
-    @State var menu : [String : Int] = [:]
-    @State var grade : Double = 0
-    @State var imageId : [String] = []
-    @State var bestMenu : Int = -1
+    @State private var name : String = ""
+    @State private var paymentOpt : [Bool] = Array(repeating: false, count: 3)
+    @State private var openingDays : [Bool] = Array(repeating: false, count: 7)
+    @State private var menu : [String : Int] = [:]
+    @State private var grade : Double = 0
+    @State private var imageId : [String] = []
+    @State private var bestMenu : Int = -1
     
     @State private var menuCnt : Int = 1
     @State private var menuName : String = ""
     @State private var menuPrice : String = ""
+    
+    //Alert 변수
+    @State private var isDismissAlertShowing : Bool = false
+    @State private var isRegisterAlertShowing : Bool = false
     
     //주소를 불러올 위도/경도
     var cameraCoord : (Double,Double)
     //@State private var Address : String = ""
     //@State private var region : String = ""
     
+    
+    private var isSelectedPaymentOpt : Bool {
+        for opt in paymentOpt {
+            if opt == true {
+                return false
+            }
+        }
+        return true
+    }
+    
+    
+    private var isSelectedOpeningDays : Bool {
+        for day in openingDays {
+            if day == true {
+                return false
+            }
+        }
+        return true
+    }
+    
     //등록 버튼 비활성화 여부
     private var isRegisterDisable : Bool {
-        var isSelectedPaymentOpt : Bool {
-            for opt in paymentOpt {
-                if opt == true {
-                    return false
-                }
-            }
-            return true
-        }
-        
-        var isSelectedOpeningDays : Bool {
-            for day in openingDays {
-                if day == true {
-                    return false
-                }
-            }
-            return true
-        }
-        
-        
         return (name=="") || (bestMenu == -1) || isSelectedPaymentOpt || isSelectedOpeningDays
     }
     
@@ -94,9 +99,7 @@ struct RegisterView: View {
                     MenuView()
                 }
                 Button(action: {
-                    let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
-                    foodCartViewModel.addFoodCart(foodCart)
-                    dismiss()
+                    isRegisterAlertShowing = true
                 }) {
                     Text("등록하기")
                         .font(.machachaTitle)
@@ -106,10 +109,55 @@ struct RegisterView: View {
                 .buttonStyle(.bordered)
                 .tint(isRegisterDisable ? .secondary: Color("Color3"))
                 .padding()
+                .alert("새로운 포장마차를 등록하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
+                    Button("취소", role: .cancel) {
+                        //..
+                    }
+                    Button("확인") {
+                        let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
+                        foodCartViewModel.addFoodCart(foodCart)
+                        self.presentation.wrappedValue.dismiss()
+                        SoundManager.instance.playSound(sound: .register)
+                        
+                    }
+                }, message: {
+                    Text("등록한 포장마차 위치가 지도에 표시되고, 포장마차 등록정보를 다른 유저들이 확인할 수 있습니다.")
+                })
                 
             }
         }
         .padding()
+        .navigationBarBackButtonHidden()
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    if (name != "") || (bestMenu != -1) || !isSelectedPaymentOpt || !isSelectedOpeningDays {
+                        isRegisterAlertShowing = true
+                    }else{
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                } label: {
+                    HStack{
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.bold)
+                        Text("뒤로")
+                            .font(.machachaHeadlineBold)
+                    }
+                }
+                .alert("이전 화면으로 돌아가시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
+                    Button("취소", role: .cancel) {
+                        //..
+                    }
+                    Button("확인",role: .destructive) {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }, message: {
+                    Text("이전 화면으로 돌아가면 현재 작성한 가게 정보가 사라집니다.")
+                })
+            } // ToolbarItem
+        })
+        .background(Color("bgColor"))
+        
         .onAppear{
             naverAPIVM.fetchReverseGeocode(latitude: cameraCoord.0, longitude: cameraCoord.1)
         }
