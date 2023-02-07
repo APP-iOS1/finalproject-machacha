@@ -30,7 +30,7 @@ struct ReviewListCellView: View {
                                 Image(systemName: "star.fill")
                                     .foregroundColor(Color("Color3"))
                                 Text("\(review.gradeRounded)")
-                                Text("| \(review.upadatedAt.getDay())")
+                                Text("| \(review.updatedAt.getDay())")
                                     .foregroundColor(.gray)
                                     .font(.machachaHeadline)
                             }
