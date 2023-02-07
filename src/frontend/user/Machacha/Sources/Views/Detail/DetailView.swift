@@ -79,6 +79,20 @@ struct DetailView: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                Button {
+                    foodCartViewModel.isShowingReportSheet.toggle()
+                } label: {
+                    Image(systemName: "exclamationmark.circle")
+                        .font(.machachaHeadline)
+                        .foregroundColor(.black)
+                }
+            }
+        }
+        .fullScreenCover(isPresented: $foodCartViewModel.isShowingReportSheet) {
+            ReportView(reportType: 1)
+        }
     }
 }
 

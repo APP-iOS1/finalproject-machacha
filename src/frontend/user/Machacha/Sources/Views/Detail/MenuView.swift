@@ -35,7 +35,7 @@ struct MenuView: View {
                 
                 //본인이 작성하지않은 리뷰에 보이는 버튼
                 Button {
-                    
+                    reviewViewModel.isShowingReportSheet.toggle()
                 } label: {
                     Text("신고")
                 }
