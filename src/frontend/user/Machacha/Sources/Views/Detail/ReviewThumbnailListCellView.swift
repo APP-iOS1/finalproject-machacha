@@ -27,14 +27,15 @@ struct ReviewThumbnailListCellView: View {
                     }
                     VStack(alignment: .leading) {
                         Text(reviewViewModel.reviewer.name)
-                            .font(.machachaHeadlineBold)
+                            .font(.machachaTitle3Bold)
                         Text(review.upadatedAt.getDay())
+                            .font(.machachaHeadline)
                             .foregroundColor(.gray)
                     }
                 }
             }//VStack
             .font(.machachaHeadline)
-            .padding(.trailing, 48)
+            .padding(.trailing, 53)
             
             
             //리뷰 음식 사진

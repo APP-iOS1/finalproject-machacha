@@ -30,7 +30,7 @@ struct ReviewThumbnailView: View {
                     }//HStack
                 }
                 .padding(.trailing, 14)
-                .padding(.bottom, 7)
+                .padding(.bottom)
             ForEach(reviewViewModel.twoReviews, id: \.self) { review in
                 ReviewThumbnailListCellView(review: review)
                 if reviewViewModel.twoReviews.last != review {
