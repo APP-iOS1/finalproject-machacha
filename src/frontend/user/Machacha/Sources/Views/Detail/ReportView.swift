@@ -18,9 +18,6 @@ struct ReportView: View {
     @Environment(\.colorScheme) var colorScheme // 다크모드일 때 색 설정 변경을 위해 선언
     @Environment(\.dismiss) var dismiss
     var reportType: Int
-    var isdisable: Bool {
-        return text == "" || checkArr == [false, false, false, false, false, false] ? true : false
-    }
     
     var body: some View {
         NavigationStack {
@@ -81,6 +78,9 @@ struct ReportView: View {
                     .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
                     .frame(height: 150)
                     .padding(.top, 10)
+                    .onTapGesture {
+                        checkArr[5] = true
+                    }
                     
                     Spacer()
                     
@@ -101,9 +101,9 @@ struct ReportView: View {
                     } label: {
                         Text("제출")
                             .font(.machachaHeadline)
-                            .foregroundColor(text == "" || checkArr == [false, false, false, false, false, false] ? Color(.gray) : Color(.black))
+                            .foregroundColor(checkArr == [false, false, false, false, false, false] ? Color(.gray) : Color(.black))
                     }
-                    .disabled(text == "" || checkArr == [false, false, false, false, false, false] ? true : false)
+                    .disabled(checkArr == [false, false, false, false, false, false] ? true : false)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
