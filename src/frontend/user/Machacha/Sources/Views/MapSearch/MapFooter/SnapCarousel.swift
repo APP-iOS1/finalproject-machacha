@@ -16,8 +16,8 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
     var trailingSpace: CGFloat
     @Binding var index: Int
     @Binding var coord: (Double, Double)
-    init(spacing: CGFloat = 30, trailingSpace: CGFloat = 100, index: Binding<Int>, items: [T], coord: Binding<(Double, Double)>, @ViewBuilder content: @escaping (T)->Content) {
-        self.list = items
+    init(spacing: CGFloat = 20, trailingSpace: CGFloat = 100, index: Binding<Int>, foodCarts: [T], coord: Binding<(Double, Double)>, @ViewBuilder content: @escaping (T)->Content) {
+        self.list = foodCarts
         self.spacing = spacing
         self.trailingSpace = trailingSpace
         self._index = index
@@ -40,7 +40,7 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
             HStack(spacing: spacing) {
                 ForEach(list) { item in
                     content(item)
-                        .frame(width: proxy.size.width - trailingSpace)
+                        .frame(width: abs(proxy.size.width - trailingSpace))
                 }
             }
             // Spacing will be horizontal padding
@@ -87,5 +87,6 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
 struct SnapCarousel_Previews: PreviewProvider {
     static var previews: some View {
         MapSearchView()
+            .environmentObject(MapSearchViewModel())
     }
 }

@@ -1,51 +1,78 @@
 //
-//  MapSearchViewModel.swift
+//  MapViewModel.swift
 //  Machacha
 //
-//  Created by Park Jungwoo on 2023/01/18.
+//  Created by Park Jungwoo on 2023/02/04.
 //
 
-import SwiftUI
-import CoreLocation
+import Foundation
+import NMapsMap
+import Combine
 
-final class MapSearchViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-    var locationManager: CLLocationManager?
-    @Published var coord = (37.566249, 126.992227)
-	@Published var foodCarts = FoodCart.getListDummy()
+final class MapSearchViewModel: ObservableObject {
     
-    func checkIfLocationServicesIsEnabled() {
-        DispatchQueue.global().async {
-            if CLLocationManager.locationServicesEnabled() {
-                DispatchQueue.main.async {
-                    self.locationManager = CLLocationManager()
-                    self.locationManager!.delegate = self
-                    self.checkLocationAuthorization()
+    var foodCarts: [FoodCart] = []
+    @Published var markers: [NMFMarker] = []
+    @Published var cameraPosition: LatLng = (0, 0)
+    @Published var zoomLevel: Double = 17.0
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+//    init(foodCarts: [FoodCart], cameraPos: Pos) {
+//        self.foodCarts = foodCarts
+//        self.cameraPos = cameraPos
+//    }
+    
+    // MARK: - combine을 이용한 foodCart Fetch
+    func fetchFoodCarts() {
+        foodCarts.removeAll()
+        FirebaseService.fetchFoodCarts()
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case.finished:
+                    return
                 }
-            } else {
-                print("Show an alert letting them know this is off and to go turn i on.")
+            } receiveValue: { [weak self] foodCarts in
+                self?.foodCarts = foodCarts
+                print("fetchFoodcart \(foodCarts)")
             }
+            .store(in: &cancellables)
+
+    }
+    
+    func fetchSortedMenu(by bestMenu: Int) {
+        foodCarts.removeAll()
+        FirebaseService.fetchSortedFoodCarts(by: bestMenu)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case.finished:
+                    return
+                }
+            } receiveValue: { [weak self] foodCarts in
+                self?.foodCarts = foodCarts
+            }
+            .store(in: &cancellables)
+    }
+    // MARK: - 마커의 좌표를 fetch하여 영구적으로 저장
+    func fetchMarkers() {
+        for foodCart in foodCarts {
+            let marker = NMFMarker()
+            
+            marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
+            
+            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage())
+            marker.iconImage = image
+            
+            marker.width = CGFloat(50)
+            marker.height = CGFloat(50)
         }
     }
     
-    func checkLocationAuthorization() {
-        guard let locationManager = locationManager else { return }
+    func fetchCameraPos() {
         
-        switch locationManager.authorizationStatus {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            print("Your location is restricted likely due to parental controls.")
-        case .denied:
-            print("You have denied this app location permission. Go into setting to change it.")
-        case .authorizedAlways, .authorizedWhenInUse:
-            coord = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
-            print("coord : \(coord)")
-        @unknown default:
-            break
-        }
     }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
-     }
 }

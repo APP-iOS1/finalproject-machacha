@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
 	//MARK: Property Wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
+    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
@@ -40,6 +42,13 @@ struct ContentView: View {
 			.edgesIgnoringSafeArea(.bottom)
 			.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
 		} // NavigationStack
+        .onAppear {
+            Task {
+                locationManager.checkIfLocationServicesIsEnabled()
+                mapSearchViewModel.cameraPosition = locationManager.coord
+//                mapSearchViewModel.fetchSortedMenu(by: "떡볶이")
+            }
+
         .fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
             RegisterMapView()
         }
@@ -52,5 +61,7 @@ struct ContentView_Previews: PreviewProvider {
 			.environmentObject(FoodCartViewModel())
 			.environmentObject(ReviewViewModel())
 			.environmentObject(ProfileViewModel())
+            .environmentObject(MapSearchViewModel())
+            .environmentObject(LocationManager())
     }
 }

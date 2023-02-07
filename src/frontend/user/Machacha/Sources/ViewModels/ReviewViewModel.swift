@@ -32,7 +32,9 @@ class ReviewViewModel: ObservableObject {
             let querysnapshot = try await database.collection("Review")
                 .whereField("foodCartId", isEqualTo: foodCartId)
                 .getDocuments()
-            self.reviews.removeAll()
+            DispatchQueue.main.async {
+                self.reviews.removeAll()
+            }
             
             for document in querysnapshot.documents {
                 let data = document.data()
@@ -54,7 +56,7 @@ class ReviewViewModel: ObservableObject {
                 let review: Review = Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
                 
                 reviews.append(review)
-                
+
             }
         } catch {
             print("fetchReviews error: \(error.localizedDescription)")

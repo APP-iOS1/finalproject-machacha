@@ -11,9 +11,11 @@ struct DetailView: View {
     var selectedStore: FoodCart
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @EnvironmentObject var reviewViewModel: ReviewViewModel
+
     @EnvironmentObject var profileViewModel: ProfileViewModel
     
     var count = 0
+
     
     var body: some View {
         ScrollView {
@@ -98,6 +100,7 @@ struct DetailView: View {
                     await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                     profileViewModel.currentUser = try await profileViewModel.fetchUser()
                     foodCartViewModel.isLoading = false
+                    mapSearchViewModel.fetchMarkers()
                 }
             }
         }
@@ -126,5 +129,6 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(selectedStore: FoodCart.getDummy())
             .environmentObject(FoodCartViewModel())
             .environmentObject(ReviewViewModel())
+            .environmentObject(MapSearchViewModel())
     }
 }

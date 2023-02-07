@@ -70,6 +70,10 @@ class FoodCartViewModel: ObservableObject {
     @MainActor
     func fetchFoodCarts() async {
         do {
+            DispatchQueue.main.async {
+                self.foodCarts.removeAll()
+            }
+
             let querysnapshot = try await database.collection("FoodCart")
                 .getDocuments()
 
@@ -88,7 +92,7 @@ class FoodCartViewModel: ObservableObject {
                 let reportCnt: Int = data["reportCnt"] as? Int ?? 0
                 let menu: [String: Int] = data["menu"] as? [String: Int] ?? [:]
                 let bestMenu: Int = data["bestMenu"] as? Int ?? 0
-                let paymentOpt: [Bool] = data["paymentOpt"] as? [Bool] ?? []
+                let paymentOpt: [Bool] = data["isPaymentOpt"] as? [Bool] ?? []
                 let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
                 let reviewId: [String] = data["reviewId"] as? [String] ?? []
                 let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
