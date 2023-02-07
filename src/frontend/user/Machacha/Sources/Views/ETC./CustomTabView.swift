@@ -21,6 +21,8 @@ class TabBarManager: ObservableObject {
 	@Published var preTabSelection: Tab = .home
 	@Published var barOffset: CGFloat = -139
 	@Published var bottomPadding: CGFloat = Screen.maxHeight * 0.10
+    @Published var isShowingModal: Bool = false
+    @Published var preIndex: Int = 0
 
 	static let shared = TabBarManager() // Singleton
 	
@@ -41,17 +43,21 @@ struct CustomTabView: View {
 						Spacer().frame(width: Screen.maxWidth * 0.02)
 						
 						Button {
-							if tabbarManager.curTabSelection != .register {
+                            switch index {
+                            case 0: tabbarManager.curTabSelection = .home
+                            case 1: tabbarManager.curTabSelection = .mapSearch
+                            case 2: tabbarManager.isShowingModal = true
+                            case 3: tabbarManager.curTabSelection = .magazine
+                            default: tabbarManager.curTabSelection = .profile
+                            }
+                            
+							if index != 2 {
 								tabbarManager.preTabSelection = tabbarManager.curTabSelection
+                                tabbarManager.preIndex = index
+                                print(tabbarManager.preIndex)
 							}
-							switch index {
-							case 0: tabbarManager.curTabSelection = .home
-							case 1: tabbarManager.curTabSelection = .mapSearch
-							case 2: tabbarManager.curTabSelection = .register
-							case 3: tabbarManager.curTabSelection = .magazine
-							default: tabbarManager.curTabSelection = .profile
-							}
-							tabbarManager.barOffset = tabbarManager.offsetList[index]
+							
+                            tabbarManager.barOffset = tabbarManager.offsetList[index]
 						} label: {
 							switch index {
 							case 0: TabButton(isSelection: tabbarManager.curTabSelection == .home, name: "맛집찾기", systemName: "fork.knife.circle.fill", systemNameByNotSelected: "fork.knife.circle")
