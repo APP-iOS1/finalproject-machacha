@@ -24,6 +24,7 @@
 		C4D2D302299379000004661B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C4D2D301299379000004661B /* FirebaseFirestore */; };
 		C4D2D304299379000004661B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4D2D303299379000004661B /* FirebaseFirestoreSwift */; };
 		C4D2D306299379000004661B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C4D2D305299379000004661B /* FirebaseStorage */; };
+		C4D2D3082993793D0004661B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4D2D3072993793D0004661B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		C482135C299362F400CE4CA2 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		C4D2D2FC2993787C0004661B /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCart.swift; sourceTree = "<group>"; };
 		C4D2D2FE2993788B0004661B /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
+		C4D2D3072993793D0004661B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		C43B116329929EFE00BE312A /* MachachaAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				C4D2D3072993793D0004661B /* GoogleService-Info.plist */,
 				C43B116429929EFE00BE312A /* MachachaAdminApp.swift */,
 				C482134D2993609500CE4CA2 /* Sources */,
 				C43B116829929F0000BE312A /* Assets.xcassets */,
@@ -340,6 +343,7 @@
 			files = (
 				C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */,
 				C43B116929929F0000BE312A /* Assets.xcassets in Resources */,
+				C4D2D3082993793D0004661B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
