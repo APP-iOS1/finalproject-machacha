@@ -60,11 +60,8 @@ struct MapSearchView: View {
                 .zIndex(1)
                 NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts)
                     .ignoresSafeArea(.all, edges: .top)
-                    .onChange(of: mapSearchViewModel.cameraPosition.0) { newValue in
-                        print("onchange \(newValue)")
-                    }
                     .onChange(of: mapSearchViewModel.zoomLevel) { newValue in
-                        print("zoom : \(newValue)")
+                        print("zoom Level : \(newValue)")
                     }
             }
             .onAppear {

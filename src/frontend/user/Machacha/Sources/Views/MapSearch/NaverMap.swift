@@ -17,6 +17,31 @@ struct NaverMap: UIViewRepresentable {
     var markers: [NMFMarker] = []
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     
+    private let polygonPoints = [
+        NMGLatLng(lat: 37.72468, lng: 125.87630),
+        NMGLatLng(lat: 38.77778, lng: 129.60256),
+        NMGLatLng(lat: 34.84530, lng: 130.30152),
+        NMGLatLng(lat: 34.10799, lng: 125.58587),
+        NMGLatLng(lat: 37.72468, lng: 125.87630)
+    ]
+    
+    private let servicePoints = [
+        NMGLatLng(lat: 37.56601, lng: 126.98355),
+        NMGLatLng(lat: 37.56596, lng: 126.98406),
+        NMGLatLng(lat: 37.56513, lng: 126.98450),
+        NMGLatLng(lat: 37.56485, lng: 126.98476),
+        NMGLatLng(lat: 37.56393, lng: 126.98511),
+        NMGLatLng(lat: 37.56403, lng: 126.98599),
+        NMGLatLng(lat: 37.56178, lng: 126.98668),
+        NMGLatLng(lat: 37.56103, lng: 126.98673),
+        NMGLatLng(lat: 37.56071, lng: 126.98341),
+        NMGLatLng(lat: 37.56133, lng: 126.98315),
+        NMGLatLng(lat: 37.56339, lng: 126.98233),
+        NMGLatLng(lat: 37.56351, lng: 126.98218),
+        NMGLatLng(lat: 37.56547, lng: 126.98270),
+        NMGLatLng(lat: 37.56602, lng: 126.98357),
+        NMGLatLng(lat: 37.56601, lng: 126.98355)
+    ]
     func makeCoordinator() -> Coordinator {
         Coordinator($cameraPosition, $mapSearchViewModel.zoomLevel)
     }
@@ -36,9 +61,7 @@ struct NaverMap: UIViewRepresentable {
             
             marker.width = CGFloat(50)
             marker.height = CGFloat(50)
-            marker.isHideCollidedMarkers = true
-            
-            
+        
             self.markers.append(marker)
         }
     }
@@ -49,10 +72,28 @@ struct NaverMap: UIViewRepresentable {
     func makeUIView(context: Context) -> some NMFNaverMapView {
         let view = NMFNaverMapView()
         view.showZoomControls = false
-        view.mapView.positionMode = .direction
-        // zoom Level 유지
+        view.mapView.positionMode = .normal
+        view.mapView.minZoomLevel = 7
         view.mapView.zoomLevel = mapSearchViewModel.zoomLevel
-        view.showLocationButton = true
+
+        print("cameraPosition : \(cameraPosition)")
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: cameraPosition.0, lng: cameraPosition.1))
+        view.mapView.moveCamera(cameraUpdate)
+        
+        // 서비스 지역 표시를 위한 폴리곤
+        let polygon = NMGPolygon(ring: NMGLineString(points: polygonPoints), interiorRings: [NMGLineString(points: servicePoints)])
+        let polygonOverlay = NMFPolygonOverlay(polygon as! NMGPolygon<AnyObject>)
+        polygonOverlay?.fillColor = UIColor(named: "ServiceArea") ?? .blue
+        
+        let polyLine = NMGLineString(points: servicePoints)
+        let polyLineOverlay = NMFPolylineOverlay(polyLine as! NMGLineString<AnyObject>)
+        polyLineOverlay?.width = 3
+        polyLineOverlay?.color = UIColor(named: "Color2") ?? .blue
+        
+        polygonOverlay?.mapView = view.mapView
+        polyLineOverlay?.mapView = view.mapView
+        
+        
         for (index, marker) in markers.enumerated() {
             // MARK: - Mark 터치 시 이벤트 발생
             marker.touchHandler = { (overlay) -> Bool in
