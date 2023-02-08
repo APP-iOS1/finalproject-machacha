@@ -65,6 +65,7 @@ struct ProfileFoodCartCellView: View {
 							Text(foodCart.name) // 가게 이름
 								.font(.machachaHeadlineBold)
 								.foregroundColor(Color("textColor"))
+								.multilineTextAlignment(.leading)
 								.lineLimit(2)
 							
 							Image(systemName: "heart.fill")

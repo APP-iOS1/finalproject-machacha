@@ -18,7 +18,7 @@ struct ProfileFoodCartListView: View {
 	var body: some View {
 		ScrollView {
 			Section {
-				VStack(alignment: .leading, spacing: 15) {
+				LazyVStack(alignment: .leading, spacing: 15) {
 					ForEach(profileVM.foodCartUser) { foodCart in
 						ProfileFoodCartCellView(foodCartOfUserType: foodCartOfUserType, foodCart: foodCart, isFavorite: profileVM.currentUser!.favoriteId.contains(foodCart.id))
 					} // ForEach
