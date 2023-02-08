@@ -89,7 +89,7 @@ struct MagazineNaverMap: UIViewRepresentable {
 //    ]
     
     
-    func makeCoordinator() -> Coordinator {
+    func makeCoordinator() -> MCoordinator {
         Coordinator(coord)
     }
     
@@ -138,7 +138,6 @@ struct MagazineNaverMap: UIViewRepresentable {
         
         view.mapView.addCameraDelegate(delegate: context.coordinator)
         view.mapView.touchDelegate = context.coordinator
-        
 //        pathOverlay.passedOutlineColor = UIColor.green
 //        pathOverlay.outlineColor = UIColor.green
 //        pathOverlay.outlineWidth = 2.5
@@ -169,7 +168,7 @@ class MCoordinator: NSObject {
 }
 
 // MARK: - 카메라 이동시 발생하는 Delegate
-extension MCoordinator: NMFMapViewCameraDelegate {
+extension MCoordinator: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate {
     // 카메라의 움직임이 시작할 때 호출
     func mapView(_ mapView: NMFMapView, cameraWillChangeByReason reason: Int, animated: Bool) {
         //        print("카메라 변경 - reason: \(reason)")
@@ -184,6 +183,10 @@ extension MCoordinator: NMFMapViewCameraDelegate {
     func mapView(_ mapView: NMFMapView, cameraDidChangeByReason reason: Int, animated: Bool) {
         coord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
 //        print("현재 카메라 좌표 : \(coord)")
+    }
+    
+    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+        print("Map Tapped")
     }
 }
 
