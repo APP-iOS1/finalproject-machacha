@@ -141,7 +141,7 @@ class ReviewViewModel: ObservableObject {
     }
     
     // MARK: - 서버의 Review Collection에 Review 객체 하나를 추가하여 업로드하는 Method
-    func addReview(review: Review,  images: [UIImage] )  {
+	func addReview(review: Review,  images: [UIImage], foodCart: FoodCart )  {
         
         // create image name list
         var imgNameList: [String] = []
