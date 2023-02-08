@@ -37,7 +37,7 @@ struct DetailView: View {
                                         .aspectRatio(contentMode: .fit)
                                 }
                             }//ForEach
-                            if let image = foodCartViewModel.imageDict[selectedStore.imageId[4]] {
+							if selectedStore.imageId.count > 4, let image = foodCartViewModel.imageDict[selectedStore.imageId[4]] {
                                 NavigationLink {
                                     ReviewView(selectedStore: selectedStore)
                                 } label: {

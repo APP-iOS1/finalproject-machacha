@@ -62,8 +62,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct MachachaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
+	@StateObject var foodCartVM: FoodCartViewModel = FoodCartViewModel()
+	@StateObject var reviewVM: ReviewViewModel = ReviewViewModel()
     @StateObject var mapSearchVM: MapSearchViewModel = MapSearchViewModel()
     @State var splashIsActive = false
+	
     init() {
         // Naver SDK Initializing
         
@@ -91,8 +94,8 @@ struct MachachaApp: App {
             if splashIsActive {
                 AuthView()
                     .environmentObject(LocationManager())
-                    .environmentObject(FoodCartViewModel())
-                    .environmentObject(ReviewViewModel())
+                    .environmentObject(foodCartVM)
+                    .environmentObject(reviewVM)
                     .environmentObject(mapSearchVM)
                     .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
                     .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
