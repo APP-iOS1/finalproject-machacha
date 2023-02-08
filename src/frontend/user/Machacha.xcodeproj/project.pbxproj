@@ -28,7 +28,6 @@
 		6A0601ED298E603300B1AC0E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EC298E603300B1AC0E /* FirebaseError.swift */; };
 		6A159FBD2987604F0002E625 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBC2987604F0002E625 /* MapHeader.swift */; };
 		6A159FBF298767630002E625 /* MapHeaderTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBE298767630002E625 /* MapHeaderTagCell.swift */; };
-		6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */; };
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* LocationManager.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
@@ -176,7 +175,6 @@
 		6A0601EC298E603300B1AC0E /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		6A159FBC2987604F0002E625 /* MapHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeader.swift; sourceTree = "<group>"; };
 		6A159FBE298767630002E625 /* MapHeaderTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderTagCell.swift; sourceTree = "<group>"; };
-		6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		6A8EBDA529778F1500964C9D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
@@ -651,7 +649,6 @@
 			children = (
 				6A979279298809FB00459A45 /* MapFooter */,
 				6A159FC02987676E0002E625 /* MapHeader */,
-				6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */,
 				C4A587A429768DE300B04A98 /* MapSearchView.swift */,
 				6A8EBDA72977903700964C9D /* NaverMap.swift */,
 				C4A5879629768CE100B04A98 /* Register */,
@@ -950,7 +947,6 @@
 				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
 				80D9E76A298B8E4000C65CBF /* MCardDetailView.swift in Sources */,
 				1ABCA93229877D6200DD97C5 /* DetailView.swift in Sources */,
-				6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */,
 				C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */,
