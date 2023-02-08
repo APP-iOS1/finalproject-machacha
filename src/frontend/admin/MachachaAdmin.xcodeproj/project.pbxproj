@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116429929EFE00BE312A /* MachachaAdminApp.swift */; };
-		C43B116729929EFE00BE312A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116629929EFE00BE312A /* ContentView.swift */; };
 		C43B116929929F0000BE312A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116829929F0000BE312A /* Assets.xcassets */; };
 		C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116B29929F0000BE312A /* Preview Assets.xcassets */; };
 		C43B117629929F0000BE312A /* MachachaAdminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B117529929F0000BE312A /* MachachaAdminTests.swift */; };
 		C43B118029929F0000BE312A /* MachachaAdminUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B117F29929F0000BE312A /* MachachaAdminUITests.swift */; };
 		C43B118229929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B118129929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift */; };
+		C482134C29935ED900CE4CA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C482134B29935ED900CE4CA2 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		C43B116129929EFE00BE312A /* MachachaAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachachaAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43B116429929EFE00BE312A /* MachachaAdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminApp.swift; sourceTree = "<group>"; };
-		C43B116629929EFE00BE312A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C43B116829929F0000BE312A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C43B116B29929F0000BE312A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C43B117129929F0000BE312A /* MachachaAdminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MachachaAdminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +43,7 @@
 		C43B117B29929F0000BE312A /* MachachaAdminUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MachachaAdminUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43B117F29929F0000BE312A /* MachachaAdminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminUITests.swift; sourceTree = "<group>"; };
 		C43B118129929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C482134B29935ED900CE4CA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				C43B116429929EFE00BE312A /* MachachaAdminApp.swift */,
-				C4E073D12992ABFD00677E08 /* Views */,
+				C482134D2993609500CE4CA2 /* Sources */,
 				C43B116829929F0000BE312A /* Assets.xcassets */,
 				C43B116A29929F0000BE312A /* Preview Content */,
 			);
@@ -127,13 +127,20 @@
 			path = MachachaAdminUITests;
 			sourceTree = "<group>";
 		};
-		C4E073D12992ABFD00677E08 /* Views */ = {
+		C482134A29935ECD00CE4CA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C43B116629929EFE00BE312A /* ContentView.swift */,
+				C482134B29935ED900CE4CA2 /* ContentView.swift */,
 			);
-			name = Views;
-			path = "퍋ㅈ";
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C482134D2993609500CE4CA2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C482134A29935ECD00CE4CA2 /* Views */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C43B116729929EFE00BE312A /* ContentView.swift in Sources */,
+				C482134C29935ED900CE4CA2 /* ContentView.swift in Sources */,
 				C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +433,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MachachaAdmin/Preview Content\"";
+				DEVELOPMENT_TEAM = SF6SBNPMLX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -458,6 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MachachaAdmin/Preview Content\"";
+				DEVELOPMENT_TEAM = SF6SBNPMLX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
