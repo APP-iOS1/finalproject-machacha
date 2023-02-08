@@ -91,13 +91,12 @@ struct DetailView: View {
                     .padding(.leading, 20)
                 ReviewThumbnailView(selectedStore: selectedStore)
                     .padding(.leading, 20)
-                
             }
             .onAppear {
                 foodCartViewModel.isLoading = true // progressview를 위해 선언
                 Task {
                     await foodCartViewModel.fetchFoodCarts()
-                    await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
+					reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                     profileViewModel.currentUser = try await profileViewModel.fetchUser()
                     foodCartViewModel.isLoading = false
                 }
