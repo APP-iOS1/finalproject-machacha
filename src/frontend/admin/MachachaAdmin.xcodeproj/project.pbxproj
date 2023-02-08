@@ -243,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D2D30C29937AA70004661B /* Constants */,
+				C4D2D30F29937AC20004661B /* Extensions */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -251,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				C4D2D30D29937AAB0004661B /* Constants.swift */,
-				C4D2D30F29937AC20004661B /* Extensions */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
