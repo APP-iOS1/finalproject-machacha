@@ -73,7 +73,7 @@ struct NaverMap: UIViewRepresentable {
         let view = NMFNaverMapView()
         view.showZoomControls = false
         view.mapView.positionMode = .normal
-        view.mapView.minZoomLevel = 7
+        view.mapView.minZoomLevel = 16
         view.mapView.zoomLevel = mapSearchViewModel.zoomLevel
 
         print("cameraPosition : \(cameraPosition)")
