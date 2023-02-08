@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116429929EFE00BE312A /* MachachaAdminApp.swift */; };
+		C43B116729929EFE00BE312A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116629929EFE00BE312A /* ContentView.swift */; };
+		C43B116929929F0000BE312A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116829929F0000BE312A /* Assets.xcassets */; };
+		C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116B29929F0000BE312A /* Preview Assets.xcassets */; };
+		C43B117629929F0000BE312A /* MachachaAdminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B117529929F0000BE312A /* MachachaAdminTests.swift */; };
+		C43B118029929F0000BE312A /* MachachaAdminUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B117F29929F0000BE312A /* MachachaAdminUITests.swift */; };
+		C43B118229929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B118129929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C43B117229929F0000BE312A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C43B115929929EFE00BE312A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C43B116029929EFE00BE312A;
+			remoteInfo = MachachaAdmin;
+		};
+		C43B117C29929F0000BE312A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C43B115929929EFE00BE312A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C43B116029929EFE00BE312A;
+			remoteInfo = MachachaAdmin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C43B116129929EFE00BE312A /* MachachaAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachachaAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C43B116429929EFE00BE312A /* MachachaAdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminApp.swift; sourceTree = "<group>"; };
+		C43B116629929EFE00BE312A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C43B116829929F0000BE312A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C43B116B29929F0000BE312A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C43B117129929F0000BE312A /* MachachaAdminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MachachaAdminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C43B117529929F0000BE312A /* MachachaAdminTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminTests.swift; sourceTree = "<group>"; };
+		C43B117B29929F0000BE312A /* MachachaAdminUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MachachaAdminUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C43B117F29929F0000BE312A /* MachachaAdminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminUITests.swift; sourceTree = "<group>"; };
+		C43B118129929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C43B115E29929EFE00BE312A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C43B116E29929F0000BE312A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C43B117829929F0000BE312A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C43B115829929EFE00BE312A = {
+			isa = PBXGroup;
+			children = (
+				C43B116329929EFE00BE312A /* MachachaAdmin */,
+				C43B117429929F0000BE312A /* MachachaAdminTests */,
+				C43B117E29929F0000BE312A /* MachachaAdminUITests */,
+				C43B116229929EFE00BE312A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C43B116229929EFE00BE312A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C43B116129929EFE00BE312A /* MachachaAdmin.app */,
+				C43B117129929F0000BE312A /* MachachaAdminTests.xctest */,
+				C43B117B29929F0000BE312A /* MachachaAdminUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C43B116329929EFE00BE312A /* MachachaAdmin */ = {
+			isa = PBXGroup;
+			children = (
+				C43B116429929EFE00BE312A /* MachachaAdminApp.swift */,
+				C4E073D12992ABFD00677E08 /* Views */,
+				C43B116829929F0000BE312A /* Assets.xcassets */,
+				C43B116A29929F0000BE312A /* Preview Content */,
+			);
+			path = MachachaAdmin;
+			sourceTree = "<group>";
+		};
+		C43B116A29929F0000BE312A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C43B116B29929F0000BE312A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C43B117429929F0000BE312A /* MachachaAdminTests */ = {
+			isa = PBXGroup;
+			children = (
+				C43B117529929F0000BE312A /* MachachaAdminTests.swift */,
+			);
+			path = MachachaAdminTests;
+			sourceTree = "<group>";
+		};
+		C43B117E29929F0000BE312A /* MachachaAdminUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C43B117F29929F0000BE312A /* MachachaAdminUITests.swift */,
+				C43B118129929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift */,
+			);
+			path = MachachaAdminUITests;
+			sourceTree = "<group>";
+		};
+		C4E073D12992ABFD00677E08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C43B116629929EFE00BE312A /* ContentView.swift */,
+			);
+			name = Views;
+			path = "퍋ㅈ";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C43B116029929EFE00BE312A /* MachachaAdmin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C43B118529929F0000BE312A /* Build configuration list for PBXNativeTarget "MachachaAdmin" */;
+			buildPhases = (
+				C43B115D29929EFE00BE312A /* Sources */,
+				C43B115E29929EFE00BE312A /* Frameworks */,
+				C43B115F29929EFE00BE312A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MachachaAdmin;
+			productName = MachachaAdmin;
+			productReference = C43B116129929EFE00BE312A /* MachachaAdmin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C43B117029929F0000BE312A /* MachachaAdminTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C43B118829929F0000BE312A /* Build configuration list for PBXNativeTarget "MachachaAdminTests" */;
+			buildPhases = (
+				C43B116D29929F0000BE312A /* Sources */,
+				C43B116E29929F0000BE312A /* Frameworks */,
+				C43B116F29929F0000BE312A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C43B117329929F0000BE312A /* PBXTargetDependency */,
+			);
+			name = MachachaAdminTests;
+			productName = MachachaAdminTests;
+			productReference = C43B117129929F0000BE312A /* MachachaAdminTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C43B117A29929F0000BE312A /* MachachaAdminUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C43B118B29929F0000BE312A /* Build configuration list for PBXNativeTarget "MachachaAdminUITests" */;
+			buildPhases = (
+				C43B117729929F0000BE312A /* Sources */,
+				C43B117829929F0000BE312A /* Frameworks */,
+				C43B117929929F0000BE312A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C43B117D29929F0000BE312A /* PBXTargetDependency */,
+			);
+			name = MachachaAdminUITests;
+			productName = MachachaAdminUITests;
+			productReference = C43B117B29929F0000BE312A /* MachachaAdminUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C43B115929929EFE00BE312A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					C43B116029929EFE00BE312A = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					C43B117029929F0000BE312A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C43B116029929EFE00BE312A;
+					};
+					C43B117A29929F0000BE312A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C43B116029929EFE00BE312A;
+					};
+				};
+			};
+			buildConfigurationList = C43B115C29929EFE00BE312A /* Build configuration list for PBXProject "MachachaAdmin" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C43B115829929EFE00BE312A;
+			productRefGroup = C43B116229929EFE00BE312A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C43B116029929EFE00BE312A /* MachachaAdmin */,
+				C43B117029929F0000BE312A /* MachachaAdminTests */,
+				C43B117A29929F0000BE312A /* MachachaAdminUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C43B115F29929EFE00BE312A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */,
+				C43B116929929F0000BE312A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C43B116F29929F0000BE312A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C43B117929929F0000BE312A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C43B115D29929EFE00BE312A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43B116729929EFE00BE312A /* ContentView.swift in Sources */,
+				C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C43B116D29929F0000BE312A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43B117629929F0000BE312A /* MachachaAdminTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C43B117729929F0000BE312A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43B118229929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift in Sources */,
+				C43B118029929F0000BE312A /* MachachaAdminUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C43B117329929F0000BE312A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C43B116029929EFE00BE312A /* MachachaAdmin */;
+			targetProxy = C43B117229929F0000BE312A /* PBXContainerItemProxy */;
+		};
+		C43B117D29929F0000BE312A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C43B116029929EFE00BE312A /* MachachaAdmin */;
+			targetProxy = C43B117C29929F0000BE312A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C43B118329929F0000BE312A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C43B118429929F0000BE312A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C43B118629929F0000BE312A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MachachaAdmin/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaAdmin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C43B118729929F0000BE312A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MachachaAdmin/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaAdmin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C43B118929929F0000BE312A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaAdminTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MachachaAdmin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MachachaAdmin";
+			};
+			name = Debug;
+		};
+		C43B118A29929F0000BE312A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaAdminTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MachachaAdmin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MachachaAdmin";
+			};
+			name = Release;
+		};
+		C43B118C29929F0000BE312A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaAdminUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MachachaAdmin;
+			};
+			name = Debug;
+		};
+		C43B118D29929F0000BE312A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaAdminUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MachachaAdmin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C43B115C29929EFE00BE312A /* Build configuration list for PBXProject "MachachaAdmin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C43B118329929F0000BE312A /* Debug */,
+				C43B118429929F0000BE312A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C43B118529929F0000BE312A /* Build configuration list for PBXNativeTarget "MachachaAdmin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C43B118629929F0000BE312A /* Debug */,
+				C43B118729929F0000BE312A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C43B118829929F0000BE312A /* Build configuration list for PBXNativeTarget "MachachaAdminTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C43B118929929F0000BE312A /* Debug */,
+				C43B118A29929F0000BE312A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C43B118B29929F0000BE312A /* Build configuration list for PBXNativeTarget "MachachaAdminUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C43B118C29929F0000BE312A /* Debug */,
+				C43B118D29929F0000BE312A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C43B115929929EFE00BE312A /* Project object */;
+}
