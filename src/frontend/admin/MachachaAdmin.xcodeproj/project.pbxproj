@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				C43B116429929EFE00BE312A /* MachachaAdminApp.swift */,
-				C43B116629929EFE00BE312A /* ContentView.swift */,
+				C4E073D12992ABFD00677E08 /* Views */,
 				C43B116829929F0000BE312A /* Assets.xcassets */,
 				C43B116A29929F0000BE312A /* Preview Content */,
 			);
@@ -125,6 +125,15 @@
 				C43B118129929F0000BE312A /* MachachaAdminUITestsLaunchTests.swift */,
 			);
 			path = MachachaAdminUITests;
+			sourceTree = "<group>";
+		};
+		C4E073D12992ABFD00677E08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C43B116629929EFE00BE312A /* ContentView.swift */,
+			);
+			name = Views;
+			path = "퍋ㅈ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
