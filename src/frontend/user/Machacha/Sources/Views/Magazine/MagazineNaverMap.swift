@@ -18,6 +18,7 @@ struct MagazineNaverMapView: View {
     @Binding var showMap: Bool
     @Environment(\.dismiss) var dismiss
     var foodcart: [FoodCart]
+    var coord: (Double, Double)
     
     //순서가 타꼬야끼 -> 슈메이커 -> 명동할머니
     // FE359DC9-5B77-4F9C-933E-7042B49B2F2F
@@ -33,7 +34,7 @@ struct MagazineNaverMapView: View {
         
     ]
     
-    var coord: (Double, Double) = (37.563618491562295, 126.98298431817352)
+    
     
     // GeoPoint(latitude: 37.563618491562295, longitude: 126.98298431817352) 타코야끼
     // 
@@ -106,7 +107,29 @@ struct MagazineNaverMap: UIViewRepresentable {
             
 //            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage())
 //            marker.iconImage = image
+//            marker.iconTintColor = UIColor(Color("Color3"))
+            
+            marker.iconImage = NMF_MARKER_IMAGE_BLACK
+            marker.iconTintColor = UIColor.orange
+
+            
+            marker.width = CGFloat(28)
+            marker.height = CGFloat(39)
+            
             marker.captionText = foodCart.name
+            marker.captionTextSize = 13.2
+            
+            // 마커가 지도 심벌과 겹칠 경우 겹치는 심벌이 숨김
+            marker.isHideCollidedSymbols = true
+            marker.captionAligns = [NMFAlignType.top]
+            marker.captionOffset = 4
+            marker.captionMinZoom = 15.6
+            /*
+             view.mapView.minZoomLevel = 14.6 // - 에 대한
+             view.mapView.maxZoomLevel = 18.5 // +
+             */
+            
+            
             self.markers.append(marker)
 //            self.routePoints.append(marker.position)
         }
@@ -118,7 +141,7 @@ struct MagazineNaverMap: UIViewRepresentable {
     // MARK: - Map을 그리고 생성하는 메서드
     func makeUIView(context: Context) -> some NMFNaverMapView {
         let view = NMFNaverMapView()
-        let pathOverlay = NMFPath() // 오버레이로 경로선 그려주기 위해
+//        let pathOverlay = NMFPath() // 오버레이로 경로선 그려주기 위해
         
         // MARK: - 기본 Map에 대한 내용
         view.mapView.mapType = .basic //지도 타입 설정 (.none : 지도x. 단, 오버레이는 여전히 나타남)
@@ -127,8 +150,8 @@ struct MagazineNaverMap: UIViewRepresentable {
         
         //MARK: - Zoom
         view.showZoomControls = true
-        view.mapView.zoomLevel = 17 // 화면 처음 켰을 때의 줌 레벨
-        view.mapView.minZoomLevel = 9.4 // - 에 대한
+        view.mapView.zoomLevel = 17.2 // 화면 처음 켰을 때의 줌 레벨
+        view.mapView.minZoomLevel = 14.6 // - 에 대한
         view.mapView.maxZoomLevel = 18.5 // +
         
         for marker in markers {
@@ -150,7 +173,7 @@ struct MagazineNaverMap: UIViewRepresentable {
     // MARK: - Map이 업데이트 될 때 발생하는 메서드
     func updateUIView(_ uiView: UIViewType, context: Context) {
         
-        var coord = NMGLatLng(lat: coord.0, lng: coord.1)
+        let coord = NMGLatLng(lat: coord.0, lng: coord.1)
         let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
         cameraUpdate.animation = .easeIn
         cameraUpdate.animationDuration = 0.3
@@ -193,6 +216,21 @@ extension MCoordinator: NMFMapViewCameraDelegate, NMFMapViewTouchDelegate {
 
 struct MagazineNaverMapView_Previews: PreviewProvider {
     static var previews: some View {
-        MagazineNaverMapView(model: Model(), showMap: .constant(true), foodcart: FoodCart.getListDummy())
+        //꼬치류 손보기
+        MagazineNaverMapView(model: Model(), showMap: .constant(true), foodcart: [
+            FoodCart(id: "7EEA7E57-7849-4F5F-A449-28C054060796", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.56378477554788, longitude: 126.9851376251288) , region: "", name: "HBAF 앞 회오리 감자", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            
+            FoodCart(id: "795381EB-E34D-42EC-BE69-9D51F5DDCDAA", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.563641193556, longitude: 126.9839727772579) , region: "", name: "에잇세컨드 앞 어묵집", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 2, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            
+            
+            // 37.563797, 126.983816
+            FoodCart(id: "920B7F62-74B2-4B87-B02C-D2AC9E73A360", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.56369510843005, longitude: 126.98372727908618) , region: "", name: "네이쳐리퍼블릭 앞 문어꼬치", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            
+            FoodCart(id: "D0BEE861-6256-4325-B241-1D830739C938", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.563705219639665, longitude: 126.98477884445151) , region: "", name: "아이더 앞 호떡", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            
+            
+        ], coord: (37.563618491562295, 126.98298431817352))
     }
 }
+
+// 명동할머니 쌀 떡볶이 원래 longtitude 값 :  126.98284657925063

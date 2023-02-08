@@ -91,7 +91,10 @@ struct MCardDetailView: View {
         }
         .sheet(isPresented: $showMap) {
 //            MCardMapView(model: model)
-            MagazineNaverMapView(model: model, showMap: $showMap, foodcart: magazineVM.magazineFoodCart)
+            MagazineNaverMapView(model: model,
+                                 showMap: $showMap,
+                                 foodcart: magazineVM.magazineFoodCart,
+                                 coord: (magazineVM.magazineFoodCart[0].geoPoint.latitude, (magazineVM.magazineFoodCart[0].geoPoint.longitude)))
         }
         
     } //body
