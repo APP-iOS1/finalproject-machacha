@@ -6,11 +6,19 @@ import NMapsMap
 
 struct RegisterNaverMap: UIViewRepresentable {
     @Binding var cameraCoord : (Double,Double)
+    var userCoord : (Double,Double)
     
-    //카메라가 이동할때마다 중앙 마커를 담아놓을 배열
-    @State var markers : [NMFMarker] = [NMFMarker(position: NMGLatLng(lat: 37.566249, lng: 126.992227))]
+    var foodCarts: [FoodCart]
+    var markers: [NMFMarker] = []
+    
     func makeCoordinator() -> NMCoordinator {
-        NMCoordinator($cameraCoord,$markers)
+        NMCoordinator($cameraCoord)
+    }
+    
+    init(cameraCoord: Binding<(Double,Double)>,userCoord : (Double,Double),foodCarts: [FoodCart]) {
+        self.foodCarts = foodCarts
+        self._cameraCoord = cameraCoord
+        self.userCoord = userCoord
     }
 
     // MARK: - Map을 그리고 생성하는 메서드
@@ -26,7 +34,21 @@ struct RegisterNaverMap: UIViewRepresentable {
         let cameraCoord = NMGLatLng(lat: cameraCoord.0, lng: cameraCoord.1)
         let cameraUpdate = NMFCameraUpdate(scrollTo: cameraCoord)
         view.mapView.moveCamera(cameraUpdate)
-        //let a = view.mapView.projection.point(from: NMGLatLng(lat: coord.0, lng: coord.1))
+        
+        for ( _ , foodCart) in foodCarts.enumerated() {
+            let marker = NMFMarker()
+            
+            marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
+            
+            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage())
+            marker.iconImage = image
+            
+            marker.width = CGFloat(50)
+            marker.height = CGFloat(50)
+            marker.mapView = view.mapView
+        }
+        print("마커 갯수: \(markers.count)")
+        
         return view
     }
     
@@ -43,12 +65,10 @@ struct RegisterNaverMap: UIViewRepresentable {
     class NMCoordinator: NSObject ,NMFMapViewCameraDelegate,NMFMapViewTouchDelegate  {
         //var coord: (Double, Double)
         @Binding var cameraCoord : (Double, Double)
-        @Binding var markers : [NMFMarker]
         
-        init(_ cameraCoord: Binding<(Double, Double)>, _ markers : Binding<[NMFMarker]>) {
+        init(_ cameraCoord: Binding<(Double, Double)>) {
             //self.coord = coord
             self._cameraCoord = cameraCoord
-            self._markers = markers
         }
         
         // MARK: - 카메라 이동시 발생하는 Delegate
@@ -71,19 +91,6 @@ struct RegisterNaverMap: UIViewRepresentable {
             if (round(cameraCoord.0*100000)/100000.0,
                 round(cameraCoord.1*100000)/100000.0) != point {
                 cameraCoord = (mapView.cameraPosition.target.lat, mapView.cameraPosition.target.lng)
-                
-                //카메라 이동시 카메라 중앙 마커 이동
-                let marker = NMFMarker()
-                marker.position = NMGLatLng(lat: cameraCoord.0, lng: cameraCoord.1)
-                marker.isHideCollidedMarkers = true
-                marker.mapView = mapView
-                markers.append(marker)
-                //이전 중앙 마커 해제
-                if !markers.isEmpty {
-                    let removeMarker = markers.removeFirst()
-                    removeMarker.mapView = nil
-                }
-                print("중앙 마커 이동")
             }
             print("현재 카메라 좌표 : \(cameraCoord)")
         }
@@ -93,6 +100,8 @@ struct RegisterNaverMap: UIViewRepresentable {
         // MARK: - 지도 터치에 이용되는 Delegate
         func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
             print("Map Tapped")
+            let a = mapView.projection.point(from: NMGLatLng(lat: cameraCoord.0, lng: cameraCoord.1))
+            print("실제 UI 상 좌표 \(a)")
         }
         
     }
