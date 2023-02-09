@@ -13,8 +13,16 @@ struct SearchView: View {
     @State var searchText = ""
     @State var searchResults: [String] = []
     @State var doneTextFieldEdit: Bool = true
+    @EnvironmentObject var foodCartVM: FoodCartViewModel
     var trimText: String {
         searchText.trimmingCharacters(in: .whitespaces)
+    }
+    
+    var filteredResult: [FoodCart] {
+        let foodCarts = foodCartVM.foodCarts
+        return foodCarts.filter {
+            $0.region.contains(searchText)
+        }
     }
     
     var body: some View {
@@ -46,17 +54,29 @@ struct SearchView: View {
                     }
                 }
                 .padding(EdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10))
-                List(searchResults, id: \.self) { result in
-                    NavigationLink {
-                        SearchDetailView(name: result)
-                    } label: {
-                        Text(result)
+                
+                if filteredResult.isEmpty {
+                    Text("검색 결과가 없습니다.")
+                    Spacer()
+                } else {
+                    ScrollView {
+                        ForEach(filteredResult) { result in
+                            NavigationLink {
+                                DetailView(selectedStore: result)
+                            } label: {
+                                Text(result.name)
+                            }
+
+                        }
                     }
                 }
             }
         }
         .onTapGesture {
             hideKeyboard()
+        }
+        .onAppear {
+            print("searchView \(foodCartVM.foodCarts.count)")
         }
     }
     
