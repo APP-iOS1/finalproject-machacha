@@ -12,8 +12,12 @@ import SwiftUI
 struct RegisterMapView: View {
     
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var locationManager : LocationManager
+    @EnvironmentObject  var mapSearchViewModel : MapSearchViewModel
+    @EnvironmentObject var foodCartViewModel : FoodCartViewModel
+    
     @ObservedObject var tabbarManager = TabBarManager.shared
-    @ObservedObject var mapSerachViewModel = MapSearchViewModel() //현재 위치
+    
     @State var cameraCoord : (Double,Double) = (37.56621548663492, 126.99223256544298) // 카메라 위치
     //@State var coordinate: (Double, Double) = (37.566249, 126.992227)
     
@@ -56,12 +60,20 @@ struct RegisterMapView: View {
                 .frame(width:5,height: Screen.maxHeight*0.04)
                 .padding(.bottom,200)
                 .zIndex(1)
-                RegisterNaverMap(cameraCoord: $cameraCoord)
+                RegisterNaverMap(cameraCoord: $cameraCoord,foodCarts: foodCartViewModel.foodCarts)
                     .ignoresSafeArea(.all, edges: [.top,.bottom])
             }
             .onAppear {
                 //mapSerachViewModel.checkIfLocationServicesIsEnabled()
                 //cameraCoord = mapSerachViewModel.coord
+                mapSearchViewModel.fetchFoodCarts()
+                Task{
+                    await MainActor.run{
+                        print("onAppear lm: \(locationManager.coord)")
+                        cameraCoord = locationManager.coord
+                        print("onAppear cc: \(cameraCoord)")
+                    }
+                }
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
