@@ -27,7 +27,7 @@ struct ReviewThumbnailListCellView: View {
                     }
                     VStack(alignment: .leading) {
                         Text(reviewViewModel.reviewer.name)
-                            .font(.machachaTitle3Bold)
+                            .font(.machachaHeadlineBold)
                         Text(review.updatedAt.getDay())
                             .font(.machachaHeadline)
                             .foregroundColor(.gray)

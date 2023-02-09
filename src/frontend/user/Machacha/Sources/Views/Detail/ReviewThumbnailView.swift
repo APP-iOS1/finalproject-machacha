@@ -21,8 +21,10 @@ struct ReviewThumbnailView: View {
                     HStack(alignment: .top) {
                         Text("방문자 리뷰")
                             .foregroundColor(.black)
+                            .font(.machachaTitle2Bold)
                         Text("\(reviewViewModel.reviews.count)")
                             .foregroundColor(Color("Color3"))
+                            .font(.machachaTitle2Bold)
                         Spacer()
                         Image(systemName: "chevron.forward")
                             .foregroundColor(.gray)
