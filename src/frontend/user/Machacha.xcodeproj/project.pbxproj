@@ -6,7 +6,7 @@
 	objectVersion = 56;
 	objects = {
 
-
+/* Begin PBXBuildFile section */
 		1A086F0729927A2300B486C0 /* AddingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A086F0629927A2300B486C0 /* AddingReviewView.swift */; };
 		1A30E15A2988D1910068C025 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E1592988D1910068C025 /* ReviewViewModel.swift */; };
 		1A30E15E2988D3850068C025 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E15D2988D3850068C025 /* ReviewView.swift */; };
@@ -515,6 +515,7 @@
 				C4A5879929768D1500B04A98 /* Splash */,
 				C4A5879829768CFA00B04A98 /* Home */,
 				C4A5879729768CF300B04A98 /* MapSearch */,
+				C4A5879629768CE100B04A98 /* Register */,
 				C4A5879529768CC800B04A98 /* Magazine */,
 				C4A5879429768CC100B04A98 /* Profile */,
 				C4A5879329768CB700B04A98 /* Detail */,
@@ -553,11 +554,10 @@
 				C414BC2929817C6300819D98 /* FaceIDViewModel.swift */,
 				1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */,
 				FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */,
-				6A8EBDA529778F1500964C9D /* LocationManager.swift */,
 				801853C4298A2EFA00B33111 /* MagazineViewModel.swift */,
 				6A0601E7298DE1AE00B1AC0E /* MapSearchViewModel.swift */,
 				C4F42037298EB70400B615C6 /* LocalizationViewModel.swift */,
-				6A8EBDA529778F1500964C9D /* MapSearchViewModel.swift */,
+				6A8EBDA529778F1500964C9D /* LocationManager.swift */,
 				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
 				C414BC1F298101B200819D98 /* ProfileViewModel.swift */,
 				1A30E1592988D1910068C025 /* ReviewViewModel.swift */,
@@ -632,7 +632,8 @@
 				FAF35450298F27880039085F /* ReverseGeocodingDTO.swift */,
 				FA2583932991D1020081AFFA /* SoundManager.swift */,
 			);
-			path = Register;
+			name = Register;
+			path = MapSearch/Register;
 			sourceTree = "<group>";
 		};
 		C4A5879729768CF300B04A98 /* MapSearch */ = {
@@ -643,7 +644,6 @@
 				6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */,
 				C4A587A429768DE300B04A98 /* MapSearchView.swift */,
 				6A8EBDA72977903700964C9D /* NaverMap.swift */,
-				C4A5879629768CE100B04A98 /* Register */,
 			);
 			path = MapSearch;
 			sourceTree = "<group>";
@@ -968,7 +968,6 @@
 				80D9E770298D40C900C65CBF /* TopTest.swift in Sources */,
 				C4D5C060297A7F4A003CF061 /* Magazine.swift in Sources */,
 				1A439E9329903134000EF1A2 /* ReportView.swift in Sources */,
-				6A159FC229877C4C0002E625 /* MapHeaderCell.swift in Sources */,
 				1A30E15A2988D1910068C025 /* ReviewViewModel.swift in Sources */,
 				FAF35451298F27880039085F /* ReverseGeocodingDTO.swift in Sources */,
 				C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */,
@@ -1147,7 +1146,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = SF6SBNPMLX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
@@ -1185,7 +1184,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = SF6SBNPMLX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
