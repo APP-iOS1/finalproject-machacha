@@ -161,7 +161,7 @@
 		6AF063DF2994749000BCDC2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
 		6AF063E02994749000BCDC2A /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876E2975A8D300B04A98 /* Pretendard-Light.otf */; };
 		6AF063EB2994760A00BCDC2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AF063E9299475F200BCDC2A /* GoogleService-Info.plist */; };
-		6AF063ED2994769000BCDC2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AF063EC2994769000BCDC2A /* GoogleService-Info.plist */; };
+		6AF063F229947AB200BCDC2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AF063F129947AB200BCDC2A /* GoogleService-Info.plist */; };
 		6AFEE4762993E6DA00DDAB13 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6AFEE4752993E6DA00DDAB13 /* FirebaseMessaging */; };
 		801853C5298A2EFA00B33111 /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C4298A2EFA00B33111 /* MagazineViewModel.swift */; };
 		801853C7298A427200B33111 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C6298A427200B33111 /* Test.swift */; };
@@ -310,7 +310,7 @@
 		6AF063E42994749000BCDC2A /* Machacha-push.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Machacha-push.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF063E52994749000BCDC2A /* Machacha copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Machacha copy-Info.plist"; path = "/Users/parkjungwoo/Documents/Source/IOS/CodeLion/prototype/finalproject-machacha/src/frontend/user/Machacha copy-Info.plist"; sourceTree = "<absolute>"; };
 		6AF063E9299475F200BCDC2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		6AF063EC2994769000BCDC2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6AF063F129947AB200BCDC2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6AFEE4772993E76300DDAB13 /* Machacha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Machacha.entitlements; sourceTree = "<group>"; };
 		801853C4298A2EFA00B33111 /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
 		801853C6298A427200B33111 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -578,8 +578,8 @@
 			children = (
 				6AF063E8299475D500BCDC2A /* Infos */,
 				6AFEE4772993E76300DDAB13 /* Machacha.entitlements */,
+				6AF063F129947AB200BCDC2A /* GoogleService-Info.plist */,
 				C4A587862975AA0700B04A98 /* Info.plist */,
-				6AF063EC2994769000BCDC2A /* GoogleService-Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
 				C4A587612975A8D300B04A98 /* Configuration */,
 				C4A587892975AA6800B04A98 /* Sources */,
@@ -1102,7 +1102,7 @@
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
 				C4F42030298EACBC00B615C6 /* Localizable.strings in Resources */,
-				6AF063ED2994769000BCDC2A /* GoogleService-Info.plist in Resources */,
+				6AF063F229947AB200BCDC2A /* GoogleService-Info.plist in Resources */,
 				C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */,
 				C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */,
 			);

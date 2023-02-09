@@ -15,26 +15,33 @@ import FirebaseMessaging
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
+        
+        return true
+    }
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         //파이어베이스 초기화
         FirebaseApp.configure()
         
-        // 원격 알림 등록
-        UNUserNotificationCenter.current().delegate = self
-        
-                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-                UNUserNotificationCenter.current().requestAuthorization(
-                    options: authOptions,
-                    completionHandler: { _, _ in }
-                )
-        
-        application.registerForRemoteNotifications()
         // 메세징 델리게이트
         Messaging.messaging().delegate = self
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("ERROR FCM 등록 토큰 가져오기: \(error.localizedDescription)")
+            } else if let token = token {
+                print("FCM 등록 토큰: \(token)")
+            }
+        }
         
-        // 푸시 포그라운드 설정
-        UNUserNotificationCenter.current().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: [authOptions]) { _, error in
+            print("Error, Request Notifications Authorization: \(error.debugDescription)")
+        }
+        application.registerForRemoteNotifications()
         
         return true
     }
@@ -45,23 +52,26 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     //    }
     
     // fcm 토큰이 등록 되었을 때
-        func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-            Messaging.messaging().apnsToken = deviceToken
-        }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
     // SceneDelegate  연결을 위한 함수
-        func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-    
-            let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
-    
-            sceneConfiguration.delegateClass = SceneDelegate.self
-    
-            return sceneConfiguration
-        }
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        
+        let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
+        
+        sceneConfiguration.delegateClass = SceneDelegate.self
+        
+        return sceneConfiguration
+    }
 }
 
 extension AppDelegate: MessagingDelegate {
     // fcm 등록 토큰을 받았을 때
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        
+        guard let token = fcmToken else { return }
+        print("FCM 등록 토큰 갱신: \(token)")
         print("AppDelegate - 파베 토큰 받음")
         print("AppDelegate - Firebase registration token: \(String(describing: fcmToken))")
     }
@@ -145,7 +155,7 @@ struct MachachaApp: App {
                                 .getSharedInstance()
                                 .receiveAccessToken(url)
                         }
-
+                        
                         //카카오
                         if (AuthApi.isKakaoTalkLoginUrl(url)){
                             _ = AuthController.handleOpenUrl(url: url)
@@ -168,7 +178,7 @@ struct MachachaApp: App {
                     }
             }
             
-
+            
         }
     }
 }
