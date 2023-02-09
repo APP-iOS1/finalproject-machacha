@@ -197,8 +197,9 @@ class ReviewViewModel: ObservableObject {
         }
     }
     
-    @MainActor
-    func fetchReviewer(userId: String) async {
+    func fetchReviewer(userId: String) async throws -> User {
+        var reviewer: User = User(id: "", isFirstLogin: true, email: "", name: "", profileId: "", favoriteId: [], visitedId: [], updatedAt: Date(), createdAt: Date())
+        
         do {
             let querysnapshot = try await database.collection("User")
                 .whereField("id", isEqualTo: userId)
@@ -219,14 +220,13 @@ class ReviewViewModel: ObservableObject {
 
                 // fetch image set
                 self.fetchReviewImage(userId: id, imageName: profileId)
-                print("profileId : \(profileId)")
 
                 reviewer = User(id: id, isFirstLogin: isFirstLogin, email: email, name: name, profileId: profileId, favoriteId: favoriteId, visitedId: visitedId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
-                print("imageDict : \(imageDict)")
             }
         } catch {
             print("fetchReviews error: \(error.localizedDescription)")
         }
+        return reviewer
     }
     
     // MARK: - 서버의 Storage에서 이미지를 가져오는 Method
