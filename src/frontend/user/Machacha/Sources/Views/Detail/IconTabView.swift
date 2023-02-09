@@ -10,6 +10,9 @@ import SwiftUI
 struct IconTabView: View {
     @State var selectedStore: FoodCart
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @Binding var isFavorited: Bool
+    @Binding var isVisited: Bool
     
     var body: some View {
         VStack(alignment: .center) {
@@ -17,21 +20,36 @@ struct IconTabView: View {
                 .padding(.vertical, 15)
             HStack(alignment: .bottom, spacing: 38) {
                 Button {
-
+                    isFavorited.toggle()
+                    Task {
+                        if let user = profileViewModel.currentUser {
+                            await foodCartViewModel.fetchFavorite(isFavorited: isFavorited, user: user, foodCartId: selectedStore.id)
+                        }
+                    }
                 } label: {
                     VStack(spacing: 10) {
-                        Image(systemName: "heart.fill")
+                        Image(systemName: isFavorited ? "heart.fill" : "heart")
                             .font(.system(size: 30))
                         Text("즐겨찾기")
                             .font(.headline)
                     }
                 }
-                VStack(spacing: 10) {
-                    Image(systemName: "checkmark.seal")
-                        .font(.system(size: 28))
-                    Text("가봤어요")
-                        .font(.headline)
+                Button {
+                    isVisited.toggle()
+                    Task {
+                        if let user = profileViewModel.currentUser {
+                            await foodCartViewModel.fetchVisited(isVisited: isVisited, user: user, foodCartId: selectedStore.id)
+                        }
+                    }
+                } label: {
+                    VStack(spacing: 10) {
+                        Image(systemName: isVisited ? "checkmark.seal.fill" : "checkmark.seal")
+                            .font(.system(size: 28))
+                        Text("가봤어요")
+                            .font(.headline)
+                    }
                 }
+
                 Button {
                     foodCartViewModel.isShowingReviewSheet.toggle()
                 } label: {
@@ -56,8 +74,8 @@ struct IconTabView: View {
     }
 }
 
-struct IconTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        IconTabView(selectedStore: FoodCart.getDummy())
-    }
-}
+//struct IconTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IconTabView(selectedStore: FoodCart.getDummy())
+//    }
+//}
