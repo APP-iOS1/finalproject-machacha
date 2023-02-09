@@ -25,7 +25,7 @@ struct MapSearchView: View {
                     
                     Button {
                         print("현재 위치 조회")
-                        mapSearchViewModel.cameraPosition = locationManager.coord
+                        mapSearchViewModel.cameraPosition = mapSearchViewModel.userLocation
                     } label: {
                         HStack {
                             Spacer()
@@ -42,7 +42,7 @@ struct MapSearchView: View {
                     }
 
                     
-                    SnapCarousel(index: $currentIndex, foodCarts: foodCartViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
+                    SnapCarousel(index: $currentIndex, foodCarts: mapSearchViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
                             .padding(.vertical, Screen.maxHeight - 460)
@@ -54,19 +54,21 @@ struct MapSearchView: View {
                 }
                 .navigationDestination(isPresented: $isTap) {
 //                    TestView(name: mapSearchViewModel.foodCarts[currentIndex].name)
-                    if !mapSearchViewModel.foodCarts.isEmpty {
-                        DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
-                    }
+//                    if !mapSearchViewModel.foodCarts.isEmpty {
+//                        DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
+//                    }
+                    
                 }
                 .zIndex(1)
-                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: foodCartViewModel.foodCarts)
+                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: foodCartViewModel.foodCarts, userCoord: locationManager.userLocation)
                     .ignoresSafeArea(.all, edges: .top)
                     .onChange(of: mapSearchViewModel.zoomLevel) { newValue in
                         print("zoom Level : \(newValue)")
                     }
             }
             .onAppear {
-//				foodCartViewModel.fetchFoodCarts()
+                mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
+                print("\(mapSearchViewModel.foodCarts.count)")
             }
         }
     }

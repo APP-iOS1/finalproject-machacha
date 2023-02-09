@@ -14,6 +14,7 @@ struct NaverMap: UIViewRepresentable {
     @Binding var cameraPosition: LatLng
     @Binding var currentIndex: Int
     var foodCarts: [FoodCart]
+    var userCoord: LatLng
     var markers: [NMFMarker] = []
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     
@@ -46,12 +47,13 @@ struct NaverMap: UIViewRepresentable {
         Coordinator($cameraPosition, $mapSearchViewModel.zoomLevel)
     }
     
-    init(cameraPosition: Binding<LatLng>, currentIndex: Binding<Int>, foodCarts: [FoodCart]) {
+    init(cameraPosition: Binding<LatLng>, currentIndex: Binding<Int>, foodCarts: [FoodCart], userCoord: LatLng) {
         self._cameraPosition = cameraPosition
         self._currentIndex = currentIndex
         self.foodCarts = foodCarts
+        self.userCoord = userCoord
         
-        for (index, foodCart) in foodCarts.enumerated() {
+        for (_, foodCart) in foodCarts.enumerated() {
             let marker = NMFMarker()
             
             marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
@@ -73,7 +75,7 @@ struct NaverMap: UIViewRepresentable {
         let view = NMFNaverMapView()
         view.showZoomControls = false
         view.mapView.positionMode = .normal
-        view.mapView.minZoomLevel = 16
+        view.mapView.minZoomLevel = 15
         view.mapView.zoomLevel = mapSearchViewModel.zoomLevel
 
         print("cameraPosition : \(cameraPosition)")
