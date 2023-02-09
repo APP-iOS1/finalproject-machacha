@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 import PhotosUI
 
+
 struct AddingReviewView: View {
     @State private var starArr = Array(repeating: false, count: 5)
     @State var grade : Double = 0 // 별점
@@ -30,13 +31,18 @@ struct AddingReviewView: View {
     @Environment(\.colorScheme) var colorScheme // 다크모드일 때 색 설정 변경을 위해 선언
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
+    @EnvironmentObject var reviewViewModel: ReviewViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     @FocusState private var isInFocusText: Bool
+    @Binding var showToast: Bool
+    var selectedStore: FoodCart
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
                     //별점
+                    var _ = print(profileViewModel.currentUser?.id)
                     HStack(spacing: 15){
                         ForEach(0..<5,id: \.self){ index in
                             Image(systemName: "star.fill")
@@ -56,6 +62,7 @@ struct AddingReviewView: View {
                         ZStack {
                             if text.isEmpty {
                                 TextEditor(text: .constant("작성 내용은 마이페이지와 장소 리뷰에 노출되며 매장주를 포함한 다른 사용자들이 볼 수 있으니, 서로를 배려하는 마음을 담아 작성 부탁드립니다."))
+                                    .lineSpacing(8)
                                     .foregroundColor(.gray)
                                     .disabled(true)
                                     .scrollContentBackground(.hidden) // HERE
@@ -91,15 +98,25 @@ struct AddingReviewView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 //Spacer()
-                                ForEach(selectedPhotosData, id: \.self) { photoData in
-                                    if let image = UIImage(data: photoData) {
+                                ForEach(selectedPhotosData.indices, id: \.self) { photoData in
+                                    if let image = UIImage(data: selectedPhotosData[photoData]) {
                                         
                                         Image(uiImage: image)
                                             .resizable()
                                             .cornerRadius(5)
                                             .frame(width: 120, height: 120)
                                             .aspectRatio(contentMode: .fit)
-                                        //                                    .frame(height: 100)
+                                            .overlay {
+                                                Button {
+                                                    selectedPhotosData.remove(at: photoData)
+                                                } label: {
+                                                    Image(systemName: "x.circle.fill")
+                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                                        .padding(.trailing, 5)
+                                                        .padding(.top, 5)
+                                                        .foregroundColor(.white)
+                                                }
+                                            }
                                         Spacer()
                                     }
                                 }//FoEeach
@@ -113,18 +130,6 @@ struct AddingReviewView: View {
                     }//VStack
                     .padding(.horizontal, 20)
                 }
-                Button {
-                    foodCartViewModel.isShowingReviewSheet.toggle()
-                } label: {
-                    Text("리뷰 등록하기")
-                        .font(.machachaHeadline)
-                        .padding(.vertical, 15)
-                        .padding(.horizontal, 120)
-                        .background(text.count > 0 ? Color("Color3") : Color(.lightGray))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                }
-                .disabled(text.count > 0 ? false : true)
             } // selectedItem 변경 사항이 있을 때마다 loadTransferable 데이터를 로드하는 메서드를 호출
             .navigationBarTitle("리뷰 작성", displayMode: .inline)
             .toolbar {
@@ -148,6 +153,33 @@ struct AddingReviewView: View {
                     
                 }
             }
+            Button {
+                if let user = profileViewModel.currentUser?.id {
+                    let review: Review = Review(id: UUID().uuidString, reviewer: user, foodCartId: selectedStore.id, grade: grade, description: text, imageId: [], updatedAt: Date(), createdAt: Date())
+                    reviewViewModel.addReview(review: review, images: images, foodCart: selectedStore)
+                    Task {
+                        reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
+                        foodCartViewModel.isShowingReviewSheet.toggle()
+                    }
+                }
+                showToast = true
+            } label: {
+                if reviewViewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: Color(
+                            .white)))
+                } else {
+                    Text("리뷰 등록하기")
+                        .font(.machachaHeadline)
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 120)
+                        .background(text.count > 0 && text != "" ? Color("Color3") : Color(.lightGray))
+                        .cornerRadius(10)
+                        .foregroundColor(.white)
+                }
+            }
+            .disabled(text.count > 0 ? false : true)
+
         }
         
 
@@ -155,8 +187,8 @@ struct AddingReviewView: View {
     
 }
 
-struct AddingReviewView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddingReviewView()
-    }
-}
+//struct AddingReviewView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddingReviewView()
+//    }
+//}
