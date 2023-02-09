@@ -17,7 +17,7 @@ struct MagazineNaverMapView: View {
     @StateObject var model: Model
     @Binding var showMap: Bool
     @Environment(\.dismiss) var dismiss
-    var foodcart: [FoodCart]
+    var foodcart: [FoodCart2]
     var coord: (Double, Double)
     
     //순서가 타꼬야끼 -> 슈메이커 -> 명동할머니
@@ -69,7 +69,7 @@ struct MagazineNaverMap: UIViewRepresentable {
 //    @Binding var coord: (Double, Double)
     var coord: (Double, Double)
     
-    var foodCarts: [FoodCart]
+    var foodCarts: [FoodCart2]
     var markers: [NMFMarker] = []
     
     // 경로 그려주는거 실험용
@@ -94,7 +94,7 @@ struct MagazineNaverMap: UIViewRepresentable {
         Coordinator(coord)
     }
     
-    init( coord: (Double, Double), foodCarts: [FoodCart]) {
+    init( coord: (Double, Double), foodCarts: [FoodCart2]) {
         self.coord = coord
         self.foodCarts = foodCarts
         for foodCart in foodCarts {
@@ -218,15 +218,15 @@ struct MagazineNaverMapView_Previews: PreviewProvider {
     static var previews: some View {
         //꼬치류 손보기
         MagazineNaverMapView(model: Model(), showMap: .constant(true), foodcart: [
-            FoodCart(id: "7EEA7E57-7849-4F5F-A449-28C054060796", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.56378477554788, longitude: 126.9851376251288) , region: "", name: "HBAF 앞 회오리 감자", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            FoodCart2(id: "7EEA7E57-7849-4F5F-A449-28C054060796", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.56378477554788, longitude: 126.9851376251288) , region: "", name: "HBAF 앞 회오리 감자", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: "", url: []),
             
-            FoodCart(id: "795381EB-E34D-42EC-BE69-9D51F5DDCDAA", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.563641193556, longitude: 126.9839727772579) , region: "", name: "에잇세컨드 앞 어묵집", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 2, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            FoodCart2(id: "795381EB-E34D-42EC-BE69-9D51F5DDCDAA", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.563641193556, longitude: 126.9839727772579) , region: "", name: "에잇세컨드 앞 어묵집", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 2, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: "", url: []),
             
             
             // 37.563797, 126.983816
-            FoodCart(id: "920B7F62-74B2-4B87-B02C-D2AC9E73A360", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.56369510843005, longitude: 126.98372727908618) , region: "", name: "네이쳐리퍼블릭 앞 문어꼬치", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            FoodCart2(id: "920B7F62-74B2-4B87-B02C-D2AC9E73A360", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.56369510843005, longitude: 126.98372727908618) , region: "", name: "네이쳐리퍼블릭 앞 문어꼬치", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: "", url: []),
             
-            FoodCart(id: "D0BEE861-6256-4325-B241-1D830739C938", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.563705219639665, longitude: 126.98477884445151) , region: "", name: "아이더 앞 호떡", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: ""),
+            FoodCart2(id: "D0BEE861-6256-4325-B241-1D830739C938", createdAt: Date(), updatedAt: Date(), geoPoint: GeoPoint(latitude: 37.563705219639665, longitude: 126.98477884445151) , region: "", name: "아이더 앞 호떡", address: "", visitedCnt: 1, favoriteCnt: 1, paymentOpt: [true, true, true], openingDays: [false, true], menu: ["떡볶이": 3000], bestMenu: 1, imageId: [""], grade: 1, reportCnt: 1, reviewId: [], registerId: "", url: []),
             
             
         ], coord: (37.563618491562295, 126.98298431817352))
