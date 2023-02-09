@@ -41,7 +41,7 @@ struct MapHeader: View {
                 .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
-            EmptyView()
+            SearchView()
         }
     }
     
