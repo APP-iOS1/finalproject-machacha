@@ -51,6 +51,7 @@ struct ContentView: View {
         }
         .fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
             RegisterMapView()
+                .environmentObject(locationManager)
         }
     }
 }
