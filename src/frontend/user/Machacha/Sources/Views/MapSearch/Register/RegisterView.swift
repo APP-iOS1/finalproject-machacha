@@ -31,7 +31,6 @@ struct RegisterView: View {
     //Alert 변수
     @State private var isDismissAlertShowing : Bool = false
     @State private var isRegisterAlertShowing : Bool = false
-    @State private var isLocationAmendAlertShowing : Bool = false
     
     //주소를 불러올 위도/경도
     var cameraCoord : (Double,Double)
@@ -102,9 +101,9 @@ struct RegisterView: View {
         ScrollView(showsIndicators: false) {
             VStack{
                 VStack(alignment: .leading,spacing: 25){
-                    Text("가게 등록하기")
-                        .font(.machachaTitle)
-                    Spacer()
+//                    Text("가게 등록하기")
+//                        .font(.machachaTitle)
+//                    Spacer()
                     AddressView()
                     EditNameView()
                     //RatingView()
@@ -144,32 +143,10 @@ struct RegisterView: View {
         }
         .padding()
         .navigationBarBackButtonHidden()
+        .navigationTitle("가게 등록")
+        .navigationBarTitleDisplayMode(.inline)
         //툴바
         .toolbar(content: {
-            // 왼쪽 툴바 버튼 - 위치 수정
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    isLocationAmendAlertShowing = true
-                } label: {
-                    HStack{
-                        Image(systemName: "chevron.left")
-                            .fontWeight(.bold)
-                        Text("수정")
-                            .font(.machachaHeadlineBold)
-                    }
-                }
-                .alert("위치 정보를 수정하시겠습니까?", isPresented: $isLocationAmendAlertShowing, actions: {
-                    Button("아니오", role: .cancel) {
-                        isLocationAmendAlertShowing = false
-                    }
-                    Button("예") {
-                        self.presentation.wrappedValue.dismiss()
-                    }
-                }, message: {
-                    Text("예 버튼을 누르면 지도 화면에서 위치 정보를 다시 선택해야 합니다.")
-                })
-            } // ToolbarItem
-            
             // 오른쪽 툴바 버튼 - 등록 취소
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -182,12 +159,9 @@ struct RegisterView: View {
                     }
                 } label: {
                     HStack{
-                        Text("취소")
-                            .font(.machachaHeadlineBold)
                         Image(systemName: "xmark")
-                            .fontWeight(.bold)
                     }
-                    .foregroundColor(Color("Color1"))
+                    .foregroundColor(Color("textColor"))
                 }
                 .alert("가게 등록을 취소하시겠습니까?", isPresented: $isDismissAlertShowing, actions: {
                     Button("아니오", role: .cancel) {
@@ -226,9 +200,17 @@ extension RegisterView {
     @ViewBuilder
     private func AddressView() -> some View {
         VStack(alignment: .leading){
-            Text("포장마차 위치")
-                .font(.machachaHeadlineBold)
             HStack{
+                Text("포장마차 위치")
+                    .font(.machachaHeadlineBold)
+                Spacer()
+                Button(action: {
+                    self.presentation.wrappedValue.dismiss()
+                }) {
+                    Text("수정하기")
+                        .font(.machachaHeadlineBold)
+                }
+            }
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(Color(.gray))
                     .opacity(0.1)
@@ -239,7 +221,6 @@ extension RegisterView {
                             .padding(8)
                     }
             }
-        }
     }
     
     
@@ -405,6 +386,7 @@ extension RegisterView {
                     .modifier(JustEditNumberModifier(number : $menuPrice))
                     .frame(width: Screen.maxWidth/4)
                 
+                Spacer()
                 Button(action: {
                     menu[menuName] = Int(menuPrice)!
                     menuCnt += 1
@@ -421,19 +403,31 @@ extension RegisterView {
             }
             
             //입력한 메뉴 정보
-            ForEach(Array(menu.keys),id:\.self){ menuName in
-                HStack{
-                    Text(menuName)
-                        .font(.machachaHeadline)
-                        .frame(width: Screen.maxWidth/4*2)
-                    
-                    Divider()
-                    
-                    Text("\(menu[menuName]!) 원")
-                        .font(.machachaHeadline)
-                        .frame(width: Screen.maxWidth/4)
+                ForEach(Array(menu.keys),id:\.self){ menuName in
+                    HStack{
+                        Text(menuName)
+                            .font(.machachaHeadline)
+                            .frame(width: Screen.maxWidth/4*2,alignment: .center)
+                        
+                        //Divider()
+                        
+                        Text("\(menu[menuName]!) 원")
+                            .font(.machachaHeadline)
+                            .frame(width: Screen.maxWidth/4,alignment: .trailing)
+                        
+                        Spacer()
+                        //입력 메뉴 삭제 버튼
+                        Button(action: {
+                            menu.removeValue(forKey: menuName)
+                        }) {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:15)
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
-            }
             
         }
     }
