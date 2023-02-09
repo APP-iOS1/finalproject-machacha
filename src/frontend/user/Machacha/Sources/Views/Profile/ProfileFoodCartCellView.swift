@@ -179,7 +179,7 @@ struct ProfileFoodCartReviewCellView: View {
 					.cornerRadius(40)
 					.setSkeletonView(opacity: opacity, shouldShow: isLoading)
 
-					VStack(alignment: .leading, spacing: 8) {
+					VStack(alignment: .leading, spacing: 4) {
 						Text(profileVM.currentUser!.name)
 							.font(.machachaHeadlineBold)
 							.foregroundColor(Color("textColor"))
@@ -191,7 +191,6 @@ struct ProfileFoodCartReviewCellView: View {
 								Image(systemName: "star.fill")
 									.foregroundColor(Color("Color3"))
 									.scaleEffect(0.8)
-									.offset(y: -1)
 
 								Text("\(review.gradeRounded)")
 									.foregroundColor(Color("textColor"))
@@ -208,7 +207,6 @@ struct ProfileFoodCartReviewCellView: View {
 								.font(.machachaFootnote)
 								.setSkeletonView(opacity: opacity, shouldShow: isLoading)
 						} // HStack
-						
 					} // VStack
 
 					Spacer()
@@ -217,9 +215,9 @@ struct ProfileFoodCartReviewCellView: View {
 					} label: {
 						Image(systemName: "ellipsis")
 							.foregroundColor(.gray)
+							.padding()
 					} // Menu
 					.unredacted()
-					.padding()
 				} // HStack
 				.font(.machachaHeadline)
 				
