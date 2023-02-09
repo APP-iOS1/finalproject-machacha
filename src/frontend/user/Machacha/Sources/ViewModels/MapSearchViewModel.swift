@@ -15,7 +15,6 @@ final class MapSearchViewModel: NSObject ,ObservableObject, CLLocationManagerDel
     
     @Published var userLocation: LatLng = (0.0, 0.0)
     @Published var foodCarts: [FoodCart] = []
-    @Published var sortedFoodCarts: [FoodCart] = []
     @Published var markers: [NMFMarker] = []
     @Published var cameraPosition: LatLng = (0, 0)
     @Published var zoomLevel: Double = 17.0
@@ -88,10 +87,9 @@ final class MapSearchViewModel: NSObject ,ObservableObject, CLLocationManagerDel
             .store(in: &cancellables)
         
     }
-    
+    @MainActor
     func sortedBy(by bestMenu: Int) {
         foodCarts = foodCarts.filter{ $0.bestMenu == bestMenu }
-        print("\(foodCarts.count)")
     }
     
     func fetchSortedMenu(by bestMenu: Int) {

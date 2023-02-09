@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MapHeaderTagCell: View {
+    @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
-    
+    @Binding var currentIndex: Int
+    @Binding var cameraPosition: LatLng
     let image: String
     var tag: String {
         switch image {
@@ -41,7 +43,7 @@ struct MapHeaderTagCell: View {
     var body: some View {
         VStack {
             Button {
-                var bestMenu = 9
+                var bestMenu = 10
                 switch tag {
                 case "붕어빵":
                     bestMenu = 0
@@ -64,13 +66,19 @@ struct MapHeaderTagCell: View {
                 case "기타":
                     bestMenu = 9
                 default:
-                    bestMenu = 9
+                    bestMenu = 10
                 }
-                if tag == "mainIcon" {
-                    mapSearchViewModel.fetchFoodCarts()
+                if bestMenu == 10 {
+                    mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                 } else {
-                    mapSearchViewModel.fetchSortedMenu(by: bestMenu)
+                    mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
+                    mapSearchViewModel.sortedBy(by: bestMenu)
                 }
+                if !mapSearchViewModel.foodCarts.isEmpty {
+                    cameraPosition = (mapSearchViewModel.foodCarts[0].geoPoint.latitude, mapSearchViewModel.foodCarts[0].geoPoint.longitude)
+                    currentIndex = 0
+                }
+                
                 print("foodCarts \(mapSearchViewModel.foodCarts)")
                 print("\(tag) tag Tapped")
             } label: {
@@ -95,8 +103,10 @@ struct MapHeaderTagCell: View {
 }
 
 struct MapHeaderTagCell_Previews: PreviewProvider {
+    @State static var currentIndex = 0
+    @State static var cameraPosition = (0.0, 0.0)
     static var previews: some View {
-        MapHeaderTagCell(image: "mainIcon")
+        MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: "mainIcon")
             .environmentObject(MapSearchViewModel())
     }
 }

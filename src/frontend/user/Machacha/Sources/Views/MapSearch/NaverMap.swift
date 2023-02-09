@@ -58,14 +58,15 @@ struct NaverMap: UIViewRepresentable {
             
             marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
             
-            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage())
-            marker.iconImage = image
+//            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage(named: "bbungbread2")!)
+//            marker.iconImage = image
             
             marker.width = CGFloat(50)
             marker.height = CGFloat(50)
         
             self.markers.append(marker)
         }
+        print("init markers : \(markers.count)")
     }
     
     
@@ -96,6 +97,7 @@ struct NaverMap: UIViewRepresentable {
         polyLineOverlay?.mapView = view.mapView
         
         
+        // 루프 안돔
         for (index, marker) in markers.enumerated() {
             // MARK: - Mark 터치 시 이벤트 발생
             marker.touchHandler = { (overlay) -> Bool in
@@ -106,12 +108,12 @@ struct NaverMap: UIViewRepresentable {
                 currentIndex = index
                 return true
             }
-        
+            print("마커 추가됨 : \(index)")
             marker.mapView = view.mapView
         }
         view.mapView.addCameraDelegate(delegate: context.coordinator)
         view.mapView.touchDelegate = context.coordinator
-        print("markers : \(markers.count)")
+        print("make uiView markers : \(markers.count)")
         return view
     }
     

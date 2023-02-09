@@ -9,6 +9,9 @@ import SwiftUI
 
 struct MapHeader: View {
     @State var isTap = false
+    @Binding var currentIndex: Int
+    @Binding var cameraPosition: LatLng
+
     var body: some View {
         VStack {
             HStack {
@@ -51,7 +54,7 @@ struct MapHeader: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(cellList, id: \.self) { item in
-                    MapHeaderTagCell(image: item)
+                    MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: item)
                 }
             }
         }
@@ -59,7 +62,10 @@ struct MapHeader: View {
 }
 
 struct MapHeaderSearch_Previews: PreviewProvider {
+    @State static var currentIndex = 0
+    @State static var cameraPosition = (0.0, 0.0)
+
     static var previews: some View {
-        MapHeader()
+        MapHeader(currentIndex: $currentIndex, cameraPosition: $cameraPosition)
     }
 }
