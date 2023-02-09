@@ -29,7 +29,6 @@
 		6A0601ED298E603300B1AC0E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EC298E603300B1AC0E /* FirebaseError.swift */; };
 		6A159FBD2987604F0002E625 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBC2987604F0002E625 /* MapHeader.swift */; };
 		6A159FBF298767630002E625 /* MapHeaderTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBE298767630002E625 /* MapHeaderTagCell.swift */; };
-		6A26ADE9299508E700811E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A26ADE8299508E700811E25 /* GoogleService-Info.plist */; };
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* LocationManager.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
@@ -190,6 +189,10 @@
 		C43B1151298F778D00BE312A /* ProfileNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1150298F778D00BE312A /* ProfileNotificationView.swift */; };
 		C43B1153298F7AEE00BE312A /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1152298F7AEE00BE312A /* UserNotification.swift */; };
 		C43B1155298F88E200BE312A /* CustomBoldLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */; };
+		C45923CD29950DB1008BDBF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */; };
+		C45923CF29950DEE008BDBF7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C45923CE29950DEE008BDBF7 /* Kingfisher */; };
+		C45923D029950E05008BDBF7 /* EditingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7CB1852994BA8300FE5720 /* EditingReviewView.swift */; };
+		C45923D229950E9F008BDBF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45923D129950E9F008BDBF7 /* GoogleService-Info.plist */; };
 		C492FAA7298D3DF90081E3B9 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
@@ -228,7 +231,6 @@
 		C4BE8B6C298D735C0033B4EF /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE8B6B298D735C0033B4EF /* OffsetModifier.swift */; };
 		C4BE8B70298D90A70033B4EF /* MyUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE8B6F298D90A70033B4EF /* MyUIImagePicker.swift */; };
 		C4D2D3222994F6DA0004661B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C4D2D3212994F6DA0004661B /* Kingfisher */; };
-		C4D2D3272994F7D80004661B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4D2D3252994F7D80004661B /* GoogleService-Info.plist */; };
 		C4D5C052297A73F7003CF061 /* Cluster in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C051297A73F7003CF061 /* Cluster */; };
 		C4D5C056297A7E22003CF061 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C055297A7E22003CF061 /* FirebaseAuth */; };
 		C4D5C058297A7E22003CF061 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C4D5C057297A7E22003CF061 /* FirebaseFirestore */; };
@@ -306,7 +308,6 @@
 		6A0601EC298E603300B1AC0E /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		6A159FBC2987604F0002E625 /* MapHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeader.swift; sourceTree = "<group>"; };
 		6A159FBE298767630002E625 /* MapHeaderTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderTagCell.swift; sourceTree = "<group>"; };
-		6A26ADE8299508E700811E25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A8EBDA529778F1500964C9D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
@@ -341,6 +342,8 @@
 		C43B1150298F778D00BE312A /* ProfileNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationView.swift; sourceTree = "<group>"; };
 		C43B1152298F7AEE00BE312A /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBoldLabelView.swift; sourceTree = "<group>"; };
+		C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C45923D129950E9F008BDBF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/macha/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
@@ -383,7 +386,6 @@
 		C4A587B92976960300B04A98 /* Ex+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Font.swift"; sourceTree = "<group>"; };
 		C4BE8B6B298D735C0033B4EF /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
 		C4BE8B6F298D90A70033B4EF /* MyUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUIImagePicker.swift; sourceTree = "<group>"; };
-		C4D2D3252994F7D80004661B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4D5C05D297A7EBE003CF061 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		C4D5C05F297A7F4A003CF061 /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
 		C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLanguageView.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				6AF063BD2994749000BCDC2A /* GoogleSignIn in Frameworks */,
 				6AF063BE2994749000BCDC2A /* FirebaseFirestore in Frameworks */,
 				6AF063BF2994749000BCDC2A /* GoogleSignInSwift in Frameworks */,
+				C45923CF29950DEE008BDBF7 /* Kingfisher in Frameworks */,
 				6AF063C02994749000BCDC2A /* Cluster in Frameworks */,
 				6AF063C12994749000BCDC2A /* FirebaseMessaging in Frameworks */,
 				6AF063C22994749000BCDC2A /* NaverThirdPartyLogin in Frameworks */,
@@ -525,7 +528,7 @@
 		6AF063E8299475D500BCDC2A /* Infos */ = {
 			isa = PBXGroup;
 			children = (
-				C4D2D3252994F7D80004661B /* GoogleService-Info.plist */,
+				C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */,
 			);
 			path = Infos;
 			sourceTree = "<group>";
@@ -585,7 +588,7 @@
 			children = (
 				6AF063E8299475D500BCDC2A /* Infos */,
 				6AFEE4772993E76300DDAB13 /* Machacha.entitlements */,
-				6A26ADE8299508E700811E25 /* GoogleService-Info.plist */,
+				C45923D129950E9F008BDBF7 /* GoogleService-Info.plist */,
 				C4A587862975AA0700B04A98 /* Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
 				C4A587612975A8D300B04A98 /* Configuration */,
@@ -923,6 +926,7 @@
 				6AF0635C2994749000BCDC2A /* AlertToast */,
 				6AF0635E2994749000BCDC2A /* FlagKit */,
 				6AF063602994749000BCDC2A /* FirebaseMessaging */,
+				C45923CE29950DEE008BDBF7 /* Kingfisher */,
 			);
 			productName = Machacha;
 			productReference = 6AF063E42994749000BCDC2A /* Machacha-push.app */;
@@ -1085,7 +1089,7 @@
 				6AF063DC2994749000BCDC2A /* Pretendard-Regular.otf in Resources */,
 				6AF063DD2994749000BCDC2A /* Pretendard-Black.otf in Resources */,
 				6AF063DE2994749000BCDC2A /* Localizable.strings in Resources */,
-				C4D2D3272994F7D80004661B /* GoogleService-Info.plist in Resources */,
+				C45923CD29950DB1008BDBF7 /* GoogleService-Info.plist in Resources */,
 				6AF063DF2994749000BCDC2A /* Assets.xcassets in Resources */,
 				6AF063E02994749000BCDC2A /* Pretendard-Light.otf in Resources */,
 			);
@@ -1112,9 +1116,9 @@
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
 				C4F42030298EACBC00B615C6 /* Localizable.strings in Resources */,
+				C45923D229950E9F008BDBF7 /* GoogleService-Info.plist in Resources */,
 				C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */,
 				C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */,
-				6A26ADE9299508E700811E25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1160,6 +1164,7 @@
 				6AF063712994749000BCDC2A /* ProfileFoodCartListView.swift in Sources */,
 				6AF063722994749000BCDC2A /* FaceIDErrorType.swift in Sources */,
 				6AF063732994749000BCDC2A /* MenuView.swift in Sources */,
+				C45923D029950E05008BDBF7 /* EditingReviewView.swift in Sources */,
 				6AF0636C2994749000BCDC2A /* MagazineView.swift in Sources */,
 				6AF063742994749000BCDC2A /* FaceIDViewModel.swift in Sources */,
 				6AF063752994749000BCDC2A /* Ex+Font.swift in Sources */,
@@ -2050,6 +2055,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		C45923CE29950DEE008BDBF7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D2D3202994F6DA0004661B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		C4D2D3212994F6DA0004661B /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
