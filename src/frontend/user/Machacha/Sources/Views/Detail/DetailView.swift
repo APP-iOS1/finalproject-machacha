@@ -102,6 +102,7 @@ struct DetailView: View {
                 }
             }
         }
+		.navigationBarTitle("", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
