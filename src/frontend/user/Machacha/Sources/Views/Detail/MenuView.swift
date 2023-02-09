@@ -21,7 +21,7 @@ struct MenuView: View {
             //본인이 작성한 리뷰에만 보이는 버튼
             if profileViewModel.currentUser?.id == review.reviewer {
                 Button {
-                    
+                    reviewViewModel.isShowingEditSheet = true
                 } label: {
                     Text("수정")
                 }

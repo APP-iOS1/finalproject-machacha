@@ -10,11 +10,8 @@ import UIKit
 import PhotosUI
 
 
-struct AddingReviewView: View {
-
+struct EditingReviewView: View {
     @State private var starArr = Array(repeating: false, count: 5)
-    @State var grade : Double = 0 // 별점
-    @State var text = ""
     // selecting Multiple Photos
     @State private var selectedItems: [PhotosPickerItem] = [] // 선택한 사진을 보관할 상태 변수
     @State private var selectedPhotosData: [Data] = []
@@ -37,14 +34,31 @@ struct AddingReviewView: View {
     @FocusState private var isInFocusText: Bool
     @Binding var showToast: Bool
     var selectedStore: FoodCart
+    var review: Review
+    @State var text: String
+    @State var grade : Double
+    var getSelectedPhotsData: [Data] { //Image 값 변환 후 변환 String -> UIImage -> Data
+        var result : [Data] = []
+        var uiimageTypeImage: [UIImage] = []
+        for stringTypeImage in review.imageId {
+            uiimageTypeImage.append(reviewViewModel.imageDict[stringTypeImage]!)
+        }
+        if !uiimageTypeImage.isEmpty {
+            for photo in uiimageTypeImage {
+                if let data = photo.pngData() {
+                    result.append(data)
+                }
+            }
+        }
+        return result
+    }
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    var _ = print(profileViewModel.currentUser?.id)
-                    
                     //별점
+                    var _ = print(profileViewModel.currentUser?.id)
                     HStack(spacing: 15){
                         ForEach(0..<5,id: \.self){ index in
                             Image(systemName: "star.fill")
@@ -57,7 +71,6 @@ struct AddingReviewView: View {
                         }
                     } //HStack
                     .padding(.vertical, 40)
-                    
                     VStack {
                         //후기 Text
                         Text("상세한 후기를 써주세요.")
@@ -75,7 +88,6 @@ struct AddingReviewView: View {
                             //                            .focused($isInFocusText)
                                 .opacity(text.isEmpty ? 0.25 : 1)
                         } //ZStack
-                        .keyboardType(.default)
                         .focused($isInFocusText)
                         .padding([.leading, .trailing])
                         .scrollContentBackground(.hidden) // HERE
@@ -99,8 +111,6 @@ struct AddingReviewView: View {
                             .border(.black)
                         }
                         .padding(.bottom, 10)
-                        
-                        // 선택된 사진 나열
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 //Spacer()
@@ -123,7 +133,7 @@ struct AddingReviewView: View {
                                                         .foregroundColor(.white)
                                                 }
                                             }
-                                        Spacer() //왼쪽 정렬을 위해 사용
+                                        Spacer()
                                     }
                                 }//FoEeach
                                 //Spacer()
@@ -131,15 +141,17 @@ struct AddingReviewView: View {
                         }//ScrollView
                         .padding(.leading, 5)
                         .padding(.bottom, 30)
+                        
+                        
                     }//VStack
                     .padding(.horizontal, 20)
                 }
-            }//ScrollView
+            } // selectedItem 변경 사항이 있을 때마다 loadTransferable 데이터를 로드하는 메서드를 호출
             .onTapGesture { // 키보드가 올라왔을 때 다른 화면 터치 시 키보드가 내려감
                 self.endTextEditing()
             }
-            .navigationBarTitle("리뷰 작성", displayMode: .inline)
-            .toolbar { //뒤로가기
+            .navigationBarTitle("리뷰 수정", displayMode: .inline)
+            .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         dismiss()
@@ -150,7 +162,6 @@ struct AddingReviewView: View {
                     }
                 }
             }
-            //선택된 이미지를 변수에 저장
             .onChange(of: selectedItems) { newItems in
                 for newItem in newItems {
                     Task {
@@ -161,14 +172,16 @@ struct AddingReviewView: View {
                     
                 }
             }
-            //리뷰 등록
+            .onAppear {
+                selectedPhotosData = getSelectedPhotsData
+            }
             Button {
                 if let user = profileViewModel.currentUser?.id {
-                    let review: Review = Review(id: UUID().uuidString, reviewer: user, foodCartId: selectedStore.id, grade: grade, description: text, imageId: [], updatedAt: Date(), createdAt: Date())
+                    let review: Review = Review(id: review.id, reviewer: user, foodCartId: selectedStore.id, grade: grade, description: text, imageId: [], updatedAt: Date(), createdAt: review.createdAt)
                     reviewViewModel.addReview(review: review, images: images, foodCart: selectedStore)
                     Task {
                         reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
-                        foodCartViewModel.isShowingReviewSheet.toggle()
+                        reviewViewModel.isShowingEditSheet.toggle()
                     }
                 }
                 showToast = true
@@ -178,7 +191,7 @@ struct AddingReviewView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: Color(
                             .white)))
                 } else {
-                    Text("리뷰 등록하기")
+                    Text("리뷰 수정하기")
                         .font(.machachaHeadline)
                         .padding(.vertical, 15)
                         .padding(.horizontal, 120)
@@ -188,9 +201,12 @@ struct AddingReviewView: View {
                 }
             }
             .disabled(text.count > 0 ? false : true)
-        }
-    }
 
+        }
+        
+
+    }
+    
 }
 
 //struct AddingReviewView_Previews: PreviewProvider {

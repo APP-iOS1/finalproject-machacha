@@ -19,4 +19,12 @@ extension View {
 			self
 		}
 	}
+    
+    // MARK: - 다른 화면 터치 시 키보드가 내려감
+    func endTextEditing() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil, from: nil, for: nil
+        )
+    }
 }

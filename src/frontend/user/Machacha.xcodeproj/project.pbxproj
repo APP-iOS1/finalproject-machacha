@@ -16,6 +16,7 @@
 		1A30E166298903F30068C025 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E165298903F30068C025 /* MenuView.swift */; };
 		1A439E9129902A68000EF1A2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1A439E9029902A68000EF1A2 /* AlertToast */; };
 		1A439E9329903134000EF1A2 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A439E9229903134000EF1A2 /* ReportView.swift */; };
+		1A7CB1862994BA8300FE5720 /* EditingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7CB1852994BA8300FE5720 /* EditingReviewView.swift */; };
 		1ABCA9312987602500DD97C5 /* FoodCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */; };
 		1ABCA93229877D6200DD97C5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AC29768E4500B04A98 /* DetailView.swift */; };
 		1ABCA9362987AB8E00DD97C5 /* IconTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9352987AB8E00DD97C5 /* IconTabView.swift */; };
@@ -293,6 +294,7 @@
 		1A30E1632988F7C80068C025 /* ReviewThumbnailListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewThumbnailListCellView.swift; sourceTree = "<group>"; };
 		1A30E165298903F30068C025 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1A439E9229903134000EF1A2 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		1A7CB1852994BA8300FE5720 /* EditingReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingReviewView.swift; sourceTree = "<group>"; };
 		1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartViewModel.swift; sourceTree = "<group>"; };
 		1ABCA9352987AB8E00DD97C5 /* IconTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTabView.swift; sourceTree = "<group>"; };
 		1ABCA9372987AF7A00DD97C5 /* StoreInformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformView.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				1A086F0629927A2300B486C0 /* AddingReviewView.swift */,
+				1A7CB1852994BA8300FE5720 /* EditingReviewView.swift */,
 				1A30E165298903F30068C025 /* MenuView.swift */,
 				1A30E15F2988D3BC0068C025 /* ReviewListCellView.swift */,
 				1A30E1632988F7C80068C025 /* ReviewThumbnailListCellView.swift */,
@@ -1256,6 +1259,7 @@
 				C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */,
 				1A30E166298903F30068C025 /* MenuView.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
+				1A7CB1862994BA8300FE5720 /* EditingReviewView.swift in Sources */,
 				C414BC2A29817C6300819D98 /* FaceIDViewModel.swift in Sources */,
 				C4A587BA2976960300B04A98 /* Ex+Font.swift in Sources */,
 				C4F42038298EB70400B615C6 /* LocalizationViewModel.swift in Sources */,

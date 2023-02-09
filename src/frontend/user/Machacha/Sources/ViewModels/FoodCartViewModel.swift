@@ -188,5 +188,91 @@ class FoodCartViewModel: ObservableObject {
                       "createdAt": foodCart.createdAt
                      ])
     }
+    
+    // MARK: - 서버에서 가게에 따른 사용자 '좋아요' 데이터들 수정하는 Method
+    func fetchFavorite(isFavorited: Bool, user: User, foodCartId: String) async {
+        let deleteFoodCart = user.favoriteId.filter { $0 != foodCartId } //배열에서 푸드카드 아이디를 삭제해주는 변수
+
+        do {
+            if isFavorited {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "favoriteId": deleteFoodCart + [foodCartId]])
+            } else {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "favoriteId": deleteFoodCart])
+            }
+        } catch {
+            print("fetchFavorite error: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - 해당 FoodCart의 '좋아요' 유무를 불러오는 Method
+    func fetchUserFavoriteFoodCart(userId: String, foodCartId: String) async throws -> Bool {
+        var user: User // 비동기 통신으로 받아올 Property
+        
+        let userSnapshot = try await database.collection("User").document(userId).getDocument() // 첫번째 비동기 통신
+        let docData = userSnapshot.data()!
+        
+        let id: String = docData["id"] as? String ?? ""
+        let isFirstLogin: Bool = docData["isFirstLogin"] as? Bool ?? false
+        let email: String = docData["email"] as? String ?? ""
+        let name: String = docData["name"] as? String ?? ""
+        let profileId: String = docData["profileId"] as? String ?? ""
+        let favoriteId: [String] = docData["favoriteId"] as? [String] ?? []
+        let visitedId: [String] = docData["visitedId"] as? [String] ?? []
+        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+        let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+
+        user = User(id: id, isFirstLogin: isFirstLogin, email: email, name: name, profileId: profileId, favoriteId: favoriteId, visitedId: visitedId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
+
+        return user.favoriteId.contains(foodCartId)
+    }
+    
+    // MARK: - 서버에서 가게에 따른 사용자 '가봤어요' 데이터들 수정하는 Method
+    func fetchVisited(isVisited: Bool, user: User, foodCartId: String) async {
+        let deleteFoodCart = user.visitedId.filter { $0 != foodCartId } //배열에서 푸드카드 아이디를 삭제해주는 변수
+        
+        do {
+            if isVisited {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "visitedId": deleteFoodCart + [foodCartId]])
+            } else {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "visitedId": deleteFoodCart])
+            }
+        } catch {
+            print("fetchVisited error: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - 해당 FoodCart의 '가봤어요' 유무를 불러오는 Method
+    func fetchUserVisitedFoodCart(userId: String, foodCartId: String) async throws -> Bool {
+        var user: User // 비동기 통신으로 받아올 Property
+        
+        let userSnapshot = try await database.collection("User").document(userId).getDocument() // 첫번째 비동기 통신
+        let docData = userSnapshot.data()!
+        
+        let id: String = docData["id"] as? String ?? ""
+        let isFirstLogin: Bool = docData["isFirstLogin"] as? Bool ?? false
+        let email: String = docData["email"] as? String ?? ""
+        let name: String = docData["name"] as? String ?? ""
+        let profileId: String = docData["profileId"] as? String ?? ""
+        let favoriteId: [String] = docData["favoriteId"] as? [String] ?? []
+        let visitedId: [String] = docData["visitedId"] as? [String] ?? []
+        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+        let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+
+        user = User(id: id, isFirstLogin: isFirstLogin, email: email, name: name, profileId: profileId, favoriteId: favoriteId, visitedId: visitedId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
+
+        return user.visitedId.contains(foodCartId)
+    }
 }
 

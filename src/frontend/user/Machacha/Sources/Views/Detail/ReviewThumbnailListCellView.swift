@@ -27,7 +27,7 @@ struct ReviewThumbnailListCellView: View {
                     }
                     VStack(alignment: .leading) {
                         Text(reviewViewModel.reviewer.name)
-                            .font(.machachaTitle3Bold)
+                            .font(.machachaHeadlineBold)
                         Text(review.updatedAt.getDay())
                             .font(.machachaHeadline)
                             .foregroundColor(.gray)
@@ -51,7 +51,7 @@ struct ReviewThumbnailListCellView: View {
         .padding(.trailing, 20)
         .onAppear {
             Task {
-                await reviewViewModel.fetchReviewer(userId: review.reviewer)
+                reviewViewModel.reviewer = try await reviewViewModel.fetchReviewer(userId: review.reviewer)
             }
         }
     }

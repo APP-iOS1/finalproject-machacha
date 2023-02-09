@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FoodCartMenuView: View {
     var selectedStore: FoodCart
+    @Binding var opacity: Double
+    @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     
     var body: some View {
         
@@ -20,6 +22,7 @@ struct FoodCartMenuView: View {
                 Text("\(selectedStore.menu.count)")
                     .foregroundColor(Color("Color3"))
             }
+            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
             .font(.machachaTitle2Bold)
             .padding(.bottom, 15)
             
@@ -29,6 +32,7 @@ struct FoodCartMenuView: View {
                     Spacer()
                     Text("￦\(price)")
                 }
+                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 .padding(.trailing, 14)
                 .padding(.bottom, 2)
                 .font(.machachaHeadline)
@@ -37,8 +41,8 @@ struct FoodCartMenuView: View {
     }
 }
 
-struct FoodCartMenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        FoodCartMenuView(selectedStore: FoodCart.getDummy())
-    }
-}
+//struct FoodCartMenuView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FoodCartMenuView(selectedStore: FoodCart.getDummy())
+//    }
+//}
