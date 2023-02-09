@@ -51,7 +51,7 @@ struct ReviewThumbnailListCellView: View {
         .padding(.trailing, 20)
         .onAppear {
             Task {
-                await reviewViewModel.fetchReviewer(userId: review.reviewer)
+                reviewViewModel.reviewer = try await reviewViewModel.fetchReviewer(userId: review.reviewer)
             }
         }
     }
