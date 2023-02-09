@@ -41,8 +41,9 @@ struct AddingReviewView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    //별점
                     var _ = print(profileViewModel.currentUser?.id)
+                    
+                    //별점
                     HStack(spacing: 15){
                         ForEach(0..<5,id: \.self){ index in
                             Image(systemName: "star.fill")
@@ -55,6 +56,7 @@ struct AddingReviewView: View {
                         }
                     } //HStack
                     .padding(.vertical, 40)
+                    
                     VStack {
                         //후기 Text
                         Text("상세한 후기를 써주세요.")
@@ -72,6 +74,7 @@ struct AddingReviewView: View {
                             //                            .focused($isInFocusText)
                                 .opacity(text.isEmpty ? 0.25 : 1)
                         } //ZStack
+                        .keyboardType(.default)
                         .focused($isInFocusText)
                         .padding([.leading, .trailing])
                         .scrollContentBackground(.hidden) // HERE
@@ -95,6 +98,8 @@ struct AddingReviewView: View {
                             .border(.black)
                         }
                         .padding(.bottom, 10)
+                        
+                        // 선택된 사진 나열
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 //Spacer()
@@ -117,7 +122,7 @@ struct AddingReviewView: View {
                                                         .foregroundColor(.white)
                                                 }
                                             }
-                                        Spacer()
+                                        Spacer() //왼쪽 정렬을 위해 사용
                                     }
                                 }//FoEeach
                                 //Spacer()
@@ -125,14 +130,15 @@ struct AddingReviewView: View {
                         }//ScrollView
                         .padding(.leading, 5)
                         .padding(.bottom, 30)
-                        
-                        
                     }//VStack
                     .padding(.horizontal, 20)
                 }
-            } // selectedItem 변경 사항이 있을 때마다 loadTransferable 데이터를 로드하는 메서드를 호출
+            }//ScrollView
+            .onTapGesture { // 키보드가 올라왔을 때 다른 화면 터치 시 키보드가 내려감
+                self.endTextEditing()
+            }
             .navigationBarTitle("리뷰 작성", displayMode: .inline)
-            .toolbar {
+            .toolbar { //뒤로가기
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         dismiss()
@@ -143,6 +149,7 @@ struct AddingReviewView: View {
                     }
                 }
             }
+            //선택된 이미지를 변수에 저장
             .onChange(of: selectedItems) { newItems in
                 for newItem in newItems {
                     Task {
@@ -153,6 +160,7 @@ struct AddingReviewView: View {
                     
                 }
             }
+            //리뷰 등록
             Button {
                 if let user = profileViewModel.currentUser?.id {
                     let review: Review = Review(id: UUID().uuidString, reviewer: user, foodCartId: selectedStore.id, grade: grade, description: text, imageId: [], updatedAt: Date(), createdAt: Date())
@@ -179,12 +187,8 @@ struct AddingReviewView: View {
                 }
             }
             .disabled(text.count > 0 ? false : true)
-
         }
-        
-
     }
-    
 }
 
 //struct AddingReviewView_Previews: PreviewProvider {
