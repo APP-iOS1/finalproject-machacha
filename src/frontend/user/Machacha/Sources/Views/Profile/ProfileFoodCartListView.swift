@@ -68,7 +68,6 @@ struct ProfileFoodCartListView: View {
 				} label: {
 					HStack {
 						Image(systemName: "chevron.left")
-						Text("프로필")
 					}
 				}
 			} // ToolbarItem
