@@ -78,11 +78,24 @@ struct RegisterView: View {
             return "sweetpotato2"
         case 3:
             return "tteokboki2"
+        case 4:
+            return "takoyaki"
+        case 5:
+            return "hotteok"
+        case 6:
+            return "skewers"
+        case 7:
+            return "dessert"
+        case 8:
+            return "beverage"
         default:
             return "store2"
         }
     }
-    var iconImages: [String] = ["bbungbread2","fishcake2","sweetpotato2","tteokboki2","store2"]
+    
+    var iconImages: [String] = ["bbungbread2","fishcake2","sweetpotato2","tteokboki2","takoyaki","hotteok","skewers","beverage","dessert","store2"]
+    
+    var iconLabels: [String] = ["붕어빵","오뎅","고구마","떡볶이","타코야끼","호떡","꼬치","음료","디저트","기타"]
     
     var body: some View {
         
@@ -119,7 +132,7 @@ struct RegisterView: View {
                     Button("예") {
                         let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
                         foodCartViewModel.addFoodCart(foodCart)
-                        self.presentation.wrappedValue.dismiss()
+                        tabbarManager.isShowingModal = false
                         SoundManager.instance.playSound(sound: .register)
                         
                     }
@@ -329,21 +342,29 @@ extension RegisterView {
                 .font(.machachaHeadlineBold)
             ScrollView(.horizontal,showsIndicators: false){
                 HStack{
-                    ForEach(0..<5, id: \.self) { index in
-                        Image(iconImages[index])
-                            .resizable()
-                            .frame(width: 60, height: 60)
-                        
+                    ForEach(0..<10, id: \.self) { index in
+                        //베스트 메뉴 카드
+                        Group{
+                            VStack{
+                                Image(iconImages[index])
+                                    .resizable()
+                                    .frame(width: Screen.maxWidth*0.1, height: Screen.maxWidth*0.1)
+                                Text(iconLabels[index])
+                                    .frame(width: Screen.maxWidth*0.16)
+                                    .font(.machachaFootnote)
+                            }
                             .opacity((index == bestMenu) ? 1 : 0.1)
-                            .padding(6)
-                            .overlay {
+                            .background{
                                 RoundedRectangle(cornerRadius: 14)
+                                    .frame(width: Screen.maxWidth*0.18, height: Screen.maxWidth*0.18)
                                     .opacity(0.1)
                             }
                             .onTapGesture {
                                 bestMenu = index
                             }
+                        }
                     }
+                    .padding(4)
                 }
                 
             }.frame(height: Screen.maxHeight/10)
@@ -361,7 +382,7 @@ extension RegisterView {
                 Text("(선택)")
                     .font(.machachaHeadline)
                     .foregroundColor(.secondary)
-            
+                
             }
             //메뉴 입력
             HStack{
@@ -405,9 +426,9 @@ extension RegisterView {
                     Text(menuName)
                         .font(.machachaHeadline)
                         .frame(width: Screen.maxWidth/4*2)
-
+                    
                     Divider()
-
+                    
                     Text("\(menu[menuName]!) 원")
                         .font(.machachaHeadline)
                         .frame(width: Screen.maxWidth/4)
@@ -427,8 +448,8 @@ struct JustEditNumberModifier : ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            // onReceive(_:perform:) : iOS13 이상, publisher 가 방출한 이벤트를 받아 view 에서 어떠한 action 을 하게 된다.
-            // Just는 실패할 수 없고, 항상 값을 생산하는 Publisher 생성자
+        // onReceive(_:perform:) : iOS13 이상, publisher 가 방출한 이벤트를 받아 view 에서 어떠한 action 을 하게 된다.
+        // Just는 실패할 수 없고, 항상 값을 생산하는 Publisher 생성자
             .onReceive(Just(number)) { _ in
                 
                 // Number가 아닌 문자는 걸러내고, 걸러낸 문자열과 입력받은 문자열이 다르면 걸러낸 문자열로 대치
@@ -440,3 +461,23 @@ struct JustEditNumberModifier : ViewModifier {
         
     }
 }
+
+// MARK: - 프리뷰
+//struct RegisterView_Previews: PreviewProvider {
+//    static var cameraCoord : (Double,Double) = (37.56621548663492, 126.99223256544298)
+//    @State static var name : String = ""
+//    @State static var paymentOpt : [Bool] = Array(repeating: false, count: 3)
+//    @State static var openingDays : [Bool] = Array(repeating: false, count: 7)
+//    @State static var menu : [String : Int] = [:]
+//    @State static var grade : Double = 0
+//    @State static var bestMenu : Int = -1
+//
+//    @State static var menuCnt : Int = 1
+//    @State static var menuName : String = ""
+//    @State static var menuPrice : String = ""
+//
+//
+//    static var previews: some View {
+//        RegisterView(name: $name, paymentOpt: $paymentOpt, openingDays: $openingDays, menu: $menu, grade: $grade, bestMenu: $bestMenu, menuCnt: $menuCnt, menuName: $menuName, menuPrice: $menuPrice, cameraCoord: cameraCoord)
+//    }
+//}
