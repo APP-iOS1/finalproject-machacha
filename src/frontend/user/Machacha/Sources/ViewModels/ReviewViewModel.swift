@@ -27,14 +27,17 @@ class ReviewViewModel: ObservableObject {
     
     // MARK: - 서버에서 가게에 맞는 Review Collection의 데이터들을 불러오는 Method
     @MainActor
-    func fetchReviews(foodCartId: String) async {
+	func fetchReviews(foodCartId: String) async -> [Review] {
+		var reviews = [Review]()
+		
         do {
             let querysnapshot = try await database.collection("Review")
                 .whereField("foodCartId", isEqualTo: foodCartId)
                 .getDocuments()
-            DispatchQueue.main.async {
-                self.reviews.removeAll()
-            }
+			
+//            DispatchQueue.main.async {
+//                self.reviews.removeAll()
+//            }
             
             for document in querysnapshot.documents {
                 let data = document.data()
@@ -56,11 +59,11 @@ class ReviewViewModel: ObservableObject {
                 let review: Review = Review(id: id, reviewer: reviewer, foodCartId: foodCartId, grade: grade, description: description, imageId: imageId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
                 
                 reviews.append(review)
-
             }
         } catch {
             print("fetchReviews error: \(error.localizedDescription)")
         }
+		return reviews
     }
     
     // MARK: - 서버에서 가게에 맞는 2개의 리뷰를 Review Collection의 데이터들을 불러오는 Method
@@ -138,7 +141,7 @@ class ReviewViewModel: ObservableObject {
     }
     
     // MARK: - 서버의 Review Collection에 Review 객체 하나를 추가하여 업로드하는 Method
-    func addReview(review: Review,  images: [UIImage] )  {
+	func addReview(review: Review,  images: [UIImage], foodCart: FoodCart )  {
         
         // create image name list
         var imgNameList: [String] = []

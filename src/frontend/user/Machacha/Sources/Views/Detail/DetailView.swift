@@ -37,7 +37,7 @@ struct DetailView: View {
                                         .aspectRatio(contentMode: .fit)
                                 }
                             }//ForEach
-                            if let image = foodCartViewModel.imageDict[selectedStore.imageId[4]] {
+							if selectedStore.imageId.count > 4, let image = foodCartViewModel.imageDict[selectedStore.imageId[4]] {
                                 NavigationLink {
                                     ReviewView(selectedStore: selectedStore)
                                 } label: {
@@ -91,13 +91,12 @@ struct DetailView: View {
                     .padding(.leading, 20)
                 ReviewThumbnailView(selectedStore: selectedStore)
                     .padding(.leading, 20)
-                
             }
             .onAppear {
                 foodCartViewModel.isLoading = true // progressview를 위해 선언
                 Task {
                     await foodCartViewModel.fetchFoodCarts()
-                    await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
+					reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                     profileViewModel.currentUser = try await profileViewModel.fetchUser()
                     foodCartViewModel.isLoading = false
                 }
@@ -118,7 +117,7 @@ struct DetailView: View {
             ReportView(reportType: 1)
         }
         .fullScreenCover(isPresented: $foodCartViewModel.isShowingReviewSheet) {
-            AddingReviewView()
+			AddingReviewView(selectedStore: selectedStore)
         }
     }
 }

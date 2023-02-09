@@ -697,6 +697,7 @@
 				C4A5879929768D1500B04A98 /* Splash */,
 				C4A5879829768CFA00B04A98 /* Home */,
 				C4A5879729768CF300B04A98 /* MapSearch */,
+				C4A5879629768CE100B04A98 /* Register */,
 				C4A5879529768CC800B04A98 /* Magazine */,
 				C4A5879429768CC100B04A98 /* Profile */,
 				C4A5879329768CB700B04A98 /* Detail */,
@@ -813,7 +814,8 @@
 				FAF35450298F27880039085F /* ReverseGeocodingDTO.swift */,
 				FA2583932991D1020081AFFA /* SoundManager.swift */,
 			);
-			path = Register;
+			name = Register;
+			path = MapSearch/Register;
 			sourceTree = "<group>";
 		};
 		C4A5879729768CF300B04A98 /* MapSearch */ = {
@@ -823,7 +825,6 @@
 				6A159FC02987676E0002E625 /* MapHeader */,
 				C4A587A429768DE300B04A98 /* MapSearchView.swift */,
 				6A8EBDA72977903700964C9D /* NaverMap.swift */,
-				C4A5879629768CE100B04A98 /* Register */,
 			);
 			path = MapSearch;
 			sourceTree = "<group>";
