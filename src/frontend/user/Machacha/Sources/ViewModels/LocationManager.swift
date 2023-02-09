@@ -10,7 +10,9 @@ import CoreLocation
 
 final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
-    @Published var coord = (37.56275, 126.98503)
+    @Published var coord = (37.566249, 126.992227) // 정우님뷰
+    @Published var registerCoord = (37.566249, 126.992227)
+    @Published var userLocation = (37.566249, 126.992227)
     
     func checkIfLocationServicesIsEnabled() {
         DispatchQueue.global().async {
@@ -38,6 +40,9 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
             print("You have denied this app location permission. Go into setting to change it.")
         case .authorizedAlways, .authorizedWhenInUse:
             coord = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
+            registerCoord = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
+            userLocation = (Double(locationManager.location?.coordinate.latitude ?? 0.0), Double(locationManager.location?.coordinate.longitude ?? 0.0))
+            print("GPS 권한 설정 완료")
             print("coord : \(coord)")
         @unknown default:
             break
@@ -47,4 +52,8 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
      }
+    
+    func locationServicesEnabled() async -> Bool {
+            CLLocationManager.locationServicesEnabled()
+        }
 }

@@ -92,7 +92,7 @@ class FoodCartViewModel: ObservableObject {
                 let reportCnt: Int = data["reportCnt"] as? Int ?? 0
                 let menu: [String: Int] = data["menu"] as? [String: Int] ?? [:]
                 let bestMenu: Int = data["bestMenu"] as? Int ?? 0
-                let paymentOpt: [Bool] = data["isPaymentOpt"] as? [Bool] ?? []
+                let paymentOpt: [Bool] = data["paymentOpt"] as? [Bool] ?? []
                 let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
                 let reviewId: [String] = data["reviewId"] as? [String] ?? []
                 let updatedAt: Timestamp = data["updatedAt"] as? Timestamp ?? Timestamp()
@@ -112,6 +112,42 @@ class FoodCartViewModel: ObservableObject {
             print("fetchFoodCarts error: \(error.localizedDescription)")
         }
     }
+	
+	// MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
+	func fetchFoodCartByFoodCartId(_ foodcartId: String) async -> FoodCart {
+		var foodCart = FoodCart.getDummy()
+		
+		do {
+			let querySnapshot = try await database.collection("FoodCart")
+				.document(foodcartId).getDocument()
+			
+			let data = querySnapshot.data()!
+			
+			let id = data["id"] as? String ?? ""
+			let name: String = data["name"] as? String ?? ""
+			let region: String = data["region"] as? String ?? ""
+			let address: String = data["address"] as? String ?? ""
+			let geoPoint: GeoPoint = data["geoPoint"] as! GeoPoint
+			let imageId: [String] = data["imageId"] as? [String] ?? []
+			let grade: Double = data["grade"] as? Double ?? 0
+			let visitedCnt: Int = data["visitedCnt"] as? Int ?? 0
+			let favoriteCnt: Int = data["favoriteCnt"] as? Int ?? 0
+			let reportCnt: Int = data["reportCnt"] as? Int ?? 0
+			let menu: [String: Int] = data["menu"] as? [String: Int] ?? [:]
+			let bestMenu: Int = data["bestMenu"] as? Int ?? 0
+			let paymentOpt: [Bool] = data["paymentOpt"] as? [Bool] ?? []
+			let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
+			let reviewId: [String] = data["reviewId"] as? [String] ?? []
+			let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
+			let createdAt: Timestamp = data["createdAt"] as! Timestamp
+			let registerId: String = data["registerId"] as? String ?? ""
+			
+			foodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId)
+		} catch {
+			print("fetchFoodCarts error: \(error.localizedDescription)")
+		}
+		return foodCart
+	}
     
     // MARK: - 서버의 Storage에서 이미지를 가져오는 Method
     func fetchImage(foodCartId: String, imageName: String) {
@@ -151,6 +187,92 @@ class FoodCartViewModel: ObservableObject {
                       "updatedAt": foodCart.updatedAt,
                       "createdAt": foodCart.createdAt
                      ])
+    }
+    
+    // MARK: - 서버에서 가게에 따른 사용자 '좋아요' 데이터들 수정하는 Method
+    func fetchFavorite(isFavorited: Bool, user: User, foodCartId: String) async {
+        let deleteFoodCart = user.favoriteId.filter { $0 != foodCartId } //배열에서 푸드카드 아이디를 삭제해주는 변수
+
+        do {
+            if isFavorited {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "favoriteId": deleteFoodCart + [foodCartId]])
+            } else {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "favoriteId": deleteFoodCart])
+            }
+        } catch {
+            print("fetchFavorite error: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - 해당 FoodCart의 '좋아요' 유무를 불러오는 Method
+    func fetchUserFavoriteFoodCart(userId: String, foodCartId: String) async throws -> Bool {
+        var user: User // 비동기 통신으로 받아올 Property
+        
+        let userSnapshot = try await database.collection("User").document(userId).getDocument() // 첫번째 비동기 통신
+        let docData = userSnapshot.data()!
+        
+        let id: String = docData["id"] as? String ?? ""
+        let isFirstLogin: Bool = docData["isFirstLogin"] as? Bool ?? false
+        let email: String = docData["email"] as? String ?? ""
+        let name: String = docData["name"] as? String ?? ""
+        let profileId: String = docData["profileId"] as? String ?? ""
+        let favoriteId: [String] = docData["favoriteId"] as? [String] ?? []
+        let visitedId: [String] = docData["visitedId"] as? [String] ?? []
+        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+        let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+
+        user = User(id: id, isFirstLogin: isFirstLogin, email: email, name: name, profileId: profileId, favoriteId: favoriteId, visitedId: visitedId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
+
+        return user.favoriteId.contains(foodCartId)
+    }
+    
+    // MARK: - 서버에서 가게에 따른 사용자 '가봤어요' 데이터들 수정하는 Method
+    func fetchVisited(isVisited: Bool, user: User, foodCartId: String) async {
+        let deleteFoodCart = user.visitedId.filter { $0 != foodCartId } //배열에서 푸드카드 아이디를 삭제해주는 변수
+        
+        do {
+            if isVisited {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "visitedId": deleteFoodCart + [foodCartId]])
+            } else {
+                try await database.collection("User")
+                    .document(user.id)
+                    .updateData([
+                        "visitedId": deleteFoodCart])
+            }
+        } catch {
+            print("fetchVisited error: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - 해당 FoodCart의 '가봤어요' 유무를 불러오는 Method
+    func fetchUserVisitedFoodCart(userId: String, foodCartId: String) async throws -> Bool {
+        var user: User // 비동기 통신으로 받아올 Property
+        
+        let userSnapshot = try await database.collection("User").document(userId).getDocument() // 첫번째 비동기 통신
+        let docData = userSnapshot.data()!
+        
+        let id: String = docData["id"] as? String ?? ""
+        let isFirstLogin: Bool = docData["isFirstLogin"] as? Bool ?? false
+        let email: String = docData["email"] as? String ?? ""
+        let name: String = docData["name"] as? String ?? ""
+        let profileId: String = docData["profileId"] as? String ?? ""
+        let favoriteId: [String] = docData["favoriteId"] as? [String] ?? []
+        let visitedId: [String] = docData["visitedId"] as? [String] ?? []
+        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
+        let createdAt: Timestamp = docData["createdAt"] as! Timestamp
+
+        user = User(id: id, isFirstLogin: isFirstLogin, email: email, name: name, profileId: profileId, favoriteId: favoriteId, visitedId: visitedId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
+
+        return user.visitedId.contains(foodCartId)
     }
 }
 

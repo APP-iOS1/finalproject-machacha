@@ -61,7 +61,7 @@ struct MagazineMapView: UIViewRepresentable {
         let view = NMFNaverMapView()
         let marker = NMFMarker() // 마커 객체를 생성
     
-        let locationOverlay = view.mapView.locationOverlay //위치 오버레이 객체를 가져옴
+//        let locationOverlay = view.mapView.locationOverlay //위치 오버레이 객체를 가져옴
         
         
         // MARK: - 기본 Map에 대한 내용

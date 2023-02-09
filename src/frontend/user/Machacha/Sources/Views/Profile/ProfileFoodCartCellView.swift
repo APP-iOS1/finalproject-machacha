@@ -124,6 +124,7 @@ struct ProfileFoodCartCellView: View {
 						.unredacted()
 				} // HStack
 			} // VStack
+			.redacted(reason: profileVM.isLoading ? .placeholder : [])	// 콘텐츠 모자이크
 			.padding()
 			.background(Color("cellColor"))
 			.cornerRadius(8)
@@ -148,23 +149,22 @@ struct ProfileFoodCartCellView: View {
 struct ProfileFoodCartReviewCellView: View {
 	//MARK: Property wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
-	@State var opacity: Double = 0.8
-	@State var imageList: [UIImage]?
+	@EnvironmentObject var foodCartVM: FoodCartViewModel
+	@State private var opacity: Double = 0.8
+	@State private var imageList: [UIImage] = []
 	@State private var showDetail = false
+	@State private var foodCart: FoodCart = FoodCart.getDummy()
+	@Binding var isLoading: Bool
 
 	//MARK: Property
-	let user: User
-	let foodCartOfUserType: FoodCartOfUserType
-	let foodCart: FoodCart
 	let review: Review
-	let isFavorite: Bool
 	
 	var body: some View {
 		Button {
 			showDetail.toggle()
 		} label: {
-			VStack {
-				HStack(alignment: .top) {
+			VStack(alignment: .leading, spacing: 8) {
+				HStack(spacing: 8) {
 					VStack { // 프로필 사진
 						if let image = profileVM.profileImage {
 							Image(uiImage: image)
@@ -177,31 +177,86 @@ struct ProfileFoodCartReviewCellView: View {
 					} // VStack
 					.frame(width: 40, height: 40)
 					.cornerRadius(40)
+					.setSkeletonView(opacity: opacity, shouldShow: isLoading)
 
-					VStack(alignment: .leading) {
-						Text(user.name)
+					VStack(alignment: .leading, spacing: 4) {
+						Text(profileVM.currentUser!.name)
 							.font(.machachaHeadlineBold)
+							.foregroundColor(Color("textColor"))
+							.setSkeletonView(opacity: opacity, shouldShow: isLoading)
+
 						// 별점
-						HStack(alignment: .center) {
-							Image(systemName: "star.fill")
-								.foregroundColor(Color("Color3"))
-							Text("\(review.gradeRounded)")
-							Text("| \(review.updatedAt.getDay())")
+						HStack {
+							HStack(spacing: 4) {
+								Image(systemName: "star.fill")
+									.foregroundColor(Color("Color3"))
+									.scaleEffect(0.8)
+
+								Text("\(review.gradeRounded)")
+									.foregroundColor(Color("textColor"))
+									.fixedSize(horizontal: true, vertical: false)
+							}
+							.setSkeletonView(opacity: opacity, shouldShow: isLoading)
+
+							Text("|")
 								.foregroundColor(.gray)
-								.font(.machachaHeadline)
+								.unredacted()
+							
+							Text("\(review.updatedAt.getDay())")
+								.foregroundColor(.gray)
+								.font(.machachaFootnote)
+								.setSkeletonView(opacity: opacity, shouldShow: isLoading)
 						} // HStack
 					} // VStack
+
 					Spacer()
 					Menu {
 						MenuView(review: review)
 					} label: {
 						Image(systemName: "ellipsis")
 							.foregroundColor(.gray)
+							.padding()
 					} // Menu
+					.unredacted()
 				} // HStack
 				.font(.machachaHeadline)
-
+				
+				LazyVStack {
+					if !imageList.isEmpty {
+						if imageList.count == 1, let image = imageList.first! { // 사진이 1개 일떄
+							Image(uiImage: image)
+								.resizable()
+								.scaledToFit()
+								.frame(width: Screen.maxWidth - 32)
+						} else { // 사진이 여러개 일때
+							ScrollView (.horizontal, showsIndicators: false) {
+								LazyHStack {
+									ForEach(imageList, id: \.self) { image in
+										Image(uiImage: image)
+											.resizable()
+											.scaledToFit()
+											.cornerRadius(8)
+											.frame(height: 200)
+									} // ForEach
+								} // LazyHStack
+							} // ScrollView
+						}
+					} else {
+						Rectangle()
+							.foregroundColor(.gray)
+							.frame(width: Screen.maxWidth - 32, height: 200)
+					}
+				}
+				.cornerRadius(8)
+				.setSkeletonView(opacity: opacity, shouldShow: isLoading)
+				
+				Text(review.description) // 댓글
+					.font(.machachaSubhead)
+					.lineSpacing(8)
+					.foregroundColor(Color("textColor"))
+					.setSkeletonView(opacity: opacity, shouldShow: isLoading)
 			} // VStack
+			.redacted(reason: isLoading ? .placeholder : [])	// 콘텐츠 모자이크
 			.padding()
 			.background(Color("cellColor"))
 			.cornerRadius(8)
@@ -212,11 +267,17 @@ struct ProfileFoodCartReviewCellView: View {
 				withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
 					self.opacity = opacity == 0.4 ? 0.8 : 0.4
 				}
+				isLoading = true
 				Task {
 					for imageId in review.imageId {
 						let image = try await profileVM.fetchImage(foodCartId: review.id, imageName: imageId)
-						imageList?.append(image)
+						imageList.append(image)
 					}
+					
+					// review Id로 foodCart받아오기
+					foodCart = await foodCartVM.fetchFoodCartByFoodCartId(review.foodCartId)
+					print(foodCart)
+					isLoading = false
 				}
 			}
 			.navigationDestination(isPresented: $showDetail) {

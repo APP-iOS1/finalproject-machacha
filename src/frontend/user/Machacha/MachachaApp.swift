@@ -106,11 +106,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 struct MachachaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
-	@StateObject var foodCartVM: FoodCartViewModel = FoodCartViewModel()
-	@StateObject var reviewVM: ReviewViewModel = ReviewViewModel()
+
+    @StateObject var foodCartVM: FoodCartViewModel = FoodCartViewModel()
+    @StateObject var reviewVM: ReviewViewModel = ReviewViewModel()
     @StateObject var mapSearchVM: MapSearchViewModel = MapSearchViewModel()
     @State var splashIsActive = false
-	
+
     init() {
         // Naver SDK Initializing
         

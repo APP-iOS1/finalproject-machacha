@@ -9,6 +9,7 @@ import SwiftUI
 import NMapsMap
 
 struct MapSearchView: View {
+	@EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     @State var cameraCoord: LatLng = (37.566249, 126.992227)
@@ -41,7 +42,7 @@ struct MapSearchView: View {
                     }
 
                     
-                    SnapCarousel(index: $currentIndex, foodCarts: mapSearchViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
+                    SnapCarousel(index: $currentIndex, foodCarts: foodCartViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
                             .padding(.vertical, Screen.maxHeight - 460)
@@ -58,14 +59,14 @@ struct MapSearchView: View {
                     }
                 }
                 .zIndex(1)
-                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts)
+                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: foodCartViewModel.foodCarts)
                     .ignoresSafeArea(.all, edges: .top)
                     .onChange(of: mapSearchViewModel.zoomLevel) { newValue in
                         print("zoom Level : \(newValue)")
                     }
             }
             .onAppear {
-                mapSearchViewModel.fetchFoodCarts()
+//				foodCartViewModel.fetchFoodCarts()
             }
         }
     }

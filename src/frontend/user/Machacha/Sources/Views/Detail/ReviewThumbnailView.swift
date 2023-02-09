@@ -10,6 +10,8 @@ import SwiftUI
 struct ReviewThumbnailView: View {
     var selectedStore: FoodCart
     @EnvironmentObject var reviewViewModel: ReviewViewModel
+    @EnvironmentObject var foodCartViewModel: FoodCartViewModel
+    @Binding var opacity: Double
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,18 +23,22 @@ struct ReviewThumbnailView: View {
                     HStack(alignment: .top) {
                         Text("방문자 리뷰")
                             .foregroundColor(.black)
+                            .font(.machachaTitle2Bold)
                         Text("\(reviewViewModel.reviews.count)")
                             .foregroundColor(Color("Color3"))
+                            .font(.machachaTitle2Bold)
                         Spacer()
                         Image(systemName: "chevron.forward")
                             .foregroundColor(.gray)
                             .font(.machachaTitle2)
                     }//HStack
                 }
+                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 .padding(.trailing, 14)
                 .padding(.bottom)
             ForEach(reviewViewModel.twoReviews, id: \.self) { review in
                 ReviewThumbnailListCellView(review: review)
+                    .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 if reviewViewModel.twoReviews.last != review {
                     Divider()
                         .padding(.vertical)
@@ -50,9 +56,9 @@ struct ReviewThumbnailView: View {
     }
 }
 
-struct ReviewThumbnailView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReviewThumbnailView(selectedStore: FoodCart.getDummy())
-            .environmentObject(ReviewViewModel())
-    }
-}
+//struct ReviewThumbnailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReviewThumbnailView(selectedStore: FoodCart.getDummy())
+//            .environmentObject(ReviewViewModel())
+//    }
+//}

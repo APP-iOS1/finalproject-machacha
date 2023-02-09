@@ -20,6 +20,7 @@ class ReviewViewModel: ObservableObject {
     @Published var reviewerImageDict: [String : UIImage] = [:]
     @Published var isShowingAlert = false
     @Published var isShowingReportSheet = false
+    @Published var isShowingEditSheet = false
     
     let database = Firestore.firestore()
     let storage = Storage.storage()
@@ -29,12 +30,12 @@ class ReviewViewModel: ObservableObject {
     @MainActor
 	func fetchReviews(foodCartId: String) async -> [Review] {
 		var reviews = [Review]()
-		
+
         do {
             let querysnapshot = try await database.collection("Review")
                 .whereField("foodCartId", isEqualTo: foodCartId)
                 .getDocuments()
-			
+
 //            DispatchQueue.main.async {
 //                self.reviews.removeAll()
 //            }
@@ -63,7 +64,8 @@ class ReviewViewModel: ObservableObject {
         } catch {
             print("fetchReviews error: \(error.localizedDescription)")
         }
-		return reviews
+        return reviews.sorted{$0.updatedAt > $1.updatedAt}
+
     }
     
     // MARK: - 서버에서 가게에 맞는 2개의 리뷰를 Review Collection의 데이터들을 불러오는 Method
@@ -120,7 +122,7 @@ class ReviewViewModel: ObservableObject {
     
     // MARK: - 서버의 Storage에 이미지를 업로드하는 Method
     func uploadImage(image: UIImage, name: String) {
-        let storageRef = storage.reference().child("images/\(name)") // 수현님께 경로 관련 질문
+        let storageRef = storage.reference().child("images/\(name)")
         let data = image.jpegData(compressionQuality: 0.1)
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
@@ -141,8 +143,9 @@ class ReviewViewModel: ObservableObject {
     }
     
     // MARK: - 서버의 Review Collection에 Review 객체 하나를 추가하여 업로드하는 Method
+
 	func addReview(review: Review,  images: [UIImage], foodCart: FoodCart )  {
-        
+
         // create image name list
         var imgNameList: [String] = []
         
@@ -150,7 +153,7 @@ class ReviewViewModel: ObservableObject {
         for img in images {
             let imgName = UUID().uuidString //imgName: 이미지마다 id를 만들어줌
             imgNameList.append(imgName)
-            uploadImage(image: img, name: (review.id + "/" + imgName)) // ? 경로 너무 어려움 수현님께 질문 2
+            uploadImage(image: img, name: (foodCart.id + "/" + imgName))
         }
         // uploadImage 실행 다 끝나기 전에 113줄 동시에 실행될 수도 있음
         database.collection("Review")
@@ -161,9 +164,15 @@ class ReviewViewModel: ObservableObject {
                       "grade": review.grade,
                       "description": review.description,
                       "imageId": imgNameList, //[diary.id + "/" + imgName]
-                      "upadatedAt": review.updatedAt,
+                      "updatedAt": review.updatedAt,
                       "createdAt": review.createdAt,
                      ])
+        
+        database.collection("FoodCart")
+            .document(foodCart.id)
+            .updateData([ "imageId": imgNameList + foodCart.imageId,
+                          "reviewId": [review.id] + foodCart.reviewId
+            ])
         
     }
     
@@ -190,8 +199,9 @@ class ReviewViewModel: ObservableObject {
         }
     }
     
-    @MainActor
-    func fetchReviewer(userId: String) async {
+    func fetchReviewer(userId: String) async throws -> User {
+        var reviewer: User = User(id: "", isFirstLogin: true, email: "", name: "", profileId: "", favoriteId: [], visitedId: [], updatedAt: Date(), createdAt: Date())
+        
         do {
             let querysnapshot = try await database.collection("User")
                 .whereField("id", isEqualTo: userId)
@@ -212,14 +222,13 @@ class ReviewViewModel: ObservableObject {
 
                 // fetch image set
                 self.fetchReviewImage(userId: id, imageName: profileId)
-                print("profileId : \(profileId)")
 
                 reviewer = User(id: id, isFirstLogin: isFirstLogin, email: email, name: name, profileId: profileId, favoriteId: favoriteId, visitedId: visitedId, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue())
-                print("imageDict : \(imageDict)")
             }
         } catch {
             print("fetchReviews error: \(error.localizedDescription)")
         }
+        return reviewer
     }
     
     // MARK: - 서버의 Storage에서 이미지를 가져오는 Method
