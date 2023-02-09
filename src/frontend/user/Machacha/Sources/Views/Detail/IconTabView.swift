@@ -13,6 +13,7 @@ struct IconTabView: View {
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @Binding var isFavorited: Bool
     @Binding var isVisited: Bool
+    @Binding var opacity: Double
     
     var body: some View {
         VStack(alignment: .center) {
@@ -70,6 +71,7 @@ struct IconTabView: View {
                 
             }//HStack
             .foregroundColor(Color("Color3"))
+            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
         }
     }
 }

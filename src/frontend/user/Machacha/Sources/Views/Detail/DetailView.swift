@@ -16,7 +16,9 @@ struct DetailView: View {
     @State var isFavorited: Bool = false
     @State var isVisited: Bool = false
     @State var showToast = false
+    @State var opacity: Double = 0.8
     var basicImages = ["bbungbread2", "sweetpotato2", "takoyaki", "beverage"]
+    var count = 0
 
     
     var body: some View {
@@ -25,13 +27,6 @@ struct DetailView: View {
                 ScrollView (.horizontal, showsIndicators: false) {
                     HStack(alignment: .top) {
                         if foodCartViewModel.imageDict.count > 0 {
-                            if foodCartViewModel.isLoading { // 사진 데이터 로딩 중 progressview 표시
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: Color(
-                                        .black)))
-                                    .scaleEffect(3)
-                                    .frame(width: 200, height: 200, alignment: .trailing)
-                            } else { // 스토리지 이미지 5개 출력
                                 ForEach(0..<4, id: \.self) { index in
                                     if let image = foodCartViewModel.imageDict[selectedStore.imageId[index]] {
                                         Image(uiImage: image)
@@ -54,13 +49,12 @@ struct DetailView: View {
                                                     .opacity(0.5)
                                                 Image(systemName: "plus")
                                                     .resizable()
-                                                    .frame(width: 80, height: 80)
+                                                    .frame(width: 60, height: 60)
                                                     .foregroundColor(.gray)
                                             }
                                     }
                                     
                                 }
-                            }
                         } else {
                             ForEach(basicImages, id:\.self) { images in
                                 Rectangle()
@@ -75,15 +69,18 @@ struct DetailView: View {
                         }
                     }//HStack
                 }//ScrollView
+                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 
                 HStack {
                     Text(selectedStore.name)
                         .font(.machachaTitle)
+                        .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                     Spacer()
                     Text("★ \(String(format: "%.1f", selectedStore.grade))")
                         .foregroundColor(Color("Color3"))
                         .font(.machachaTitle2Bold)
                         .padding(.trailing, 20)
+                        .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 }
                 .padding(.leading, 20)
                 .padding(.top, 20)
@@ -96,20 +93,24 @@ struct DetailView: View {
                     Image(systemName: "checkmark.seal.fill")
                     Text("\(selectedStore.visitedCnt)")
                 }
+                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 .padding(.horizontal, 20)
                 .foregroundColor(.gray)
                 
-                IconTabView(selectedStore: selectedStore, isFavorited: $isFavorited, isVisited: $isVisited) // 아이콘 4개
-                StoreInformView(selectedStore: selectedStore) // 가게정보
+                IconTabView(selectedStore: selectedStore, isFavorited: $isFavorited, isVisited: $isVisited, opacity: $opacity) // 아이콘 4개
+                StoreInformView(selectedStore: selectedStore, opacity: $opacity) // 가게정보
                     .padding(.leading, 20)
-                FoodCartMenuView(selectedStore: selectedStore) // 메뉴 정보
+                FoodCartMenuView(selectedStore: selectedStore, opacity: $opacity) // 메뉴 정보
                     .padding(.leading, 20)
-                ReviewThumbnailView(selectedStore: selectedStore)
+                ReviewThumbnailView(selectedStore: selectedStore, opacity: $opacity)
                     .padding(.leading, 20)
                 
             }
             .onAppear {
                 foodCartViewModel.isLoading = true // progressview를 위해 선언
+                withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
+                    self.opacity = opacity == 0.4 ? 0.8 : 0.4
+                }
                 Task {
                     await foodCartViewModel.fetchFoodCarts()
                     reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
@@ -117,8 +118,10 @@ struct DetailView: View {
                     if let user = profileViewModel.currentUser?.id {
                         isFavorited = try await foodCartViewModel.fetchUserFavoriteFoodCart(userId: user, foodCartId: selectedStore.id)
                         isVisited = try await foodCartViewModel.fetchUserVisitedFoodCart(userId: user, foodCartId: selectedStore.id)
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.5) { // 스켈레톤 View를 위해
+                            foodCartViewModel.isLoading = false
+                        } // DispatchQueue
                     }
-                    foodCartViewModel.isLoading = false
                 }
             }
         }

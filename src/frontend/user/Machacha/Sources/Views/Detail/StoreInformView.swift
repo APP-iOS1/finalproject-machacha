@@ -11,6 +11,8 @@ struct StoreInformView: View {
     var selectedStore: FoodCart
     var dayArr = ["월", "화", "수", "목", "금", "토", "일"]
     var paymentArr = ["현금", "계좌이체", "카드"]
+    @Binding var opacity: Double
+    @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -21,6 +23,7 @@ struct StoreInformView: View {
                 Text(selectedStore.address)
                 
             }
+            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
             .padding(.leading, -3)
   
             HStack {
@@ -36,6 +39,7 @@ struct StoreInformView: View {
                                                  Color("Color3") : Color(.gray))
                 }
             }
+            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
             HStack {
                 Image(systemName:"creditcard")
                     .resizable()
@@ -51,14 +55,15 @@ struct StoreInformView: View {
                                                  Color("Color3") : Color(.gray))
                 }
             }
+            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
         }//VStack
         .font(.machachaHeadline)
     }//body
 }
 
-struct StoreInformView_Previews: PreviewProvider {
-    static var previews: some View {
-        StoreInformView(selectedStore: FoodCart.getDummy())
-    }
-}
+//struct StoreInformView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StoreInformView(selectedStore: FoodCart.getDummy())
+//    }
+//}
 

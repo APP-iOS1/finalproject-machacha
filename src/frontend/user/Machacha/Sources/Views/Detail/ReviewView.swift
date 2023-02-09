@@ -12,6 +12,7 @@ struct ReviewView: View {
     @EnvironmentObject var reviewViewModel: ReviewViewModel
     @State var showToast = false
     @State var showEditToast = false
+    @State var opacity: Double = 0.8
     var selectedStore: FoodCart
     
     var body: some View {
