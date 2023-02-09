@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct MapHeader: View {
-    
+    @State var isTap = false
     var body: some View {
         VStack {
             HStack {
                 // 검색 버튼 을 누를 시 네비게이션 뷰로 전환되어 검색 뷰가 표현되어야 합니다.
                 Button {
                     print("Search Button Tapped")
+                    isTap = true
                 } label: {
                     HStack {
                         Text("장소, 식당 이름. 주소 검색")
@@ -38,6 +39,9 @@ struct MapHeader: View {
             .padding([.leading, .trailing, .top], 10)
             MapHeaderCell()
                 .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+        }
+        .navigationDestination(isPresented: $isTap) {
+            SearchView()
         }
     }
     

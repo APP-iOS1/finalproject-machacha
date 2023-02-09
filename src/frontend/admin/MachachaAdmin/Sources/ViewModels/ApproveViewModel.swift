@@ -13,8 +13,13 @@ import FirebaseStorage
 
 class ApproveViewModel: ObservableObject {
 	//MARK: Property Wrapper
-	@Published var approveFoodCarts: [FoodCart] = [] // 사용자가 요청한 FoodCart
-	
+	@Published var approveFoodCarts: [FoodCart] = [] { // 사용자가 요청한 FoodCart
+		willSet {
+			checkBox = [Bool](repeating: false, count: newValue.count)
+		}
+	}
+	@Published var checkBox: [Bool] = [] // 승인 전 check box
+
 	//MARK: Property
 	private let database = Firestore.firestore()
 	private let storage = Storage.storage()
@@ -56,40 +61,65 @@ class ApproveViewModel: ObservableObject {
 		} catch {
 			print("fetchFoodCarts error: \(error.localizedDescription)")
 		}
-		return foodCarts
+		return foodCarts.sorted{$0.updatedAt > $1.updatedAt}
 	}
 	
 	// MARK: - 서버의 Storage에서 이미지를 가져오는 Method
-	func fetchImage(foodCartId: String, imageName: String) async throws -> UIImage {
-		let ref = storage.reference().child("images/\(foodCartId)/\(imageName)")
-		let data = try await ref.data(maxSize: 1 * 1024 * 1024)
+	func fetchImage(foodCartId: String, imageName: String) async -> UIImage {
+		var data = Data()
+		
+		do {
+			let ref = storage.reference().child("images/\(foodCartId)/\(imageName)")
+			data = try await ref.data(maxSize: 1 * 1024 * 1024)
+			
+		} catch {
+			print("fetchImage error: \(error.localizedDescription)")
+		}
 		
 		return UIImage(data: data)!
 	}
 	
 	// MARK: - 서버에 RegisterView에서 입력한 가게정보 데이터들을 쓰는 Method
-	func addFoodCart(_ foodCart: FoodCart) {
-		database
-			.collection("FoodCart")
-			.document(foodCart.id)
-			.setData(["id": foodCart.id,
-					  "name": foodCart.name,
-					  "address": foodCart.address,
-					  "region": foodCart.region,
-					  "geoPoint": foodCart.geoPoint,
-					  "visitedCnt": foodCart.visitedCnt,
-					  "favoriteCnt": foodCart.favoriteCnt,
-					  "paymentOpt": foodCart.paymentOpt,
-					  "openingDays": foodCart.openingDays,
-					  "menu": foodCart.menu,
-					  "bestMenu": foodCart.bestMenu,
-					  "imageId": foodCart.imageId,
-					  "grade": foodCart.grade,
-					  "reportCnt": foodCart.reportCnt,
-					  "reviewId": foodCart.reviewId,
-					  "registerId": foodCart.registerId,
-					  "updatedAt": foodCart.updatedAt,
-					  "createdAt": foodCart.createdAt
-					 ])
+	func addFoodCart() async -> [FoodCart] {
+		do {
+			for (i, foodCart) in approveFoodCarts.enumerated() {
+				if checkBox[i] {
+					try await database
+						.collection("FoodCart")
+						.document(foodCart.id)
+						.setData(["id": foodCart.id,
+								  "name": foodCart.name,
+								  "address": foodCart.address,
+								  "region": foodCart.region,
+								  "geoPoint": foodCart.geoPoint,
+								  "visitedCnt": foodCart.visitedCnt,
+								  "favoriteCnt": foodCart.favoriteCnt,
+								  "paymentOpt": foodCart.paymentOpt,
+								  "openingDays": foodCart.openingDays,
+								  "menu": foodCart.menu,
+								  "bestMenu": foodCart.bestMenu,
+								  "imageId": foodCart.imageId,
+								  "grade": foodCart.grade,
+								  "reportCnt": foodCart.reportCnt,
+								  "reviewId": foodCart.reviewId,
+								  "registerId": foodCart.registerId,
+								  "updatedAt": foodCart.updatedAt,
+								  "createdAt": foodCart.createdAt
+								 ])
+					
+					try await removeFoodCart(foodCart)
+				}
+			}
+		} catch {
+			print("addFoodCart error: \(error.localizedDescription)")
+		}
+		
+		return await fetchFoodCarts()
+	}
+	
+	// MARK: - 서버에 RegisterView에서 입력한 가게정보 데이터를 삭제하는 Method
+	func removeFoodCart(_ foodCart: FoodCart) async throws {
+		try await database.collection("Admin")
+			.document(foodCart.id).delete()
 	}
 }
