@@ -130,7 +130,7 @@ struct NaverMap: UIViewRepresentable {
                 print("index\(markers[index])")
                 markers[index].width = currentIndex == index ? CGFloat(70) : CGFloat(35)
                 markers[index].height = currentIndex == index ? CGFloat(70) : CGFloat(35)
-                marker.mapView = uiView.mapView
+//                marker.mapView = uiView.mapView // 필요없을듯
 
                 marker.touchHandler = { (overlay) -> Bool in
     //                print("\(foodCart.name) marker touched")
