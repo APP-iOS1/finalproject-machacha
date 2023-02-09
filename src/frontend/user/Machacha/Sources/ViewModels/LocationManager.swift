@@ -10,7 +10,7 @@ import CoreLocation
 
 final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
-    @Published var coord = (37.566249, 126.992227)
+    @Published var coord = (37.56275, 126.98503)
     
     func checkIfLocationServicesIsEnabled() {
         DispatchQueue.global().async {

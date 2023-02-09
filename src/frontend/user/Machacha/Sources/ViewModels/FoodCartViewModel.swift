@@ -84,7 +84,7 @@ class FoodCartViewModel: ObservableObject {
                 let name: String = data["name"] as? String ?? ""
                 let region: String = data["region"] as? String ?? ""
                 let address: String = data["address"] as? String ?? ""
-                let geoPoint: GeoPoint = data["geoPoint"] as! GeoPoint
+                let geoPoint: GeoPoint = data["geoPoint"] as? GeoPoint ?? GeoPoint(latitude: 0.0, longitude: 0.0)
                 let imageId: [String] = data["imageId"] as? [String] ?? []
                 let grade: Double = data["grade"] as? Double ?? 0
                 let visitedCnt: Int = data["visitedCnt"] as? Int ?? 0
@@ -95,8 +95,8 @@ class FoodCartViewModel: ObservableObject {
                 let paymentOpt: [Bool] = data["isPaymentOpt"] as? [Bool] ?? []
                 let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
                 let reviewId: [String] = data["reviewId"] as? [String] ?? []
-                let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
-                let createdAt: Timestamp = data["createdAt"] as! Timestamp
+                let updatedAt: Timestamp = data["updatedAt"] as? Timestamp ?? Timestamp()
+                let createdAt: Timestamp = data["createdAt"] as? Timestamp ?? Timestamp()
                 let registerId: String = data["registerId"] as? String ?? ""
 
                 // fetch image set

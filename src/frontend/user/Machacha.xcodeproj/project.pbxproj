@@ -28,7 +28,6 @@
 		6A0601ED298E603300B1AC0E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EC298E603300B1AC0E /* FirebaseError.swift */; };
 		6A159FBD2987604F0002E625 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBC2987604F0002E625 /* MapHeader.swift */; };
 		6A159FBF298767630002E625 /* MapHeaderTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBE298767630002E625 /* MapHeaderTagCell.swift */; };
-		6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */; };
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* LocationManager.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
@@ -36,7 +35,136 @@
 		6A9792782988090B00459A45 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9792772988090B00459A45 /* SnapCarousel.swift */; };
 		6A97927B29880A2800459A45 /* MapFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A97927A29880A2800459A45 /* MapFooterCell.swift */; };
 		6AA14FA82988DB2C0042E025 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA14FA72988DB2C0042E025 /* RegisterView.swift */; };
-		801853C3298A267A00B33111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 801853C2298A267A00B33111 /* GoogleService-Info.plist */; };
+		6AF063622994749000BCDC2A /* ReverseGeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544E298E878F0039085F /* ReverseGeocodingService.swift */; };
+		6AF063632994749000BCDC2A /* ProfileFoodCartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */; };
+		6AF063642994749000BCDC2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
+		6AF063652994749000BCDC2A /* NaverAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */; };
+		6AF063662994749000BCDC2A /* ProfileNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1150298F778D00BE312A /* ProfileNotificationView.swift */; };
+		6AF063672994749000BCDC2A /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
+		6AF063682994749000BCDC2A /* CustomBoldLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */; };
+		6AF063692994749000BCDC2A /* RegisterNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */; };
+		6AF0636A2994749000BCDC2A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EA298E5E5200B1AC0E /* FirebaseService.swift */; };
+		6AF0636B2994749000BCDC2A /* IconTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9352987AB8E00DD97C5 /* IconTabView.swift */; };
+		6AF0636C2994749000BCDC2A /* MagazineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587A829768E3400B04A98 /* MagazineView.swift */; };
+		6AF0636D2994749000BCDC2A /* MStoreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E76B298BDBD800C65CBF /* MStoreCellView.swift */; };
+		6AF0636E2994749000BCDC2A /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E765298B8A0C00C65CBF /* PreferenceKeys.swift */; };
+		6AF0636F2994749000BCDC2A /* FoodCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9302987602500DD97C5 /* FoodCartViewModel.swift */; };
+		6AF063702994749000BCDC2A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC1F298101B200819D98 /* ProfileViewModel.swift */; };
+		6AF063712994749000BCDC2A /* ProfileFoodCartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */; };
+		6AF063722994749000BCDC2A /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
+		6AF063732994749000BCDC2A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E165298903F30068C025 /* MenuView.swift */; };
+		6AF063742994749000BCDC2A /* FaceIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2929817C6300819D98 /* FaceIDViewModel.swift */; };
+		6AF063752994749000BCDC2A /* Ex+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587B92976960300B04A98 /* Ex+Font.swift */; };
+		6AF063762994749000BCDC2A /* LocalizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F42037298EB70400B615C6 /* LocalizationViewModel.swift */; };
+		6AF063772994749000BCDC2A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
+		6AF063782994749000BCDC2A /* Ex+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC252981120C00819D98 /* Ex+Int.swift */; };
+		6AF063792994749000BCDC2A /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AE29768E6600B04A98 /* CustomTabView.swift */; };
+		6AF0637A2994749000BCDC2A /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C6298A427200B33111 /* Test.swift */; };
+		6AF0637B2994749000BCDC2A /* ReviewListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E15F2988D3BC0068C025 /* ReviewListCellView.swift */; };
+		6AF0637C2994749000BCDC2A /* BtnModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587632975A8D300B04A98 /* BtnModifier.swift */; };
+		6AF0637D2994749000BCDC2A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* LocationManager.swift */; };
+		6AF0637E2994749000BCDC2A /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBC2987604F0002E625 /* MapHeader.swift */; };
+		6AF0637F2994749000BCDC2A /* MapHeaderTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBE298767630002E625 /* MapHeaderTagCell.swift */; };
+		6AF063802994749000BCDC2A /* ReviewThumbnailListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E1632988F7C80068C025 /* ReviewThumbnailListCellView.swift */; };
+		6AF063812994749000BCDC2A /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EC298E603300B1AC0E /* FirebaseError.swift */; };
+		6AF063822994749000BCDC2A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5879C29768D4200B04A98 /* LoginView.swift */; };
+		6AF063832994749000BCDC2A /* FoodCartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9392987BE3400DD97C5 /* FoodCartMenuView.swift */; };
+		6AF063842994749000BCDC2A /* MagazineNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806ACEA329928BA7005A8122 /* MagazineNaverMap.swift */; };
+		6AF063852994749000BCDC2A /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05D297A7EBE003CF061 /* Review.swift */; };
+		6AF063862994749000BCDC2A /* ProfileLanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */; };
+		6AF063872994749000BCDC2A /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9792772988090B00459A45 /* SnapCarousel.swift */; };
+		6AF063882994749000BCDC2A /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587672975A8D300B04A98 /* Ex+String.swift */; };
+		6AF063892994749000BCDC2A /* MCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E767298B8AEF00C65CBF /* MCardView.swift */; };
+		6AF0638A2994749000BCDC2A /* KaKaoAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */; };
+		6AF0638B2994749000BCDC2A /* MCardMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E76D298CD8D000C65CBF /* MCardMapView.swift */; };
+		6AF0638C2994749000BCDC2A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA14FA72988DB2C0042E025 /* RegisterView.swift */; };
+		6AF0638D2994749000BCDC2A /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601E7298DE1AE00B1AC0E /* MapSearchViewModel.swift */; };
+		6AF0638E2994749000BCDC2A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AA29768E3E00B04A98 /* ProfileView.swift */; };
+		6AF0638F2994749000BCDC2A /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC332982682500819D98 /* Ex+View.swift */; };
+		6AF063902994749000BCDC2A /* AddingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A086F0629927A2300B486C0 /* AddingReviewView.swift */; };
+		6AF063912994749000BCDC2A /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
+		6AF063922994749000BCDC2A /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA92977A81B00964C9D /* FoodCart.swift */; };
+		6AF063932994749000BCDC2A /* MCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E769298B8E4000C65CBF /* MCardDetailView.swift */; };
+		6AF063942994749000BCDC2A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587AC29768E4500B04A98 /* DetailView.swift */; };
+		6AF063952994749000BCDC2A /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03A2987A11B00F0B620 /* AnimationModifier.swift */; };
+		6AF063962994749000BCDC2A /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587A429768DE300B04A98 /* MapSearchView.swift */; };
+		6AF063972994749000BCDC2A /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B44A02988F489005DB8AF /* AuthView.swift */; };
+		6AF063982994749000BCDC2A /* WebInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC23298106FC00819D98 /* WebInfoType.swift */; };
+		6AF063992994749000BCDC2A /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1152298F7AEE00BE312A /* UserNotification.swift */; };
+		6AF0639A2994749000BCDC2A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587A029768D5B00B04A98 /* HomeView.swift */; };
+		6AF0639B2994749000BCDC2A /* Ex+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E1612988D8A10068C025 /* Ex+Date.swift */; };
+		6AF0639C2994749000BCDC2A /* ProfileSecessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F4203C298EC95600B615C6 /* ProfileSecessionView.swift */; };
+		6AF0639D2994749000BCDC2A /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC212981039C00819D98 /* SafariView.swift */; };
+		6AF0639E2994749000BCDC2A /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */; };
+		6AF0639F2994749000BCDC2A /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E15D2988D3850068C025 /* ReviewView.swift */; };
+		6AF063A02994749000BCDC2A /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2583932991D1020081AFFA /* SoundManager.swift */; };
+		6AF063A12994749000BCDC2A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878F29768C6200B04A98 /* AuthViewModel.swift */; };
+		6AF063A22994749000BCDC2A /* MyUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE8B6F298D90A70033B4EF /* MyUIImagePicker.swift */; };
+		6AF063A32994749000BCDC2A /* ReviewThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA93B2987FE1100DD97C5 /* ReviewThumbnailView.swift */; };
+		6AF063A42994749000BCDC2A /* Ex+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587682975A8D300B04A98 /* Ex+Color.swift */; };
+		6AF063A52994749000BCDC2A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5879E29768D4800B04A98 /* SplashView.swift */; };
+		6AF063A62994749000BCDC2A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449E2988EBA4005DB8AF /* SignUpView.swift */; };
+		6AF063A72994749000BCDC2A /* StoreInformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9372987AF7A00DD97C5 /* StoreInformView.swift */; };
+		6AF063A82994749000BCDC2A /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC27298116D000819D98 /* SettingType.swift */; };
+		6AF063A92994749000BCDC2A /* MapFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A97927A29880A2800459A45 /* MapFooterCell.swift */; };
+		6AF063AA2994749000BCDC2A /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C4298A2EFA00B33111 /* MagazineViewModel.swift */; };
+		6AF063AB2994749000BCDC2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587652975A8D300B04A98 /* Constants.swift */; };
+		6AF063AC2994749000BCDC2A /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F42035298EB55F00B615C6 /* LanguageType.swift */; };
+		6AF063AD2994749000BCDC2A /* RegisterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544C298E21560039085F /* RegisterMapView.swift */; };
+		6AF063AE2994749000BCDC2A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5878C29768C4E00B04A98 /* User.swift */; };
+		6AF063AF2994749000BCDC2A /* TopTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E76F298D40C900C65CBF /* TopTest.swift */; };
+		6AF063B02994749000BCDC2A /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5C05F297A7F4A003CF061 /* Magazine.swift */; };
+		6AF063B12994749000BCDC2A /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A439E9229903134000EF1A2 /* ReportView.swift */; };
+		6AF063B22994749000BCDC2A /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E1592988D1910068C025 /* ReviewViewModel.swift */; };
+		6AF063B32994749000BCDC2A /* ReverseGeocodingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF35450298F27880039085F /* ReverseGeocodingDTO.swift */; };
+		6AF063B42994749000BCDC2A /* FoodCartOfUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */; };
+		6AF063B52994749000BCDC2A /* Ex+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E763298B89D200C65CBF /* Ex+Animation.swift */; };
+		6AF063B62994749000BCDC2A /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE8B6B298D735C0033B4EF /* OffsetModifier.swift */; };
+		6AF063B82994749000BCDC2A /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063432994749000BCDC2A /* NMapsMap */; };
+		6AF063B92994749000BCDC2A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0635A2994749000BCDC2A /* FirebaseFirestoreSwift */; };
+		6AF063BA2994749000BCDC2A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063572994749000BCDC2A /* FirebaseAuth */; };
+		6AF063BB2994749000BCDC2A /* KakaoSDKShare in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0634E2994749000BCDC2A /* KakaoSDKShare */; };
+		6AF063BC2994749000BCDC2A /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0634F2994749000BCDC2A /* KakaoSDKTalk */; };
+		6AF063BD2994749000BCDC2A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063522994749000BCDC2A /* GoogleSignIn */; };
+		6AF063BE2994749000BCDC2A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063592994749000BCDC2A /* FirebaseFirestore */; };
+		6AF063BF2994749000BCDC2A /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063542994749000BCDC2A /* GoogleSignInSwift */; };
+		6AF063C02994749000BCDC2A /* Cluster in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063552994749000BCDC2A /* Cluster */; };
+		6AF063C12994749000BCDC2A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063602994749000BCDC2A /* FirebaseMessaging */; };
+		6AF063C22994749000BCDC2A /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063452994749000BCDC2A /* NaverThirdPartyLogin */; };
+		6AF063C32994749000BCDC2A /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0635E2994749000BCDC2A /* FlagKit */; };
+		6AF063C42994749000BCDC2A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063472994749000BCDC2A /* Alamofire */; };
+		6AF063C52994749000BCDC2A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0635B2994749000BCDC2A /* FirebaseStorage */; };
+		6AF063C62994749000BCDC2A /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063492994749000BCDC2A /* KakaoSDK */; };
+		6AF063C72994749000BCDC2A /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063502994749000BCDC2A /* KakaoSDKTemplate */; };
+		6AF063C82994749000BCDC2A /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0635C2994749000BCDC2A /* AlertToast */; };
+		6AF063C92994749000BCDC2A /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0634C2994749000BCDC2A /* KakaoSDKCommon */; };
+		6AF063CA2994749000BCDC2A /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0634B2994749000BCDC2A /* KakaoSDKAuth */; };
+		6AF063CB2994749000BCDC2A /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF063512994749000BCDC2A /* KakaoSDKUser */; };
+		6AF063CC2994749000BCDC2A /* KakaoSDKCommonCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF0634D2994749000BCDC2A /* KakaoSDKCommonCore */; };
+		6AF063CE2994749000BCDC2A /* NanumSquareRoundOTFR.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B2297693FA00B04A98 /* NanumSquareRoundOTFR.otf */; };
+		6AF063CF2994749000BCDC2A /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B1297693F900B04A98 /* NanumSquareRoundOTFEB.otf */; };
+		6AF063D02994749000BCDC2A /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */; };
+		6AF063D12994749000BCDC2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873E2975A77300B04A98 /* Preview Assets.xcassets */; };
+		6AF063D22994749000BCDC2A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */; };
+		6AF063D32994749000BCDC2A /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */; };
+		6AF063D42994749000BCDC2A /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587702975A8D300B04A98 /* Pretendard-Bold.otf */; };
+		6AF063D52994749000BCDC2A /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */; };
+		6AF063D62994749000BCDC2A /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587722975A8D300B04A98 /* Pretendard-ExtraLight.otf */; };
+		6AF063D72994749000BCDC2A /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
+		6AF063D82994749000BCDC2A /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876D2975A8D300B04A98 /* Pretendard-Medium.otf */; };
+		6AF063D92994749000BCDC2A /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587712975A8D300B04A98 /* Pretendard-Thin.otf */; };
+		6AF063DA2994749000BCDC2A /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876F2975A8D300B04A98 /* Pretendard-ExtraBold.otf */; };
+		6AF063DB2994749000BCDC2A /* register_success_bgm.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA2583962991D5580081AFFA /* register_success_bgm.wav */; };
+		6AF063DC2994749000BCDC2A /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876B2975A8D300B04A98 /* Pretendard-Regular.otf */; };
+		6AF063DD2994749000BCDC2A /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876C2975A8D300B04A98 /* Pretendard-Black.otf */; };
+		6AF063DE2994749000BCDC2A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4F42032298EACBC00B615C6 /* Localizable.strings */; };
+		6AF063DF2994749000BCDC2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873B2975A77300B04A98 /* Assets.xcassets */; };
+		6AF063E02994749000BCDC2A /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A5876E2975A8D300B04A98 /* Pretendard-Light.otf */; };
+		6AF063EB2994760A00BCDC2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AF063E9299475F200BCDC2A /* GoogleService-Info.plist */; };
+		6AF063F229947AB200BCDC2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AF063F129947AB200BCDC2A /* GoogleService-Info.plist */; };
+		6AF063F529948FAD00BCDC2A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF063F429948FAD00BCDC2A /* SearchView.swift */; };
+		6AF063F629948FAD00BCDC2A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF063F429948FAD00BCDC2A /* SearchView.swift */; };
+		6AFEE4762993E6DA00DDAB13 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6AFEE4752993E6DA00DDAB13 /* FirebaseMessaging */; };
 		801853C5298A2EFA00B33111 /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C4298A2EFA00B33111 /* MagazineViewModel.swift */; };
 		801853C7298A427200B33111 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C6298A427200B33111 /* Test.swift */; };
 		806ACEA429928BA7005A8122 /* MagazineNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806ACEA329928BA7005A8122 /* MagazineNaverMap.swift */; };
@@ -175,14 +303,18 @@
 		6A0601EC298E603300B1AC0E /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		6A159FBC2987604F0002E625 /* MapHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeader.swift; sourceTree = "<group>"; };
 		6A159FBE298767630002E625 /* MapHeaderTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderTagCell.swift; sourceTree = "<group>"; };
-		6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		6A8EBDA529778F1500964C9D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6A8EBDA72977903700964C9D /* NaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMap.swift; sourceTree = "<group>"; };
 		6A8EBDA92977A81B00964C9D /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodCart.swift; path = Machacha/Sources/FoodCart.swift; sourceTree = SOURCE_ROOT; };
 		6A9792772988090B00459A45 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		6A97927A29880A2800459A45 /* MapFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFooterCell.swift; sourceTree = "<group>"; };
 		6AA14FA72988DB2C0042E025 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		801853C2298A267A00B33111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6AF063E42994749000BCDC2A /* Machacha-push.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Machacha-push.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF063E52994749000BCDC2A /* Machacha copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Machacha copy-Info.plist"; path = "/Users/parkjungwoo/Documents/Source/IOS/CodeLion/prototype/finalproject-machacha/src/frontend/user/Machacha copy-Info.plist"; sourceTree = "<absolute>"; };
+		6AF063E9299475F200BCDC2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6AF063F129947AB200BCDC2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6AF063F429948FAD00BCDC2A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		6AFEE4772993E76300DDAB13 /* Machacha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Machacha.entitlements; sourceTree = "<group>"; };
 		801853C4298A2EFA00B33111 /* MagazineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewModel.swift; sourceTree = "<group>"; };
 		801853C6298A427200B33111 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		806ACEA329928BA7005A8122 /* MagazineNaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineNaverMap.swift; sourceTree = "<group>"; };
@@ -273,6 +405,34 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6AF063B72994749000BCDC2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF063B82994749000BCDC2A /* NMapsMap in Frameworks */,
+				6AF063B92994749000BCDC2A /* FirebaseFirestoreSwift in Frameworks */,
+				6AF063BA2994749000BCDC2A /* FirebaseAuth in Frameworks */,
+				6AF063BB2994749000BCDC2A /* KakaoSDKShare in Frameworks */,
+				6AF063BC2994749000BCDC2A /* KakaoSDKTalk in Frameworks */,
+				6AF063BD2994749000BCDC2A /* GoogleSignIn in Frameworks */,
+				6AF063BE2994749000BCDC2A /* FirebaseFirestore in Frameworks */,
+				6AF063BF2994749000BCDC2A /* GoogleSignInSwift in Frameworks */,
+				6AF063C02994749000BCDC2A /* Cluster in Frameworks */,
+				6AF063C12994749000BCDC2A /* FirebaseMessaging in Frameworks */,
+				6AF063C22994749000BCDC2A /* NaverThirdPartyLogin in Frameworks */,
+				6AF063C32994749000BCDC2A /* FlagKit in Frameworks */,
+				6AF063C42994749000BCDC2A /* Alamofire in Frameworks */,
+				6AF063C52994749000BCDC2A /* FirebaseStorage in Frameworks */,
+				6AF063C62994749000BCDC2A /* KakaoSDK in Frameworks */,
+				6AF063C72994749000BCDC2A /* KakaoSDKTemplate in Frameworks */,
+				6AF063C82994749000BCDC2A /* AlertToast in Frameworks */,
+				6AF063C92994749000BCDC2A /* KakaoSDKCommon in Frameworks */,
+				6AF063CA2994749000BCDC2A /* KakaoSDKAuth in Frameworks */,
+				6AF063CB2994749000BCDC2A /* KakaoSDKUser in Frameworks */,
+				6AF063CC2994749000BCDC2A /* KakaoSDKCommonCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4A587312975A77000B04A98 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,6 +446,7 @@
 				C4D5C058297A7E22003CF061 /* FirebaseFirestore in Frameworks */,
 				FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */,
 				C4D5C052297A73F7003CF061 /* Cluster in Frameworks */,
+				6AFEE4762993E6DA00DDAB13 /* FirebaseMessaging in Frameworks */,
 				FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */,
 				C4F4203B298EC1C200B615C6 /* FlagKit in Frameworks */,
 				FAFDD47C29779202008E28AD /* Alamofire in Frameworks */,
@@ -343,6 +504,7 @@
 			children = (
 				6A159FBC2987604F0002E625 /* MapHeader.swift */,
 				6A159FBE298767630002E625 /* MapHeaderTagCell.swift */,
+				6AF063F429948FAD00BCDC2A /* SearchView.swift */,
 			);
 			path = MapHeader;
 			sourceTree = "<group>";
@@ -354,6 +516,21 @@
 				6A9792772988090B00459A45 /* SnapCarousel.swift */,
 			);
 			path = MapFooter;
+			sourceTree = "<group>";
+		};
+		6AF063E8299475D500BCDC2A /* Infos */ = {
+			isa = PBXGroup;
+			children = (
+				6AF063E9299475F200BCDC2A /* GoogleService-Info.plist */,
+			);
+			path = Infos;
+			sourceTree = "<group>";
+		};
+		6AFEE4742993E6DA00DDAB13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		808E4D632977C2D400D78854 /* 나눔손글씨 */ = {
@@ -384,6 +561,8 @@
 				C4A587472975A77300B04A98 /* MachachaTests */,
 				C4A587512975A77300B04A98 /* MachachaUITests */,
 				C4A587352975A77000B04A98 /* Products */,
+				6AFEE4742993E6DA00DDAB13 /* Frameworks */,
+				6AF063E52994749000BCDC2A /* Machacha copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -393,6 +572,7 @@
 				C4A587342975A77000B04A98 /* Machacha.app */,
 				C4A587442975A77300B04A98 /* MachachaTests.xctest */,
 				C4A5874E2975A77300B04A98 /* MachachaUITests.xctest */,
+				6AF063E42994749000BCDC2A /* Machacha-push.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,9 +580,11 @@
 		C4A587362975A77000B04A98 /* Machacha */ = {
 			isa = PBXGroup;
 			children = (
+				6AF063E8299475D500BCDC2A /* Infos */,
+				6AFEE4772993E76300DDAB13 /* Machacha.entitlements */,
+				6AF063F129947AB200BCDC2A /* GoogleService-Info.plist */,
 				C4A587862975AA0700B04A98 /* Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
-				801853C2298A267A00B33111 /* GoogleService-Info.plist */,
 				C4A587612975A8D300B04A98 /* Configuration */,
 				C4A587892975AA6800B04A98 /* Sources */,
 				C4A5873B2975A77300B04A98 /* Assets.xcassets */,
@@ -571,8 +753,8 @@
 			children = (
 				C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */,
 				C4A587AE29768E6600B04A98 /* CustomTabView.swift */,
-				C414BC212981039C00819D98 /* SafariView.swift */,
 				C4BE8B6F298D90A70033B4EF /* MyUIImagePicker.swift */,
+				C414BC212981039C00819D98 /* SafariView.swift */,
 			);
 			path = ETC.;
 			sourceTree = "<group>";
@@ -641,7 +823,6 @@
 			children = (
 				6A979279298809FB00459A45 /* MapFooter */,
 				6A159FC02987676E0002E625 /* MapHeader */,
-				6A41B6BB297FAEF4008C2CA5 /* CustomMarker.swift */,
 				C4A587A429768DE300B04A98 /* MapSearchView.swift */,
 				6A8EBDA72977903700964C9D /* NaverMap.swift */,
 			);
@@ -704,6 +885,46 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6AF063422994749000BCDC2A /* Machacha-push */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AF063E12994749000BCDC2A /* Build configuration list for PBXNativeTarget "Machacha-push" */;
+			buildPhases = (
+				6AF063612994749000BCDC2A /* Sources */,
+				6AF063B72994749000BCDC2A /* Frameworks */,
+				6AF063CD2994749000BCDC2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Machacha-push";
+			packageProductDependencies = (
+				6AF063432994749000BCDC2A /* NMapsMap */,
+				6AF063452994749000BCDC2A /* NaverThirdPartyLogin */,
+				6AF063472994749000BCDC2A /* Alamofire */,
+				6AF063492994749000BCDC2A /* KakaoSDK */,
+				6AF0634B2994749000BCDC2A /* KakaoSDKAuth */,
+				6AF0634C2994749000BCDC2A /* KakaoSDKCommon */,
+				6AF0634D2994749000BCDC2A /* KakaoSDKCommonCore */,
+				6AF0634E2994749000BCDC2A /* KakaoSDKShare */,
+				6AF0634F2994749000BCDC2A /* KakaoSDKTalk */,
+				6AF063502994749000BCDC2A /* KakaoSDKTemplate */,
+				6AF063512994749000BCDC2A /* KakaoSDKUser */,
+				6AF063522994749000BCDC2A /* GoogleSignIn */,
+				6AF063542994749000BCDC2A /* GoogleSignInSwift */,
+				6AF063552994749000BCDC2A /* Cluster */,
+				6AF063572994749000BCDC2A /* FirebaseAuth */,
+				6AF063592994749000BCDC2A /* FirebaseFirestore */,
+				6AF0635A2994749000BCDC2A /* FirebaseFirestoreSwift */,
+				6AF0635B2994749000BCDC2A /* FirebaseStorage */,
+				6AF0635C2994749000BCDC2A /* AlertToast */,
+				6AF0635E2994749000BCDC2A /* FlagKit */,
+				6AF063602994749000BCDC2A /* FirebaseMessaging */,
+			);
+			productName = Machacha;
+			productReference = 6AF063E42994749000BCDC2A /* Machacha-push.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C4A587332975A77000B04A98 /* Machacha */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A587582975A77300B04A98 /* Build configuration list for PBXNativeTarget "Machacha" */;
@@ -738,6 +959,7 @@
 				C4D5C05B297A7E22003CF061 /* FirebaseStorage */,
 				1A439E9029902A68000EF1A2 /* AlertToast */,
 				C4F4203A298EC1C200B615C6 /* FlagKit */,
+				6AFEE4752993E6DA00DDAB13 /* FirebaseMessaging */,
 			);
 			productName = Machacha;
 			productReference = C4A587342975A77000B04A98 /* Machacha.app */;
@@ -831,11 +1053,39 @@
 				C4A587332975A77000B04A98 /* Machacha */,
 				C4A587432975A77300B04A98 /* MachachaTests */,
 				C4A5874D2975A77300B04A98 /* MachachaUITests */,
+				6AF063422994749000BCDC2A /* Machacha-push */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6AF063CD2994749000BCDC2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF063CE2994749000BCDC2A /* NanumSquareRoundOTFR.otf in Resources */,
+				6AF063CF2994749000BCDC2A /* NanumSquareRoundOTFEB.otf in Resources */,
+				6AF063D02994749000BCDC2A /* Pretendard-SemiBold.otf in Resources */,
+				6AF063D12994749000BCDC2A /* Preview Assets.xcassets in Resources */,
+				6AF063D22994749000BCDC2A /* Config.xcconfig in Resources */,
+				6AF063D32994749000BCDC2A /* NanumSquareRoundOTFL.otf in Resources */,
+				6AF063D42994749000BCDC2A /* Pretendard-Bold.otf in Resources */,
+				6AF063D52994749000BCDC2A /* NanumSquareRoundOTFB.otf in Resources */,
+				6AF063D62994749000BCDC2A /* Pretendard-ExtraLight.otf in Resources */,
+				6AF063D72994749000BCDC2A /* 나눔손글씨 느릿느릿체.ttf in Resources */,
+				6AF063D82994749000BCDC2A /* Pretendard-Medium.otf in Resources */,
+				6AF063D92994749000BCDC2A /* Pretendard-Thin.otf in Resources */,
+				6AF063DA2994749000BCDC2A /* Pretendard-ExtraBold.otf in Resources */,
+				6AF063DB2994749000BCDC2A /* register_success_bgm.wav in Resources */,
+				6AF063DC2994749000BCDC2A /* Pretendard-Regular.otf in Resources */,
+				6AF063DD2994749000BCDC2A /* Pretendard-Black.otf in Resources */,
+				6AF063DE2994749000BCDC2A /* Localizable.strings in Resources */,
+				6AF063EB2994760A00BCDC2A /* GoogleService-Info.plist in Resources */,
+				6AF063DF2994749000BCDC2A /* Assets.xcassets in Resources */,
+				6AF063E02994749000BCDC2A /* Pretendard-Light.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4A587322975A77000B04A98 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,7 +1096,6 @@
 				C4A5873F2975A77300B04A98 /* Preview Assets.xcassets in Resources */,
 				FAFDD49D2977E8EC008E28AD /* Config.xcconfig in Resources */,
 				C4A587B7297693FA00B04A98 /* NanumSquareRoundOTFL.otf in Resources */,
-				801853C3298A267A00B33111 /* GoogleService-Info.plist in Resources */,
 				C4A5877E2975A8D300B04A98 /* Pretendard-Bold.otf in Resources */,
 				C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */,
 				C4A587802975A8D300B04A98 /* Pretendard-ExtraLight.otf in Resources */,
@@ -858,6 +1107,7 @@
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
 				C4F42030298EACBC00B615C6 /* Localizable.strings in Resources */,
+				6AF063F229947AB200BCDC2A /* GoogleService-Info.plist in Resources */,
 				C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */,
 				C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */,
 			);
@@ -880,6 +1130,102 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6AF063612994749000BCDC2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF063622994749000BCDC2A /* ReverseGeocodingService.swift in Sources */,
+				6AF063632994749000BCDC2A /* ProfileFoodCartCellView.swift in Sources */,
+				6AF063642994749000BCDC2A /* ContentView.swift in Sources */,
+				6AF063652994749000BCDC2A /* NaverAuthViewModel.swift in Sources */,
+				6AF063662994749000BCDC2A /* ProfileNotificationView.swift in Sources */,
+				6AF063672994749000BCDC2A /* MachachaApp.swift in Sources */,
+				6AF063682994749000BCDC2A /* CustomBoldLabelView.swift in Sources */,
+				6AF063692994749000BCDC2A /* RegisterNaverMap.swift in Sources */,
+				6AF063672994749000BCDC2A /* MachachaApp.swift in Sources */,
+				6AF0636A2994749000BCDC2A /* FirebaseService.swift in Sources */,
+				6AF063F629948FAD00BCDC2A /* SearchView.swift in Sources */,
+				6AF0636B2994749000BCDC2A /* IconTabView.swift in Sources */,
+				6AF0636C2994749000BCDC2A /* MagazineView.swift in Sources */,
+				6AF0636D2994749000BCDC2A /* MStoreCellView.swift in Sources */,
+				6AF0636B2994749000BCDC2A /* IconTabView.swift in Sources */,
+				6AF0636E2994749000BCDC2A /* PreferenceKeys.swift in Sources */,
+				6AF0636F2994749000BCDC2A /* FoodCartViewModel.swift in Sources */,
+				6AF063702994749000BCDC2A /* ProfileViewModel.swift in Sources */,
+				6AF063712994749000BCDC2A /* ProfileFoodCartListView.swift in Sources */,
+				6AF063722994749000BCDC2A /* FaceIDErrorType.swift in Sources */,
+				6AF063732994749000BCDC2A /* MenuView.swift in Sources */,
+				6AF0636C2994749000BCDC2A /* MagazineView.swift in Sources */,
+				6AF063742994749000BCDC2A /* FaceIDViewModel.swift in Sources */,
+				6AF063752994749000BCDC2A /* Ex+Font.swift in Sources */,
+				6AF063762994749000BCDC2A /* LocalizationViewModel.swift in Sources */,
+				6AF063772994749000BCDC2A /* UserViewModel.swift in Sources */,
+				6AF063782994749000BCDC2A /* Ex+Int.swift in Sources */,
+				6AF063792994749000BCDC2A /* CustomTabView.swift in Sources */,
+				6AF0637A2994749000BCDC2A /* Test.swift in Sources */,
+				6AF0637B2994749000BCDC2A /* ReviewListCellView.swift in Sources */,
+				6AF0637C2994749000BCDC2A /* BtnModifier.swift in Sources */,
+				6AF0637D2994749000BCDC2A /* LocationManager.swift in Sources */,
+				6AF0637E2994749000BCDC2A /* MapHeader.swift in Sources */,
+				6AF0637F2994749000BCDC2A /* MapHeaderTagCell.swift in Sources */,
+				6AF063802994749000BCDC2A /* ReviewThumbnailListCellView.swift in Sources */,
+				6AF063812994749000BCDC2A /* FirebaseError.swift in Sources */,
+				6AF063822994749000BCDC2A /* LoginView.swift in Sources */,
+				6AF063832994749000BCDC2A /* FoodCartMenuView.swift in Sources */,
+				6AF063842994749000BCDC2A /* MagazineNaverMap.swift in Sources */,
+				6AF063852994749000BCDC2A /* Review.swift in Sources */,
+				6AF063862994749000BCDC2A /* ProfileLanguageView.swift in Sources */,
+				6AF063872994749000BCDC2A /* SnapCarousel.swift in Sources */,
+				6AF063882994749000BCDC2A /* Ex+String.swift in Sources */,
+				6AF063892994749000BCDC2A /* MCardView.swift in Sources */,
+				6AF0638A2994749000BCDC2A /* KaKaoAuthViewModel.swift in Sources */,
+				6AF0638B2994749000BCDC2A /* MCardMapView.swift in Sources */,
+				6AF0638C2994749000BCDC2A /* RegisterView.swift in Sources */,
+				6AF0638D2994749000BCDC2A /* MapSearchViewModel.swift in Sources */,
+				6AF0638E2994749000BCDC2A /* ProfileView.swift in Sources */,
+				6AF0638F2994749000BCDC2A /* Ex+View.swift in Sources */,
+				6AF063902994749000BCDC2A /* AddingReviewView.swift in Sources */,
+				6AF063912994749000BCDC2A /* NaverMap.swift in Sources */,
+				6AF063922994749000BCDC2A /* FoodCart.swift in Sources */,
+				6AF063932994749000BCDC2A /* MCardDetailView.swift in Sources */,
+				6AF063942994749000BCDC2A /* DetailView.swift in Sources */,
+				6AF063952994749000BCDC2A /* AnimationModifier.swift in Sources */,
+				6AF063962994749000BCDC2A /* MapSearchView.swift in Sources */,
+				6AF063972994749000BCDC2A /* AuthView.swift in Sources */,
+				6AF063982994749000BCDC2A /* WebInfoType.swift in Sources */,
+				6AF063992994749000BCDC2A /* UserNotification.swift in Sources */,
+				6AF0639A2994749000BCDC2A /* HomeView.swift in Sources */,
+				6AF0639B2994749000BCDC2A /* Ex+Date.swift in Sources */,
+				6AF0639C2994749000BCDC2A /* ProfileSecessionView.swift in Sources */,
+				6AF0639D2994749000BCDC2A /* SafariView.swift in Sources */,
+				6AF0639E2994749000BCDC2A /* ProfileEditView.swift in Sources */,
+				6AF0639F2994749000BCDC2A /* ReviewView.swift in Sources */,
+				6AF063A02994749000BCDC2A /* SoundManager.swift in Sources */,
+				6AF063A12994749000BCDC2A /* AuthViewModel.swift in Sources */,
+				6AF063A22994749000BCDC2A /* MyUIImagePicker.swift in Sources */,
+				6AF063A32994749000BCDC2A /* ReviewThumbnailView.swift in Sources */,
+				6AF063A42994749000BCDC2A /* Ex+Color.swift in Sources */,
+				6AF063A52994749000BCDC2A /* SplashView.swift in Sources */,
+				6AF063A62994749000BCDC2A /* SignUpView.swift in Sources */,
+				6AF063A72994749000BCDC2A /* StoreInformView.swift in Sources */,
+				6AF063A82994749000BCDC2A /* SettingType.swift in Sources */,
+				6AF063A92994749000BCDC2A /* MapFooterCell.swift in Sources */,
+				6AF063AA2994749000BCDC2A /* MagazineViewModel.swift in Sources */,
+				6AF063AB2994749000BCDC2A /* Constants.swift in Sources */,
+				6AF063AC2994749000BCDC2A /* LanguageType.swift in Sources */,
+				6AF063AD2994749000BCDC2A /* RegisterMapView.swift in Sources */,
+				6AF063AE2994749000BCDC2A /* User.swift in Sources */,
+				6AF063AF2994749000BCDC2A /* TopTest.swift in Sources */,
+				6AF063B02994749000BCDC2A /* Magazine.swift in Sources */,
+				6AF063B12994749000BCDC2A /* ReportView.swift in Sources */,
+				6AF063B22994749000BCDC2A /* ReviewViewModel.swift in Sources */,
+				6AF063B32994749000BCDC2A /* ReverseGeocodingDTO.swift in Sources */,
+				6AF063B42994749000BCDC2A /* FoodCartOfUserType.swift in Sources */,
+				6AF063B52994749000BCDC2A /* Ex+Animation.swift in Sources */,
+				6AF063B62994749000BCDC2A /* OffsetModifier.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4A587302975A77000B04A98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -894,6 +1240,7 @@
 				FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				6A0601EB298E5E5200B1AC0E /* FirebaseService.swift in Sources */,
+				6AF063F529948FAD00BCDC2A /* SearchView.swift in Sources */,
 				1ABCA9362987AB8E00DD97C5 /* IconTabView.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,
 				80D9E76C298BDBD800C65CBF /* MStoreCellView.swift in Sources */,
@@ -938,7 +1285,6 @@
 				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
 				80D9E76A298B8E4000C65CBF /* MCardDetailView.swift in Sources */,
 				1ABCA93229877D6200DD97C5 /* DetailView.swift in Sources */,
-				6A41B6BC297FAEF4008C2CA5 /* CustomMarker.swift in Sources */,
 				C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */,
@@ -1021,6 +1367,88 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6AF063E22994749000BCDC2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Machacha/Machacha.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
+				DEVELOPMENT_TEAM = CX5D2L45PC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Machacha copy-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "저희 앱이 보안을 위해 FaceID를 사용할께요";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "해당 앱은 플레이스 정보 조회를 위해 사용자의 현위치를 조회합니다.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaNoti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6AF063E32994749000BCDC2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Machacha/Machacha.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
+				DEVELOPMENT_TEAM = CX5D2L45PC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Machacha copy-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "저희 앱이 보안을 위해 FaceID를 사용할께요";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "해당 앱은 플레이스 정보 조회를 위해 사용자의 현위치를 조회합니다.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.MachachaNoti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		C4A587562975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
@@ -1143,10 +1571,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Machacha/Machacha.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CX5D2L45PC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
@@ -1166,6 +1596,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.Machacha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1181,10 +1612,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Machacha/Machacha.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CX5D2L45PC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
@@ -1204,6 +1637,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lionlike.project.Machacha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1288,6 +1722,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6AF063E12994749000BCDC2A /* Build configuration list for PBXNativeTarget "Machacha-push" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AF063E22994749000BCDC2A /* Debug */,
+				6AF063E32994749000BCDC2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C4A5872F2975A77000B04A98 /* Build configuration list for PBXProject "Machacha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1340,6 +1783,78 @@
 			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
 			requirement = {
 				branch = main;
+				kind = branch;
+			};
+		};
+		6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		6AF063462994749000BCDC2A /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/naveridlogin-sdk-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		6AF063482994749000BCDC2A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6AF063532994749000BCDC2A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/efremidze/Cluster.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		6AF063582994749000BCDC2A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6AF0635F2994749000BCDC2A /* XCRemoteSwiftPackageReference "FlagKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/madebybowtie/FlagKit";
+			requirement = {
+				branch = master;
 				kind = branch;
 			};
 		};
@@ -1411,6 +1926,116 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
+		};
+		6AF063432994749000BCDC2A /* NMapsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
+			productName = NMapsMap;
+		};
+		6AF063452994749000BCDC2A /* NaverThirdPartyLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063462994749000BCDC2A /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */;
+			productName = NaverThirdPartyLogin;
+		};
+		6AF063472994749000BCDC2A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063482994749000BCDC2A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		6AF063492994749000BCDC2A /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		6AF0634B2994749000BCDC2A /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		6AF0634C2994749000BCDC2A /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		6AF0634D2994749000BCDC2A /* KakaoSDKCommonCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommonCore;
+		};
+		6AF0634E2994749000BCDC2A /* KakaoSDKShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKShare;
+		};
+		6AF0634F2994749000BCDC2A /* KakaoSDKTalk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKTalk;
+		};
+		6AF063502994749000BCDC2A /* KakaoSDKTemplate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKTemplate;
+		};
+		6AF063512994749000BCDC2A /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0634A2994749000BCDC2A /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		6AF063522994749000BCDC2A /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063532994749000BCDC2A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		6AF063542994749000BCDC2A /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063532994749000BCDC2A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		6AF063552994749000BCDC2A /* Cluster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster" */;
+			productName = Cluster;
+		};
+		6AF063572994749000BCDC2A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063582994749000BCDC2A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		6AF063592994749000BCDC2A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063582994749000BCDC2A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		6AF0635A2994749000BCDC2A /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063582994749000BCDC2A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		6AF0635B2994749000BCDC2A /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063582994749000BCDC2A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		6AF0635C2994749000BCDC2A /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		6AF0635E2994749000BCDC2A /* FlagKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF0635F2994749000BCDC2A /* XCRemoteSwiftPackageReference "FlagKit" */;
+			productName = FlagKit;
+		};
+		6AF063602994749000BCDC2A /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AF063582994749000BCDC2A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		6AFEE4752993E6DA00DDAB13 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		C4D5C051297A73F7003CF061 /* Cluster */ = {
 			isa = XCSwiftPackageProductDependency;

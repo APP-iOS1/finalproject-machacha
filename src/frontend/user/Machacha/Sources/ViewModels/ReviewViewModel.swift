@@ -48,8 +48,8 @@ class ReviewViewModel: ObservableObject {
                 let grade: Double = data["grade"] as? Double ?? 0
                 let description: String = data["description"] as? String ?? ""
                 let imageId: [String] = data["imageId"] as? [String] ?? []
-                let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
-                let createdAt: Timestamp = data["createdAt"] as! Timestamp
+                let updatedAt: Timestamp = data["updatedAt"] as? Timestamp ?? Timestamp()
+                let createdAt: Timestamp = data["createdAt"] as? Timestamp ?? Timestamp()
                 
                 // fetch image set
                 for imageName in imageId {
@@ -85,8 +85,8 @@ class ReviewViewModel: ObservableObject {
                 let grade: Double = data["grade"] as? Double ?? 0
                 let description: String = data["description"] as? String ?? ""
                 let imageId: [String] = data["imageId"] as? [String] ?? []
-                let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
-                let createdAt: Timestamp = data["createdAt"] as! Timestamp
+                let updatedAt: Timestamp = data["updatedAt"] as? Timestamp ?? Timestamp()
+                let createdAt: Timestamp = data["createdAt"] as? Timestamp ?? Timestamp()
                 
                 // fetch image set
                 for imageName in imageId {
