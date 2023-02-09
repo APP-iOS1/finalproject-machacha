@@ -40,7 +40,7 @@ class MagazineViewModel: ObservableObject {
     
     @Published var magazines: [Magazine] = []
     @Published var magazineFoodCart: [FoodCart2] = []
-    @Published var imageDict: [String : String] = [:] // IMG_4842.HEIC" : "사진 경로"
+//    @Published var imageDict: [String : String] = [:] // IMG_4842.HEIC" : "사진 경로"
     @Published var isLoading = false
     
     let database = Firestore.firestore()
