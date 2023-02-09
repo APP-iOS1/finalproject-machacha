@@ -11,6 +11,7 @@ import PhotosUI
 
 
 struct AddingReviewView: View {
+
     @State private var starArr = Array(repeating: false, count: 5)
     @State var grade : Double = 0 // 별점
     @State var text = ""
@@ -189,6 +190,7 @@ struct AddingReviewView: View {
             .disabled(text.count > 0 ? false : true)
         }
     }
+
 }
 
 //struct AddingReviewView_Previews: PreviewProvider {

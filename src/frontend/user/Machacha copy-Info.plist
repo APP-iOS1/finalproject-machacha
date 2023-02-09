@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>${NAVER_URL_SCHEME}</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao${KAKAO_NATIVE_APP_KEY}</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>${GOOGLE_REVERSED_CLIENT_ID}</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>${GOOGLE_CLIENT_ID}</string>
+	<key>KAKAO_NATIVE_APP_KEY</key>
+	<string>${KAKAO_NATIVE_APP_KEY}</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>naversearchapp</string>
+		<string>naversearchthirdlogin</string>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
+	</array>
+	<key>NMFClientId</key>
+	<string>${NMF_CLIENT_ID}</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NanumSquareRoundOTFB.otf</string>
+		<string>NanumSquareRoundOTFEB.otf</string>
+		<string>NanumSquareRoundOTFL.otf</string>
+		<string>NanumSquareRoundOTFR.otf</string>
+		<string>나눔손글씨 느릿느릿체.ttf</string>
+	</array>
+</dict>
+</plist>

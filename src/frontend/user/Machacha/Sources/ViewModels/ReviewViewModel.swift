@@ -28,14 +28,14 @@ class ReviewViewModel: ObservableObject {
     
     // MARK: - 서버에서 가게에 맞는 Review Collection의 데이터들을 불러오는 Method
     @MainActor
-    func fetchReviews(foodCartId: String) async -> [Review] {
-        var reviews = [Review]()
-        
+	func fetchReviews(foodCartId: String) async -> [Review] {
+		var reviews = [Review]()
+
         do {
             let querysnapshot = try await database.collection("Review")
                 .whereField("foodCartId", isEqualTo: foodCartId)
                 .getDocuments()
-            
+
 //            DispatchQueue.main.async {
 //                self.reviews.removeAll()
 //            }
@@ -49,8 +49,8 @@ class ReviewViewModel: ObservableObject {
                 let grade: Double = data["grade"] as? Double ?? 0
                 let description: String = data["description"] as? String ?? ""
                 let imageId: [String] = data["imageId"] as? [String] ?? []
-                let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
-                let createdAt: Timestamp = data["createdAt"] as! Timestamp
+                let updatedAt: Timestamp = data["updatedAt"] as? Timestamp ?? Timestamp()
+                let createdAt: Timestamp = data["createdAt"] as? Timestamp ?? Timestamp()
                 
                 // fetch image set
                 for imageName in imageId {
@@ -65,6 +65,7 @@ class ReviewViewModel: ObservableObject {
             print("fetchReviews error: \(error.localizedDescription)")
         }
         return reviews.sorted{$0.updatedAt > $1.updatedAt}
+
     }
     
     // MARK: - 서버에서 가게에 맞는 2개의 리뷰를 Review Collection의 데이터들을 불러오는 Method
@@ -86,8 +87,8 @@ class ReviewViewModel: ObservableObject {
                 let grade: Double = data["grade"] as? Double ?? 0
                 let description: String = data["description"] as? String ?? ""
                 let imageId: [String] = data["imageId"] as? [String] ?? []
-                let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
-                let createdAt: Timestamp = data["createdAt"] as! Timestamp
+                let updatedAt: Timestamp = data["updatedAt"] as? Timestamp ?? Timestamp()
+                let createdAt: Timestamp = data["createdAt"] as? Timestamp ?? Timestamp()
                 
                 // fetch image set
                 for imageName in imageId {
@@ -142,8 +143,9 @@ class ReviewViewModel: ObservableObject {
     }
     
     // MARK: - 서버의 Review Collection에 Review 객체 하나를 추가하여 업로드하는 Method
-    func addReview(review: Review,  images: [UIImage], foodCart: FoodCart )  {
-        
+
+	func addReview(review: Review,  images: [UIImage], foodCart: FoodCart )  {
+
         // create image name list
         var imgNameList: [String] = []
         

@@ -65,6 +65,7 @@ struct DetailView: View {
                                             .resizable()
                                             .frame(width: 100, height: 100)
                                     }
+ 
                             }
                         }
                     }//HStack
@@ -104,7 +105,6 @@ struct DetailView: View {
                     .padding(.leading, 20)
                 ReviewThumbnailView(selectedStore: selectedStore, opacity: $opacity)
                     .padding(.leading, 20)
-                
             }
             .onAppear {
                 foodCartViewModel.isLoading = true // progressview를 위해 선언
@@ -125,6 +125,7 @@ struct DetailView: View {
                 }
             }
         }
+		.navigationBarTitle("", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {

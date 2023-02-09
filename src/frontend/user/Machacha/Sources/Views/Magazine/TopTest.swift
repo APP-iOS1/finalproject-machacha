@@ -22,7 +22,7 @@ struct TopTest: View {
                 // CourseItem 각각의 카드들
                 // course : 각각의 Course()
                 NavigationLink {
-                    Test(magazineVM: magazineVM, magazine: magazine)
+//                    Test(magazineVM: magazineVM, magazine: magazine)
                     
                 } label: {
                     Text("\(magazine.title)")
