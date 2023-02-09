@@ -12,6 +12,7 @@ struct SearchView: View {
     
     @State var searchText = ""
     @State var searchResults: [String] = []
+    @State var doneTextFieldEdit: Bool = true
     var trimText: String {
         searchText.trimmingCharacters(in: .whitespaces)
     }
@@ -21,9 +22,13 @@ struct SearchView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    TextField("검색어를 입력해주세요", text: $searchText) { editChanged in
-                        self.getDatafromFirestore(query: self.searchText)
-                    }
+                    TextField("검색어를 입력해주세요", text: $searchText, onEditingChanged: { editChanged in
+                        //   self.getDatafromFirestore(query: self.searchText)
+                        doneTextFieldEdit = editChanged ? false : true
+                    }, onCommit: {
+                        doneTextFieldEdit = true
+                    })
+                    
                     .padding(.leading, 24)
                     .modifier(TextFieldClearButton(text: $searchText))
                     .overlay {
@@ -62,20 +67,20 @@ struct SearchView: View {
         }
     }
     
-    // firestore 실시간 쿼리
-    func getDatafromFirestore(query: String) {
-        let db = Firestore.firestore()
-        db.collection("FoodCart").whereField("name", isEqualTo: query).addSnapshotListener { snapshot, error in
-            if let error = error {
-                print("Error getting data \(error.localizedDescription)")
-                return
-            }
-            
-            if let snapshot = snapshot {
-                self.searchResults = snapshot.documents.map { $0["name"] as! String }
-            }
-        }
-    }
+//    // firestore 실시간 쿼리
+//    func getDatafromFirestore(query: String) {
+//        let db = Firestore.firestore()
+//        db.collection("FoodCart").whereField("name", isEqualTo: query).addSnapshotListener { snapshot, error in
+//            if let error = error {
+//                print("Error getting data \(error.localizedDescription)")
+//                return
+//            }
+//
+//            if let snapshot = snapshot {
+//                self.searchResults = snapshot.documents.map { $0["name"] as! String }
+//            }
+//        }
+//    }
 }
 
 struct SearchView_Previews: PreviewProvider {
