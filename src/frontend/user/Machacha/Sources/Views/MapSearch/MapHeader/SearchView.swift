@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseFirestore
 
 struct SearchView: View {
-
+    
     @State var searchText = ""
     @State var searchResults: [String] = []
     var trimText: String {
@@ -17,39 +17,30 @@ struct SearchView: View {
     }
     
     var body: some View {
-        VStack {
-            SearchBar()
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-        }
-    }
-    
-    @ViewBuilder
-    private func SearchDetailView(name: String) -> some View {
-        VStack {
-            Text(name)
-        }
-    }
-    
-    @ViewBuilder
-    private func SearchBar() -> some View {
-        NavigationView {
+        
+        NavigationStack {
             VStack {
                 HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField("Search", text: $searchText) { editChanged in
+                    TextField("검색어를 입력해주세요", text: $searchText) { editChanged in
                         self.getDatafromFirestore(query: self.searchText)
                     }
-                    
-                    if !searchText.isEmpty {
-                        Button {
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
+                    .padding(.leading, 24)
+                    .modifier(TextFieldClearButton(text: $searchText))
+                    .overlay {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(Color("Color2").opacity(0.8))
+                                .padding(.leading, 4)
+                            Spacer()
                         }
-                    } else {
-                        EmptyView()
+                        
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(Color("Color2"), lineWidth: 2)
+                            .frame(height: 40)
+                        
                     }
                 }
+                .padding(EdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10))
                 List(searchResults, id: \.self) { result in
                     NavigationLink {
                         SearchDetailView(name: result)
@@ -63,6 +54,14 @@ struct SearchView: View {
             hideKeyboard()
         }
     }
+    
+    @ViewBuilder
+    private func SearchDetailView(name: String) -> some View {
+        VStack {
+            Text(name)
+        }
+    }
+    
     // firestore 실시간 쿼리
     func getDatafromFirestore(query: String) {
         let db = Firestore.firestore()

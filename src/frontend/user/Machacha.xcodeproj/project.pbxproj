@@ -752,8 +752,8 @@
 			children = (
 				C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */,
 				C4A587AE29768E6600B04A98 /* CustomTabView.swift */,
-				C414BC212981039C00819D98 /* SafariView.swift */,
 				C4BE8B6F298D90A70033B4EF /* MyUIImagePicker.swift */,
+				C414BC212981039C00819D98 /* SafariView.swift */,
 			);
 			path = ETC.;
 			sourceTree = "<group>";
