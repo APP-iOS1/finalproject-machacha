@@ -147,6 +147,9 @@ struct EditingReviewView: View {
                     .padding(.horizontal, 20)
                 }
             } // selectedItem 변경 사항이 있을 때마다 loadTransferable 데이터를 로드하는 메서드를 호출
+            .onTapGesture { // 키보드가 올라왔을 때 다른 화면 터치 시 키보드가 내려감
+                self.endTextEditing()
+            }
             .navigationBarTitle("리뷰 수정", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
