@@ -47,8 +47,8 @@ struct FirebaseService {
                         let paymentOpt: [Bool] = data["isPaymentOpt"] as? [Bool] ?? []
                         let openingDays: [Bool] = data["openingDays"] as? [Bool] ?? []
                         let reviewId: [String] = data["reviewId"] as? [String] ?? []
-                        let updatedAt: Timestamp = data["updatedAt"] as! Timestamp
-                        let createdAt: Timestamp = data["createdAt"] as! Timestamp
+                        let updatedAt: Timestamp = data["updatedAt"] as? Timestamp ?? Timestamp()
+                        let createdAt: Timestamp = data["createdAt"] as? Timestamp ?? Timestamp()
                         let registerId: String = data["registerId"] as? String ?? ""
                     
                         

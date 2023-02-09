@@ -87,6 +87,7 @@ struct MagazineView: View {
             magazineVM.isLoading = true
             Task {
                 magazineVM.magazines = try await magazineVM.fetchMagazines()
+                // magzines가 채워짐 이미지 경로들도 받아옴
                 magazineVM.isLoading = false
             }
         }

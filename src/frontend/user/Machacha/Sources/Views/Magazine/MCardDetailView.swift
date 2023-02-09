@@ -29,6 +29,7 @@ struct MCardDetailView: View {
     
     @State var isDraggable = true
     @State var selectedIndex = 0
+    @State var isLoaded = false //progressview에 사용 예정
     
     @Environment(\.dismiss) private var dismiss
 
@@ -70,11 +71,18 @@ struct MCardDetailView: View {
         .onAppear {
 //            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
 //            print("\()")
+            isLoaded = false
+            print("아직 로드 전")
             Task {
                 fadeIn()
                 
                 magazineVM.magazineFoodCart = try await
                 magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
+                
+                //foodcart가 채워지면서 
+                print("로드 완료")
+                
+                isLoaded = true
             }
         }
         .onDisappear {
@@ -91,7 +99,10 @@ struct MCardDetailView: View {
         }
         .sheet(isPresented: $showMap) {
 //            MCardMapView(model: model)
-            MagazineNaverMapView(model: model, showMap: $showMap, foodcart: magazineVM.magazineFoodCart)
+            MagazineNaverMapView(model: model,
+                                 showMap: $showMap,
+                                 foodcart: magazineVM.magazineFoodCart,
+                                 coord: (magazineVM.magazineFoodCart[0].geoPoint.latitude, (magazineVM.magazineFoodCart[0].geoPoint.longitude)))
         }
         
     } //body
@@ -145,7 +156,7 @@ struct MCardDetailView: View {
         VStack {
             ForEach(magazineVM.magazineFoodCart) { foodcart in
 //                Text("\(foodcart.id)")
-                MStoreCellView(foodcart: foodcart, magazineVM: magazineVM)
+                MStoreCellView(foodcart: foodcart, magazineVM: magazineVM, isLoaded: $isLoaded)
                     .padding(.horizontal, 3)
 
             }

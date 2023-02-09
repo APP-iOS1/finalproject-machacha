@@ -102,6 +102,7 @@ struct DetailView: View {
                 }
             }
         }
+		.navigationBarTitle("", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
@@ -117,7 +118,8 @@ struct DetailView: View {
             ReportView(reportType: 1)
         }
         .fullScreenCover(isPresented: $foodCartViewModel.isShowingReviewSheet) {
-			AddingReviewView(selectedStore: selectedStore)
+            AddingReviewView(selectedStore: selectedStore)
+
         }
     }
 }

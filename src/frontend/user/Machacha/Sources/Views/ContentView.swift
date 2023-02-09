@@ -42,12 +42,9 @@ struct ContentView: View {
 			.edgesIgnoringSafeArea(.bottom)
 			.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
 		} // NavigationStack
-        .onAppear {
-            Task {
-                locationManager.checkIfLocationServicesIsEnabled()
-                mapSearchViewModel.cameraPosition = locationManager.coord
-                //                mapSearchViewModel.fetchSortedMenu(by: "떡볶이")
-            }
+        .task {
+            locationManager.checkIfLocationServicesIsEnabled()
+            mapSearchViewModel.cameraPosition = locationManager.coord
         }
         .fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
             RegisterMapView()
