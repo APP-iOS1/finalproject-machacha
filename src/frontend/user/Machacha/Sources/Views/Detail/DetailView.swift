@@ -118,7 +118,8 @@ struct DetailView: View {
             ReportView(reportType: 1)
         }
         .fullScreenCover(isPresented: $foodCartViewModel.isShowingReviewSheet) {
-			AddingReviewView(selectedStore: selectedStore)
+            AddingReviewView(selectedStore: selectedStore)
+
         }
     }
 }

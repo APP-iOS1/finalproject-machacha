@@ -168,6 +168,7 @@
 		801853C5298A2EFA00B33111 /* MagazineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C4298A2EFA00B33111 /* MagazineViewModel.swift */; };
 		801853C7298A427200B33111 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801853C6298A427200B33111 /* Test.swift */; };
 		806ACEA429928BA7005A8122 /* MagazineNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806ACEA329928BA7005A8122 /* MagazineNaverMap.swift */; };
+		80959FC52994C9630021764D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 80959FC42994C9630021764D /* Kingfisher */; };
 		80D9E764298B89D200C65CBF /* Ex+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E763298B89D200C65CBF /* Ex+Animation.swift */; };
 		80D9E766298B8A0C00C65CBF /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E765298B8A0C00C65CBF /* PreferenceKeys.swift */; };
 		80D9E768298B8AEF00C65CBF /* MCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E767298B8AEF00C65CBF /* MCardView.swift */; };
@@ -446,6 +447,7 @@
 				C4D5C058297A7E22003CF061 /* FirebaseFirestore in Frameworks */,
 				FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */,
 				C4D5C052297A73F7003CF061 /* Cluster in Frameworks */,
+				80959FC52994C9630021764D /* Kingfisher in Frameworks */,
 				6AFEE4762993E6DA00DDAB13 /* FirebaseMessaging in Frameworks */,
 				FAFDD4792977873A008E28AD /* NaverThirdPartyLogin in Frameworks */,
 				C4F4203B298EC1C200B615C6 /* FlagKit in Frameworks */,
@@ -959,6 +961,7 @@
 				C4D5C05B297A7E22003CF061 /* FirebaseStorage */,
 				1A439E9029902A68000EF1A2 /* AlertToast */,
 				C4F4203A298EC1C200B615C6 /* FlagKit */,
+				80959FC42994C9630021764D /* Kingfisher */,
 				6AFEE4752993E6DA00DDAB13 /* FirebaseMessaging */,
 			);
 			productName = Machacha;
@@ -1045,6 +1048,7 @@
 				C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				C4F42039298EC1C200B615C6 /* XCRemoteSwiftPackageReference "FlagKit" */,
+				80959FC32994C9630021764D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = C4A587352975A77000B04A98 /* Products */;
 			projectDirPath = "";
@@ -1786,6 +1790,9 @@
 				kind = branch;
 			};
 		};
+		80959FC32994C9630021764D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 		6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
@@ -1927,6 +1934,10 @@
 			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
 		};
+		80959FC42994C9630021764D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80959FC32994C9630021764D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		6AF063432994749000BCDC2A /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
