@@ -141,7 +141,88 @@ struct ProfileFoodCartCellView: View {
 			.navigationDestination(isPresented: $showDetail) {
 				DetailView(selectedStore: foodCart)
 			}
-		} // NavigationLink
+		} // Button
+	}
+}
+
+struct ProfileFoodCartReviewCellView: View {
+	//MARK: Property wrapper
+	@EnvironmentObject var profileVM: ProfileViewModel
+	@State var opacity: Double = 0.8
+	@State var imageList: [UIImage]?
+	@State private var showDetail = false
+
+	//MARK: Property
+	let user: User
+	let foodCartOfUserType: FoodCartOfUserType
+	let foodCart: FoodCart
+	let review: Review
+	let isFavorite: Bool
+	
+	var body: some View {
+		Button {
+			showDetail.toggle()
+		} label: {
+			VStack {
+				HStack(alignment: .top) {
+					VStack { // 프로필 사진
+						if let image = profileVM.profileImage {
+							Image(uiImage: image)
+								.resizable()
+								.scaledToFit()
+						} else {
+							RoundedRectangle(cornerRadius: 40) // 임시
+								.foregroundColor(Color("bgColor"))
+						}
+					} // VStack
+					.frame(width: 40, height: 40)
+					.cornerRadius(40)
+
+					VStack(alignment: .leading) {
+						Text(user.name)
+							.font(.machachaHeadlineBold)
+						// 별점
+						HStack(alignment: .center) {
+							Image(systemName: "star.fill")
+								.foregroundColor(Color("Color3"))
+							Text("\(review.gradeRounded)")
+							Text("| \(review.updatedAt.getDay())")
+								.foregroundColor(.gray)
+								.font(.machachaHeadline)
+						} // HStack
+					} // VStack
+					Spacer()
+					Menu {
+						MenuView(review: review)
+					} label: {
+						Image(systemName: "ellipsis")
+							.foregroundColor(.gray)
+					} // Menu
+				} // HStack
+				.font(.machachaHeadline)
+
+			} // VStack
+			.padding()
+			.background(Color("cellColor"))
+			.cornerRadius(8)
+			.overlay(RoundedRectangle(cornerRadius: 8)
+				.stroke(Color("textColor"), lineWidth: 0.1))
+			.padding(.horizontal)
+			.onAppear {
+				withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
+					self.opacity = opacity == 0.4 ? 0.8 : 0.4
+				}
+				Task {
+					for imageId in review.imageId {
+						let image = try await profileVM.fetchImage(foodCartId: review.id, imageName: imageId)
+						imageList?.append(image)
+					}
+				}
+			}
+			.navigationDestination(isPresented: $showDetail) {
+				DetailView(selectedStore: foodCart)
+			}
+		} // Button
 	}
 }
 
