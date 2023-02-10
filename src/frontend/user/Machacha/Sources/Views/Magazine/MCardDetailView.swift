@@ -17,6 +17,7 @@ struct MCardDetailView: View {
     // 강사님 피드백
     // 1. 카드가 열릴 때 :
     // 2. 카드가 닫힐 때 : 안에 내용물들이 사라지고 카드가 닫혀야 한다.
+    // 즉, 가게 리스트, 에디터 관련 글, 글이 담긴 박스, 디바이더가 먼저 사라지고 카드가 남아야 함
     
     // appear[0] : Divider
     // appear[1] : 에디터's PICK, 한 마디
@@ -29,7 +30,8 @@ struct MCardDetailView: View {
     
     @State var isDraggable = true
     @State var selectedIndex = 0
-    @State var isLoaded = false //progressview에 사용 예정
+    @State var isLoading = true //progressview에 사용 예정
+    @State var opacity: Double = 0.8
     
     @Environment(\.dismiss) private var dismiss
 
@@ -40,10 +42,28 @@ struct MCardDetailView: View {
                 cover // 리스트와 버튼을 제외한 저기 상위 뷰
                 // 스켈레톤 뷰 무조건 필요
                 // 데이터 완전히 로드되기 전까지 너무 텅비어 있음
-                content // 얘가 아래 저 리스트들
-                    .offset(y: 118) //76
-                    .padding(.bottom, 220)
-                    .opacity(appear[2] ? 1 : 0)
+   
+                if isLoading {
+                    ProgressView()
+                        .offset(y: 50) //76
+                        .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+                        .scaleEffect(2.6)
+
+                } else {
+                    content // 얘가 아래 저 리스트들
+                        .offset(y: 109) //76
+                        .padding(.bottom, 220)
+                        .opacity(appear[2] ? 1 : 0)
+                }
+         
+                
+       
+//                content // 얘가 아래 저 리스트들
+//                    .offset(y: 109) //76
+//                    .padding(.bottom, 220)
+//                    .opacity(appear[2] ? 1 : 0)
+                    
+              
                 
 //                Text("\(magazine.foodCartId.count)")
             }
@@ -64,6 +84,10 @@ struct MCardDetailView: View {
             button // 저기 위에 'x 버튼'
             
             // 데이터 아직 로드 안되었을 때 버튼 enable 해놓기
+            // 버튼이
+            // isLoading true이면 button disable  TRUE, opacity 0.5
+            // isLoading false이면 button disable  FALSE (즉, 다 로드되면 opacity 1)
+            
             mapButton // '지도로 보기' 버튼
                 .offset(x: 10 ,y: 300)
             
@@ -71,8 +95,13 @@ struct MCardDetailView: View {
         .onAppear {
 //            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
 //            print("\()")
-            isLoaded = false
             print("아직 로드 전")
+            isLoading = true
+            
+            withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: true)) {
+                self.opacity = opacity == 0.4 ? 0.8 : 0.4
+            }
+            
             Task {
                 fadeIn()
                 
@@ -81,8 +110,10 @@ struct MCardDetailView: View {
                 
                 //foodcart가 채워지면서 
                 print("로드 완료")
-                
-                isLoaded = true
+                // 스켈레톤 View를 위해
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.5) {
+                    isLoading = false
+//                }
             }
         }
         .onDisappear {
@@ -115,7 +146,6 @@ struct MCardDetailView: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity)
-
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
             .foregroundStyle(.black)
             .background(
@@ -156,9 +186,8 @@ struct MCardDetailView: View {
         VStack {
             ForEach(magazineVM.magazineFoodCart) { foodcart in
 //                Text("\(foodcart.id)")
-                MStoreCellView(foodcart: foodcart, magazineVM: magazineVM, isLoaded: $isLoaded)
+                MStoreCellView(foodcart: foodcart, magazineVM: magazineVM, isLoading: $isLoading, opacity: $opacity)
                     .padding(.horizontal, 3)
-
             }
 
             Spacer()
@@ -185,19 +214,23 @@ struct MCardDetailView: View {
     }
     
     
+    
+    // isLoading true이면 button disable  TRUE, opacity 0.5
+    // isLoading false이면 button disable  FALSE (즉, 다 로드되면 opacity 1)
     var mapButton: some View {
         Button {
             showMap = true
         } label: {
-            Text("지도로 보기")
+            Text("지도에서 보기")
                 .font(.machachaTitle3Bold)
                 .foregroundColor(.white)
                 .padding()
                 .background(
                   Capsule()
-                    .fill(Color("Color3"))
+                    .fill(isLoading ? Color("Color3").opacity(0.5) : Color("Color3"))
                   )
         }
+        .disabled(isLoading)
         .frame(maxWidth: .infinity,alignment: .bottomTrailing)
         .padding(30)
         .ignoresSafeArea()
@@ -231,7 +264,7 @@ struct MCardDetailView: View {
                 Text("\"\(magazine.editorCommemt)\"")
                     .font(.machachaSubhead)
             }
-            .opacity(appear[1] ? 1 : 0)
+            .opacity(appear[2] ? 1 : 0)
         }
         .padding(20)
         .background(
@@ -274,17 +307,25 @@ struct MCardDetailView: View {
         for i in 0 ..< appear.count {
             withAnimation(.easeOut.delay(delay)) {
                 appear[i] = true
-                delay += 0.1
+                delay += 0.418
             }
         }
     }
 
     func fadeOut() {
         appear = Array(repeating: false, count: appear.count)
+
+        
+        /*
+         for index in stride(from: 5, to: 1, by: -1) {
+             print(index)
+         }
+         //p
+         */
     }
 
     func close() {
-        withAnimation(.closeCard.delay(0.3)) {
+        withAnimation(.closeCard.delay(0.3)) { //0.3
             show.toggle()
             model.showDetail.toggle()
         }

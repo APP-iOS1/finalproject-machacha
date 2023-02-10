@@ -78,8 +78,10 @@ struct MagazineView: View {
                     detail
                 }
                 
-            }.statusBar(hidden:!showStatusBar)
-                .onChange(of: show) { newValue in
+            }
+            .statusBar(hidden:!showStatusBar)
+            // statusBar를 보이느냐 마느냐에 대한 animation
+            .onChange(of: show) { newValue in
                     withAnimation(.closeCard) {
                         if newValue {
                             showStatusBar = false
@@ -87,7 +89,7 @@ struct MagazineView: View {
                             showStatusBar = true
                         }
                     }
-                }
+            }
         }//navigationview
         .onAppear {
             magazineVM.isLoading = true

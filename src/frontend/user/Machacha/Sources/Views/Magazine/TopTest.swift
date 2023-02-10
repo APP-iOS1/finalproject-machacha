@@ -6,39 +6,22 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct TopTest: View {
     
     @StateObject var magazineVM = MagazineViewModel()
 //    var foodcartTest: FoodCart = FoodCart.getDummy()
+    let urlString = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBX6OIA69w4mGtEkIqqd3htZL05QjcEGqPrJutfiXW&s"
     
     var body: some View {
-        NavigationStack {
-            ForEach(magazineVM.magazineFoodCart) {foodcart in
-                Text("1")
-            }
-            
-            ForEach(magazineVM.magazines) { magazine in
-                // CourseItem 각각의 카드들
-                // course : 각각의 Course()
-                NavigationLink {
-//                    Test(magazineVM: magazineVM, magazine: magazine)
-                    
-                } label: {
-                    Text("\(magazine.title)")
-                    
-                }
-
+        VStack {
+            KFImage(URL(string: urlString))
+                .resizable()
+                .frame(width: 128, height: 128)
+                .cornerRadius(20)
                 
-                
-            }
         }
-        .onAppear {
-            Task {
-//                magazineVM.magazines = try await magazineVM.fetchMagazines()
-            }
-        }
-        
         
     }
 }

@@ -32,7 +32,7 @@ struct FoodCart2: Identifiable, Equatable {
     let reportCnt: Int          // 가게가 신고된 횟수
     let reviewId: [String]      // 가게에 대한 리뷰 정보
     let registerId: String        // 등록한 유저
-    let url: [String]
+    let url: [String] //이미지 경로 저장
 }
 
 
@@ -106,11 +106,13 @@ class MagazineViewModel: ObservableObject {
             //imageID : ["IMG_4828.HEIC"]
             for imageName in imageId {
                 let url1 = try await self.fetchImage(foodCartId: id, imageName: imageName) // imageName : "IMG_4828.HEIC"
-                url.append(url1)
+                url.append(url1) //[String]
             }
             
+            url = Array(url.reversed())
             
             foodcarts.append(FoodCart2(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId, registerId: registerId, url: url))
+            
             // foodCarts는 일단 [FoodCart2]
             // FoodCart2: 하나의 가게에 해당하는 이미지 주소(String)들이 url에 들어있음
             
