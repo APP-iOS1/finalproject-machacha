@@ -25,7 +25,6 @@ class TabBarManager: ObservableObject {
 	
 	@Published var showTabBar: Bool = true				// tab을 노출할것인지
 	@Published var barOffset: CGFloat = (Screen.maxWidth - 16 * 2) * 0.184 * -2
-	@Published var barSize: CGFloat = Screen.maxWidth / 15
 	@Published var curTabSelection: Tab = .home {
 		willSet { // 양 옆 padding: 16 * 2
 			switch newValue {
@@ -122,7 +121,7 @@ struct TabButton: View {
 				.font(.machachaCaption)
 		} // VStack
 		.fixedSize(horizontal: true, vertical: false) // View의 크기를 동일한 너비/높이
-		.frame(width: tabbarManager.barSize)
+		.frame(width: Screen.maxWidth / 15)
 		.foregroundColor(isSelection ? Color("Color3") : profileVM.isDarkMode ? .white : .gray)
 	}
 }
@@ -145,7 +144,7 @@ struct PlusTabButton: View {
 				.frame(width: 40)
 				.foregroundColor(Color("Color3"))
 		} // VStack
-		.frame(width: tabbarManager.barSize)
+		.frame(width: Screen.maxWidth / 15)
 	}
 }
 
