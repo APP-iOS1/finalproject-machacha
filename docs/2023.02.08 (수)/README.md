@@ -1,6 +1,6 @@
 # 🍢 마차챠
 
-<p align="center"><img src="" width=30%></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/48436020/218242349-8f7b855b-d4c1-4b05-a49a-641a3b11f8c7.jpeg" width=30%></p>
 
 ## 오늘의 기록 (23.02.09 목)
 ### 🥘 오늘의 기분
