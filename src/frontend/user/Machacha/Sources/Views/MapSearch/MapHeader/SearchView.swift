@@ -14,6 +14,8 @@ struct SearchView: View {
     @State var searchResults: [String] = []
     @State var doneTextFieldEdit: Bool = true
     @EnvironmentObject var foodCartVM: FoodCartViewModel
+    @EnvironmentObject var mapSearchVM: MapSearchViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         
@@ -46,8 +48,12 @@ struct SearchView: View {
                     Spacer()
                 } else {
                     List {
-                        ForEach(foodCartVM.foodCarts.filter{$0.region.hasPrefix(searchText) || (searchText == "")}) { result in
+                        ForEach(foodCartVM.foodCarts.filter{$0.region.trimmingCharacters(in: .whitespaces).hasPrefix(searchText) || (searchText == "")}) { result in
                             Text(result.region)
+                                .onTapGesture {
+                                    mapSearchVM.foodCarts = [result]
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }
                         }
                     }
                     .listStyle(.plain)
@@ -56,9 +62,9 @@ struct SearchView: View {
                 // 주소로만 검색 가능
 
             }
-            .onTapGesture {
-                hideKeyboard()
-            }
+//            .onTapGesture {
+//                hideKeyboard()
+//            }
         }
         .onAppear {
             print("count : \(foodCartVM.foodCarts.count)")
