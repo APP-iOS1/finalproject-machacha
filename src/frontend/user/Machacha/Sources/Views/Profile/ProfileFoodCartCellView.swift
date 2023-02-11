@@ -143,6 +143,7 @@ struct ProfileFoodCartCellView: View {
 				DetailView(selectedStore: foodCart)
 			}
 		} // Button
+		.disabled(profileVM.isLoading)
 	}
 }
 
@@ -284,6 +285,7 @@ struct ProfileFoodCartReviewCellView: View {
 				DetailView(selectedStore: foodCart)
 			}
 		} // Button
+		.disabled(isLoading)
 	}
 }
 
