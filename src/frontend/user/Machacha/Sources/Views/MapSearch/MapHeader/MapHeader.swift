@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MapHeader: View {
+    
     @State var isTap = false
+ 
+    
     var body: some View {
         VStack {
             HStack {
@@ -24,12 +27,14 @@ struct MapHeader: View {
                 }
                 Spacer()
                 // 음성 검색을 위한 Button
-                Button {
-                    print("Voice Search Button Tapped")
-                } label: {
-                    Image(systemName: "mic")
-                        .foregroundColor(.black)
-                }
+                
+                
+//                Button {
+//                    print("Voice Search Button Tapped")
+//                } label: {
+//                    Image(systemName: "mic")
+//                        .foregroundColor(.black)
+//                }
             }
             .padding()
             .foregroundColor(.gray)
@@ -37,29 +42,31 @@ struct MapHeader: View {
             .cornerRadius(10)
             .shadow(radius: 3)
             .padding([.leading, .trailing, .top], 10)
-            MapHeaderCell()
-                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+//            MapHeaderCell()
+//                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
             SearchView()
         }
     }
     
-    @ViewBuilder
-    private func MapHeaderCell() -> some View {
-        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(cellList, id: \.self) { item in
-                    MapHeaderTagCell(image: item)
-                }
-            }
-        }
-    }
+//    @ViewBuilder
+//    private func MapHeaderCell() -> some View {
+//        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
+//        ScrollView(.horizontal, showsIndicators: false) {
+//            HStack {
+//                ForEach(cellList, id: \.self) { item in
+//                    MapHeaderTagCell(image: item)
+//                }
+//            }
+//        }
+//    }
 }
 
-struct MapHeaderSearch_Previews: PreviewProvider {
+struct MapHeader_Previews: PreviewProvider {
     static var previews: some View {
         MapHeader()
+            
+        
     }
 }

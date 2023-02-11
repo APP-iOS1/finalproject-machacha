@@ -45,7 +45,7 @@ struct MCardDetailView: View {
    
                 if isLoading {
                     ProgressView()
-                        .offset(y: 50) //76
+                        .offset(y: 55) //76
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))
                         .scaleEffect(2.6)
 
