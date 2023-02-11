@@ -58,8 +58,8 @@ struct NaverMap: UIViewRepresentable {
             
             marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
             
-//            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage(named: "bbungbread2")!)
-//            marker.iconImage = image
+            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage(named: "store2")!)
+            marker.iconImage = image
             
             marker.width = CGFloat(50)
             marker.height = CGFloat(50)

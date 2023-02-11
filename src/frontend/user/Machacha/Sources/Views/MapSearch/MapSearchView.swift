@@ -100,5 +100,6 @@ struct MapSearchView_Previews: PreviewProvider {
         MapSearchView()
             .environmentObject(LocationManager())
             .environmentObject(MapSearchViewModel())
+            .environmentObject(FoodCartViewModel())
     }
 }

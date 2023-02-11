@@ -40,25 +40,25 @@ struct MapHeader: View {
             .cornerRadius(10)
             .shadow(radius: 3)
             .padding([.leading, .trailing, .top], 10)
-            MapHeaderCell()
-                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+//            MapHeaderCell()
+//                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
             SearchView()
         }
     }
     
-    @ViewBuilder
-    private func MapHeaderCell() -> some View {
-        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(cellList, id: \.self) { item in
-                    MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: item)
-                }
-            }
-        }
-    }
+//    @ViewBuilder
+//    private func MapHeaderCell() -> some View {
+//        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
+//        ScrollView(.horizontal, showsIndicators: false) {
+//            HStack {
+//                ForEach(cellList, id: \.self) { item in
+//                    MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: item)
+//                }
+//            }
+//        }
+//    }
 }
 
 struct MapHeaderSearch_Previews: PreviewProvider {
