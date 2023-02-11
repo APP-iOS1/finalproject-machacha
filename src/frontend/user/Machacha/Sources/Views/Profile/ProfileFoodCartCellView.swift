@@ -223,29 +223,31 @@ struct ProfileFoodCartReviewCellView: View {
 				.font(.machachaHeadline)
 				
 				LazyVStack {
-					if !imageList.isEmpty {
-						if imageList.count == 1, let image = imageList.first! { // 사진이 1개 일떄
-							Image(uiImage: image)
-								.resizable()
-								.scaledToFit()
-								.frame(width: Screen.maxWidth - 32)
-						} else { // 사진이 여러개 일때
-							ScrollView (.horizontal, showsIndicators: false) {
-								LazyHStack {
-									ForEach(imageList, id: \.self) { image in
-										Image(uiImage: image)
-											.resizable()
-											.scaledToFit()
-											.cornerRadius(8)
-											.frame(height: 200)
-									} // ForEach
-								} // LazyHStack
-							} // ScrollView
-						}
-					} else {
+					if isLoading {
 						Rectangle()
 							.foregroundColor(.gray)
 							.frame(width: Screen.maxWidth - 32, height: 200)
+					} else {
+						if !imageList.isEmpty {
+							if imageList.count == 1, let image = imageList.first! { // 사진이 1개 일떄
+								Image(uiImage: image)
+									.resizable()
+									.scaledToFit()
+									.frame(width: Screen.maxWidth - 32)
+							} else { // 사진이 여러개 일때
+								ScrollView (.horizontal, showsIndicators: false) {
+									LazyHStack {
+										ForEach(imageList, id: \.self) { image in
+											Image(uiImage: image)
+												.resizable()
+												.scaledToFit()
+												.cornerRadius(8)
+												.frame(height: 200)
+										} // ForEach
+									} // LazyHStack
+								} // ScrollView
+							}
+						}
 					}
 				}
 				.cornerRadius(8)
@@ -270,15 +272,18 @@ struct ProfileFoodCartReviewCellView: View {
 				}
 				isLoading = true
 				Task {
-					for imageId in review.imageId {
-						let image = try await profileVM.fetchImage(foodCartId: review.id, imageName: imageId)
-						imageList.append(image)
+					do {
+						for imageId in review.imageId {
+							let image = try await profileVM.fetchImage(foodCartId: review.id, imageName: imageId)
+							imageList.append(image)
+						}
+						
+						// review Id로 foodCart받아오기
+						foodCart = await foodCartVM.fetchFoodCartByFoodCartId(review.foodCartId)
+						isLoading = false
+					} catch {
+						isLoading = false
 					}
-					
-					// review Id로 foodCart받아오기
-					foodCart = await foodCartVM.fetchFoodCartByFoodCartId(review.foodCartId)
-					print(foodCart)
-					isLoading = false
 				}
 			}
 			.navigationDestination(isPresented: $showDetail) {
