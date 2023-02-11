@@ -23,13 +23,19 @@ struct MenuView: View {
                 Button {
                     reviewViewModel.isShowingEditSheet = true
                 } label: {
-                    Text("수정")
+                    HStack {
+                        Image(systemName: "square.and.pencil")
+                        Text("수정")
+                    }
                 }
                 
-                Button {
+                Button(role: .destructive) {
                     reviewViewModel.isShowingAlert = true
                 } label: {
-                    Text("삭제")
+                    HStack {
+                        Image(systemName: "trash")
+                        Text("삭제")
+                    }
                 }
             } else {
                 
@@ -37,7 +43,10 @@ struct MenuView: View {
                 Button {
                     reviewViewModel.isShowingReportSheet.toggle()
                 } label: {
-                    Text("신고")
+                    HStack {
+                        Image(systemName: "light.beacon.max")
+                        Text("신고")
+                    }
                 }
             }
 
