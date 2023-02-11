@@ -42,16 +42,17 @@ struct SearchView: View {
                     VoiceView(text: $searchText, voiceViewModel: voiceViewModel)
                         .frame(width: 40, height: 40)
                         .padding(.bottom, 10)
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 15)
                 }
                 .overlay {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
                         .stroke(Color("Color2"), lineWidth: 1)
                         .frame(height: 50)
                 }
-                .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
-
+                .padding(EdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10))
                 
+                //MARK: - 참고용 ) 음성인식이 성공하면 바로 인식된 키워드로 다음화면으로 이동할 수 있는 코드
+//                NavigationLink(destination: Test3(text: $text), isActive: $voiceViewModel.final) { }
                 
                 List(searchResults, id: \.self) { result in
                     NavigationLink {
