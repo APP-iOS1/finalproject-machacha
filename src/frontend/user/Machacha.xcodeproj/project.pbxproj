@@ -183,6 +183,8 @@
 		C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
 		C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */; };
 		C414BC342982682500819D98 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC332982682500819D98 /* Ex+View.swift */; };
+		C41B567B2997923B00E2A188 /* DeviceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567A2997923B00E2A188 /* DeviceName.swift */; };
+		C41B567D2997952500E2A188 /* Ex+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567C2997952500E2A188 /* Ex+UIDevice.swift */; };
 		C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03A2987A11B00F0B620 /* AnimationModifier.swift */; };
 		C433E03F2987A37800F0B620 /* ProfileFoodCartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */; };
 		C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */; };
@@ -336,6 +338,8 @@
 		C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDErrorType.swift; sourceTree = "<group>"; };
 		C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartOfUserType.swift; sourceTree = "<group>"; };
 		C414BC332982682500819D98 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
+		C41B567A2997923B00E2A188 /* DeviceName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceName.swift; sourceTree = "<group>"; };
+		C41B567C2997952500E2A188 /* Ex+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UIDevice.swift"; sourceTree = "<group>"; };
 		C433E03A2987A11B00F0B620 /* AnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
 		C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartListView.swift; sourceTree = "<group>"; };
 		C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartCellView.swift; sourceTree = "<group>"; };
@@ -548,6 +552,14 @@
 			path = "나눔손글씨";
 			sourceTree = "<group>";
 		};
+		C41B5679299791FA00E2A188 /* ProviewDevice */ = {
+			isa = PBXGroup;
+			children = (
+				C41B567A2997923B00E2A188 /* DeviceName.swift */,
+			);
+			path = ProviewDevice;
+			sourceTree = "<group>";
+		};
 		C43B114F298F71FA00BE312A /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +644,7 @@
 				C4A5876A2975A8D300B04A98 /* Fonts */,
 				C4F4202D298EAC7000B615C6 /* Localizable */,
 				C4A587622975A8D300B04A98 /* Modifiers */,
+				C41B5679299791FA00E2A188 /* ProviewDevice */,
 				FA2583952991D51A0081AFFA /* SoundEffects */,
 			);
 			path = Configuration;
@@ -661,6 +674,7 @@
 				C4A587682975A8D300B04A98 /* Ex+Color.swift */,
 				1A30E1612988D8A10068C025 /* Ex+Date.swift */,
 				C4A587B92976960300B04A98 /* Ex+Font.swift */,
+				C41B567C2997952500E2A188 /* Ex+UIDevice.swift */,
 				C414BC252981120C00819D98 /* Ex+Int.swift */,
 				C4A587672975A8D300B04A98 /* Ex+String.swift */,
 				C414BC332982682500819D98 /* Ex+View.swift */,
@@ -1282,6 +1296,7 @@
 				806ACEA429928BA7005A8122 /* MagazineNaverMap.swift in Sources */,
 				C4D5C05E297A7EBE003CF061 /* Review.swift in Sources */,
 				C4F4202C298EABE000B615C6 /* ProfileLanguageView.swift in Sources */,
+				C41B567D2997952500E2A188 /* Ex+UIDevice.swift in Sources */,
 				6A9792782988090B00459A45 /* SnapCarousel.swift in Sources */,
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
 				80D9E768298B8AEF00C65CBF /* MCardView.swift in Sources */,
@@ -1297,6 +1312,7 @@
 				80D9E76A298B8E4000C65CBF /* MCardDetailView.swift in Sources */,
 				1ABCA93229877D6200DD97C5 /* DetailView.swift in Sources */,
 				C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */,
+				C41B567B2997923B00E2A188 /* DeviceName.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */,
 				C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */,
@@ -1587,7 +1603,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = CX5D2L45PC;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
@@ -1628,7 +1644,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = CX5D2L45PC;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
