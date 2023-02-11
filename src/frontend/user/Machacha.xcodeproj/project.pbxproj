@@ -183,6 +183,7 @@
 		C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
 		C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */; };
 		C414BC342982682500819D98 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC332982682500819D98 /* Ex+View.swift */; };
+		C41B567F2997CB6300E2A188 /* ProfileAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */; };
 		C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03A2987A11B00F0B620 /* AnimationModifier.swift */; };
 		C433E03F2987A37800F0B620 /* ProfileFoodCartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */; };
 		C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */; };
@@ -336,6 +337,7 @@
 		C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDErrorType.swift; sourceTree = "<group>"; };
 		C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartOfUserType.swift; sourceTree = "<group>"; };
 		C414BC332982682500819D98 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
+		C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAppNotificationView.swift; sourceTree = "<group>"; };
 		C433E03A2987A11B00F0B620 /* AnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
 		C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartListView.swift; sourceTree = "<group>"; };
 		C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartCellView.swift; sourceTree = "<group>"; };
@@ -788,6 +790,7 @@
 				C4F4202B298EABE000B615C6 /* ProfileLanguageView.swift */,
 				C4F4203C298EC95600B615C6 /* ProfileSecessionView.swift */,
 				C43B1150298F778D00BE312A /* ProfileNotificationView.swift */,
+				C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */,
 				C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */,
 				C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */,
 			);
@@ -1294,6 +1297,7 @@
 				1A086F0729927A2300B486C0 /* AddingReviewView.swift in Sources */,
 				6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */,
 				6A8EBDAA2977A81B00964C9D /* FoodCart.swift in Sources */,
+				C41B567F2997CB6300E2A188 /* ProfileAppNotificationView.swift in Sources */,
 				80D9E76A298B8E4000C65CBF /* MCardDetailView.swift in Sources */,
 				1ABCA93229877D6200DD97C5 /* DetailView.swift in Sources */,
 				C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */,
