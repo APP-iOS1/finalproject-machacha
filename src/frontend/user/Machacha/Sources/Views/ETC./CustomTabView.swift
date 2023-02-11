@@ -16,17 +16,29 @@ enum Tab {
 }
 
 class TabBarManager: ObservableObject {
-	@Published var showTabBar: Bool = true
-	@Published var curTabSelection: Tab = .home
-	@Published var preTabSelection: Tab = .home
-	@Published var barOffset: CGFloat = -139
-	@Published var bottomPadding: CGFloat = Screen.maxHeight * 0.10
-    @Published var isShowingModal: Bool = false
-    @Published var preIndex: Int = 0
-
 	static let shared = TabBarManager() // Singleton
 	
-	let offsetList: [CGFloat] = [-139, -68, 4, 76, 144]
+	// PlusTab에서 이전으로 돌아가기 위한 값 저장
+	@Published var preTabSelection: Tab = .home
+	@Published var isShowingModal: Bool = false
+	@Published var safeArea: EdgeInsets = EdgeInsets()	// 기기의 safeArea
+	
+	@Published var showTabBar: Bool = true				// tab을 노출할것인지
+	@Published var barOffset: CGFloat = (Screen.maxWidth - 16 * 2) * 0.184 * -2
+	@Published var barSize: CGFloat = Screen.maxWidth / 15
+	@Published var curTabSelection: Tab = .home {
+		willSet { // 양 옆 padding: 16 * 2
+			switch newValue {
+			case .home:		 barOffset = (Screen.maxWidth - 16 * 2) * 0.184 * -2
+			case .mapSearch: barOffset = (Screen.maxWidth - 16 * 2) * 0.184 * -1
+			case .register:	 barOffset = 0
+			case .magazine:  barOffset = (Screen.maxWidth - 16 * 2) * 0.184 * 1
+			case .profile: 	 barOffset = (Screen.maxWidth - 16 * 2) * 0.184 * 2
+			}
+		}
+	}
+	
+	let hight: CGFloat = Screen.maxHeight * 0.10	// Tab의 높이
 }
 
 struct CustomTabView: View {
@@ -35,60 +47,52 @@ struct CustomTabView: View {
 	@ObservedObject var tabbarManager = TabBarManager.shared
 	
 	var body: some View {
-		VStack(spacing: 0) {
-			Spacer()
-			VStack {
-				HStack(alignment: .center, spacing: 8) {
+		GeometryReader { geometry in
+			VStack(spacing: 0) {
+				Spacer()
+				Divider()
+				HStack(spacing: 0) {
 					ForEach(0..<5) { index in
-						Spacer().frame(width: Screen.maxWidth * 0.02)
-						
 						Button {
-                            switch index {
-                            case 0: tabbarManager.curTabSelection = .home
-                            case 1: tabbarManager.curTabSelection = .mapSearch
-                            case 2: tabbarManager.isShowingModal = true
-                            case 3: tabbarManager.curTabSelection = .magazine
-                            default: tabbarManager.curTabSelection = .profile
-                            }
-                            
-							if index != 2 {
-								tabbarManager.preTabSelection = tabbarManager.curTabSelection
-                                tabbarManager.preIndex = index
-                                print(tabbarManager.preIndex)
+							switch index {
+							case 0: tabbarManager.curTabSelection = .home
+							case 1: tabbarManager.curTabSelection = .mapSearch
+							case 2: tabbarManager.isShowingModal = true
+							case 3: tabbarManager.curTabSelection = .magazine
+							default: tabbarManager.curTabSelection = .profile
 							}
 							
-                            tabbarManager.barOffset = tabbarManager.offsetList[index]
-						} label: {
-							switch index {
-							case 0: TabButton(isSelection: tabbarManager.curTabSelection == .home, name: "맛집찾기", systemName: "fork.knife.circle.fill", systemNameByNotSelected: "fork.knife.circle")
-							case 1:
-								TabButton(isSelection: tabbarManager.curTabSelection == .mapSearch, name: "검색", systemName: "magnifyingglass.circle.fill", systemNameByNotSelected: "magnifyingglass.circle")
-							case 2: PlusTabButton(isSelection: tabbarManager.curTabSelection == .register, name: "", systemName: "plus.circle.fill")
-							case 3: TabButton(isSelection: tabbarManager.curTabSelection == .magazine, name: "매거진", systemName: "newspaper.circle.fill", systemNameByNotSelected: "newspaper.circle")
-							default: TabButton(isSelection: tabbarManager.curTabSelection == .profile, name: "내정보", systemName: "person.circle.fill", systemNameByNotSelected: "person.circle")
+							if index != 2 { // plus 버튼을 제외하고 이전 상태값 저장
+								tabbarManager.preTabSelection = tabbarManager.curTabSelection
 							}
+						} label: {
+							VStack {
+								switch index {
+								case 0: TabButton(isSelection: tabbarManager.curTabSelection == .home, name: "맛집찾기", systemName: "fork.knife.circle.fill", systemNameByNotSelected: "fork.knife.circle")
+								case 1:
+									TabButton(isSelection: tabbarManager.curTabSelection == .mapSearch, name: "검색", systemName: "magnifyingglass.circle.fill", systemNameByNotSelected: "magnifyingglass.circle")
+								case 2: PlusTabButton(isSelection: tabbarManager.curTabSelection == .register, name: "", systemName: "plus.circle.fill")
+								case 3: TabButton(isSelection: tabbarManager.curTabSelection == .magazine, name: "매거진", systemName: "newspaper.circle.fill", systemNameByNotSelected: "newspaper.circle")
+								default: TabButton(isSelection: tabbarManager.curTabSelection == .profile, name: "내정보", systemName: "person.circle.fill", systemNameByNotSelected: "person.circle")
+								}
+							} // VStack
+							.padding(.horizontal, 20) // 버튼 영역까지 고려
+							.offset(y: UIDevice.hasNotch ? 10 : 0) // Safe Area(has Notch) + Button 영역을 고려한 수치
 						} // Button
-						Spacer().frame(width: Screen.maxWidth * 0.02)
 					} //ForEach
-					.frame(height: 85) // 기기마다 같은 Tab 크기
-					.edgesIgnoringSafeArea(.all)
 				} // HStack
-				.frame(width: Screen.maxWidth)
-				.clipShape(RoundedRectangle(cornerRadius: 22))
+				.padding(.bottom, tabbarManager.safeArea.bottom) // 버튼 영역까지 고려
+				.frame(width: Screen.maxWidth, height: tabbarManager.hight)
 				.overlay {
-					RoundedRectangle(cornerRadius: 22)
-						.stroke(.gray, lineWidth: 2)
-
-					Rectangle()
-						.foregroundColor(tabbarManager.curTabSelection == .register ? .black : .red)
-						.frame(width: Screen.maxWidth * 0.15, height: 3)
-						.offset(x: tabbarManager.barOffset, y: -Screen.maxHeight * 0.10/2)
-						.animation(.spring(), value: tabbarManager.barOffset)
+					VStack {
+						Rectangle()
+							.foregroundColor(tabbarManager.curTabSelection == .register ? .clear : Color("Color3"))
+							.frame(width: Screen.maxWidth * 0.15, height: 2)
+							.offset(x: tabbarManager.barOffset)
+							.animation(.spring(), value: tabbarManager.barOffset)
+						Spacer()
+					} // VStack
 				}
-			} // VStack
-			.edgesIgnoringSafeArea([.bottom])
-			.onAppear {
-				tabbarManager.bottomPadding = Screen.maxHeight * 0.10
 			}
 		} // VStack
 	}
@@ -98,6 +102,7 @@ struct CustomTabView: View {
 struct TabButton: View {
 	//MARK: Property Wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
+	@ObservedObject var tabbarManager = TabBarManager.shared
 
 	//MARK: Property
 	let isSelection: Bool 	// 현재 Tab
@@ -106,16 +111,18 @@ struct TabButton: View {
 	let systemNameByNotSelected: String // 선택되지 않았을때
 	
 	var body: some View {
-		VStack(spacing: 5) {
+		VStack(spacing: 7) {
 			Image(systemName: isSelection ? systemName : systemNameByNotSelected)
 				.resizable()
 				.scaledToFit()
-				.frame(width: 25)
+				.frame(width: 23)
+				.fixedSize()
+
 			Text(name)
-				.font(.custom("Pretendard-Medium", size: 11))
-			Spacer()
+				.font(.machachaCaption)
 		} // VStack
-		.padding(.vertical, 17)
+		.fixedSize(horizontal: true, vertical: false) // View의 크기를 동일한 너비/높이
+		.frame(width: tabbarManager.barSize)
 		.foregroundColor(isSelection ? Color("Color3") : profileVM.isDarkMode ? .white : .gray)
 	}
 }
@@ -123,8 +130,8 @@ struct TabButton: View {
 //MARK: - Plus TabButton
 struct PlusTabButton: View {
 	//MARK: Property Wrapper
-	@EnvironmentObject var profileVM: ProfileViewModel
-	
+	@ObservedObject var tabbarManager = TabBarManager.shared
+
 	//MARK: Property
 	let isSelection: Bool 	// 현재 Tab
 	let name: String		// Tab 이름
@@ -137,15 +144,18 @@ struct PlusTabButton: View {
 				.scaledToFit()
 				.frame(width: 40)
 				.foregroundColor(Color("Color3"))
-			Spacer()
 		} // VStack
-		.padding(.vertical, 17)
+		.frame(width: tabbarManager.barSize)
 	}
 }
 
 struct CustomTabView_Previews: PreviewProvider {
 	static var previews: some View {
-		CustomTabView()
-			.environmentObject(ProfileViewModel())
+		ZStack {
+			Color("bgColor")
+			
+			CustomTabView()
+				.environmentObject(ProfileViewModel())
+		}
 	}
 }
