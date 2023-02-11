@@ -10,7 +10,7 @@ import SwiftUI
 struct MapHeader: View {
     
     @State var isTap = false
- 
+    
     
     var body: some View {
         VStack {
@@ -26,15 +26,10 @@ struct MapHeader: View {
                     }
                 }
                 Spacer()
-                // 음성 검색을 위한 Button
-                
-                
-//                Button {
-//                    print("Voice Search Button Tapped")
-//                } label: {
-//                    Image(systemName: "mic")
-//                        .foregroundColor(.black)
-//                }
+//                VoiceView(text: $text, voiceViewModel: voiceViewModel)
+//                    .frame(width: 40, height: 40)
+//                    .padding(.bottom, 10)
+
             }
             .padding()
             .foregroundColor(.gray)
