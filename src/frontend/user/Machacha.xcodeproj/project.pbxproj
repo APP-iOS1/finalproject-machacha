@@ -249,6 +249,7 @@
 		FA0B449D2987A504005DB8AF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449C2987A504005DB8AF /* UserViewModel.swift */; };
 		FA0B449F2988EBA4005DB8AF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B449E2988EBA4005DB8AF /* SignUpView.swift */; };
 		FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0B44A02988F489005DB8AF /* AuthView.swift */; };
+		FA1F584D29990EBA00A2C663 /* FirstLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F584C29990EBA00A2C663 /* FirstLoginView.swift */; };
 		FA2583942991D1020081AFFA /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2583932991D1020081AFFA /* SoundManager.swift */; };
 		FA2583972991D5580081AFFA /* register_success_bgm.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA2583962991D5580081AFFA /* register_success_bgm.wav */; };
 		FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */; };
@@ -401,6 +402,7 @@
 		FA0B449C2987A504005DB8AF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		FA0B449E2988EBA4005DB8AF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FA0B44A02988F489005DB8AF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		FA1F584C29990EBA00A2C663 /* FirstLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginView.swift; sourceTree = "<group>"; };
 		FA2583932991D1020081AFFA /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		FA2583962991D5580081AFFA /* register_success_bgm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = register_success_bgm.wav; sourceTree = "<group>"; };
 		FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNaverMap.swift; sourceTree = "<group>"; };
@@ -871,6 +873,7 @@
 				FA0B44A02988F489005DB8AF /* AuthView.swift */,
 				C4A5879C29768D4200B04A98 /* LoginView.swift */,
 				FA0B449E2988EBA4005DB8AF /* SignUpView.swift */,
+				FA1F584C29990EBA00A2C663 /* FirstLoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1273,6 +1276,7 @@
 				1ABCA9312987602500DD97C5 /* FoodCartViewModel.swift in Sources */,
 				C414BC20298101B200819D98 /* ProfileViewModel.swift in Sources */,
 				C433E03F2987A37800F0B620 /* ProfileFoodCartListView.swift in Sources */,
+				FA1F584D29990EBA00A2C663 /* FirstLoginView.swift in Sources */,
 				C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */,
 				1A30E166298903F30068C025 /* MenuView.swift in Sources */,
 				C4A587A929768E3400B04A98 /* MagazineView.swift in Sources */,

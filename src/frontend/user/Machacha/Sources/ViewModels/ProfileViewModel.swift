@@ -64,7 +64,11 @@ class ProfileViewModel: ObservableObject {
 		var user: User // 비동기 통신으로 받아올 Property
 		
 		let userSnapshot = try await database.collection("User").document(userId).getDocument() // 첫번째 비동기 통신
-		let docData = userSnapshot.data()!
+        
+        guard let docData = userSnapshot.data() else {
+            print("fetchUser 데이터없음")
+            return nil
+        }
 		
 		let id: String = docData["id"] as? String ?? ""
 		let isFirstLogin: Bool = docData["isFirstLogin"] as? Bool ?? false
