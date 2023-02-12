@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C41B56C329994D1500E2A188 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C41B56C229994D1400E2A188 /* GoogleService-Info.plist */; };
+		C41B56C5299951D500E2A188 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56C4299951D500E2A188 /* NoticeViewModel.swift */; };
+		C41B56C82999545800E2A188 /* NoticeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56C72999545800E2A188 /* NoticeRouter.swift */; };
+		C41B56CB299954E100E2A188 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C41B56CA299954E100E2A188 /* Alamofire */; };
+		C41B56CD2999555300E2A188 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56CC2999555300E2A188 /* APIConstants.swift */; };
 		C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116429929EFE00BE312A /* MachachaAdminApp.swift */; };
 		C43B116929929F0000BE312A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116829929F0000BE312A /* Assets.xcassets */; };
 		C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116B29929F0000BE312A /* Preview Assets.xcassets */; };
@@ -24,7 +29,6 @@
 		C4D2D302299379000004661B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C4D2D301299379000004661B /* FirebaseFirestore */; };
 		C4D2D304299379000004661B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4D2D303299379000004661B /* FirebaseFirestoreSwift */; };
 		C4D2D306299379000004661B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C4D2D305299379000004661B /* FirebaseStorage */; };
-		C4D2D3082993793D0004661B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4D2D3072993793D0004661B /* GoogleService-Info.plist */; };
 		C4D2D30A299379A90004661B /* ApproveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2D309299379A90004661B /* ApproveViewModel.swift */; };
 		C4D2D30E29937AAB0004661B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2D30D29937AAB0004661B /* Constants.swift */; };
 		C4D2D31D29937D010004661B /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2D31C29937D010004661B /* Ex+String.swift */; };
@@ -49,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C41B56C229994D1400E2A188 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C41B56C4299951D500E2A188 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
+		C41B56C72999545800E2A188 /* NoticeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouter.swift; sourceTree = "<group>"; };
+		C41B56CC2999555300E2A188 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C43B116129929EFE00BE312A /* MachachaAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachachaAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43B116429929EFE00BE312A /* MachachaAdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminApp.swift; sourceTree = "<group>"; };
 		C43B116829929F0000BE312A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,7 +74,6 @@
 		C482135C299362F400CE4CA2 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		C4D2D2FC2993787C0004661B /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCart.swift; sourceTree = "<group>"; };
 		C4D2D2FE2993788B0004661B /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
-		C4D2D3072993793D0004661B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4D2D309299379A90004661B /* ApproveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveViewModel.swift; sourceTree = "<group>"; };
 		C4D2D30D29937AAB0004661B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C4D2D31C29937D010004661B /* Ex+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+String.swift"; sourceTree = "<group>"; };
@@ -79,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4D2D302299379000004661B /* FirebaseFirestore in Frameworks */,
+				C41B56CB299954E100E2A188 /* Alamofire in Frameworks */,
 				C4D2D304299379000004661B /* FirebaseFirestoreSwift in Frameworks */,
 				C4D2D306299379000004661B /* FirebaseStorage in Frameworks */,
 			);
@@ -101,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C41B56C62999543700E2A188 /* Router(Manager) */ = {
+			isa = PBXGroup;
+			children = (
+				C41B56CC2999555300E2A188 /* APIConstants.swift */,
+				C41B56C72999545800E2A188 /* NoticeRouter.swift */,
+			);
+			path = "Router(Manager)";
+			sourceTree = "<group>";
+		};
 		C43B115829929EFE00BE312A = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +141,7 @@
 		C43B116329929EFE00BE312A /* MachachaAdmin */ = {
 			isa = PBXGroup;
 			children = (
-				C4D2D3072993793D0004661B /* GoogleService-Info.plist */,
+				C41B56C229994D1400E2A188 /* GoogleService-Info.plist */,
 				C43B116429929EFE00BE312A /* MachachaAdminApp.swift */,
 				C4D2D30B29937A880004661B /* Configuration */,
 				C482134D2993609500CE4CA2 /* Sources */,
@@ -175,6 +192,7 @@
 		C482134D2993609500CE4CA2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C41B56C62999543700E2A188 /* Router(Manager) */,
 				C4D2D2FA299377F60004661B /* Models */,
 				C4D2D2FB299377FB0004661B /* ViewModels */,
 				C482134A29935ECD00CE4CA2 /* Views */,
@@ -235,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D2D309299379A90004661B /* ApproveViewModel.swift */,
+				C41B56C4299951D500E2A188 /* NoticeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -285,6 +304,7 @@
 				C4D2D301299379000004661B /* FirebaseFirestore */,
 				C4D2D303299379000004661B /* FirebaseFirestoreSwift */,
 				C4D2D305299379000004661B /* FirebaseStorage */,
+				C41B56CA299954E100E2A188 /* Alamofire */,
 			);
 			productName = MachachaAdmin;
 			productReference = C43B116129929EFE00BE312A /* MachachaAdmin.app */;
@@ -360,6 +380,7 @@
 			mainGroup = C43B115829929EFE00BE312A;
 			packageReferences = (
 				C4D2D300299379000004661B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C41B56C9299954E100E2A188 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = C43B116229929EFE00BE312A /* Products */;
 			projectDirPath = "";
@@ -379,7 +400,7 @@
 			files = (
 				C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */,
 				C43B116929929F0000BE312A /* Assets.xcassets in Resources */,
-				C4D2D3082993793D0004661B /* GoogleService-Info.plist in Resources */,
+				C41B56C329994D1500E2A188 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,8 +427,11 @@
 			files = (
 				C48213572993628C00CE4CA2 /* ProfileView.swift in Sources */,
 				C4D2D30E29937AAB0004661B /* Constants.swift in Sources */,
+				C41B56C82999545800E2A188 /* NoticeRouter.swift in Sources */,
 				C48213502993620700CE4CA2 /* ApproveView.swift in Sources */,
+				C41B56CD2999555300E2A188 /* APIConstants.swift in Sources */,
 				C4D2D2FF2993788B0004661B /* UserNotification.swift in Sources */,
+				C41B56C5299951D500E2A188 /* NoticeViewModel.swift in Sources */,
 				C482134C29935ED900CE4CA2 /* ContentView.swift in Sources */,
 				C4D2D31F29937D0D0004661B /* Ex+Date.swift in Sources */,
 				C4D2D31D29937D010004661B /* Ex+String.swift in Sources */,
@@ -747,6 +771,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C41B56C9299954E100E2A188 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		C4D2D300299379000004661B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -758,6 +790,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C41B56CA299954E100E2A188 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C41B56C9299954E100E2A188 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		C4D2D301299379000004661B /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C4D2D300299379000004661B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
