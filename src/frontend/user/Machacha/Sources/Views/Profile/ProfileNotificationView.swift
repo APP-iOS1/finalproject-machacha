@@ -94,15 +94,12 @@ extension ProfileNotificationView {
 			case "home":
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 				self.tabbarManager.curTabSelection = .home
-				tabbarManager.barOffset = tabbarManager.offsetList[0]
 			case "search":
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 				self.tabbarManager.curTabSelection = .mapSearch
-				tabbarManager.barOffset = tabbarManager.offsetList[1]
 			case "magazine":
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 				self.tabbarManager.curTabSelection = .magazine
-				tabbarManager.barOffset = tabbarManager.offsetList[3]
 			default:
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 			}
