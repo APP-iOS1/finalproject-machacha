@@ -33,6 +33,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 print("ERROR FCM 등록 토큰 가져오기: \(error.localizedDescription)")
             } else if let token = token {
                 print("FCM 등록 토큰: \(token)")
+                
             }
         }
         
@@ -40,6 +41,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: [authOptions]) { _, error in
             print("Error, Request Notifications Authorization: \(error.debugDescription)")
+            // machacha cloud function subscribe
+            Messaging.messaging().subscribe(toTopic: "notifications")
         }
         application.registerForRemoteNotifications()
         
