@@ -105,6 +105,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 @main
 struct MachachaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authVM : AuthViewModel = AuthViewModel()
     @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
 
     @StateObject var foodCartVM: FoodCartViewModel = FoodCartViewModel()
@@ -138,6 +139,7 @@ struct MachachaApp: App {
         WindowGroup {
             if splashIsActive {
                 AuthView()
+                    .environmentObject(authVM)
                     .environmentObject(LocationManager())
                     .environmentObject(foodCartVM)
                     .environmentObject(reviewVM)

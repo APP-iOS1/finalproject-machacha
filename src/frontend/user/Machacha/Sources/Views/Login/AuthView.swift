@@ -21,7 +21,7 @@ enum LoginState {
 
 struct AuthView : View {
     //@State var loginState : LoginState = .unauthenticated
-    @StateObject var authVM = AuthViewModel()//.shared
+    @EnvironmentObject var authVM : AuthViewModel//.shared
     @StateObject var userVM = UserViewModel.shared
     
     var body: some View {
