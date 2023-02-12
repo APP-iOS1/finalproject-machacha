@@ -73,7 +73,7 @@ struct MapSearchView: View {
                     
                 }
                 .zIndex(1)
-                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: mapSearchViewModel.foodCarts, userCoord: locationManager.userLocation)
+                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: foodCartViewModel.foodCarts, userCoord: locationManager.userLocation)
                     .ignoresSafeArea(.all, edges: .top)
                     .onChange(of: mapSearchViewModel.zoomLevel) { newValue in
                         print("zoom Level : \(newValue)")
@@ -81,7 +81,6 @@ struct MapSearchView: View {
             }
             .onAppear {
                 mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
-
                 print("onappear")
                 print("\(mapSearchViewModel.foodCarts.count)")
             }
