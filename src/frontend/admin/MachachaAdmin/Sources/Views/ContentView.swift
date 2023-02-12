@@ -28,28 +28,24 @@ struct ContentView: View {
 						Text("신고")
 					}.tag(Tab.report)
 				
-				MagazineView()
-					.tabItem {
-						Image(systemName: "newspaper.fill")
-						Text("매거진")
-					}.tag(Tab.magazine)
+//				MagazineView()
+//					.tabItem {
+//						Image(systemName: "newspaper.fill")
+//						Text("매거진")
+//					}.tag(Tab.magazine)
 				
 				NoticeView()
 					.tabItem {
 						Image(systemName: "bell.fill")
 						Text("공지")
 					}.tag(Tab.notice)
-				
-				ProfileView()
-					.tabItem {
-						Image(systemName: "person.fill")
-						Text("프로필")
-					}.tag(Tab.profile)
+//
+//				ProfileView()
+//					.tabItem {
+//						Image(systemName: "person.fill")
+//						Text("프로필")
+//					}.tag(Tab.profile)
 			} // TabView
-			.navigationBarTitle(selection.title)
-			.toolbarBackground(Color.accentColor, for: .navigationBar)
-			.toolbarBackground(.visible, for: .navigationBar)
-			.toolbarColorScheme(.dark, for: .navigationBar) // 글자색 변경
 		} // NavigationStack
 	}
 }

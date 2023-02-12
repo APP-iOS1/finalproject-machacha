@@ -13,67 +13,69 @@ struct NoticeView: View {
 	@FocusState private var focused: Bool			// TextFiled를 포커스
 
 	var body: some View {
-		List {
-			Section(header: Text("제목")) {
-				TextField("", text: $noticeVM.title)
-					.modifier(TextFieldClearButton(text: $noticeVM.title))
-					.placeholder(when: noticeVM.title.isEmpty) {
-						Text("알림 및 공지에 쓰여질 제목을 입력")
-							.foregroundColor(.accentColor)
-							.font(.system(size: 14))
-							.disabled(true)
+		NavigationView {
+			List {
+				Section(header: Text("제목")) {
+					TextField("", text: $noticeVM.title)
+						.modifier(TextFieldClearButton(text: $noticeVM.title))
+						.placeholder(when: noticeVM.title.isEmpty) {
+							Text("알림 및 공지에 쓰여질 제목을 입력")
+								.foregroundColor(.accentColor)
+								.font(.system(size: 14))
+								.disabled(true)
+						}
+						.background(Color("cellColor"))
+						.focused($focused)
+				}
+				
+				Section(header: Text("알림 Body")) {
+					TextField("", text: $noticeVM.body)
+						.modifier(TextFieldClearButton(text: $noticeVM.body))
+						.placeholder(when: noticeVM.body.isEmpty) {
+							Text("알림 body에 쓰여질 내용")
+								.foregroundColor(.accentColor)
+								.font(.system(size: 14))
+								.disabled(true)
+						}
+						.background(Color("cellColor"))
+				}
+				
+				Section(header: Text("내용")) {
+					ZStack {
+						if noticeVM.contents.isEmpty {
+							TextEditor(text: .constant("알림 및 공지 내용을 입력"))
+								.foregroundColor(.accentColor)
+								.font(.system(size: 14))
+								.disabled(true)
+						}
+						TextEditor(text: $noticeVM.contents)
+							.opacity(noticeVM.contents.isEmpty ? 0.25 : 1)
 					}
-					.background(Color("cellColor"))
-					.focused($focused)
-			}
-			
-			Section(header: Text("알림 Body")) {
-				TextField("", text: $noticeVM.body)
-					.modifier(TextFieldClearButton(text: $noticeVM.body))
-					.placeholder(when: noticeVM.body.isEmpty) {
-						Text("알림 body에 쓰여질 내용")
-							.foregroundColor(.accentColor)
-							.font(.system(size: 14))
-							.disabled(true)
-					}
-					.background(Color("cellColor"))
-			}
-			
-			Section(header: Text("내용")) {
-				ZStack {
-					if noticeVM.contents.isEmpty {
-						TextEditor(text: .constant("알림 및 공지 내용을 입력"))
-							.foregroundColor(.accentColor)
-							.font(.system(size: 14))
-							.disabled(true)
-					}
-					TextEditor(text: $noticeVM.contents)
-						.opacity(noticeVM.contents.isEmpty ? 0.25 : 1)
 				}
 			}
+			.background(Color("bgColor"))
+			.scrollContentBackground(.hidden)
+			.navigationBarBackButtonHidden()
+			.navigationBarTitle(Tab.notice.title, displayMode: .inline)
+			.toolbarBackground(Color.accentColor, for: .navigationBar)
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarColorScheme(.dark, for: .navigationBar) // 글자색 변경
+			.toolbar(content: {
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Button {
+						Task {
+							noticeVM.userId = try await noticeVM.fetchUserId() // 유저 목록 불러오기
+							//						noticeVM.sendMessageToDevie() // 임시: FCM
+							await noticeVM.addNotice()
+							noticeVM.initData() // Data 초기화
+						}
+					} label: {
+						Text("전송")
+					}
+				} // ToolbarItem
+			})
 		}
-		.background(Color("bgColor"))
-		.scrollContentBackground(.hidden)
-		.navigationBarBackButtonHidden()
-		.navigationBarTitle("전체 공지", displayMode: .inline)
-		.toolbarBackground(Color.accentColor, for: .navigationBar)
-		.toolbarBackground(.visible, for: .navigationBar)
-		.toolbarColorScheme(.dark, for: .navigationBar) // 글자색 변경
-		.toolbar(content: {
-			ToolbarItem(placement: .navigationBarTrailing) {
-				Button {
-					Task {
-						noticeVM.userId = try await noticeVM.fetchUserId() // 유저 목록 불러오기
-//						noticeVM.sendMessageToDevie() // 임시: FCM
-						await noticeVM.addNotice()
-						noticeVM.initData() // Data 초기화
-					}
-				} label: {
-					Text("전송")
-				}
-			} // ToolbarItem
-		})
-    }
+	}
 }
 
 // MARK: - TextFiled에 x 버튼으로 Clear
@@ -100,9 +102,6 @@ struct TextFieldClearButton: ViewModifier {
 
 struct NoticeView_Previews: PreviewProvider {
 	static var previews: some View {
-		NavigationStack {
-			NoticeView()
-				.navigationTitle("전체 알림")
-		}
+		NoticeView()
 	}
 }
