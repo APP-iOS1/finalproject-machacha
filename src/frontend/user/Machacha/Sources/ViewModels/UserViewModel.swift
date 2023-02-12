@@ -224,5 +224,10 @@ class UserViewModel: ObservableObject {
         return false
     }
     
+    //파이어스토어 유저데이터 삭제
+    func removeUser(_ userId: String) {
+        db.collection("User")
+            .document(userId).delete()
+    }
     
 }
