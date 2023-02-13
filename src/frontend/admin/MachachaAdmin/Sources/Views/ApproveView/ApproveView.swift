@@ -12,30 +12,39 @@ struct ApproveView: View {
 	@StateObject var approveVM = ApproveViewModel()
 	
 	var body: some View {
-		List {
-			ForEach(Array(approveVM.approveFoodCarts.enumerated()), id: \.offset) { index, foodCart in
-				FoodCartCellView(approveVM: approveVM, index: index, foodCart: foodCart)
-					.listRowBackground(Color.white.overlay(Rectangle().stroke(Color.black, lineWidth: 0.5)))
-			} // ForEach
-			.onDelete { indexSet in
-				// TODO: delete items
-				Task {
-					indexSet.sorted(by: <).forEach { i in
-						print(i.hashValue)
-//						try await approveVM.removeFoodCart(approveVM.approveFoodCarts[index])
+		NavigationView {
+			List {
+				ForEach(Array(approveVM.approveFoodCarts.enumerated()), id: \.offset) { index, foodCart in
+					FoodCartCellView(approveVM: approveVM, index: index, foodCart: foodCart)
+						.listRowBackground(Color.white.overlay(Rectangle().stroke(Color.black, lineWidth: 0.5)))
+				} // ForEach
+				.onDelete { indexSet in
+					// TODO: delete items
+					Task {
+						indexSet.sorted(by: <).forEach { i in
+							print(i.hashValue)
+							//						try await approveVM.removeFoodCart(approveVM.approveFoodCarts[index])
+						}
+						approveVM.approveFoodCarts.remove(atOffsets: indexSet)
 					}
-					approveVM.approveFoodCarts.remove(atOffsets: indexSet)
 				}
+			} // List
+			.listStyle(.grouped)
+			.background(Color("bgColor"))
+			.scrollContentBackground(.hidden)
+			.navigationBarBackButtonHidden()
+			.navigationBarTitle(Tab.approve.title, displayMode: .inline)
+			.toolbarBackground(Color.accentColor, for: .navigationBar)
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarColorScheme(.dark, for: .navigationBar) // 글자색 변경
+			.onAppear {
+				Task {
+					approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
+				} // Task
 			}
-		} // List
-		.listStyle(.grouped)
-		.onAppear {
-			Task {
+			.refreshable {
 				approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
-			} // Task
-		}
-		.refreshable {
-			approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
+			}
 		}
 	}
 }

@@ -23,6 +23,7 @@ struct TextFieldClearButton: ViewModifier {
 						Image(systemName: "xmark.circle")
 							.foregroundColor(Color(UIColor.opaqueSeparator))
 							.padding(.vertical, 10)
+        
 					}
 				)
 			}

@@ -33,6 +33,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 print("ERROR FCM 등록 토큰 가져오기: \(error.localizedDescription)")
             } else if let token = token {
                 print("FCM 등록 토큰: \(token)")
+                
             }
         }
         
@@ -40,6 +41,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: [authOptions]) { _, error in
             print("Error, Request Notifications Authorization: \(error.debugDescription)")
+            // machacha cloud function subscribe
+            Messaging.messaging().subscribe(toTopic: "notifications")
         }
         application.registerForRemoteNotifications()
         
@@ -105,7 +108,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 @main
 struct MachachaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authVM : AuthViewModel = AuthViewModel()
     @StateObject var profileVM: ProfileViewModel = ProfileViewModel()
+    @StateObject var userVM = UserViewModel.shared
 
     @StateObject var foodCartVM: FoodCartViewModel = FoodCartViewModel()
     @StateObject var reviewVM: ReviewViewModel = ReviewViewModel()
@@ -138,6 +143,8 @@ struct MachachaApp: App {
         WindowGroup {
             if splashIsActive {
                 AuthView()
+                    .environmentObject(authVM)
+                    .environmentObject(userVM)
                     .environmentObject(LocationManager())
                     .environmentObject(foodCartVM)
                     .environmentObject(reviewVM)
@@ -176,6 +183,9 @@ struct MachachaApp: App {
             } else {
                 SplashView()
                     .onAppear {
+//                        if isSignIn {
+//                            authVM.loginState = .authenticated
+//                        }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.splashIsActive = true
                         }

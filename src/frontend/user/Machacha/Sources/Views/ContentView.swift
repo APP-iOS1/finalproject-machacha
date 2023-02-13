@@ -15,42 +15,47 @@ struct ContentView: View {
 	@ObservedObject var tabbarManager = TabBarManager.shared
 
     var body: some View {
-		NavigationStack {
-			ZStack {
+		GeometryReader { geometry in
+			NavigationStack {
 				ZStack {
-					switch tabbarManager.curTabSelection {
-					case .home:
-                        DetailView(selectedStore: FoodCart.getDummy())
-						//HomeView()
-					case .mapSearch:
-						MapSearchView()
-					case .register:
-						EmptyView()
-					case .magazine:
-                        MagazineView()
-					case .profile:
-						ProfileView()
+					ZStack {
+						switch tabbarManager.curTabSelection {
+						case .home:
+							DetailView(selectedStore: FoodCart.getDummy())
+							//HomeView()
+						case .mapSearch:
+							MapSearchView()
+						case .register:
+							EmptyView()
+						case .magazine:
+							MagazineView()
+						case .profile:
+							ProfileView()
+						}
 					}
+					.padding(.bottom, tabbarManager.hight)
+					.overlay {
+						if tabbarManager.showTabBar {
+							CustomTabView()
+						}
+					} // ZStack
 				} // ZStack
-				.padding(.bottom, tabbarManager.bottomPadding)
-				.overlay {
-					if tabbarManager.showTabBar {
-						CustomTabView()
-					}
-				}
-			} // ZStack
-			.edgesIgnoringSafeArea(.bottom)
-			.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
-		} // NavigationStack
-        .task {
-            locationManager.checkIfLocationServicesIsEnabled()
-            mapSearchViewModel.cameraPosition = locationManager.coord
-        }
-        .fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
-            RegisterMapView()
-                .environmentObject(locationManager)
-        }
-    }
+				.edgesIgnoringSafeArea(.bottom)
+				.preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
+			} // NavigationStack
+			.task {
+				locationManager.checkIfLocationServicesIsEnabled()
+				mapSearchViewModel.cameraPosition = locationManager.coord
+			}
+			.fullScreenCover(isPresented: $tabbarManager.isShowingModal) {
+				RegisterMapView()
+					.environmentObject(locationManager)
+			}
+			.onAppear {
+				tabbarManager.safeArea = geometry.safeAreaInsets
+			}
+		}
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -61,5 +66,6 @@ struct ContentView_Previews: PreviewProvider {
 			.environmentObject(ProfileViewModel())
             .environmentObject(MapSearchViewModel())
             .environmentObject(LocationManager())
+			.previewDevice(PreviewDevice(rawValue: DeviceName.iPhone_SE_3rd_generation.rawValue))
     }
 }

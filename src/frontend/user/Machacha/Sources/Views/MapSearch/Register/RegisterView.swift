@@ -155,7 +155,6 @@ struct RegisterView: View {
                     }else{
                         tabbarManager.isShowingModal = false
                         tabbarManager.curTabSelection = tabbarManager.preTabSelection
-                        tabbarManager.barOffset = tabbarManager.offsetList[tabbarManager.preIndex]
                     }
                 } label: {
                     HStack{
@@ -170,7 +169,6 @@ struct RegisterView: View {
                     Button("예",role: .destructive) {
                         tabbarManager.isShowingModal = false
                         tabbarManager.curTabSelection = tabbarManager.preTabSelection
-                        tabbarManager.barOffset = tabbarManager.offsetList[tabbarManager.preIndex]
                     }
                 }, message: {
                     Text("예 버튼을 누르면 현재 작성한 가게 정보가 사라집니다.")

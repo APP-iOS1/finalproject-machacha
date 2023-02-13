@@ -12,7 +12,7 @@ struct FoodCart: Identifiable, Equatable {
     let id: String
     let createdAt: Date    		// 가게가 등록된 시간
     let updatedAt: Date		    // 가게의 정보가 업데이트된 시간
-    let geoPoint: GeoPoint      // 가게의 실제 좌표
+    var geoPoint: GeoPoint      // 가게의 실제 좌표
     let region: String          // 동기준 ex) 명동, 을지로동
     let name: String            // 사용자가 등록할 포장마차의 이름
     let address: String         // 포장마차의 실제 위치

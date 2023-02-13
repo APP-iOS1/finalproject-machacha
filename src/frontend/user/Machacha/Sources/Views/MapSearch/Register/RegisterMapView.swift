@@ -68,7 +68,6 @@ struct RegisterMapView: View {
                     Button {
                         tabbarManager.isShowingModal = false
                         tabbarManager.curTabSelection = tabbarManager.preTabSelection
-                        tabbarManager.barOffset = tabbarManager.offsetList[tabbarManager.preIndex]
                     } label: {
                         HStack{
                             Image(systemName: "chevron.left")

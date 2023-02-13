@@ -11,6 +11,7 @@ struct ProfileEditView: View {
 	//MARK: Property wrapper
 	@Environment(\.presentationMode) var presentation
 	@EnvironmentObject var profileVM: ProfileViewModel
+    @EnvironmentObject var authVM: AuthViewModel
 	@State private var offset: CGFloat = 0
 	@State private var imagePickerVisible: Bool = false
 	@State private var profileImage: UIImage?
@@ -162,6 +163,11 @@ struct ProfileEditView: View {
 						profileVM.isLoading = false
 						profileVM.currentUser = nil
 						self.presentation.wrappedValue.dismiss()
+                        TabBarManager.shared.curTabSelection = .home
+                        
+                        // 로그아웃
+                        authVM.signout()
+                        
 					}
 				}
 			} label: {
