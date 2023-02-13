@@ -150,7 +150,7 @@
 		6AF063CF2994749000BCDC2A /* NanumSquareRoundOTFEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B1297693F900B04A98 /* NanumSquareRoundOTFEB.otf */; };
 		6AF063D02994749000BCDC2A /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587732975A8D300B04A98 /* Pretendard-SemiBold.otf */; };
 		6AF063D12994749000BCDC2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A5873E2975A77300B04A98 /* Preview Assets.xcassets */; };
-		6AF063D22994749000BCDC2A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */; };
+		6AF063D22994749000BCDC2A /* PushConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FAFDD49C2977E8EC008E28AD /* PushConfig.xcconfig */; };
 		6AF063D32994749000BCDC2A /* NanumSquareRoundOTFL.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B3297693FA00B04A98 /* NanumSquareRoundOTFL.otf */; };
 		6AF063D42994749000BCDC2A /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587702975A8D300B04A98 /* Pretendard-Bold.otf */; };
 		6AF063D52994749000BCDC2A /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4A587B4297693FA00B04A98 /* NanumSquareRoundOTFB.otf */; };
@@ -260,6 +260,7 @@
 		FA1F584D29990EBA00A2C663 /* FirstLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F584C29990EBA00A2C663 /* FirstLoginView.swift */; };
 		FA2583942991D1020081AFFA /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2583932991D1020081AFFA /* SoundManager.swift */; };
 		FA2583972991D5580081AFFA /* register_success_bgm.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA2583962991D5580081AFFA /* register_success_bgm.wav */; };
+		FAB963B2299A0C0C007CE35C /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FAB963B1299A0C0C007CE35C /* Config.xcconfig */; };
 		FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */; };
 		FAF3544D298E21560039085F /* RegisterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544C298E21560039085F /* RegisterMapView.swift */; };
 		FAF3544F298E878F0039085F /* ReverseGeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF3544E298E878F0039085F /* ReverseGeocodingService.swift */; };
@@ -278,7 +279,6 @@
 		FAFDD4922977B841008E28AD /* NaverAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */; };
 		FAFDD4952977C680008E28AD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4942977C680008E28AD /* GoogleSignIn */; };
 		FAFDD4972977C680008E28AD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAFDD4962977C680008E28AD /* GoogleSignInSwift */; };
-		FAFDD49D2977E8EC008E28AD /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,13 +414,14 @@
 		FA1F584C29990EBA00A2C663 /* FirstLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginView.swift; sourceTree = "<group>"; };
 		FA2583932991D1020081AFFA /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		FA2583962991D5580081AFFA /* register_success_bgm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = register_success_bgm.wav; sourceTree = "<group>"; };
+		FAB963B1299A0C0C007CE35C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		FAF3544A298B7C7C0039085F /* RegisterNaverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNaverMap.swift; sourceTree = "<group>"; };
 		FAF3544C298E21560039085F /* RegisterMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMapView.swift; sourceTree = "<group>"; };
 		FAF3544E298E878F0039085F /* ReverseGeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingService.swift; sourceTree = "<group>"; };
 		FAF35450298F27880039085F /* ReverseGeocodingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingDTO.swift; sourceTree = "<group>"; };
 		FAFDD48F2977B7B3008E28AD /* KaKaoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAuthViewModel.swift; sourceTree = "<group>"; };
 		FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthViewModel.swift; sourceTree = "<group>"; };
-		FAFDD49C2977E8EC008E28AD /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		FAFDD49C2977E8EC008E28AD /* PushConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = PushConfig.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -544,12 +545,13 @@
 			path = MapFooter;
 			sourceTree = "<group>";
 		};
-		6AF063E8299475D500BCDC2A /* Infos */ = {
+		6AF063E8299475D500BCDC2A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */,
+				FAB963B0299A0BAA007CE35C /* MachachaPush */,
+				FAB963AF299A0B9F007CE35C /* Machacha */,
 			);
-			path = Infos;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		6AFEE4742993E6DA00DDAB13 /* Frameworks */ = {
@@ -591,7 +593,6 @@
 			isa = PBXGroup;
 			children = (
 				C4A587362975A77000B04A98 /* Machacha */,
-				FAFDD49C2977E8EC008E28AD /* Config.xcconfig */,
 				C4A587472975A77300B04A98 /* MachachaTests */,
 				C4A587512975A77300B04A98 /* MachachaUITests */,
 				C4A587352975A77000B04A98 /* Products */,
@@ -613,9 +614,8 @@
 		C4A587362975A77000B04A98 /* Machacha */ = {
 			isa = PBXGroup;
 			children = (
-				6AF063E8299475D500BCDC2A /* Infos */,
+				6AF063E8299475D500BCDC2A /* Settings */,
 				6AFEE4772993E76300DDAB13 /* Machacha.entitlements */,
-				C45923D7299510DF008BDBF7 /* GoogleService-Info.plist */,
 				C4A587862975AA0700B04A98 /* Info.plist */,
 				C4A587372975A77000B04A98 /* MachachaApp.swift */,
 				C4A587612975A8D300B04A98 /* Configuration */,
@@ -918,6 +918,25 @@
 			path = SoundEffects;
 			sourceTree = "<group>";
 		};
+		FAB963AF299A0B9F007CE35C /* Machacha */ = {
+			isa = PBXGroup;
+			children = (
+				C45923D7299510DF008BDBF7 /* GoogleService-Info.plist */,
+				FAB963B1299A0C0C007CE35C /* Config.xcconfig */,
+			);
+			path = Machacha;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		FAB963B0299A0BAA007CE35C /* MachachaPush */ = {
+			isa = PBXGroup;
+			children = (
+				C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */,
+				FAFDD49C2977E8EC008E28AD /* PushConfig.xcconfig */,
+			);
+			path = MachachaPush;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1110,7 +1129,7 @@
 				6AF063CF2994749000BCDC2A /* NanumSquareRoundOTFEB.otf in Resources */,
 				6AF063D02994749000BCDC2A /* Pretendard-SemiBold.otf in Resources */,
 				6AF063D12994749000BCDC2A /* Preview Assets.xcassets in Resources */,
-				6AF063D22994749000BCDC2A /* Config.xcconfig in Resources */,
+				6AF063D22994749000BCDC2A /* PushConfig.xcconfig in Resources */,
 				6AF063D32994749000BCDC2A /* NanumSquareRoundOTFL.otf in Resources */,
 				6AF063D42994749000BCDC2A /* Pretendard-Bold.otf in Resources */,
 				6AF063D52994749000BCDC2A /* NanumSquareRoundOTFB.otf in Resources */,
@@ -1137,7 +1156,6 @@
 				C4A587B5297693FA00B04A98 /* NanumSquareRoundOTFEB.otf in Resources */,
 				C4A587812975A8D300B04A98 /* Pretendard-SemiBold.otf in Resources */,
 				C4A5873F2975A77300B04A98 /* Preview Assets.xcassets in Resources */,
-				FAFDD49D2977E8EC008E28AD /* Config.xcconfig in Resources */,
 				C4A587B7297693FA00B04A98 /* NanumSquareRoundOTFL.otf in Resources */,
 				C4A5877E2975A8D300B04A98 /* Pretendard-Bold.otf in Resources */,
 				C4A587B8297693FA00B04A98 /* NanumSquareRoundOTFB.otf in Resources */,
@@ -1150,6 +1168,7 @@
 				C4A587792975A8D300B04A98 /* Pretendard-Regular.otf in Resources */,
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
 				C4F42030298EACBC00B615C6 /* Localizable.strings in Resources */,
+				FAB963B2299A0C0C007CE35C /* Config.xcconfig in Resources */,
 				C45923D8299510DF008BDBF7 /* GoogleService-Info.plist in Resources */,
 				C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */,
 				C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */,
@@ -1422,7 +1441,7 @@
 /* Begin XCBuildConfiguration section */
 		6AF063E22994749000BCDC2A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
+			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* PushConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1463,7 +1482,7 @@
 		};
 		6AF063E32994749000BCDC2A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
+			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* PushConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1504,7 +1523,6 @@
 		};
 		C4A587562975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1565,7 +1583,6 @@
 		};
 		C4A587572975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1620,7 +1637,7 @@
 		};
 		C4A587592975A77300B04A98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
+			baseConfigurationReference = FAB963B1299A0C0C007CE35C /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1661,7 +1678,7 @@
 		};
 		C4A5875A2975A77300B04A98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAFDD49C2977E8EC008E28AD /* Config.xcconfig */;
+			baseConfigurationReference = FAB963B1299A0C0C007CE35C /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
