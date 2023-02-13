@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A95F56A299AAD2F0063A3ED /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A95F569299AAD2F0063A3ED /* APIConstants.swift */; };
 		C41B56C329994D1500E2A188 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C41B56C229994D1400E2A188 /* GoogleService-Info.plist */; };
 		C41B56C5299951D500E2A188 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56C4299951D500E2A188 /* NoticeViewModel.swift */; };
 		C41B56C82999545800E2A188 /* NoticeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56C72999545800E2A188 /* NoticeRouter.swift */; };
 		C41B56CB299954E100E2A188 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C41B56CA299954E100E2A188 /* Alamofire */; };
-		C41B56CD2999555300E2A188 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56CC2999555300E2A188 /* APIConstants.swift */; };
 		C41B56CF2999667D00E2A188 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56CE2999667D00E2A188 /* Ex+View.swift */; };
 		C41B56D129996CD700E2A188 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56D029996CD700E2A188 /* ReportViewModel.swift */; };
 		C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116429929EFE00BE312A /* MachachaAdminApp.swift */; };
@@ -55,10 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A95F569299AAD2F0063A3ED /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C41B56C229994D1400E2A188 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C41B56C4299951D500E2A188 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		C41B56C72999545800E2A188 /* NoticeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouter.swift; sourceTree = "<group>"; };
-		C41B56CC2999555300E2A188 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C41B56CE2999667D00E2A188 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
 		C41B56D029996CD700E2A188 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		C43B116129929EFE00BE312A /* MachachaAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachachaAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +116,7 @@
 		C41B56C62999543700E2A188 /* Router(Manager) */ = {
 			isa = PBXGroup;
 			children = (
-				C41B56CC2999555300E2A188 /* APIConstants.swift */,
+				6A95F569299AAD2F0063A3ED /* APIConstants.swift */,
 				C41B56C72999545800E2A188 /* NoticeRouter.swift */,
 			);
 			path = "Router(Manager)";
@@ -437,7 +437,6 @@
 				C41B56CF2999667D00E2A188 /* Ex+View.swift in Sources */,
 				C41B56C82999545800E2A188 /* NoticeRouter.swift in Sources */,
 				C48213502993620700CE4CA2 /* ApproveView.swift in Sources */,
-				C41B56CD2999555300E2A188 /* APIConstants.swift in Sources */,
 				C4D2D2FF2993788B0004661B /* UserNotification.swift in Sources */,
 				C41B56C5299951D500E2A188 /* NoticeViewModel.swift in Sources */,
 				C482134C29935ED900CE4CA2 /* ContentView.swift in Sources */,
@@ -446,6 +445,7 @@
 				C4D2D30A299379A90004661B /* ApproveViewModel.swift in Sources */,
 				C4D2D2FD2993787C0004661B /* FoodCart.swift in Sources */,
 				C482135B299362C300CE4CA2 /* NoticeView.swift in Sources */,
+				6A95F56A299AAD2F0063A3ED /* APIConstants.swift in Sources */,
 				C482135D299362F400CE4CA2 /* ReportView.swift in Sources */,
 				C4821359299362AA00CE4CA2 /* MagazineView.swift in Sources */,
 				C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */,
@@ -607,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MachachaAdmin/Preview Content\"";
-				DEVELOPMENT_TEAM = SF6SBNPMLX;
+				DEVELOPMENT_TEAM = CX5D2L45PC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -640,7 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MachachaAdmin/Preview Content\"";
-				DEVELOPMENT_TEAM = SF6SBNPMLX;
+				DEVELOPMENT_TEAM = CX5D2L45PC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
