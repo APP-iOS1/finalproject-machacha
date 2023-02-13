@@ -30,6 +30,9 @@
 		6A159FBD2987604F0002E625 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBC2987604F0002E625 /* MapHeader.swift */; };
 		6A159FBF298767630002E625 /* MapHeaderTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBE298767630002E625 /* MapHeaderTagCell.swift */; };
 		6A15E7D12998DA1B00F0FADA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6A15E7D02998DA1B00F0FADA /* FirebaseAnalytics */; };
+		6A53A313299A005C004C564D /* FirstLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F584C29990EBA00A2C663 /* FirstLoginView.swift */; };
+		6A53A314299A007B004C564D /* DeviceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567A2997923B00E2A188 /* DeviceName.swift */; };
+		6A53A315299A0099004C564D /* Ex+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567C2997952500E2A188 /* Ex+UIDevice.swift */; };
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* LocationManager.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
@@ -1194,6 +1197,7 @@
 				6AF063702994749000BCDC2A /* ProfileViewModel.swift in Sources */,
 				6AF063712994749000BCDC2A /* ProfileFoodCartListView.swift in Sources */,
 				6AF063722994749000BCDC2A /* FaceIDErrorType.swift in Sources */,
+				6A53A315299A0099004C564D /* Ex+UIDevice.swift in Sources */,
 				6AF063732994749000BCDC2A /* MenuView.swift in Sources */,
 				C45923D029950E05008BDBF7 /* EditingReviewView.swift in Sources */,
 				6AF0636C2994749000BCDC2A /* MagazineView.swift in Sources */,
@@ -1217,6 +1221,7 @@
 				6AF063852994749000BCDC2A /* Review.swift in Sources */,
 				6AF063862994749000BCDC2A /* ProfileLanguageView.swift in Sources */,
 				6AF063872994749000BCDC2A /* SnapCarousel.swift in Sources */,
+				6A53A313299A005C004C564D /* FirstLoginView.swift in Sources */,
 				6AF063882994749000BCDC2A /* Ex+String.swift in Sources */,
 				6AF063892994749000BCDC2A /* MCardView.swift in Sources */,
 				6AF0638A2994749000BCDC2A /* KaKaoAuthViewModel.swift in Sources */,
@@ -1226,6 +1231,7 @@
 				6AF0638E2994749000BCDC2A /* ProfileView.swift in Sources */,
 				6AF0638F2994749000BCDC2A /* Ex+View.swift in Sources */,
 				6AF063902994749000BCDC2A /* AddingReviewView.swift in Sources */,
+				6A53A314299A007B004C564D /* DeviceName.swift in Sources */,
 				6AF063912994749000BCDC2A /* NaverMap.swift in Sources */,
 				6AF063922994749000BCDC2A /* FoodCart.swift in Sources */,
 				6AF063932994749000BCDC2A /* MCardDetailView.swift in Sources */,
