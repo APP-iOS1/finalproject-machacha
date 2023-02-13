@@ -163,6 +163,7 @@ struct ProfileEditView: View {
 						profileVM.isLoading = false
 						profileVM.currentUser = nil
 						self.presentation.wrappedValue.dismiss()
+                        TabBarManager.shared.curTabSelection = .home
                         
                         // 로그아웃
                         authVM.signout()
