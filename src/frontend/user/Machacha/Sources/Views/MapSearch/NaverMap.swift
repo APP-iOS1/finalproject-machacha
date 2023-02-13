@@ -38,15 +38,15 @@ struct NaverMap: UIViewRepresentable {
             
             self.markers.append(marker)
         }
-        
-        print("init markers : \(markers.count)")
     }
     
     
     
     // MARK: - Map을 그리고 생성하는 메서드
     func makeUIView(context: Context) -> NMFNaverMapView {  // some 빼줌
-        context.coordinator.getNaverMapView()
+        context.coordinator.userLocation = userCoord
+        return context.coordinator.getNaverMapView()
+
     }
     
     // MARK: - Map이 업데이트 될 때 발생하는 메서드
@@ -60,7 +60,7 @@ struct NaverMap: UIViewRepresentable {
             cameraUpdate.animation = .easeIn
             cameraUpdate.animationDuration = 0.3
             uiView.mapView.moveCamera(cameraUpdate)
-            print("currentindex : \(currentIndex)")
+//            print("currentindex : \(currentIndex)")
             // 이부분에서 Marker가 커지는 작업을 처리해줘야함 -> 마커 생성을 밖에서 해줘야할 거 같음
             for (index, marker) in markers.enumerated() {
                 print("index\(markers[index])")
@@ -95,6 +95,8 @@ struct NaverMap: UIViewRepresentable {
         
         private let mapView = NMFNaverMapView(frame: .zero)
         
+        // 사용자의 현재 위치(locationManager)
+        var userLocation: LatLng?
         
         private let polygonPoints = [
             NMGLatLng(lat: 37.72468, lng: 125.87630),
@@ -132,6 +134,14 @@ struct NaverMap: UIViewRepresentable {
             mapView.mapView.positionMode = .normal
             mapView.mapView.minZoomLevel = 15
             
+            
+            if let userLocation = userLocation {
+                print("🍎🍎🍎🍎 get User Location!!!")
+                let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: userLocation.0, lng: userLocation.1))
+                mapView.mapView.moveCamera(cameraUpdate)
+            }
+            
+
             // 서비스 지역 표시를 위한 폴리곤
             let polygon = NMGPolygon(ring: NMGLineString(points: polygonPoints), interiorRings: [NMGLineString(points: servicePoints)])
             let polygonOverlay = NMFPolygonOverlay(polygon as! NMGPolygon<AnyObject>)
@@ -163,11 +173,21 @@ struct NaverMap: UIViewRepresentable {
         }
         
         deinit {
-            print("🍎🍎Coordinator deinit!")
+            print("🍎🍎🍎🍎Coordinator deinit!")
         }
         
         func getNaverMapView() -> NMFNaverMapView {
             mapView
+        }
+        
+        func getUserLocation() -> LatLng {
+            
+            
+            return (0.0, 0.0)
+        }
+        
+        func makeMarkers() {
+            
         }
     }
     
