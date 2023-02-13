@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -191,9 +191,9 @@
 		C414BC2C29818E5700819D98 /* FaceIDErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */; };
 		C414BC2E2981A4C800819D98 /* FoodCartOfUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */; };
 		C414BC342982682500819D98 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C414BC332982682500819D98 /* Ex+View.swift */; };
-		C41B567F2997CB6300E2A188 /* ProfileAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */; };
 		C41B567B2997923B00E2A188 /* DeviceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567A2997923B00E2A188 /* DeviceName.swift */; };
 		C41B567D2997952500E2A188 /* Ex+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567C2997952500E2A188 /* Ex+UIDevice.swift */; };
+		C41B567F2997CB6300E2A188 /* ProfileAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */; };
 		C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03A2987A11B00F0B620 /* AnimationModifier.swift */; };
 		C433E03F2987A37800F0B620 /* ProfileFoodCartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */; };
 		C433E0432987B2DF00F0B620 /* ProfileFoodCartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */; };
@@ -349,9 +349,9 @@
 		C414BC2B29818E5700819D98 /* FaceIDErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDErrorType.swift; sourceTree = "<group>"; };
 		C414BC2D2981A4C800819D98 /* FoodCartOfUserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartOfUserType.swift; sourceTree = "<group>"; };
 		C414BC332982682500819D98 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
-		C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAppNotificationView.swift; sourceTree = "<group>"; };
 		C41B567A2997923B00E2A188 /* DeviceName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceName.swift; sourceTree = "<group>"; };
 		C41B567C2997952500E2A188 /* Ex+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UIDevice.swift"; sourceTree = "<group>"; };
+		C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAppNotificationView.swift; sourceTree = "<group>"; };
 		C433E03A2987A11B00F0B620 /* AnimationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifier.swift; sourceTree = "<group>"; };
 		C433E03E2987A37800F0B620 /* ProfileFoodCartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartListView.swift; sourceTree = "<group>"; };
 		C433E0422987B2DF00F0B620 /* ProfileFoodCartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFoodCartCellView.swift; sourceTree = "<group>"; };
@@ -1088,7 +1088,7 @@
 				};
 			};
 			buildConfigurationList = C4A5872F2975A77000B04A98 /* Build configuration list for PBXProject "Machacha" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
