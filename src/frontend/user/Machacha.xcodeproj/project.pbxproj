@@ -29,6 +29,7 @@
 		6A0601ED298E603300B1AC0E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EC298E603300B1AC0E /* FirebaseError.swift */; };
 		6A159FBD2987604F0002E625 /* MapHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBC2987604F0002E625 /* MapHeader.swift */; };
 		6A159FBF298767630002E625 /* MapHeaderTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A159FBE298767630002E625 /* MapHeaderTagCell.swift */; };
+		6A15E7D12998DA1B00F0FADA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6A15E7D02998DA1B00F0FADA /* FirebaseAnalytics */; };
 		6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8EBDA329778AB300964C9D /* NMapsMap */; };
 		6A8EBDA629778F1500964C9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA529778F1500964C9D /* LocationManager.swift */; };
 		6A8EBDA82977903700964C9D /* NaverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EBDA72977903700964C9D /* NaverMap.swift */; };
@@ -430,6 +431,7 @@
 				C45923CF29950DEE008BDBF7 /* Kingfisher in Frameworks */,
 				6AF063C02994749000BCDC2A /* Cluster in Frameworks */,
 				6AF063C12994749000BCDC2A /* FirebaseMessaging in Frameworks */,
+				6A15E7D12998DA1B00F0FADA /* FirebaseAnalytics in Frameworks */,
 				6AF063C22994749000BCDC2A /* NaverThirdPartyLogin in Frameworks */,
 				6AF063C32994749000BCDC2A /* FlagKit in Frameworks */,
 				6AF063C42994749000BCDC2A /* Alamofire in Frameworks */,
@@ -944,6 +946,7 @@
 				6AF0635E2994749000BCDC2A /* FlagKit */,
 				6AF063602994749000BCDC2A /* FirebaseMessaging */,
 				C45923CE29950DEE008BDBF7 /* Kingfisher */,
+				6A15E7D02998DA1B00F0FADA /* FirebaseAnalytics */,
 			);
 			productName = Machacha;
 			productReference = 6AF063E42994749000BCDC2A /* Machacha-push.app */;
@@ -1960,6 +1963,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		6A15E7D02998DA1B00F0FADA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		6A8EBDA329778AB300964C9D /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
