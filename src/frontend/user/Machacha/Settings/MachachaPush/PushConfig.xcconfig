@@ -1,0 +1,16 @@
+//
+//  Config.xcconfig
+//  Machacha
+//
+//  Created by MacBook on 2023/01/18.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KAKAO_NATIVE_APP_KEY = 6fe459c79785a83ca978ec8e718fc9de
+GOOGLE_CLIENT_ID = 505679148356-vos21r36u1e7bda6pui505f3v146kefs.apps.googleusercontent.com
+GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.505679148356-vos21r36u1e7bda6pui505f3v146kefs
+NAVER_URL_SCHEME = machacha
+NMF_CLIENT_ID = zvl4jgdvym
+NMF_SECRET_CLIENT = yOxBP59CvSOVeyBM19ecoB8qTwdqCrkS5gi5dDVj
