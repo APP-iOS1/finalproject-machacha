@@ -6,18 +6,16 @@ target 'Machacha' do
   use_frameworks!
 
   # Pods for Machacha
+  pod 'GoogleMLKit/TextRecognition', '3.2.0'
+  pod 'GoogleMLKit/TextRecognitionKorean', '3.2.0'
 
   target 'MachachaTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'GoogleMLKit/TextRecognition', '3.2.0'
-    pod 'GoogleMLKit/TextRecognitionKorean', '3.2.0'
   end
 
   target 'MachachaUITests' do
     # Pods for testing
-    pod 'GoogleMLKit/TextRecognition', '3.2.0'
-    pod 'GoogleMLKit/TextRecognitionKorean', '3.2.0'
   end
 
 end
@@ -27,5 +25,7 @@ target 'Machacha-push' do
   use_frameworks!
 
   # Pods for Machacha-push
+  pod 'GoogleMLKit/TextRecognition', '3.2.0'
+  pod 'GoogleMLKit/TextRecognitionKorean', '3.2.0'
 
 end
