@@ -192,12 +192,12 @@ struct ProfileFoodCartReviewCellView: View {
 								HStack(spacing: 4) {
 									Image(systemName: "star.fill")
 										.foregroundColor(Color("Color3"))
-										.scaleEffect(0.8)
 									
 									Text("\(review.gradeRounded)")
 										.foregroundColor(Color("textColor"))
 										.fixedSize(horizontal: true, vertical: false)
 								}
+								.font(.machachaHeadlineBold)
 								.setSkeletonView(opacity: opacity, shouldShow: isLoading)
 								
 								Text("|")
