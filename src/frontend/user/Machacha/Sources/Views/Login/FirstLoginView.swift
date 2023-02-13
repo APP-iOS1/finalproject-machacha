@@ -29,7 +29,10 @@ struct FirstLoginView: View {
                 .edgesIgnoringSafeArea(.top)
                 .navigationBarBackButtonHidden()
                 .onAppear {
-                    profileImage = profileVM.profileImage
+                    //profileImage = profileVM.profileImage
+                    Task {
+                        profileVM.currentUser = try await profileVM.fetchUser()
+                    }
                 }
         }
         .sheet(isPresented: $imagePickerVisible) {
