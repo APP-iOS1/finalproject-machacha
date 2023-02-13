@@ -68,6 +68,10 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
                         }
                         
                         print("carousel index : \(index)")
+                        
+                        Coordinator.shared.currentIndex = index
+                        
+                        
                     })
                     .onChanged( { value in
                         // updating only index

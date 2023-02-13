@@ -72,13 +72,13 @@ struct MapHeaderTagCell: View {
                     Coordinator.shared.removeMarkers()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
-                    Coordinator.shared.makeMarkers()
+                    Coordinator.shared.setupMarkers()
 //                    Coordinator.shared.mapView
                 } else {
                     Coordinator.shared.removeMarkers()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts.filter{ $0.bestMenu == bestMenu }
-                    Coordinator.shared.makeMarkers()
+                    Coordinator.shared.setupMarkers()
 
                     
                     mapSearchViewModel.sortedBy(by: bestMenu)
@@ -87,9 +87,6 @@ struct MapHeaderTagCell: View {
                     cameraPosition = (mapSearchViewModel.foodCarts[0].geoPoint.latitude, mapSearchViewModel.foodCarts[0].geoPoint.longitude)
                     currentIndex = 0
                 }
-                
-                print("foodCarts \(mapSearchViewModel.foodCarts)")
-                print("\(tag) tag Tapped")
             } label: {
                 HStack {
                     Image(image)

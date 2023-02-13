@@ -80,7 +80,8 @@ struct MapSearchView: View {
             .onAppear {
                 mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                 Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
-	                Coordinator.shared.makeMarkers()
+	                Coordinator.shared.setupMarkers()
+                Coordinator.shared.currentIndex = currentIndex
             }
             
         }
