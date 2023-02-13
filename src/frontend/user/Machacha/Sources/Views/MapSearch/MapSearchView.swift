@@ -26,14 +26,15 @@ struct MapSearchView: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     @State var cameraCoord: LatLng = (37.566249, 126.992227)
-    @State var currentIndex: Int = 0
+//    @State var currentIndex: Int = Coordinator.shared.currentIndex
     @State var isTap: Bool = false
+    @StateObject var coordinator: Coordinator = Coordinator.shared
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
-                    MapHeader(currentIndex: $currentIndex, cameraPosition: $mapSearchViewModel.cameraPosition)
+                    MapHeader(currentIndex: $coordinator.currentIndex, cameraPosition: $mapSearchViewModel.cameraPosition)
                     Spacer()
                     
                     Button {
@@ -56,7 +57,7 @@ struct MapSearchView: View {
                     }
                     
                     
-                    SnapCarousel(index: $currentIndex, foodCarts: mapSearchViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
+                    SnapCarousel(index: $coordinator.currentIndex, foodCarts: mapSearchViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
                             .padding(.vertical, Screen.maxHeight - 460)
@@ -74,14 +75,13 @@ struct MapSearchView: View {
                     
                 }
                 .zIndex(1)
-                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex)
+                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $coordinator.currentIndex)
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
                 mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                 Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
 	                Coordinator.shared.setupMarkers()
-                Coordinator.shared.currentIndex = currentIndex
             }
             
         }

@@ -24,37 +24,7 @@ struct NaverMap: UIViewRepresentable {
     
     // MARK: - Map이 업데이트 될 때 발생하는 메서드
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        
-        //        let point = (round(uiView.mapView.cameraPosition.target.lat*100000)/100000.0,
-        //                     round(uiView.mapView.cameraPosition.target.lng*100000)/100000.0)
-        //        if (round(cameraPosition.0*100000)/100000.0, round(cameraPosition.1*100000)/100000.0) != point {
-        //            let coord = NMGLatLng(lat: cameraPosition.0, lng: cameraPosition.1)
-        //            let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
-        //            cameraUpdate.animation = .easeIn
-        //            cameraUpdate.animationDuration = 0.3
-        //            uiView.mapView.moveCamera(cameraUpdate)
-        //            //            print("currentindex : \(currentIndex)")
-        //            // 이부분에서 Marker가 커지는 작업을 처리해줘야함 -> 마커 생성을 밖에서 해줘야할 거 같음
-        //            for (index, marker) in markers.enumerated() {
-        //                print("index\(markers[index])")
-        //                markers[index].width = currentIndex == index ? CGFloat(70) : CGFloat(35)
-        //                markers[index].height = currentIndex == index ? CGFloat(70) : CGFloat(35)
-        //                //                marker.mapView = uiView.mapView // 필요없을듯
-        //
-        //                marker.touchHandler = { (overlay) -> Bool in
-        //                    //                print("\(foodCart.name) marker touched")
-        //                    self.cameraPosition = (marker.position.lat, marker.position.lng)
-        //
-        //                    print("naverMap Index : \(currentIndex)")
-        //                    currentIndex = index
-        //                    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: cameraPosition.0, lng: cameraPosition.1))
-        //                    uiView.mapView.moveCamera(cameraUpdate)
-        //                    return true
-        //                }
-        //            }
-        //
-        //            print("updateUIView")
-        //        }
+
         if !Coordinator.shared.markers.isEmpty {
             let lat = Coordinator.shared.markers[currentIndex].position.lat
             let lng = Coordinator.shared.markers[currentIndex].position.lng
@@ -76,7 +46,7 @@ struct NaverMap: UIViewRepresentable {
 }
 
 // MARK: - Coordinator
-final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDelegate, CLLocationManagerDelegate {
+final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDelegate, CLLocationManagerDelegate, ObservableObject {
     static let shared = Coordinator()
     
     let mapView = NMFNaverMapView(frame: .zero)
@@ -86,7 +56,7 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
     var userLocation: LatLng?
     
     var locationManager: CLLocationManager?
-    @State var currentIndex = 0
+    @Published var currentIndex = 0
     
     private let polygonPoints = [
         NMGLatLng(lat: 37.72468, lng: 125.87630),
@@ -97,21 +67,36 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
     ]
     
     private let servicePoints = [
-        NMGLatLng(lat: 37.56601, lng: 126.98355),
-        NMGLatLng(lat: 37.56596, lng: 126.98406),
-        NMGLatLng(lat: 37.56513, lng: 126.98450),
-        NMGLatLng(lat: 37.56485, lng: 126.98476),
-        NMGLatLng(lat: 37.56393, lng: 126.98511),
-        NMGLatLng(lat: 37.56403, lng: 126.98599),
-        NMGLatLng(lat: 37.56178, lng: 126.98668),
-        NMGLatLng(lat: 37.56103, lng: 126.98673),
-        NMGLatLng(lat: 37.56071, lng: 126.98341),
-        NMGLatLng(lat: 37.56133, lng: 126.98315),
-        NMGLatLng(lat: 37.56339, lng: 126.98233),
-        NMGLatLng(lat: 37.56351, lng: 126.98218),
-        NMGLatLng(lat: 37.56547, lng: 126.98270),
-        NMGLatLng(lat: 37.56602, lng: 126.98357),
-        NMGLatLng(lat: 37.56601, lng: 126.98355)
+        NMGLatLng(lat: 37.57009, lng: 126.97567),
+        NMGLatLng(lat: 37.56908, lng: 126.97608),
+        NMGLatLng(lat: 37.56850, lng: 126.97699),
+        NMGLatLng(lat: 37.56504, lng: 126.97728),
+        NMGLatLng(lat: 37.56492, lng: 126.97851),
+        NMGLatLng(lat: 37.56601, lng: 126.97929),
+        NMGLatLng(lat: 37.56593, lng: 126.98237),
+        NMGLatLng(lat: 37.56205, lng: 126.98126),
+        NMGLatLng(lat: 37.55781, lng: 126.98317),
+        NMGLatLng(lat: 37.55626, lng: 126.98331),
+        NMGLatLng(lat: 37.55673, lng: 126.98585),
+        NMGLatLng(lat: 37.55797, lng: 126.98708),
+        NMGLatLng(lat: 37.55909, lng: 126.98746),
+        NMGLatLng(lat: 37.56042, lng: 126.98852),
+        NMGLatLng(lat: 37.56100, lng: 126.98773),
+        NMGLatLng(lat: 37.56119, lng: 126.99066),
+        NMGLatLng(lat: 37.56279, lng: 126.99029),
+        NMGLatLng(lat: 37.56266, lng: 126.98900),
+        NMGLatLng(lat: 37.56435, lng: 126.98795),
+        NMGLatLng(lat: 37.56526, lng: 126.98782),
+        NMGLatLng(lat: 37.56536, lng: 126.98886),
+        NMGLatLng(lat: 37.56577, lng: 126.98921),
+        NMGLatLng(lat: 37.56588, lng: 126.98979),
+        NMGLatLng(lat: 37.56679, lng: 126.98970),
+        NMGLatLng(lat: 37.56685, lng: 126.99083),
+        NMGLatLng(lat: 37.56808, lng: 126.99086),
+        NMGLatLng(lat: 37.56874, lng: 126.98275),
+        NMGLatLng(lat: 37.56910, lng: 126.97747),
+        NMGLatLng(lat: 37.57009, lng: 126.97567)
+
     ]
     private override init() {
         super.init()
@@ -121,7 +106,7 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         mapView.mapView.isNightModeEnabled = true
         mapView.showZoomControls = false
         mapView.mapView.positionMode = .normal
-        mapView.mapView.minZoomLevel = 15
+        mapView.mapView.minZoomLevel = 14
         
         if let userLocation = userLocation {
             print("🍎🍎🍎🍎 get User Location!!!")
