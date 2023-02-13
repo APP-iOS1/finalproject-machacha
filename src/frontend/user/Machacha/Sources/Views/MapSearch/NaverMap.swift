@@ -14,77 +14,47 @@ struct NaverMap: UIViewRepresentable {
     
     @Binding var cameraPosition: LatLng
     @Binding var currentIndex: Int
-    @State var foodCarts: [FoodCart]
-    @State var userCoord: LatLng
-    @State private var markers: [NMFMarker] = []
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
-    
-    init(cameraPosition: Binding<LatLng>, currentIndex: Binding<Int>, foodCarts: [FoodCart], userCoord: LatLng) {
-        self._cameraPosition = cameraPosition
-        self._currentIndex = currentIndex
-        self.foodCarts = foodCarts
-        self.userCoord = userCoord
-        
-        for foodCart in foodCarts {
-            let marker = NMFMarker()
-            
-            marker.position = NMGLatLng(lat: foodCart.geoPoint.latitude, lng: foodCart.geoPoint.longitude)
-            
-            let image = NMFOverlayImage(image: UIImage(named: foodCart.markerImage) ?? UIImage(named: "store2")!)
-            marker.iconImage = image
-            
-            marker.width = CGFloat(50)
-            marker.height = CGFloat(50)
-            
-            self.markers.append(marker)
-        }
-    }
-    
-    
     
     // MARK: - Map을 그리고 생성하는 메서드
     func makeUIView(context: Context) -> NMFNaverMapView {  // some 빼줌
-        //        context.coordinator.userLocation = userCoord
-        //        context.coordinator.markers = self.markers
-        return context.coordinator.getNaverMapView()
+        context.coordinator.getNaverMapView()
         
     }
     
     // MARK: - Map이 업데이트 될 때 발생하는 메서드
     func updateUIView(_ uiView: UIViewType, context: Context) {
         
-        let point = (round(uiView.mapView.cameraPosition.target.lat*100000)/100000.0,
-                     round(uiView.mapView.cameraPosition.target.lng*100000)/100000.0)
-        if (round(cameraPosition.0*100000)/100000.0, round(cameraPosition.1*100000)/100000.0) != point {
-            let coord = NMGLatLng(lat: cameraPosition.0, lng: cameraPosition.1)
-            let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
-            cameraUpdate.animation = .easeIn
-            cameraUpdate.animationDuration = 0.3
-            uiView.mapView.moveCamera(cameraUpdate)
-            //            print("currentindex : \(currentIndex)")
-            // 이부분에서 Marker가 커지는 작업을 처리해줘야함 -> 마커 생성을 밖에서 해줘야할 거 같음
-            for (index, marker) in markers.enumerated() {
-                print("index\(markers[index])")
-                markers[index].width = currentIndex == index ? CGFloat(70) : CGFloat(35)
-                markers[index].height = currentIndex == index ? CGFloat(70) : CGFloat(35)
-                //                marker.mapView = uiView.mapView // 필요없을듯
-                
-                marker.touchHandler = { (overlay) -> Bool in
-                    //                print("\(foodCart.name) marker touched")
-                    self.cameraPosition = (marker.position.lat, marker.position.lng)
-                    
-                    print("naverMap Index : \(currentIndex)")
-                    currentIndex = index
-                    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: cameraPosition.0, lng: cameraPosition.1))
-                    uiView.mapView.moveCamera(cameraUpdate)
-                    return true
-                }
-            }
-            
-            print("updateUIView")
-        }
-        
-        
+//        let point = (round(uiView.mapView.cameraPosition.target.lat*100000)/100000.0,
+//                     round(uiView.mapView.cameraPosition.target.lng*100000)/100000.0)
+//        if (round(cameraPosition.0*100000)/100000.0, round(cameraPosition.1*100000)/100000.0) != point {
+//            let coord = NMGLatLng(lat: cameraPosition.0, lng: cameraPosition.1)
+//            let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
+//            cameraUpdate.animation = .easeIn
+//            cameraUpdate.animationDuration = 0.3
+//            uiView.mapView.moveCamera(cameraUpdate)
+//            //            print("currentindex : \(currentIndex)")
+//            // 이부분에서 Marker가 커지는 작업을 처리해줘야함 -> 마커 생성을 밖에서 해줘야할 거 같음
+//            for (index, marker) in markers.enumerated() {
+//                print("index\(markers[index])")
+//                markers[index].width = currentIndex == index ? CGFloat(70) : CGFloat(35)
+//                markers[index].height = currentIndex == index ? CGFloat(70) : CGFloat(35)
+//                //                marker.mapView = uiView.mapView // 필요없을듯
+//
+//                marker.touchHandler = { (overlay) -> Bool in
+//                    //                print("\(foodCart.name) marker touched")
+//                    self.cameraPosition = (marker.position.lat, marker.position.lng)
+//
+//                    print("naverMap Index : \(currentIndex)")
+//                    currentIndex = index
+//                    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: cameraPosition.0, lng: cameraPosition.1))
+//                    uiView.mapView.moveCamera(cameraUpdate)
+//                    return true
+//                }
+//            }
+//
+//            print("updateUIView")
+//        }
     }
     
     func makeCoordinator() -> Coordinator {
@@ -160,24 +130,7 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         
         polygonOverlay?.mapView = mapView.mapView
         polyLineOverlay?.mapView = mapView.mapView
-        
-        
-        
-        print("🍎🍎🍎🍎foodCart \(foodCarts.count)")
-        // 루프 안돔
-        //            for (index, marker) in markers.enumerated() {
-        //                // MARK: - Mark 터치 시 이벤트 발생
-        //                marker.touchHandler = { (overlay) -> Bool in
-        //                    cameraPosition = (marker.position.lat, marker.position.lng)
-        //                    print("geoPoint : \(cameraPosition)")
-        //
-        //                    print("naverMap Index : \(currentIndex)")
-        //                    currentIndex = index
-        //                    return true
-        //                }
-        //                marker.mapView = mapView.mapView
-        //            }
-        
+
         checkIfLocationServicesIsEnabled()
     }
     
@@ -260,6 +213,8 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
             let lng = locationManager.location?.coordinate.longitude
             print("🍎🍎🍎🍎 get User Location!!!")
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0))
+            cameraUpdate.animation = .easeIn
+            cameraUpdate.animationDuration = 0.3
             mapView.mapView.moveCamera(cameraUpdate)
         }
     }
@@ -270,6 +225,8 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
             marker.touchHandler = { (overlay) -> Bool in
                 
                 let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: marker.position.lat, lng: marker.position.lng))
+                cameraUpdate.animation = .easeIn
+                cameraUpdate.animationDuration = 0.3
                 self.mapView.mapView.moveCamera(cameraUpdate)
                 
 //                cameraPosition = (marker.position.lat, marker.position.lng)

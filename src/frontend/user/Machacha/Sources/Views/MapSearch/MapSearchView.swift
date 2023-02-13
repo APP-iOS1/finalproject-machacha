@@ -74,20 +74,13 @@ struct MapSearchView: View {
                     
                 }
                 .zIndex(1)
-                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex, foodCarts: foodCartViewModel.foodCarts, userCoord: locationManager.userLocation)
+                NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $currentIndex)
                     .ignoresSafeArea(.all, edges: .top)
-                    .onChange(of: mapSearchViewModel.zoomLevel) { newValue in
-                        print("zoom Level : \(newValue)")
-                    }
             }
             .onAppear {
                 mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
-                print("onappear")
-                print("\(mapSearchViewModel.foodCarts.count)")
-                Coordinator.shared.foodCarts = foodCartViewModel.foodCarts
-                mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                 Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
-                Coordinator.shared.makeMarkers()
+	                Coordinator.shared.makeMarkers()
             }
             
         }
