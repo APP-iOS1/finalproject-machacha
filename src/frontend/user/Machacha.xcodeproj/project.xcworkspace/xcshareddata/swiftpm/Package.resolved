@@ -147,7 +147,7 @@
     {
       "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/onevcat/Kingfisher",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
         "revision" : "2db469112fbcfd83ff0a96c4546772d283f317f5",
         "version" : "7.6.0"
@@ -205,6 +205,15 @@
       "state" : {
         "revision" : "ab3a58b7209a17d781c0d1dbb3e1ff3da306bae8",
         "version" : "1.20.3"
+      }
+    },
+    {
+      "identity" : "voice-overlay-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/algolia/voice-overlay-ios",
+      "state" : {
+        "revision" : "55a1047be9e0d9e4d4295ef127cc31b3ef7b8b54",
+        "version" : "1.2.0"
       }
     }
   ],

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MapHeader: View {
+    
     @State var isTap = false
     @Binding var currentIndex: Int
     @Binding var cameraPosition: LatLng
@@ -26,13 +27,10 @@ struct MapHeader: View {
                     }
                 }
                 Spacer()
-                // 음성 검색을 위한 Button
-                Button {
-                    print("Voice Search Button Tapped")
-                } label: {
-                    Image(systemName: "mic")
-                        .foregroundColor(.black)
-                }
+//                VoiceView(text: $text, voiceViewModel: voiceViewModel)
+//                    .frame(width: 40, height: 40)
+//                    .padding(.bottom, 10)
+
             }
             .padding()
             .foregroundColor(.gray)
@@ -40,14 +38,14 @@ struct MapHeader: View {
             .cornerRadius(10)
             .shadow(radius: 3)
             .padding([.leading, .trailing, .top], 10)
-            MapHeaderCell()
-                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+//            MapHeaderCell()
+//                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
             SearchView()
         }
     }
-    
+  
     @ViewBuilder
     private func MapHeaderCell() -> some View {
         let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]

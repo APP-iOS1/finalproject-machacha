@@ -37,6 +37,7 @@ struct EditingReviewView: View {
     var review: Review
     @State var text: String
     @State var grade : Double
+    
     var getSelectedPhotsData: [Data] { //Image 값 변환 후 변환 String -> UIImage -> Data
         var result : [Data] = []
         var uiimageTypeImage: [UIImage] = []
