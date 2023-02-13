@@ -571,6 +571,7 @@
 				80FFB9742996943700850436 /* VoiceViewController.swift */,
 			);
 			path = VoiceSearch;
+		};
 		C41B5679299791FA00E2A188 /* ProviewDevice */ = {
 			isa = PBXGroup;
 			children = (
