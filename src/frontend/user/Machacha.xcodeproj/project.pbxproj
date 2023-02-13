@@ -25,7 +25,6 @@
 		1ABCA93C2987FE1100DD97C5 /* ReviewThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA93B2987FE1100DD97C5 /* ReviewThumbnailView.swift */; };
 		1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
 		2B4D8E0A9AB2816A6C1F9082 /* Pods_Machacha_push.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6B5A19772A71CB3968F774 /* Pods_Machacha_push.framework */; };
-		4721EB052AC885B9554FDC8E /* Pods_Machacha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120F6945FA48687F252A7619 /* Pods_Machacha.framework */; };
 		48009C064C963ADA1DB55F04 /* Pods_Machacha_MachachaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00ADAB2008826B4A88B0CA /* Pods_Machacha_MachachaUITests.framework */; };
 		66B2CC997D1CED0D2CAE6156 /* Pods_MachachaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DB1D698C14D95CC82916F0 /* Pods_MachachaTests.framework */; };
 		6A0601E8298DE1AE00B1AC0E /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601E7298DE1AE00B1AC0E /* MapSearchViewModel.swift */; };
@@ -204,6 +203,7 @@
 		C43B1151298F778D00BE312A /* ProfileNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1150298F778D00BE312A /* ProfileNotificationView.swift */; };
 		C43B1153298F7AEE00BE312A /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1152298F7AEE00BE312A /* UserNotification.swift */; };
 		C43B1155298F88E200BE312A /* CustomBoldLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */; };
+		C44E0677299A9CE500D57502 /* Pods_Machacha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C44E0676299A9CE500D57502 /* Pods_Machacha.framework */; };
 		C45923CD29950DB1008BDBF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */; };
 		C45923CF29950DEE008BDBF7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C45923CE29950DEE008BDBF7 /* Kingfisher */; };
 		C45923D029950E05008BDBF7 /* EditingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7CB1852994BA8300FE5720 /* EditingReviewView.swift */; };
@@ -371,6 +371,7 @@
 		C43B1150298F778D00BE312A /* ProfileNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationView.swift; sourceTree = "<group>"; };
 		C43B1152298F7AEE00BE312A /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBoldLabelView.swift; sourceTree = "<group>"; };
+		C44E0676299A9CE500D57502 /* Pods_Machacha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Machacha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C45923D7299510DF008BDBF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
@@ -479,6 +480,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C44E0677299A9CE500D57502 /* Pods_Machacha.framework in Frameworks */,
 				80FFB96E29968DD000850436 /* InstantSearchVoiceOverlay in Frameworks */,
 				6A8EBDA429778AB300964C9D /* NMapsMap in Frameworks */,
 				C4D5C05A297A7E22003CF061 /* FirebaseFirestoreSwift in Frameworks */,
@@ -502,7 +504,6 @@
 				FAFDD4812977B02D008E28AD /* KakaoSDKAuth in Frameworks */,
 				FAFDD48D2977B02D008E28AD /* KakaoSDKUser in Frameworks */,
 				FAFDD4852977B02D008E28AD /* KakaoSDKCommonCore in Frameworks */,
-				4721EB052AC885B9554FDC8E /* Pods_Machacha.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +580,7 @@
 		6AFEE4742993E6DA00DDAB13 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C44E0676299A9CE500D57502 /* Pods_Machacha.framework */,
 				120F6945FA48687F252A7619 /* Pods_Machacha.framework */,
 				8B00ADAB2008826B4A88B0CA /* Pods_Machacha_MachachaUITests.framework */,
 				0C6B5A19772A71CB3968F774 /* Pods_Machacha_push.framework */,
@@ -950,7 +952,6 @@
 				596409590E7F2B0132788E04 /* Pods-MachachaTests.debug.xcconfig */,
 				7E15FB0485E78F4DE96DD427 /* Pods-MachachaTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1148,14 +1149,14 @@
 			);
 			mainGroup = C4A5872B2975A77000B04A98;
 			packageReferences = (
-				6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */,
+				6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */,
 				FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */,
 				FAFDD47A29779202008E28AD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster.git" */,
+				C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */,
 				C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast.git" */,
+				1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				C4F42039298EC1C200B615C6 /* XCRemoteSwiftPackageReference "FlagKit" */,
 				C4D2D3202994F6DA0004661B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				80FFB96C29968DD000850436 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */,
@@ -2056,7 +2057,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast.git" */ = {
+		1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
 			requirement = {
@@ -2064,7 +2065,7 @@
 				kind = branch;
 			};
 		};
-		6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */ = {
+		6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
 			requirement = {
@@ -2072,7 +2073,7 @@
 				kind = branch;
 			};
 		};
-		6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */ = {
+		6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
 			requirement = {
@@ -2112,7 +2113,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster.git" */ = {
+		6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/efremidze/Cluster.git";
 			requirement = {
@@ -2128,7 +2129,7 @@
 				kind = branch;
 			};
 		};
-		6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast.git" */ = {
+		6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
 			requirement = {
@@ -2160,7 +2161,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster.git" */ = {
+		C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/efremidze/Cluster.git";
 			requirement = {
@@ -2221,7 +2222,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		1A439E9029902A68000EF1A2 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast.git" */;
+			package = 1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
 		};
 		6A15E7D02998DA1B00F0FADA /* FirebaseAnalytics */ = {
@@ -2231,12 +2232,12 @@
 		};
 		6A8EBDA329778AB300964C9D /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */;
+			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
 		};
 		6AF063432994749000BCDC2A /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */;
+			package = 6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
 		};
 		6AF063452994749000BCDC2A /* NaverThirdPartyLogin */ = {
@@ -2301,7 +2302,7 @@
 		};
 		6AF063552994749000BCDC2A /* Cluster */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster.git" */;
+			package = 6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster" */;
 			productName = Cluster;
 		};
 		6AF063572994749000BCDC2A /* FirebaseAuth */ = {
@@ -2326,7 +2327,7 @@
 		};
 		6AF0635C2994749000BCDC2A /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast.git" */;
+			package = 6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
 		};
 		6AF0635E2994749000BCDC2A /* FlagKit */ = {
@@ -2366,7 +2367,7 @@
 		};
 		C4D5C051297A73F7003CF061 /* Cluster */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster.git" */;
+			package = C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */;
 			productName = Cluster;
 		};
 		C4D5C055297A7E22003CF061 /* FirebaseAuth */ = {
