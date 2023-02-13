@@ -24,7 +24,7 @@ enum FoodCartOfUserType: Hashable {
 		case .visited:
 			return "가봤어요"
 		case .register:
-			return "등록가게"
+			return "등록한가게"
 		}
 	}
 	

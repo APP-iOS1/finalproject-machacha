@@ -138,7 +138,7 @@ struct ProfileEditView: View {
 					}
 				}
 			} label: {
-				Text("수정")
+				Text("적용")
 			}
 		}
 		.overlay {

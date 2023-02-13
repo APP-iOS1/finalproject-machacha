@@ -122,12 +122,12 @@ class ProfileViewModel: ObservableObject {
 			let id: String = docData["id"] as? String ?? ""
 			let userId: [String] = docData["userId"] as? [String] ?? []
 			let navigationType: String = docData["navigationType"] as? String ?? ""
-			let contentType: String = docData["contentType"] as? String ?? ""
+			let title: String = docData["title"] as? String ?? ""
 			let contents: String = docData["contents"] as? String ?? ""
 			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
 			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
 
-			notification.append(UserNotification(id: id, userId: userId, navigationType: navigationType, contentType: contentType, contents: contents, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
+			notification.append(UserNotification(id: id, userId: userId, navigationType: navigationType, title: title, contents: contents, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
 		}
 		
 		return notification.sorted {$0.createdAt > $1.createdAt}

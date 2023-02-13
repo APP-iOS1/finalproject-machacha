@@ -12,6 +12,8 @@ struct ProfileNotificationView: View {
 	@AppStorage("language") private var language = LocalizationViewModel.shared.language
 	@Environment(\.presentationMode) var presentation
 	@ObservedObject var tabbarManager = TabBarManager.shared
+	@State private var showNoti = false
+	@State private var selectNoti: UserNotification = UserNotification.getDummy()
 
 	//MARK: Property
 	let userNoti: [UserNotification]
@@ -27,7 +29,7 @@ struct ProfileNotificationView: View {
 			LazyVStack {
 				ForEach(periodArr.indices, id: \.self) { i in
 					LazyVStack(spacing: 0) {
-						if getPeriodType(periodArr[i]).count > 0{ // 해당 기간에 없으면 표시 X
+						if getPeriodType(periodArr[i]).count > 0 { // 해당 기간에 없으면 표시 X
 							Rectangle()
 								.foregroundColor(Color("Color3").opacity(0.3))
 								.frame(height: 8)
@@ -90,7 +92,8 @@ extension ProfileNotificationView {
 		Button {
 			switch notification.navigationType {
 			case "all":
-				break
+				self.selectNoti = notification
+				self.showNoti.toggle()
 			case "home":
 				self.presentation.wrappedValue.dismiss() // 이전 화면으로 이동후
 				self.tabbarManager.curTabSelection = .home
@@ -153,12 +156,15 @@ extension ProfileNotificationView {
 			.frame(height: 64)
 			.background(Color("cellColor"))
 		} // Button
+		.navigationDestination(isPresented: $showNoti) {
+			ProfileAppNotificationView(noti: selectNoti)
+		}
 	}
 }
 
 struct ProfileNotificationView_Previews: PreviewProvider {
     static var previews: some View {
-		NavigationView {
+		NavigationStack {
 			ProfileNotificationView(userNoti: UserNotification.getDummyList())
 		}
     }
