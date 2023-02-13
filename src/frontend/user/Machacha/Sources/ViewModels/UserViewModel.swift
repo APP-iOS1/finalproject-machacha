@@ -99,6 +99,7 @@ class UserViewModel: ObservableObject {
             case .success(let isCheck) :
                 DispatchQueue.main.async {
                     print("성공 \(isCheck)")
+                    UserDefaults.standard.set(uid, forKey: "userIdToken")
                     if isCheck {
                         // 파이어스토어에 이미 유저정보가 있는 경우
                         self.db.collection("User").document(uid).getDocument { snapshot,error in
@@ -133,6 +134,7 @@ class UserViewModel: ObservableObject {
                         
                     }else{
                         //파이어스토어에 유저정보가 없는 경우 새로운 유저를 등록함
+                        UserDefaults.standard.set(uid, forKey: "userIdToken")
                         self.addUser(User(id: uid, isFirstLogin: true, email: FirebaseAuth.Auth.auth().currentUser?.email ?? "test", name: "test", profileId: "", favoriteId: [], visitedId: [], updatedAt: Date(), createdAt: Date()))
                         self.userCheck = .firstLogin
                     }

@@ -103,6 +103,7 @@ class AuthViewModel : ObservableObject {
             self.currentUserProfile =  try await fetchUserInfo(authResult.user.uid)
             self.currentUser = authResult.user
             withAnimation(.easeInOut){self.loginState = .authenticated}
+            UserViewModel.shared.requestUserCheck()
         }catch{
             print("appleLogin Fail..!")
         }
