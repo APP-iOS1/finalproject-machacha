@@ -23,6 +23,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        /*정우님
         //파이어베이스 초기화
         FirebaseApp.configure()
         
@@ -45,6 +46,38 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             Messaging.messaging().subscribe(toTopic: "notifications")
         }
         application.registerForRemoteNotifications()
+        
+        return true
+        */
+        
+        // Use Firebase library to configure APIs
+        // 파이어베이스 설정
+        FirebaseApp.configure()
+        
+        // 원격 알림 등록
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: { _, _ in }
+            )
+        } else {
+            let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        
+        // 메세징 델리겟
+        Messaging.messaging().delegate = self
+        
+        
+        // 푸시 포그라운드 설정
+        UNUserNotificationCenter.current().delegate = self
         
         return true
     }
@@ -84,7 +117,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // 푸시메세지가 앱이 켜져 있을 때 나옴
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
-        
+        print("willPresent: userInfo: ", userInfo)
         completionHandler([.banner, .sound, .badge])
     }
     
@@ -179,6 +212,13 @@ struct MachachaApp: App {
                         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
                             // Check if `user` exists; otherwise, do something with `error`
                         }
+                        //자동 로그인
+                        if let userId = UserDefaults.standard.string(forKey: "userIdToken"){
+                            userVM.uid = userId
+                            userVM.requestUserCheck()
+                            authVM.loginState = .authenticated
+                        }
+                        
                     }
             } else {
                 SplashView()

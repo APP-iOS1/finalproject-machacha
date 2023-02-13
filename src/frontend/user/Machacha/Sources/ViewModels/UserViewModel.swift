@@ -134,7 +134,6 @@ class UserViewModel: ObservableObject {
                         
                     }else{
                         //파이어스토어에 유저정보가 없는 경우 새로운 유저를 등록함
-                        UserDefaults.standard.set(uid, forKey: "userIdToken")
                         self.addUser(User(id: uid, isFirstLogin: true, email: FirebaseAuth.Auth.auth().currentUser?.email ?? "test", name: "test", profileId: "", favoriteId: [], visitedId: [], updatedAt: Date(), createdAt: Date()))
                         self.userCheck = .firstLogin
                     }
