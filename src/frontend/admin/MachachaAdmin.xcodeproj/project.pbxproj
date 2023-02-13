@@ -13,6 +13,7 @@
 		C41B56CB299954E100E2A188 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C41B56CA299954E100E2A188 /* Alamofire */; };
 		C41B56CD2999555300E2A188 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56CC2999555300E2A188 /* APIConstants.swift */; };
 		C41B56CF2999667D00E2A188 /* Ex+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56CE2999667D00E2A188 /* Ex+View.swift */; };
+		C41B56D129996CD700E2A188 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56D029996CD700E2A188 /* ReportViewModel.swift */; };
 		C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116429929EFE00BE312A /* MachachaAdminApp.swift */; };
 		C43B116929929F0000BE312A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116829929F0000BE312A /* Assets.xcassets */; };
 		C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116B29929F0000BE312A /* Preview Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		C41B56C72999545800E2A188 /* NoticeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouter.swift; sourceTree = "<group>"; };
 		C41B56CC2999555300E2A188 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C41B56CE2999667D00E2A188 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
+		C41B56D029996CD700E2A188 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		C43B116129929EFE00BE312A /* MachachaAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachachaAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43B116429929EFE00BE312A /* MachachaAdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminApp.swift; sourceTree = "<group>"; };
 		C43B116829929F0000BE312A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				C4D2D309299379A90004661B /* ApproveViewModel.swift */,
 				C41B56C4299951D500E2A188 /* NoticeViewModel.swift */,
+				C41B56D029996CD700E2A188 /* ReportViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C41B56D129996CD700E2A188 /* ReportViewModel.swift in Sources */,
 				C48213572993628C00CE4CA2 /* ProfileView.swift in Sources */,
 				C4D2D30E29937AAB0004661B /* Constants.swift in Sources */,
 				C41B56CF2999667D00E2A188 /* Ex+View.swift in Sources */,

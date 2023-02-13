@@ -74,7 +74,7 @@ class NoticeViewModel: ObservableObject {
 			print("Success")
 		}
 		
-		// 임시: 전체 알림이 성공한다면 한번 결합해보고 싶네요. 제가 원래 쓰는 Network base code 입니다.
+		//		// 임시: 전체 알림이 성공한다면 한번 결합해보고 싶네요. 제가 원래 쓰는 Network base code 입니다.
 		//		AF.request(NoticeRouter.postNotice(deviceToken: deviceToken, title: title, contents: contents))
 		//			.publishDecodable(type: [String].self)
 		//			.value() // 값만 가져오기
