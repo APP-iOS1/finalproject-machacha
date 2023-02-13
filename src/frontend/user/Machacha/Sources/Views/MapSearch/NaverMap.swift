@@ -103,7 +103,7 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
     var userLocation: LatLng?
     
     var locationManager: CLLocationManager?
-
+    
     
     private let polygonPoints = [
         NMGLatLng(lat: 37.72468, lng: 125.87630),
@@ -136,7 +136,7 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         
         mapView.mapView.addCameraDelegate(delegate: self)
         mapView.mapView.touchDelegate = self
-        
+        mapView.mapView.isNightModeEnabled = true
         mapView.showZoomControls = false
         mapView.mapView.positionMode = .normal
         mapView.mapView.minZoomLevel = 15
@@ -193,12 +193,12 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
                     self.locationManager!.delegate = self
                     self.checkLocationAuthorization()
                 }
-
+                
             } else {
                 print("Show an alert letting them know this is off and to go turn i on.")
             }
         }
-
+        
         
     }
     
@@ -244,6 +244,7 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         for marker in markers {
             marker.mapView = mapView.mapView
         }
+        markerTapped()
     }
     
     func removeMarkers() {
@@ -262,4 +263,24 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
             mapView.mapView.moveCamera(cameraUpdate)
         }
     }
+    
+    func markerTapped() {
+        for marker in markers {
+            // MARK: - Mark 터치 시 이벤트 발생
+            marker.touchHandler = { (overlay) -> Bool in
+                
+                let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: marker.position.lat, lng: marker.position.lng))
+                self.mapView.mapView.moveCamera(cameraUpdate)
+                
+//                cameraPosition = (marker.position.lat, marker.position.lng)
+//                print("geoPoint : \(cameraPosition)")
+//
+//                print("naverMap Index : \(currentIndex)")
+//                currentIndex = index
+                return true
+            }
+            marker.mapView = mapView.mapView
+        }
+    }
+    
 }
