@@ -28,13 +28,14 @@ struct MapSearchView: View {
     @State var cameraCoord: LatLng = (37.566249, 126.992227)
 //    @State var currentIndex: Int = Coordinator.shared.currentIndex
     @State var isTap: Bool = false
+    @State var fromToSearchView = false
     @StateObject var coordinator: Coordinator = Coordinator.shared
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
-                    MapHeader(currentIndex: $coordinator.currentIndex, cameraPosition: $mapSearchViewModel.cameraPosition)
+                    MapHeader(currentIndex: $coordinator.currentIndex, cameraPosition: $mapSearchViewModel.cameraPosition, fromSearchView: $fromToSearchView)
                     Spacer()
                     
                     Button {
@@ -79,9 +80,14 @@ struct MapSearchView: View {
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
-                mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
-                Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
-	                Coordinator.shared.setupMarkers()
+                if !fromToSearchView {
+                    mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
+                    Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
+                    Coordinator.shared.setupMarkers()
+                } else {
+                    fromToSearchView.toggle()
+                }
+                print("🍎🍎🍎🍎 Map searchView onappear")
             }
             
         }
