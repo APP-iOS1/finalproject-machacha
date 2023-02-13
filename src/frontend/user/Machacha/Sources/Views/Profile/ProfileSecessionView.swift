@@ -12,6 +12,7 @@ struct ProfileSecessionView: View {
 	@AppStorage("language") private var language = LocalizationViewModel.shared.language
 	@Environment(\.presentationMode) var presentation
 	@EnvironmentObject var profileVM: ProfileViewModel
+    @EnvironmentObject var authVM: AuthViewModel
 	@State private var isCheck = false // 위 내용을 확인했는지?
 	@State private var isAlert = false // 마지막 알림
 
@@ -51,7 +52,8 @@ struct ProfileSecessionView: View {
 				message: Text("그동안 즐거웠어요. 다음에 봐요!".localized(language)),
 				primaryButton: .default(Text("취소".localized(language))) {},
 				secondaryButton: .destructive(Text("확인".localized(language))) {
-					self.presentation.wrappedValue.dismiss() // 임시
+                    //회원탈퇴
+                    authVM.deleteAuth()
 				})
 		}
 	}

@@ -50,5 +50,10 @@
 		<string>NanumSquareRoundOTFR.otf</string>
 		<string>나눔손글씨 느릿느릿체.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

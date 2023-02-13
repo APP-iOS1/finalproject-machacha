@@ -21,14 +21,13 @@ enum LoginState {
 
 struct AuthView : View {
     //@State var loginState : LoginState = .unauthenticated
-    @StateObject var authVM = AuthViewModel()//.shared
-    @StateObject var userVM = UserViewModel.shared
+    @EnvironmentObject var authVM : AuthViewModel//.shared
+    @EnvironmentObject var userVM : UserViewModel
     
     var body: some View {
         switch authVM.loginState {
         case .unauthenticated, .none :
             LoginView()
-                .environmentObject(authVM)
         case .authenticating :
             ProgressView()
         case .authenticated :
@@ -37,13 +36,10 @@ struct AuthView : View {
                 ProgressView()
             case .incorrect :
                 LoginView()
-                    .environmentObject(authVM)
             case .correct :
                 ContentView()
             case .firstLogin :
-                SignUpView()
-                    .environmentObject(authVM)
-                    .environmentObject(userVM)
+                FirstLoginView()
             }
         case .pass:
             ContentView()

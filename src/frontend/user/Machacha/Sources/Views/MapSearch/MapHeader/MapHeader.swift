@@ -10,8 +10,9 @@ import SwiftUI
 struct MapHeader: View {
     
     @State var isTap = false
-    
-    
+    @Binding var currentIndex: Int
+    @Binding var cameraPosition: LatLng
+
     var body: some View {
         VStack {
             HStack {
@@ -44,24 +45,25 @@ struct MapHeader: View {
             SearchView()
         }
     }
-    
-//    @ViewBuilder
-//    private func MapHeaderCell() -> some View {
-//        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
-//        ScrollView(.horizontal, showsIndicators: false) {
-//            HStack {
-//                ForEach(cellList, id: \.self) { item in
-//                    MapHeaderTagCell(image: item)
-//                }
-//            }
-//        }
-//    }
+  
+    @ViewBuilder
+    private func MapHeaderCell() -> some View {
+        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(cellList, id: \.self) { item in
+                    MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: item)
+                }
+            }
+        }
+    }
 }
 
-struct MapHeader_Previews: PreviewProvider {
+struct MapHeaderSearch_Previews: PreviewProvider {
+    @State static var currentIndex = 0
+    @State static var cameraPosition = (0.0, 0.0)
+
     static var previews: some View {
-        MapHeader()
-            
-        
+        MapHeader(currentIndex: $currentIndex, cameraPosition: $cameraPosition)
     }
 }

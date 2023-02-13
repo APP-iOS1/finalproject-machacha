@@ -36,6 +36,8 @@ struct ProfileView: View {
 					profileVM.name = profileVM.currentUser?.name ?? ""
 					profileVM.reviewUser = try await profileVM.fetchReivews()
 					profileVM.notification = try await profileVM.fetchNotification()
+                    
+                    //회원탈퇴시 currentUser 가 nil이 되서 터짐
 					profileVM.profileImage = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
 				} // Task
 			} // ScrollView

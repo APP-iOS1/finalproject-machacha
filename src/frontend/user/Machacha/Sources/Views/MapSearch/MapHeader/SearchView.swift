@@ -14,9 +14,9 @@ struct SearchView: View {
     
     @State var searchResults: [String] = []
     @State var doneTextFieldEdit: Bool = true
-    var trimText: String {
-        searchText.trimmingCharacters(in: .whitespaces)
-    }
+    @EnvironmentObject var foodCartVM: FoodCartViewModel
+    @EnvironmentObject var mapSearchVM: MapSearchViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     @State var text: String = ""
     @ObservedObject var voiceViewModel = VoiceViewModel()
@@ -26,6 +26,7 @@ struct SearchView: View {
         NavigationStack {
             VStack {
                 HStack {
+
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(Color("Color2").opacity(0.8))
                         .padding(.leading, 10)
@@ -51,51 +52,68 @@ struct SearchView: View {
                 }
                 .padding(EdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10))
                 
+
                 //MARK: - 참고용 ) 음성인식이 성공하면 바로 인식된 키워드로 다음화면으로 이동할 수 있는 코드
 //                NavigationLink(destination: Test3(text: $text), isActive: $voiceViewModel.final) { }
                 
-                List(searchResults, id: \.self) { result in
-                    NavigationLink {
-//                        SearchDetailView(name: result)
-                    } label: {
-                        Text(result)
+
+                
+                
+                if searchText.isEmpty {
+                    Text("검색 결과가 없습니다.")
+                    Spacer()
+                } else {
+                    List {
+                        ForEach(foodCartVM.foodCarts.filter{$0.region.trimmingCharacters(in: .whitespaces).hasPrefix(searchText) || (searchText == "")}) { result in
+                            Text(result.region)
+                                .onTapGesture {
+                                    mapSearchVM.foodCarts = [result]
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }
+                        }
                     }
+                    .listStyle(.plain)
                 }
+                
+                // 주소로만 검색 가능
+
             }
+//            .onTapGesture {
+//                hideKeyboard()
+//            }
         }
-//        .onTapGesture {
-//            hideKeyboard()
-//        }
-    }
-    
-    @ViewBuilder
-    private func SearchDetailView(name: String) -> some View {
-        VStack {
-            Text(name)
+        .onAppear {
+            print("count : \(foodCartVM.foodCarts.count)")
         }
     }
+
     
-//    // firestore 실시간 쿼리
-//    func getDatafromFirestore(query: String) {
-//        let db = Firestore.firestore()
-//        db.collection("FoodCart").whereField("name", isEqualTo: query).addSnapshotListener { snapshot, error in
-//            if let error = error {
-//                print("Error getting data \(error.localizedDescription)")
-//                return
-//            }
-//
-//            if let snapshot = snapshot {
-//                self.searchResults = snapshot.documents.map { $0["name"] as! String }
-//            }
-//        }
-//    }
+    
+    //    // firestore 실시간 쿼리
+    //    func getDatafromFirestore(query: String) {
+    //        let db = Firestore.firestore()
+    //        db.collection("FoodCart").whereField("name", isEqualTo: query).addSnapshotListener { snapshot, error in
+    //            if let error = error {
+    //                print("Error getting data \(error.localizedDescription)")
+    //                return
+    //            }
+    //
+    //            if let snapshot = snapshot {
+    //                self.searchResults = snapshot.documents.map { $0["name"] as! String }
+    //            }
+    //        }
+    //    }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
+            .environmentObject(MapSearchViewModel())
+            .environmentObject(FoodCartViewModel())
     }
 }
+
+
 
 //화면 터치시 키보드 숨김
 #if canImport(UIKit)
