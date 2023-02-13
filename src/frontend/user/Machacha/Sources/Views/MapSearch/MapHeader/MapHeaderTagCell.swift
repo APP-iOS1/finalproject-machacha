@@ -69,9 +69,18 @@ struct MapHeaderTagCell: View {
                     bestMenu = 10
                 }
                 if bestMenu == 10 {
+                    Coordinator.shared.removeMarkers()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
+                    Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
+                    Coordinator.shared.makeMarkers()
+//                    Coordinator.shared.mapView
                 } else {
+                    Coordinator.shared.removeMarkers()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
+                    Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts.filter{ $0.bestMenu == bestMenu }
+                    Coordinator.shared.makeMarkers()
+
+                    
                     mapSearchViewModel.sortedBy(by: bestMenu)
                 }
                 if !mapSearchViewModel.foodCarts.isEmpty {

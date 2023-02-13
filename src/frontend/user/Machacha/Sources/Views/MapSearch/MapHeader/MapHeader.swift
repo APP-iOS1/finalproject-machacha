@@ -38,8 +38,8 @@ struct MapHeader: View {
             .cornerRadius(10)
             .shadow(radius: 3)
             .padding([.leading, .trailing, .top], 10)
-//            MapHeaderCell()
-//                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+            MapHeaderCell()
+                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
             SearchView()

@@ -38,7 +38,8 @@ struct MapSearchView: View {
                     
                     Button {
                         print("현재 위치 조회")
-                        mapSearchViewModel.cameraPosition = mapSearchViewModel.userLocation
+                        Coordinator.shared.userLocation = mapSearchViewModel.userLocation
+                        Coordinator.shared.fetchUserLocation()
                     } label: {
                         HStack {
                             Spacer()
@@ -83,6 +84,10 @@ struct MapSearchView: View {
                 mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                 print("onappear")
                 print("\(mapSearchViewModel.foodCarts.count)")
+                Coordinator.shared.foodCarts = foodCartViewModel.foodCarts
+                mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
+                Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
+                Coordinator.shared.makeMarkers()
             }
             
         }
