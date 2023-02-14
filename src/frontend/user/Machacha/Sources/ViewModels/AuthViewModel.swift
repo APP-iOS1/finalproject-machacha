@@ -67,6 +67,7 @@ class AuthViewModel : ObservableObject {
             withAnimation(.easeInOut){self.loginState = .unauthenticated}
             self.currentUserProfile = nil
             currentUser = nil
+            UserDefaults.standard.removeObject(forKey: "userIdToken")
             
         }catch{
             print("실패")
@@ -288,6 +289,7 @@ class AuthViewModel : ObservableObject {
             } else {
                 // Account deleted.
                 self.userVM.removeUser(user.uid)
+                UserDefaults.standard.removeObject(forKey: "userIdToken")
                 withAnimation(.easeInOut){self.loginState = .unauthenticated}
             }
         }
