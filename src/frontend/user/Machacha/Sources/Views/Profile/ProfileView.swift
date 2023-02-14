@@ -27,6 +27,10 @@ struct ProfileView: View {
 				SettingSection() // Setting Section
 				
 				WebViewSection() // WebView Section
+				
+				Text("MACHACHA V1.0")
+					.font(.machachaCaption)
+					.foregroundColor(.secondary)
 			}
 			.background(Color("bgColor"))
 			.onAppear {
@@ -303,7 +307,7 @@ extension ProfileView {
 			.overlay(RoundedRectangle(cornerRadius: 8)
 				.stroke(Color("textCoor"), lineWidth: 0.1))
 		} header: {
-			SectionHeaderView(name: "Machacha 정보")
+			SectionHeaderView(name: "MACHACHA 정보")
 		} // Section
 		.padding(.horizontal, 10)
 		.sheet(item: $showSafari) {
