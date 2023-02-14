@@ -80,6 +80,27 @@ struct ProfileFoodCartListView: View {
 				profileVM.isLoading = false
 			} // Task
 		} // ScrollView
+		.overlay {
+			VStack {
+				if foodCartOfUserType == .review {
+					if profileVM.reviewUser.isEmpty {
+						Image("bbungbread2")
+							.resizable()
+							.scaledToFit()
+							.frame(width: Screen.maxWidth / 2)
+						Text("작성한 리뷰가 없어요")
+					}
+				} else {
+					if profileVM.foodCartUser.isEmpty {
+						Image("tteokboki2")
+							.resizable()
+							.scaledToFit()
+							.frame(width: Screen.maxWidth / 2)
+						Text("\(foodCartOfUserType.display)가 없어요")
+					}
+				}
+			}
+		}
 	}
 }
 
