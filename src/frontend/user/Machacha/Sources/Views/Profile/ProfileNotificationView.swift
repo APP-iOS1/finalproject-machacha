@@ -11,6 +11,7 @@ struct ProfileNotificationView: View {
 	//MARK: Property Wrapper
 	@AppStorage("language") private var language = LocalizationViewModel.shared.language
 	@Environment(\.presentationMode) var presentation
+	@EnvironmentObject var profileVM: ProfileViewModel
 	@ObservedObject var tabbarManager = TabBarManager.shared
 	@State private var showNoti = false
 	@State private var selectNoti: UserNotification = UserNotification.getDummy()
@@ -69,6 +70,11 @@ struct ProfileNotificationView: View {
 					Image(systemName: "chevron.left")
 				}
 			} // ToolbarItem
+		})
+		.refreshable(action: {
+			Task {
+				profileVM.notification = try await profileVM.fetchNotification()
+			}
 		})
 		.overlay {
 			VStack {
@@ -177,6 +183,7 @@ struct ProfileNotificationView_Previews: PreviewProvider {
     static var previews: some View {
 		NavigationStack {
 			ProfileNotificationView(userNoti: UserNotification.getDummyList())
+				.environmentObject(ProfileViewModel())
 		}
     }
 }
