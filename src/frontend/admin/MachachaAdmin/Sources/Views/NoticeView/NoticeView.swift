@@ -53,6 +53,9 @@ struct NoticeView: View {
 					}
 				}
 			}
+            .onTapGesture {
+                
+            }
 			.background(Color("bgColor"))
 			.scrollContentBackground(.hidden)
 			.navigationBarBackButtonHidden()
@@ -63,12 +66,14 @@ struct NoticeView: View {
 			.toolbar(content: {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					Button {
-						Task {
-							noticeVM.userId = try await noticeVM.fetchUserId() // 유저 목록 불러오기
-							//						noticeVM.sendMessageToDevie() // 임시: FCM
-							await noticeVM.addNotice()
-							noticeVM.initData() // Data 초기화
-						}
+                        Task {
+                            noticeVM.userId = try await noticeVM.fetchUserId() // 유저 목록 불러오기
+                            noticeVM.sendMessageToDevice() // 임시: FCM
+                            await noticeVM.addNotice()
+                            noticeVM.initData() // Data 초기화
+                            
+                        }
+
 					} label: {
 						Text("전송")
 					}

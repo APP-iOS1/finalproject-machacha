@@ -53,6 +53,7 @@ enum NoticeRouter: URLRequestConvertible {
 			notificationParams["body"] = contents
 			
 			params["notification"] = notificationParams
+            params["data"] = ["user_name": "jungwoo"]
 		}
 		
 		return params
