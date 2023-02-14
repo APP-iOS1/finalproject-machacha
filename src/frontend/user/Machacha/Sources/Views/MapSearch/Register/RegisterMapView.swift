@@ -59,22 +59,25 @@ struct RegisterMapView: View {
                     }
                 }
             }
-            .navigationTitle("가게 등록")
+            .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color("bgColor"), for: .navigationBar)
+            .toolbarBackground(Color("Color3"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbar(content: {
+                ToolbarItem(placement: .principal) {
+                        Text("가게 등록")
+                        .foregroundColor(Color("bgColor"))
+                        .font(.machachaHeadlineBold)
+                            .accessibilityAddTraits(.isHeader)
+                    }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         tabbarManager.isShowingModal = false
                         tabbarManager.curTabSelection = tabbarManager.preTabSelection
                     } label: {
-                        HStack{
                             Image(systemName: "chevron.left")
-                                .fontWeight(.bold)
-                            Text("뒤로")
-                                .font(.machachaHeadlineBold)
-                        }
+                            .font(.headline)
+                            .foregroundColor(Color("bgColor"))
                     }
                 } // ToolbarItem
             })
