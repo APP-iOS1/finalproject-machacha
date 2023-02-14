@@ -17,54 +17,16 @@ class FoodCartViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var isShowingReportSheet = false
     @Published var isShowingReviewSheet = false
+    
+    @Published var foodCarts1: [FoodCart] = []
+    @Published var foodCarts2: [FoodCart] = []
+    @Published var foodCarts3: [FoodCart] = []
+    
 
     let database = Firestore.firestore()
     let storage = Storage.storage()
     
-    // MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
-//    func fetchFoodCarts() {
-//        database.collection("FoodCart")
-//            .getDocuments { (snapshot, error) in
-//                self.foodCarts.removeAll()
-//                self.imageDict.removeAll()
-//
-//                if let snapshot {
-//                    for document in snapshot.documents {
-//                        let id: String = document.documentID
-//
-//                        let docData = document.data()
-//                        let name: String = docData["name"] as? String ?? ""
-//                        let region: String = docData["region"] as? String ?? ""
-//                        let address: String = docData["address"] as? String ?? ""
-//                        let geoPoint: GeoPoint = docData["geoPoint"] as! GeoPoint
-//                        let imageId: [String] = docData["imageId"] as? [String] ?? []
-//                        let grade: Double = docData["grade"] as? Double ?? 0
-//                        let visitedCnt: Int = docData["visitedCnt"] as? Int ?? 0
-//                        let favoriteCnt: Int = docData["favoriteCnt"] as? Int ?? 0
-//                        let reportCnt: Int = docData["reportCnt"] as? Int ?? 0
-//                        let menu: [String: Int] = docData["menu"] as? [String: Int] ?? [:]
-//                        let bestMenu: Int = docData["bestMenu"] as? Int ?? 0
-//                        let paymentOpt: [Bool] = docData["paymentOpt"] as? [Bool] ?? []
-//                        let openingDays: [Bool] = docData["openingDays"] as? [Bool] ?? []
-//                        let reviewId: [String] = docData["reviewId"] as? [String] ?? []
-//                        let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
-//                        let createdAt: Timestamp = docData["createdAt"] as! Timestamp
-//
-//
-//
-//                        // fetch image set
-//                        for imageName in imageId {
-//                            self.fetchImage(foodCartId: id, imageName: imageName)
-//                        }
-//
-//                        let foodCart: FoodCart = FoodCart(id: id, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), geoPoint: geoPoint, region: region, name: name, address: address, visitedCnt: visitedCnt, favoriteCnt: favoriteCnt, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: imageId, grade: grade, reportCnt: reportCnt, reviewId: reviewId)
-//
-//                        self.foodCarts.append(foodCart)
-//                    }
-//                }
-//            }
-//    }
-    
+  
     
     // MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
     @MainActor
@@ -111,6 +73,9 @@ class FoodCartViewModel: ObservableObject {
         } catch {
             print("fetchFoodCarts error: \(error.localizedDescription)")
         }
+        foodCarts1 = Array(foodCarts[0...4])
+        foodCarts2 = Array(foodCarts[5...9])
+        foodCarts3 = Array(foodCarts[10...14])
     }
 	
 	// MARK: - 서버에서 FoodCart Collection의 데이터들을 불러오는 Method
