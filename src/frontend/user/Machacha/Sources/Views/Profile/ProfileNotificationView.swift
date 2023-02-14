@@ -70,6 +70,17 @@ struct ProfileNotificationView: View {
 				}
 			} // ToolbarItem
 		})
+		.overlay {
+			VStack {
+				if userNoti.isEmpty {
+					Image("mainIcon")
+						.resizable()
+						.scaledToFit()
+						.frame(width: Screen.maxWidth / 2)
+					Text("받은 알림이 없어요")
+				}
+			}
+		}
     }
 	
 	func getPeriodType(_ periodType: String) -> [UserNotification] {
