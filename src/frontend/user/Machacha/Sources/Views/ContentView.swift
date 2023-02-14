@@ -20,8 +20,8 @@ struct ContentView: View {
 				ZStack {
 					switch tabbarManager.curTabSelection {
 					case .home:
-                        DetailView(selectedStore: FoodCart.getDummy())
-						//HomeView()
+						HomeView()
+//                        DetailView(selectedStore: FoodCart.getDummy())
 					case .mapSearch:
 						MapSearchView()
 					case .register:

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A086F0729927A2300B486C0 /* AddingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A086F0629927A2300B486C0 /* AddingReviewView.swift */; };
+		1A0A7F73299AA09E00F00E58 /* FoodCartListVieww.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A7F72299AA09E00F00E58 /* FoodCartListVieww.swift */; };
 		1A30E15A2988D1910068C025 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E1592988D1910068C025 /* ReviewViewModel.swift */; };
 		1A30E15E2988D3850068C025 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E15D2988D3850068C025 /* ReviewView.swift */; };
 		1A30E1602988D3BC0068C025 /* ReviewListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30E15F2988D3BC0068C025 /* ReviewListCellView.swift */; };
@@ -24,6 +25,8 @@
 		1ABCA93A2987BE3400DD97C5 /* FoodCartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA9392987BE3400DD97C5 /* FoodCartMenuView.swift */; };
 		1ABCA93C2987FE1100DD97C5 /* ReviewThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABCA93B2987FE1100DD97C5 /* ReviewThumbnailView.swift */; };
 		1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
+		1AE18BE5299A054E00095FB4 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE18BE4299A054D00095FB4 /* Report.swift */; };
+		1AE18BE7299A860100095FB4 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE18BE6299A860100095FB4 /* ReportViewModel.swift */; };
 		6A0601E8298DE1AE00B1AC0E /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601E7298DE1AE00B1AC0E /* MapSearchViewModel.swift */; };
 		6A0601EB298E5E5200B1AC0E /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EA298E5E5200B1AC0E /* FirebaseService.swift */; };
 		6A0601ED298E603300B1AC0E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EC298E603300B1AC0E /* FirebaseError.swift */; };
@@ -289,6 +292,7 @@
 
 /* Begin PBXFileReference section */
 		1A086F0629927A2300B486C0 /* AddingReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingReviewView.swift; sourceTree = "<group>"; };
+		1A0A7F72299AA09E00F00E58 /* FoodCartListVieww.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartListVieww.swift; sourceTree = "<group>"; };
 		1A30E1592988D1910068C025 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		1A30E15D2988D3850068C025 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		1A30E15F2988D3BC0068C025 /* ReviewListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListCellView.swift; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 		1ABCA9392987BE3400DD97C5 /* FoodCartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartMenuView.swift; sourceTree = "<group>"; };
 		1ABCA93B2987FE1100DD97C5 /* ReviewThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewThumbnailView.swift; sourceTree = "<group>"; };
 		1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 느릿느릿체.ttf"; sourceTree = "<group>"; };
+		1AE18BE4299A054D00095FB4 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		1AE18BE6299A860100095FB4 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		6A0601E7298DE1AE00B1AC0E /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		6A0601EA298E5E5200B1AC0E /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		6A0601EC298E603300B1AC0E /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
@@ -727,6 +733,7 @@
 			isa = PBXGroup;
 			children = (
 				6A8EBDA92977A81B00964C9D /* FoodCart.swift */,
+				1AE18BE4299A054D00095FB4 /* Report.swift */,
 				C4D5C05F297A7F4A003CF061 /* Magazine.swift */,
 				C4D5C05D297A7EBE003CF061 /* Review.swift */,
 				C4A5878C29768C4E00B04A98 /* User.swift */,
@@ -748,6 +755,7 @@
 				6A8EBDA529778F1500964C9D /* LocationManager.swift */,
 				FAFDD4912977B841008E28AD /* NaverAuthViewModel.swift */,
 				C414BC1F298101B200819D98 /* ProfileViewModel.swift */,
+				1AE18BE6299A860100095FB4 /* ReportViewModel.swift */,
 				1A30E1592988D1910068C025 /* ReviewViewModel.swift */,
 				FA0B449C2987A504005DB8AF /* UserViewModel.swift */,
 			);
@@ -838,6 +846,7 @@
 		C4A5879829768CFA00B04A98 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1A0A7F72299AA09E00F00E58 /* FoodCartListVieww.swift */,
 				C4A587A029768D5B00B04A98 /* HomeView.swift */,
 			);
 			path = Home;
@@ -1248,6 +1257,7 @@
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				C43B1155298F88E200BE312A /* CustomBoldLabelView.swift in Sources */,
 				FAF3544B298B7C7C0039085F /* RegisterNaverMap.swift in Sources */,
+				1A0A7F73299AA09E00F00E58 /* FoodCartListVieww.swift in Sources */,
 				C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */,
 				6A0601EB298E5E5200B1AC0E /* FirebaseService.swift in Sources */,
 				6AF063F529948FAD00BCDC2A /* SearchView.swift in Sources */,
@@ -1284,6 +1294,7 @@
 				C4F4202C298EABE000B615C6 /* ProfileLanguageView.swift in Sources */,
 				6A9792782988090B00459A45 /* SnapCarousel.swift in Sources */,
 				C4A587762975A8D300B04A98 /* Ex+String.swift in Sources */,
+				1AE18BE5299A054E00095FB4 /* Report.swift in Sources */,
 				80D9E768298B8AEF00C65CBF /* MCardView.swift in Sources */,
 				FAFDD4902977B7B3008E28AD /* KaKaoAuthViewModel.swift in Sources */,
 				80D9E76E298CD8D000C65CBF /* MCardMapView.swift in Sources */,
@@ -1299,6 +1310,7 @@
 				C433E03B2987A11B00F0B620 /* AnimationModifier.swift in Sources */,
 				C4A587A529768DE300B04A98 /* MapSearchView.swift in Sources */,
 				FA0B44A12988F489005DB8AF /* AuthView.swift in Sources */,
+				1AE18BE7299A860100095FB4 /* ReportViewModel.swift in Sources */,
 				C414BC24298106FC00819D98 /* WebInfoType.swift in Sources */,
 				C43B1153298F7AEE00BE312A /* UserNotification.swift in Sources */,
 				C4A587A129768D5B00B04A98 /* HomeView.swift in Sources */,
