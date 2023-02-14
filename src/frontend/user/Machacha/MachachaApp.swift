@@ -184,7 +184,6 @@ struct MachachaApp: App {
                     .environmentObject(mapSearchVM)
                     .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
                     .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
-                
                     .onOpenURL { url in
                         //네이버
                         if NaverThirdPartyLoginConnection
@@ -218,7 +217,6 @@ struct MachachaApp: App {
                             userVM.requestUserCheck()
                             authVM.loginState = .authenticated
                         }
-                        
                     }
             } else {
                 SplashView()

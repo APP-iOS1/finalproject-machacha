@@ -17,7 +17,7 @@ struct RegisterView: View {
 	@ObservedObject var naverAPIVM : NaverAPIViewModel = NaverAPIViewModel()
 	
 	// OCR
-	@StateObject var ocrVM: OCRViewModel = OCRViewModel()
+//	@StateObject var ocrVM: OCRViewModel = OCRViewModel()
 	@State private var imagePickerVisible: Bool = false
 	
 	// 위치 수정시 유지될 정보들
@@ -184,10 +184,10 @@ struct RegisterView: View {
 			naverAPIVM.fetchReverseGeocode(latitude: cameraCoord.0, longitude: cameraCoord.1)
 		}
 		.sheet(isPresented: $imagePickerVisible) {
-			MyUIImagePicker(imagePickerVisible: $imagePickerVisible, selectedImage: $ocrVM.uiImage)
-				.onDisappear {
-					ocrVM.reconizeTextKorean() // ocr
-				}
+//			MyUIImagePicker(imagePickerVisible: $imagePickerVisible, selectedImage: $ocrVM.uiImage)
+//				.onDisappear {
+//					ocrVM.reconizeTextKorean() // ocr
+//				}
 		}
 	}
 	
@@ -388,55 +388,55 @@ extension RegisterView {
 			}
 			
 			// 가격 collection
-			ZStack {
-				ScrollView(.horizontal, showsIndicators: false) {
-					LazyHStack {
-						ForEach(ocrVM.menu.sorted(by: <), id: \.self) { menu in
-							Button {
-								menuName = menu
-							} label: {
-								Text(menu)
-									.font(.machachaHeadline)
-									.padding(6)
-									.overlay {
-										RoundedRectangle(cornerRadius: 14)
-											.opacity(0.1)
-									}
-									.foregroundColor(Color("Color3"))
-							}
-						} // ForEach
-						
-						
-						if !ocrVM.menu.isEmpty && !ocrVM.price.isEmpty {
-							Divider()
-						}
-						
-						ForEach(ocrVM.price.sorted(by: <), id: \.self) { price in
-							Button {
-								menuPrice = price
-							} label: {
-								Text(price)
-									.font(.machachaHeadline)
-									.padding(6)
-									.overlay {
-										RoundedRectangle(cornerRadius: 14)
-											.opacity(0.1)
-									}
-									.foregroundColor(Color("Color3"))
-							}
-						} // ForEach
-					} // LazyHStack
-				} // ScrollView
-				if ocrVM.isLoding {
-					Text("")
-						.padding(6)
-						.overlay {
-							ProgressView()
-//								.scaleEffect(3)
-								.tint(Color("Color3"))
-						}
-				}
-			}
+//			ZStack {
+//				ScrollView(.horizontal, showsIndicators: false) {
+//					LazyHStack {
+//						ForEach(ocrVM.menu.sorted(by: <), id: \.self) { menu in
+//							Button {
+//								menuName = menu
+//							} label: {
+//								Text(menu)
+//									.font(.machachaHeadline)
+//									.padding(6)
+//									.overlay {
+//										RoundedRectangle(cornerRadius: 14)
+//											.opacity(0.1)
+//									}
+//									.foregroundColor(Color("Color3"))
+//							}
+//						} // ForEach
+//						
+//						
+//						if !ocrVM.menu.isEmpty && !ocrVM.price.isEmpty {
+//							Divider()
+//						}
+//						
+//						ForEach(ocrVM.price.sorted(by: <), id: \.self) { price in
+//							Button {
+//								menuPrice = price
+//							} label: {
+//								Text(price)
+//									.font(.machachaHeadline)
+//									.padding(6)
+//									.overlay {
+//										RoundedRectangle(cornerRadius: 14)
+//											.opacity(0.1)
+//									}
+//									.foregroundColor(Color("Color3"))
+//							}
+//						} // ForEach
+//					} // LazyHStack
+//				} // ScrollView
+//				if ocrVM.isLoding {
+//					Text("")
+//						.padding(6)
+//						.overlay {
+//							ProgressView()
+////								.scaleEffect(3)
+//								.tint(Color("Color3"))
+//						}
+//				}
+//			}
 			//메뉴 입력
 			HStack{
 				TextField("메뉴이름", text: $menuName)
