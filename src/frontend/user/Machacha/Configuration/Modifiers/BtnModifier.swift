@@ -21,8 +21,10 @@ struct TextFieldClearButton: ViewModifier {
 					action: { self.text = "" },
 					label: {
 						Image(systemName: "xmark.circle")
-							.foregroundColor(Color(UIColor.opaqueSeparator))
+							.foregroundColor(Color("searchText"))
 							.padding(.vertical, 10)
+                            .padding(.leading, 10)
+                            
         
 					}
 				)
