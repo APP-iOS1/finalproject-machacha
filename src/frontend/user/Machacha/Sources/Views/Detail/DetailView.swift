@@ -28,7 +28,7 @@ struct DetailView: View {
                 ScrollView (.horizontal, showsIndicators: false) {
                     HStack(alignment: .top) {
                         if foodCartViewModel.imageDict.count > 0 {
-                                ForEach(0..<4, id: \.self) { index in
+                            ForEach(0..<selectedStore.imageId.count, id: \.self) { index in
                                     if let image = foodCartViewModel.imageDict[selectedStore.imageId[index]] {
                                         Image(uiImage: image)
                                             .resizable()
