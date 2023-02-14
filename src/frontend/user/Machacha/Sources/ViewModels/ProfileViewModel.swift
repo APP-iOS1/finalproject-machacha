@@ -10,7 +10,6 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseStorage
 
-
 class ProfileViewModel: ObservableObject {
 	//MARK: Property wrapper
 	@Published var currentUser: User?
@@ -64,7 +63,11 @@ class ProfileViewModel: ObservableObject {
 		var user: User // 비동기 통신으로 받아올 Property
 		
 		let userSnapshot = try await database.collection("User").document(userId).getDocument() // 첫번째 비동기 통신
-		let docData = userSnapshot.data()!
+        
+        guard let docData = userSnapshot.data() else {
+            print("fetchUser 데이터없음")
+            return nil
+        }
 		
 		let id: String = docData["id"] as? String ?? ""
 		let isFirstLogin: Bool = docData["isFirstLogin"] as? Bool ?? false
@@ -119,12 +122,12 @@ class ProfileViewModel: ObservableObject {
 			let id: String = docData["id"] as? String ?? ""
 			let userId: [String] = docData["userId"] as? [String] ?? []
 			let navigationType: String = docData["navigationType"] as? String ?? ""
-			let contentType: String = docData["contentType"] as? String ?? ""
+			let title: String = docData["title"] as? String ?? ""
 			let contents: String = docData["contents"] as? String ?? ""
 			let updatedAt: Timestamp = docData["updatedAt"] as! Timestamp
 			let createdAt: Timestamp = docData["createdAt"] as! Timestamp
 
-			notification.append(UserNotification(id: id, userId: userId, navigationType: navigationType, contentType: contentType, contents: contents, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
+			notification.append(UserNotification(id: id, userId: userId, navigationType: navigationType, title: title, contents: contents, updatedAt: updatedAt.dateValue(), createdAt: createdAt.dateValue()))
 		}
 		
 		return notification.sorted {$0.createdAt > $1.createdAt}
@@ -246,7 +249,11 @@ class ProfileViewModel: ObservableObject {
 	//MARK: - Update
 	// User Data
 	func updateUser(uiImage: UIImage, name: String) async -> Bool {
-		guard let currentUser = currentUser else { return false }
+        
+		guard let currentUser = currentUser else {
+            print("실패 : currentUser 없음")
+            return false
+        }
 		do {
 			let imgName = UUID().uuidString //imgName: 이미지마다 id를 만들어줌
 			
@@ -255,7 +262,7 @@ class ProfileViewModel: ObservableObject {
 			try await database.collection("User")
 				.document(currentUser.id)
 				.setData(["id": currentUser.id,
-						  "isFirstLogin": currentUser.isFirstLogin,
+						  "isFirstLogin": false,
 						  "email": currentUser.email,
 						  "name": name,
 						  "profileId": imgName,

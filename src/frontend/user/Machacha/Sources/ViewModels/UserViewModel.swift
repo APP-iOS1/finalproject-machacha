@@ -99,6 +99,7 @@ class UserViewModel: ObservableObject {
             case .success(let isCheck) :
                 DispatchQueue.main.async {
                     print("성공 \(isCheck)")
+                    UserDefaults.standard.set(uid, forKey: "userIdToken")
                     if isCheck {
                         // 파이어스토어에 이미 유저정보가 있는 경우
                         self.db.collection("User").document(uid).getDocument { snapshot,error in
@@ -224,5 +225,10 @@ class UserViewModel: ObservableObject {
         return false
     }
     
+    //파이어스토어 유저데이터 삭제
+    func removeUser(_ userId: String) {
+        db.collection("User")
+            .document(userId).delete()
+    }
     
 }

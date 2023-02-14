@@ -8,34 +8,36 @@
 import SwiftUI
 import Kingfisher
 import FirebaseFirestore
-import struct Kingfisher.KFImage
+//import struct Kingfisher.KFImage
 
 
 struct MStoreCellView: View {
     var foodcart: FoodCart2
     @StateObject var magazineVM: MagazineViewModel
-    @Binding var isLoaded: Bool
+    @Binding var isLoading: Bool
+    @Binding var opacity: Double
     
-    @ViewBuilder
-    func KingFisherImageView(url: String) -> KFImage {
-        KFImage(
-            URL(string: url)
-        )
-            .onSuccess { result in
-                print("Image loaded succesfully ")
-            }
-            .onFailure { err in
-                print("failed to load image: \(err)")
-            }
-            .placeholder() {
-                Image(systemName: "hourglass")
-                    .font(.largeTitle)
-            }
-            
-    }
+//    @ViewBuilder
+//    func KingFisherImageView(url: String) -> KFImage {
+//        KFImage(
+//            URL(string: url)
+//        )
+//            .onSuccess { result in
+//                print("Image loaded succesfully ")
+//            }
+//            .onFailure { err in
+//                print("failed to load image: \(err)")
+//            }
+//            .placeholder() {
+//                Image(systemName: "hourglass")
+//                    .font(.largeTitle)
+//            }
+//
+//    }
     
     var body: some View {
         HStack{
+
             VStack (alignment: .leading) {
                 
                 // MARK: - 포장마차 이름, 위치
@@ -51,21 +53,24 @@ struct MStoreCellView: View {
                     VStack (alignment: .leading) {
                         Text(foodcart.name)
                             .font(.machachaTitle2Bold)
+                            .foregroundColor(Color("textColor"))
                         //                            .padding(.top, 20)
                             .padding(.bottom, 0.1)
+                            
                         
                         
                         
                         Text(foodcart.address)
                             .font(.machachaSubhead)
-                            .foregroundColor(.gray)
-                        
+                            .foregroundColor(Color("textColor2"))
                             .padding(.bottom, 12.1)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
+                    
                     Spacer()
                 } //hstack
+               
                 
                 /*
                  KFImage(url)
@@ -99,7 +104,24 @@ struct MStoreCellView: View {
                         // foodcart.imageId: [String]
                         // "IMG_2468.HEIC"
                         ForEach(foodcart.url, id: \.self) { urlString in
-                            KingFisherImageView(url: urlString)
+                            
+//                            KingFisherImageView(url: urlString)
+//                                .resizable()
+//                                .frame(width: 120, height: 120)
+//                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                            
+                            
+                            KFImage(URL(string: urlString))
+                                .placeholder() {
+                                    Image(systemName: "hourglass")
+                                        .font(.largeTitle)
+                                }
+                                .onSuccess { result in
+                                    print("Image loaded succesfully ")
+                                }
+                                .onFailure { err in
+                                    print("failed to load image: \(err)")
+                                }
                                 .resizable()
                                 .frame(width: 120, height: 120)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -120,7 +142,9 @@ struct MStoreCellView_Previews: PreviewProvider {
             
             
             magazineVM: MagazineViewModel(),
-            isLoaded: .constant(false))
+            isLoading: .constant(false),
+            opacity: .constant(0.8)
+        )
         
     }
 }

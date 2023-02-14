@@ -8,20 +8,16 @@
 import Foundation
 import NMapsMap
 import Combine
+import CoreLocation
 
-final class MapSearchViewModel: ObservableObject {
+final class MapSearchViewModel: NSObject ,ObservableObject, CLLocationManagerDelegate {
     
-    var foodCarts: [FoodCart] = []
+    @Published var userLocation: LatLng = (0.0, 0.0)
+    @Published var foodCarts: [FoodCart] = []
     @Published var markers: [NMFMarker] = []
     @Published var cameraPosition: LatLng = (0, 0)
-    @Published var zoomLevel: Double = 17.0
     
     private var cancellables = Set<AnyCancellable>()
-    
-//    init(foodCarts: [FoodCart], cameraPos: Pos) {
-//        self.foodCarts = foodCarts
-//        self.cameraPos = cameraPos
-//    }
     
     // MARK: - combine을 이용한 foodCart Fetch
     func fetchFoodCarts() {
@@ -39,7 +35,11 @@ final class MapSearchViewModel: ObservableObject {
                 print("fetchFoodcart \(foodCarts)")
             }
             .store(in: &cancellables)
-
+        
+    }
+    @MainActor
+    func sortedBy(by bestMenu: Int) {
+        foodCarts = foodCarts.filter{ $0.bestMenu == bestMenu }
     }
     
     func fetchSortedMenu(by bestMenu: Int) {

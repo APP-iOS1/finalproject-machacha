@@ -103,6 +103,7 @@ class AuthViewModel : ObservableObject {
             self.currentUserProfile =  try await fetchUserInfo(authResult.user.uid)
             self.currentUser = authResult.user
             withAnimation(.easeInOut){self.loginState = .authenticated}
+            UserViewModel.shared.requestUserCheck()
         }catch{
             print("appleLogin Fail..!")
         }
@@ -273,6 +274,25 @@ class AuthViewModel : ObservableObject {
             }
         }
     }
+    
+    //회원탈퇴
+    func deleteAuth() {
+        guard let user = Auth.auth().currentUser else {
+            print("존재하지 않는 유저 입니다")
+            return
+        }
+        
+        user.delete { error in
+            if let error  {
+                print(error)
+            } else {
+                // Account deleted.
+                self.userVM.removeUser(user.uid)
+                withAnimation(.easeInOut){self.loginState = .unauthenticated}
+            }
+        }
+    }
+    
 }
 
 //카카오 플랫폼 안에서 앱과 사용자 카카오계정의 연결 상태를 해제합니다. UserApi의 unlink()를 호출합니다.

@@ -29,51 +29,60 @@ struct MagazineView: View {
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    
-                    Text("마차챠's Pick")
-                        .font(.machachaLargeTitleBold)
-                        .foregroundColor(.black)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 20)
-                        .padding(.top, 20)
+//
+//                    Text("마차챠's Pick")
+//                        .font(.machachaLargeTitleBold)
+//                        .foregroundColor(.black)
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                        .padding(.horizontal, 20)
+
                     
                     // 내가 봐야할 곳
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 20) {
-                        if !show {
-                            // 카드를 tap하지 않았을 때 그냥 카드를 나열해주는
+                        // 데이터가 다 로드 되었고 card에 탭한 상태가 아니라면
+                        // 맨 마지막 카드가 나오지 않았던 버그 해결
+                        if !magazineVM.isLoading && !show {
                             cards //컨텐츠들
-                        } else {
-                            // 카드를 선택했을 경우 카드가 나열된 화면 대신 Rectangle이 보이도록
-                            ForEach(magazineVM.magazines) { _ in
-                                Rectangle()
-                                    .fill(.white)
-                                    .frame(height: 300)
-                                    .cornerRadius(30)
-                                    .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
-                                    .opacity(0.3)
-                                    .padding(.horizontal, 30)
-                            }
                         }
+                        
+                        
+//                        if !show {
+//                            // 카드를 tap하지 않았을 때 그냥 카드를 나열해주는
+//                            cards //컨텐츠들
+//                        } else {
+//                            // 카드를 선택했을 경우 카드가 나열된 화면 대신 Rectangle이 보이도록
+//                            ForEach(magazineVM.magazines) { _ in
+//                                Rectangle()
+//                                    .fill(.white)
+//                                    .frame(height: 300)
+//                                    .cornerRadius(30)
+//                                    .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
+//                                    .opacity(0.3)
+//                                    .padding(.horizontal, 30)
+//                            }
+//                        }
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
                     .padding(.bottom, 50)
-
                 }
                 // coordinateSpace?
                 // "scroll"이라는 이름의 사용자 지정 좌표 공간
                 .coordinateSpace(name: "scroll")
                 .navigationBarHidden(show ? true : false)
-                .toolbar { // 딱히 필요없는 것 같지만 일단은 가지고 가겠음
-                    //                NavigationBar()
-                }
+                .navigationTitle(
+                    Text("마차챠's 매거진")
+                        .foregroundColor(Color("textColor"))
+                )
                 // 내가 봐야할 부분
                 if show {
                     detail
                 }
                 
-            }.statusBar(hidden:!showStatusBar)
-                .onChange(of: show) { newValue in
+            }
+            .statusBar(hidden:!showStatusBar)
+            // statusBar를 보이느냐 마느냐에 대한 animation
+            .onChange(of: show) { newValue in
                     withAnimation(.closeCard) {
                         if newValue {
                             showStatusBar = false
@@ -81,14 +90,18 @@ struct MagazineView: View {
                             showStatusBar = true
                         }
                     }
-                }
+            }
         }//navigationview
         .onAppear {
             magazineVM.isLoading = true
+            print("Magazine View (가장 밖) 데이터 X")
+            print("\(magazineVM.isLoading)")
             Task {
                 magazineVM.magazines = try await magazineVM.fetchMagazines()
                 // magzines가 채워짐 이미지 경로들도 받아옴
                 magazineVM.isLoading = false
+                print("Magazine View (가장 밖) 데이터 O")
+                print("\(magazineVM.isLoading)")
             }
         }
         .refreshable {

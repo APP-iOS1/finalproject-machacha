@@ -30,13 +30,17 @@ struct ProfileView: View {
 			}
 			.background(Color("bgColor"))
 			.onAppear {
-				UserDefaults.standard.set("egmqxtTT1Zani0UkJpUW", forKey: "userIdToken") // 임시: 로그인시
+                // 로그인시
 				Task {
 					profileVM.currentUser = try await profileVM.fetchUser()
 					profileVM.name = profileVM.currentUser?.name ?? ""
 					profileVM.reviewUser = try await profileVM.fetchReivews()
 					profileVM.notification = try await profileVM.fetchNotification()
-					profileVM.profileImage = try await profileVM.fetchImage(foodCartId: profileVM.currentUser!.id, imageName: profileVM.currentUser!.profileId)
+                    
+                    //회원탈퇴시 currentUser 가 nil이 되서 터짐
+                    if let user = profileVM.currentUser {
+                        profileVM.profileImage = try await profileVM.fetchImage(foodCartId: user.id, imageName: user.profileId)
+                    }
 				} // Task
 			} // ScrollView
 			.navigationBarTitle("프로필".localized(language), displayMode: .inline)

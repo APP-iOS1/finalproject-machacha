@@ -68,6 +68,7 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
                         }
                         
                         print("carousel index : \(index)")
+                        
                     })
                     .onChanged( { value in
                         // updating only index

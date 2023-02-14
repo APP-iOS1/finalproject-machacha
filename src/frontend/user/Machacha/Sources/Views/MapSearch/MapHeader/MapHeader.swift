@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct MapHeader: View {
+    
     @State var isTap = false
+    @Binding var currentIndex: Int
+    @Binding var cameraPosition: LatLng
+    @Binding var fromSearchView: Bool
+    
     var body: some View {
         VStack {
             HStack {
@@ -23,13 +28,10 @@ struct MapHeader: View {
                     }
                 }
                 Spacer()
-                // 음성 검색을 위한 Button
-                Button {
-                    print("Voice Search Button Tapped")
-                } label: {
-                    Image(systemName: "mic")
-                        .foregroundColor(.black)
-                }
+//                VoiceView(text: $text, voiceViewModel: voiceViewModel)
+//                    .frame(width: 40, height: 40)
+//                    .padding(.bottom, 10)
+
             }
             .padding()
             .foregroundColor(.gray)
@@ -41,17 +43,17 @@ struct MapHeader: View {
                 .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
-            SearchView()
+            SearchView(currentIndex: $currentIndex, fromSearchView: $fromSearchView)
         }
     }
-    
+  
     @ViewBuilder
     private func MapHeaderCell() -> some View {
         let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(cellList, id: \.self) { item in
-                    MapHeaderTagCell(image: item)
+                    MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: item)
                 }
             }
         }
@@ -59,7 +61,10 @@ struct MapHeader: View {
 }
 
 struct MapHeaderSearch_Previews: PreviewProvider {
+    @State static var currentIndex = 0
+    @State static var cameraPosition = (0.0, 0.0)
+    @State static var fromSearchView = false
     static var previews: some View {
-        MapHeader()
+        MapHeader(currentIndex: $currentIndex, cameraPosition: $cameraPosition, fromSearchView: $fromSearchView)
     }
 }
