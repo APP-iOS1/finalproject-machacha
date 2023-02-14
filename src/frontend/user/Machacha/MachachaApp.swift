@@ -110,6 +110,7 @@ extension AppDelegate: MessagingDelegate {
         print("FCM 등록 토큰 갱신: \(token)")
         print("AppDelegate - 파베 토큰 받음")
         print("AppDelegate - Firebase registration token: \(String(describing: fcmToken))")
+        FCMTokenViewModel.shared.fcmToken = fcmToken
     }
 }
 
