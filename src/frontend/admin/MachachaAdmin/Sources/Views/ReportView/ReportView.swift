@@ -13,14 +13,13 @@ struct ReportView: View {
 	
 	var body: some View {
 		NavigationView {
-			List {
-				Section(header: Text("3회 이상 누적된 포장마차만 노출")) {
-					ForEach(Array(reportVM.reportFoodCarts.enumerated()), id: \.offset) { index, foodCart in
-						FoodCartReportCellView(reportVM: reportVM, index: index, foodCart: foodCart)
-							.listRowBackground(Color.white.overlay(Rectangle().stroke(Color.black, lineWidth: 0.5)))
-					} // ForEach
-				}
+			ScrollView {
+				ForEach(Array(reportVM.reportFoodCart.enumerated()), id: \.offset) { index, reportFoodCart in
+					FoodCartReportCellView(reportVM: reportVM, index: index, reportFoodCart: reportFoodCart)
+						.listRowBackground(Color.white.overlay(Rectangle().stroke(Color.black, lineWidth: 0.5)))
+				} // ForEach
 			} // List
+			.padding(.top, 16)
 			.background(Color("bgColor"))
 			.scrollContentBackground(.hidden)
 			.navigationBarBackButtonHidden()
@@ -39,7 +38,8 @@ struct ReportView: View {
 			})
 			.onAppear {
 				Task {
-					reportVM.reportFoodCarts = await reportVM.fetchFoodCarts()
+					reportVM.report = await reportVM.fetchReports()
+					reportVM.reportFoodCart = reportVM.report.filter {$0.type == 0}
 				} // Task
 			}
 		}
@@ -49,29 +49,57 @@ struct ReportView: View {
 // MARK: - FoodCart Cell View
 struct FoodCartReportCellView: View {
 	//MARK: Property Wrapper
-	@ObservedObject var reportVM: ReportViewModel
+	@StateObject var reportVM: ReportViewModel
 	@State private var image: UIImage?
-	
+	@State private var showDetail = false
+	@State private var foodCart: FoodCart = FoodCart.getDummy()
+	@State private var userName: String = ""
+	@State private var userProfile: UIImage?
+	@State private var isLoading: Bool = false
+
 	//MARK: Property
 	let index: Int
-	var foodCart: FoodCart
-	
+	let reportFoodCart: Report
+
 	var body: some View {
-		NavigationLink {
-			
+		Button {
+			showDetail.toggle()
 		} label: {
-			VStack(alignment: .leading) {
+			VStack(alignment: .leading, spacing: 16) {
 				HStack(spacing: 16) {
-					VStack {
-						Image(systemName: "square")
-							.resizable()
-							.frame(width: 22, height: 22)
-							.overlay {
-								Text("\(index + 1)")
-									.font(.caption)
+//					VStack {
+//						Image(systemName: "square")
+//							.resizable()
+//							.frame(width: 22, height: 22)
+//							.overlay {
+//								Text("\(index + 1)")
+//									.font(.caption)
+//							}
+//							.foregroundColor(.black)
+//					}
+//					Divider()
+					HStack(spacing: 8) {
+						VStack { // 프로필 사진
+							if let image = userProfile {
+								Image(uiImage: image)
+									.resizable()
+									.scaledToFit()
+							} else {
+								RoundedRectangle(cornerRadius: 40) // 임시
+									.foregroundColor(Color("bgColor"))
 							}
+						} // VStack
+						.frame(width: 40, height: 40)
+						.cornerRadius(40)
+						Text("신고자 : \(userName)")
+							.font(.system(size: 17))
+							.foregroundColor(Color("textColor"))
 					}
 					
+					
+				} // VStack
+				Divider()
+				HStack(spacing: 16) {
 					VStack {
 						if let image = image {
 							Image(uiImage: image)
@@ -134,22 +162,36 @@ struct FoodCartReportCellView: View {
 					} // VStack
 				} // HStack
 			} // VStack
+			.padding()
 		}
+		.background(Color("cellColor"))
+		.cornerRadius(8)
+		.overlay(RoundedRectangle(cornerRadius: 8)
+			.stroke(Color("textColor"), lineWidth: 0.1))
+		.padding(.horizontal)
 		.onAppear {
+			isLoading = true
 			Task {
+				foodCart = await reportVM.fetchFoodCart(foodCartId: reportFoodCart.targetId)
+
+				let (name, profileId) = await reportVM.fetchReviews(userId: reportFoodCart.userId)
+				self.userName = name
+				self.userProfile = await reportVM.fetchImage(foodCartId: reportFoodCart.userId, imageName: profileId)
+				
 				if let first = foodCart.imageId.first {
 					image = await reportVM.fetchImage(foodCartId: foodCart.id, imageName: first)
 				}
+				isLoading = false
 			}
+		}
+		.navigationDestination(isPresented: $showDetail) {
+			ReportDetailView(reportVM: reportVM, report: reportFoodCart)
 		}
 	}
 }
 
 struct ReportView_Previews: PreviewProvider {
 	static var previews: some View {
-		NavigationStack {
-			ReportView()
-				.navigationTitle("신고 누적 가게")
-		}
+		ReportView()
 	}
 }
