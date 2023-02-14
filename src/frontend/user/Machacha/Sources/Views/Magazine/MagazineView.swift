@@ -72,6 +72,7 @@ struct MagazineView: View {
                 .navigationBarHidden(show ? true : false)
                 .navigationTitle(
                     Text("마차챠's 매거진")
+                        .foregroundColor(Color("textColor"))
                 )
                 // 내가 봐야할 부분
                 if show {
