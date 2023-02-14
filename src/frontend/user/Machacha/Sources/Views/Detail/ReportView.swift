@@ -13,20 +13,21 @@ struct ReportView: View {
     @State private var checkArr = Array(Array(repeating: false, count: 6))
     @State private var text = ""
     @FocusState private var isInFocusText: Bool
+    @StateObject var reportViewModel: ReportViewModel
     @EnvironmentObject var reviewViewModel: ReviewViewModel
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @Environment(\.colorScheme) var colorScheme // 다크모드일 때 색 설정 변경을 위해 선언
     @Environment(\.dismiss) var dismiss
     var reportType: Int
+    var targetId: String
+    var userId: String
     
     var body: some View {
         NavigationStack {
             VStack {
                 VStack(alignment: .leading, spacing: 7) {
-//                    Text("신고하기")
-//                        .font(.machachaTitle2Bold)
-//                        .padding(.bottom, 30)
-                    if reportType == 1 { //가게 정보 신고
+
+                    if reportType == 0 { //가게 정보 신고
                         ForEach(storeReportList.indices, id: \.self) { idx in
                             HStack {
                                 Text(storeReportList[idx])
@@ -42,7 +43,7 @@ struct ReportView: View {
                             Divider()
                                 .padding(.vertical, 5)
                         } //ForEach
-                    } else if reportType == 2 { //댓글 신고
+                    } else if reportType == 1 { //댓글 신고
                         ForEach(commentReportList.indices, id: \.self) { idx in
                             HStack {
                                 Text(commentReportList[idx])
@@ -89,14 +90,22 @@ struct ReportView: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 30)
             } //VStack
+            .onTapGesture { // 키보드가 올라왔을 때 다른 화면 터치 시 키보드가 내려감
+                self.endTextEditing()
+            }
             .navigationBarTitle("신고하기", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button {
-                        if reportType == 1 {
+                        if reportType == 0 {
                             foodCartViewModel.isShowingReportSheet.toggle()
-                        } else if reportType == 2 {
+                        } else if reportType == 1 {
                             reviewViewModel.isShowingReportSheet.toggle()
+                        }
+                        Task {
+                            let report = Report(id: UUID().uuidString, targetId: targetId, userId: userId, type: reportType, content: checkArr, etc: text, createdAt: Date())
+                            await reportViewModel.addReport(report: report)
+                            reportViewModel.reportShowToast = true
                         }
                     } label: {
                         Text("제출")
@@ -119,33 +128,8 @@ struct ReportView: View {
     }
 }
 
-//// texteditior placeholder와 backgroundcolor 적용
-//struct CustomTextEditor: View {
-//    let placeholder: String
-//    @Binding var text: String
-//    let internalPadding: CGFloat = 5
-//    var body: some View {
-//        ZStack(alignment: .topLeading) {
-//            if text.isEmpty  {
-//                Text(placeholder)
-//                    .foregroundColor(Color.primary.opacity(0.25))
-//                    .padding(EdgeInsets(top: 7, leading: 4, bottom: 0, trailing: 0))
-//                    .padding(internalPadding)
-//            }
-//            TextEditor(text: $text)
-//                .padding(internalPadding)
-//        }
-//        .onAppear {
-//            UITextView.appearance().backgroundColor = .clear
-//        }
-//        .onDisappear {
-//            UITextView.appearance().backgroundColor = nil
-//        }
+//struct ReportView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReportView(reportType: 1, targetId: "", userId: "")
 //    }
 //}
-
-struct ReportView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReportView(reportType: 1)
-    }
-}
