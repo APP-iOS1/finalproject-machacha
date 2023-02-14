@@ -11,6 +11,47 @@ struct RegisterNaverMap: UIViewRepresentable {
     var foodCarts: [FoodCart]
     var markers: [NMFMarker] = []
     
+    private let polygonPoints = [
+        NMGLatLng(lat: 37.72468, lng: 125.87630),
+        NMGLatLng(lat: 38.77778, lng: 129.60256),
+        NMGLatLng(lat: 34.84530, lng: 130.30152),
+        NMGLatLng(lat: 34.10799, lng: 125.58587),
+        NMGLatLng(lat: 37.72468, lng: 125.87630)
+    ]
+    
+    private let servicePoints = [
+        NMGLatLng(lat: 37.57009, lng: 126.97567),
+        NMGLatLng(lat: 37.56908, lng: 126.97608),
+        NMGLatLng(lat: 37.56850, lng: 126.97699),
+        NMGLatLng(lat: 37.56504, lng: 126.97728),
+        NMGLatLng(lat: 37.56492, lng: 126.97851),
+        NMGLatLng(lat: 37.56601, lng: 126.97929),
+        NMGLatLng(lat: 37.56593, lng: 126.98237),
+        NMGLatLng(lat: 37.56205, lng: 126.98126),
+        NMGLatLng(lat: 37.55781, lng: 126.98317),
+        NMGLatLng(lat: 37.55626, lng: 126.98331),
+        NMGLatLng(lat: 37.55673, lng: 126.98585),
+        NMGLatLng(lat: 37.55797, lng: 126.98708),
+        NMGLatLng(lat: 37.55909, lng: 126.98746),
+        NMGLatLng(lat: 37.56042, lng: 126.98852),
+        NMGLatLng(lat: 37.56100, lng: 126.98773),
+        NMGLatLng(lat: 37.56119, lng: 126.99066),
+        NMGLatLng(lat: 37.56279, lng: 126.99029),
+        NMGLatLng(lat: 37.56266, lng: 126.98900),
+        NMGLatLng(lat: 37.56435, lng: 126.98795),
+        NMGLatLng(lat: 37.56526, lng: 126.98782),
+        NMGLatLng(lat: 37.56536, lng: 126.98886),
+        NMGLatLng(lat: 37.56577, lng: 126.98921),
+        NMGLatLng(lat: 37.56588, lng: 126.98979),
+        NMGLatLng(lat: 37.56679, lng: 126.98970),
+        NMGLatLng(lat: 37.56685, lng: 126.99083),
+        NMGLatLng(lat: 37.56808, lng: 126.99086),
+        NMGLatLng(lat: 37.56874, lng: 126.98275),
+        NMGLatLng(lat: 37.56910, lng: 126.97747),
+        NMGLatLng(lat: 37.57009, lng: 126.97567)
+
+    ]
+    
     func makeCoordinator() -> NMCoordinator {
         NMCoordinator($cameraCoord)
     }
@@ -49,6 +90,19 @@ struct RegisterNaverMap: UIViewRepresentable {
         }
         print("마커 갯수: \(markers.count)")
         
+        // 서비스 지역 표시를 위한 폴리곤
+        let polygon = NMGPolygon(ring: NMGLineString(points: polygonPoints), interiorRings: [NMGLineString(points: servicePoints)])
+        let polygonOverlay = NMFPolygonOverlay(polygon as! NMGPolygon<AnyObject>)
+        polygonOverlay?.fillColor = UIColor(named: "ServiceArea") ?? .blue
+        
+        let polyLine = NMGLineString(points: servicePoints)
+        let polyLineOverlay = NMFPolylineOverlay(polyLine as! NMGLineString<AnyObject>)
+        polyLineOverlay?.width = 3
+        polyLineOverlay?.color = UIColor(named: "Color2") ?? .blue
+        
+        polygonOverlay?.mapView = view.mapView
+        polyLineOverlay?.mapView = view.mapView
+        
         return view
     }
     
@@ -69,6 +123,8 @@ struct RegisterNaverMap: UIViewRepresentable {
         init(_ cameraCoord: Binding<(Double, Double)>) {
             //self.coord = coord
             self._cameraCoord = cameraCoord
+            
+            
         }
         
         // MARK: - 카메라 이동시 발생하는 Delegate
