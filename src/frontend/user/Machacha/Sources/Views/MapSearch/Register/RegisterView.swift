@@ -131,7 +131,7 @@ struct RegisterView: View {
 				.tint(isRegisterDisable ? .secondary: Color("Color3"))
 				.padding()
                 .alert("포장마차를 등록하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
-                    Button("수정하기", role: .cancel) {
+                    Button("계속 작성", role: .cancel) {
                         isRegisterAlertShowing = false
                     }
                     Button("등록하기") {
