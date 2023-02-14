@@ -106,11 +106,14 @@ extension ProfileView {
 							if let image = profileVM.profileImage {
 								Image(uiImage: image)
 									.resizable()
-									.cornerRadius(8)
-									.overlay(RoundedRectangle(cornerRadius: 8)
+									.scaledToFit()
+									.frame(width: 45, height: 45)
+									.cornerRadius(100)
+									.overlay(RoundedRectangle(cornerRadius: 100)
 											.stroke(Color("bgColor"), lineWidth: 2))
 							} else {
-								RoundedRectangle(cornerRadius: 8) // 임시
+								RoundedRectangle(cornerRadius: 100) // 임시
+									.frame(width: 45, height: 45)
 									.foregroundColor(Color("bgColor"))
 							}
 						} // VStack
