@@ -13,6 +13,7 @@ struct StoreInformView: View {
     var paymentArr = ["현금", "계좌이체", "카드"]
     @Binding var opacity: Double
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -33,7 +34,7 @@ struct StoreInformView: View {
                         .padding(6)
                         .overlay {
                             Circle()
-                                .opacity(0.1)
+                                .opacity(colorScheme == .dark ? 0.3 : 0.1)
                         }
                         .foregroundColor(selectedStore.openingDays[day] ?
                                                  Color("Color3") : Color(.gray))
@@ -49,7 +50,7 @@ struct StoreInformView: View {
                         .padding(6)
                         .overlay {
                             RoundedRectangle(cornerRadius: 14)
-                                .opacity(0.1)
+                                .opacity(colorScheme == .dark ? 0.3 : 0.1)
                         }
                         .foregroundColor(selectedStore.paymentOpt[payment] ?
                                                  Color("Color3") : Color(.gray))

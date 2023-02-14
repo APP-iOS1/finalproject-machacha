@@ -53,6 +53,7 @@ struct MStoreCellView: View {
                     VStack (alignment: .leading) {
                         Text(foodcart.name)
                             .font(.machachaTitle2Bold)
+                            .foregroundColor(Color("textColor"))
                         //                            .padding(.top, 20)
                             .padding(.bottom, 0.1)
                             
@@ -61,7 +62,7 @@ struct MStoreCellView: View {
                         
                         Text(foodcart.address)
                             .font(.machachaSubhead)
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color("textColor2"))
                             .padding(.bottom, 12.1)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

@@ -72,7 +72,7 @@ struct MCardDetailView: View {
             .onAppear { model.showDetail = true } //해당 뷰가 보이도록
             .onDisappear { model.showDetail = false }
 //            .background(Color("Background"))
-            .background(Color.white)
+            .background(Color("bgColor"))
             .mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
             .shadow(color: .black.opacity(0.3), radius: 30, x: 0, y: 10)
             .scaleEffect(viewState.width / -500 + 1)

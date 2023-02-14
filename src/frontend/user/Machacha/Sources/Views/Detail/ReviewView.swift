@@ -10,6 +10,8 @@ import AlertToast
 
 struct ReviewView: View {
     @EnvironmentObject var reviewViewModel: ReviewViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @StateObject var reportViewModel: ReportViewModel = ReportViewModel()
     @State var showToast = false
     @State var showEditToast = false
     @State var opacity: Double = 0.8
@@ -21,12 +23,12 @@ struct ReviewView: View {
                 HStack(alignment: .center) {
                     Image(systemName: "circle.fill")
                         .resizable()
-                        .frame(width: 5, height: 5)
+                        .frame(width: 7, height: 7)
                         .foregroundColor(Color("Color3"))
                         .padding(.leading, 10)
+                        .offset(y: -1)
                     
                     Text("최신순")
-                        .font(.machachaHeadline)
                         .padding(.bottom, 5)
                 }
                 .padding(.top, 15)
@@ -45,7 +47,7 @@ struct ReviewView: View {
                                     secondaryButton: .default(Text("삭제")) {
                                         reviewViewModel.removeDiary(review: review)
                                         Task {
-                                            reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
+                                            reviewViewModel.reviews = try await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                                         }
                                         showToast = true
                                     })
@@ -53,7 +55,13 @@ struct ReviewView: View {
                             .fullScreenCover(isPresented: $reviewViewModel.isShowingEditSheet) {
                                 EditingReviewView(showToast: $showEditToast, selectedStore: selectedStore, review: review, text: review.description, grade: review.grade)
                             }
+                            .fullScreenCover(isPresented: $reviewViewModel.isShowingReportSheet) {
+                                if let user = profileViewModel.currentUser?.id {
+                                    ReportView(reportViewModel: reportViewModel, reportType: 1, targetId:review.id, userId: user)
+                                }
+                            }
                     }
+                    .padding(.bottom, 30)
                 }//ScrollView
             } else {
                 VStack(alignment: .center){
@@ -61,9 +69,11 @@ struct ReviewView: View {
                     Image("dessert")
                         .resizable()
                         .frame(width: 200, height: 200)
+                        .padding(.top, -35)
                     
                     Text("아직 리뷰가 하나도 없어요!")
                         .font(.machachaTitle2)
+                        .padding(.top, -15)
                     Spacer()
                 }
 
@@ -74,19 +84,13 @@ struct ReviewView: View {
             AlertToast(displayMode: .banner(.pop), type: .regular, title: "리뷰가 삭제되었습니다.")
         }
         .toast(isPresenting: $showEditToast){
-            //댓글 삭제 후 화면 하단 토스트 메세지 출력
+            //댓글 수정 후 화면 하단 토스트 메세지 출력
             AlertToast(displayMode: .banner(.pop), type: .regular, title: "리뷰가 수정되었습니다.")
         }
-        .fullScreenCover(isPresented: $reviewViewModel.isShowingReportSheet) {
-            ReportView(reportType: 2)
+        .toast(isPresenting: $reportViewModel.reportShowToast){
+            //제보 접수 후 하단 토스트 메세지 출력
+            AlertToast(displayMode: .banner(.pop), type: .regular, title: "신고가 접수되었습니다.")
         }
-        //        .onAppear {
-        //             reviewViewModel.isLoading = true
-        //            Task {
-        //                await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
-        //                reviewViewModel.isLoading = false
-        //            }
-        //        }
         .navigationBarTitle(selectedStore.name, displayMode: .inline)
     }
 }
