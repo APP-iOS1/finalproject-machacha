@@ -147,11 +147,11 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(selectedStore: FoodCart.getDummy())
-            .environmentObject(FoodCartViewModel())
-            .environmentObject(ReviewViewModel())
-            .environmentObject(MapSearchViewModel())
-    }
-}
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView(selectedStore: FoodCart.getDummy())
+//            .environmentObject(FoodCartViewModel())
+//            .environmentObject(ReviewViewModel())
+//            .environmentObject(MapSearchViewModel())
+//    }
+//}
