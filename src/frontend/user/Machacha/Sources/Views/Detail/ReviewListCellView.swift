@@ -10,30 +10,38 @@ import SwiftUI
 struct ReviewListCellView: View {
     var review: Review
     @EnvironmentObject var reviewViewModel: ReviewViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @State private var reviewer: User?
+    @State private var profileImage: UIImage?
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 //프로필 사진
-                if let image = reviewViewModel.reviewerImageDict[reviewViewModel.reviewer.profileId] {
+                if let image = profileImage {
                     Image(uiImage: image)
                         .resizable()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 41, height: 41)
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(40)
+                } else {
+                    Color(uiColor: .lightGray)
+                        .frame(width: 41, height: 41)
+                        .cornerRadius(40)
                 }
-                VStack(alignment: .leading) {
-                    Text(reviewViewModel.reviewer.name)
-                        .font(.machachaHeadlineBold)
+                
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(reviewer?.name ?? "사용자 이름")
+                        .font(.machachaHeadline)
                     // 별점
-                    HStack(alignment: .center) {
+                    HStack(alignment: .bottom) {
                         Image(systemName: "star.fill")
                             .foregroundColor(Color("Color3"))
-                            .padding(.trailing, -3)
+                            .padding(.trailing, -4)
+                            .offset(y: -2)
                         Text("\(review.gradeRounded)")
                         Text("| \(review.updatedAt.getDay())")
                             .foregroundColor(.gray)
-                            .font(.machachaHeadline)
                     }
                 }
                 Spacer()
@@ -81,7 +89,10 @@ struct ReviewListCellView: View {
         }
         .onAppear {
             Task {
-                reviewViewModel.reviewer = try await reviewViewModel.fetchReviewer(userId: review.reviewer)
+                reviewer = try await reviewViewModel.fetchReviewer(userId: review.reviewer)
+                if let reviewer = reviewer {
+                    profileImage = try await profileViewModel.fetchImage(foodCartId: reviewer.id, imageName: reviewer.profileId)
+                }
             }
         }
         .font(.machachaHeadline)

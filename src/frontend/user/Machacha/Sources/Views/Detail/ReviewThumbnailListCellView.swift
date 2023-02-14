@@ -21,15 +21,15 @@ struct ReviewThumbnailListCellView: View {
                     if let image = reviewViewModel.reviewerImageDict[reviewViewModel.reviewer.profileId] {
                         Image(uiImage: image)
                             .resizable()
-                            .frame(width: 40, height: 40)
+                            .frame(width: 41, height: 41)
                             .aspectRatio(contentMode: .fit)
                             .cornerRadius(40)
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 3) {
                         Text(reviewViewModel.reviewer.name)
-                            .font(.machachaHeadlineBold)
-                        Text(review.updatedAt.getDay())
                             .font(.machachaHeadline)
+                        Text(review.updatedAt.getDay())
+                            .font(.machachaSubhead)
                             .foregroundColor(.gray)
                     }
                 }
@@ -37,13 +37,14 @@ struct ReviewThumbnailListCellView: View {
             .font(.machachaHeadline)
             .padding(.trailing, 53)
             
+            Spacer()
             
             //리뷰 음식 사진
             if review.imageId.count > 0 {
                 if let image = reviewViewModel.imageDict[review.imageId[0]] {
                     Image(uiImage: image)
                         .resizable()
-                        .frame(width: 120, height: 120)
+                        .frame(width: 100, height: 100)
                         .aspectRatio(contentMode: .fit)
                 }
             }

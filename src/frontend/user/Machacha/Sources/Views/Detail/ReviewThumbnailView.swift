@@ -36,18 +36,21 @@ struct ReviewThumbnailView: View {
                 .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 .padding(.trailing, 14)
                 .padding(.bottom)
+            
+            //리뷰 두개 불러오기
             ForEach(reviewViewModel.twoReviews, id: \.self) { review in
                 ReviewThumbnailListCellView(review: review)
                     .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 if reviewViewModel.twoReviews.last != review {
                     Divider()
-                        .padding(.vertical)
+                        .padding(.vertical, 5)
                 }
             }
+            .padding(.bottom)
         }
         .onAppear {
             Task {
-                await reviewViewModel.fetchTwoReviews(foodCartId: selectedStore.id)
+                reviewViewModel.twoReviews = try await reviewViewModel.fetchTwoReviews(foodCartId: selectedStore.id)
             }
         }
         .font(.machachaTitle2Bold)
