@@ -26,7 +26,7 @@ struct MapSearchView: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     @State var cameraCoord: LatLng = (37.566249, 126.992227)
-//    @State var currentIndex: Int = Coordinator.shared.currentIndex
+    //    @State var currentIndex: Int = Coordinator.shared.currentIndex
     @State var isTap: Bool = false
     @State var fromToSearchView = false
     @StateObject var coordinator: Coordinator = Coordinator.shared
@@ -69,10 +69,9 @@ struct MapSearchView: View {
                     
                 }
                 .navigationDestination(isPresented: $isTap) {
-                    //                    TestView(name: mapSearchViewModel.foodCarts[currentIndex].name)
-                    //                    if !mapSearchViewModel.foodCarts.isEmpty {
-                    //                        DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
-                    //                    }
+                    
+                        DetailView(selectedStore: foodCartViewModel.foodCarts[coordinator.currentIndex])
+                    
                     
                 }
                 .zIndex(1)
@@ -90,11 +89,6 @@ struct MapSearchView: View {
                 print("🍎🍎🍎🍎 Map searchView onappear")
             }
             
-        }
-    }
-    @ViewBuilder private func TestView(name: String) -> some View {
-        VStack {
-            Text("가게 이름 : \(name)")
         }
     }
 }
