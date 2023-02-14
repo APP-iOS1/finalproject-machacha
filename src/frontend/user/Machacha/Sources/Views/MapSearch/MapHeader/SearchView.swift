@@ -89,9 +89,6 @@ struct SearchView: View {
 //                hideKeyboard()
 //            }
         }
-        .onAppear {
-            print("count : \(foodCartVM.foodCarts.count)")
-        }
     }
 
     

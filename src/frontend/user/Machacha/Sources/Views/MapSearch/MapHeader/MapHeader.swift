@@ -14,16 +14,18 @@ struct MapHeader: View {
     @Binding var cameraPosition: LatLng
     @Binding var fromSearchView: Bool
     
+    let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
+    
     var body: some View {
         VStack {
             HStack {
                 // 검색 버튼 을 누를 시 네비게이션 뷰로 전환되어 검색 뷰가 표현되어야 합니다.
                 Button {
-                    print("Search Button Tapped")
                     isTap = true
                 } label: {
                     HStack {
                         Text("장소, 식당 이름. 주소 검색")
+                            .foregroundColor(Color("textColor2"))
                         Spacer()
                     }
                 }
@@ -34,28 +36,21 @@ struct MapHeader: View {
 
             }
             .padding()
-            .foregroundColor(.gray)
-            .background(Color.white)
+            .background(Color("cellColor"))
             .cornerRadius(10)
             .shadow(radius: 3)
             .padding([.leading, .trailing, .top], 10)
-            MapHeaderCell()
-                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(cellList, id: \.self) { item in
+                        MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: item)
+                    }
+                }
+            }
+            .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
             SearchView(currentIndex: $currentIndex, fromSearchView: $fromSearchView)
-        }
-    }
-  
-    @ViewBuilder
-    private func MapHeaderCell() -> some View {
-        let cellList = ["mainIcon", "bbungbread2", "fishcake2", "sweetpotato2", "tteokboki2", "takoyaki", "hotteok", "skewers", "dessert", "beverage", "store2"]
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(cellList, id: \.self) { item in
-                    MapHeaderTagCell(currentIndex: $currentIndex, cameraPosition: $cameraPosition, image: item)
-                }
-            }
         }
     }
 }

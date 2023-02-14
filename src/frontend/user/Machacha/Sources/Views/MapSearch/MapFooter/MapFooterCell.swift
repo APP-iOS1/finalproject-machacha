@@ -23,45 +23,50 @@ struct MapFooterCell: View {
                     // 이름
                     Text(foodCart.name)
                         .font(.machachaTitle3Bold)
+                        .foregroundColor(Color("textColor"))
+                        .lineLimit(2)
                     // 주소
                     Text(foodCart.address)
                         .font(.machachaCaption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("textColor2"))
                         .lineLimit(1)
                     HStack {
-                        // 별점
-                        Group {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(Color("Color3"))
-                            Text(foodCart.gradeRounded)
-                                .padding([.leading], -7)
-                        }
-                        Text("|")
-                        // 좋아요
-                        Group {
-                            Image(systemName: "square.and.pencil")
-                            Text("\(foodCart.favoriteCnt)")
-                                .padding([.leading], -7)
-                        }
-                        Text("|")
-                        // 좋아요
+                        // 즐겨찾기
                         Group {
                             Image(systemName: "heart.fill")
-                                .foregroundColor(Color("Color1"))
                             Text("\(foodCart.favoriteCnt)")
                                 .padding([.leading], -7)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                        }
+                        Text("|")
+                        // 가봤어요
+                        Group {
+                            Image(systemName: "checkmark.seal")
+                            Text("\(foodCart.visitedCnt)")
+                                .padding([.leading], -7)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                        }
+                        Text("|")
+                        // 리뷰쓰기
+                        Group {
+                            Image(systemName: "square.and.pencil")
+                            Text("\(foodCart.reviewId.count)")
+                                .padding([.leading], -7)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                         }
                     }
-                    .lineLimit(1)
+                    .foregroundColor(Color("Color3"))
                     .padding(1)
                     .font(.machachaCaption)
-                    .opacity(0.7)
                 }
                 Spacer()
             }
         }
         .frame(width: Screen.maxWidth-100, height: 100)
-        .background(isFocus ? Color.black : Color.white)
+        .background(Color("cellColor"))
         .cornerRadius(10)
         .shadow(radius: 3)
         .padding()
@@ -70,7 +75,6 @@ struct MapFooterCell: View {
 
 struct MapFooterCell_Previews: PreviewProvider {
     static var previews: some View {
-        MapSearchView()
-            .environmentObject(MapSearchViewModel())
+        MapFooterCell(foodCart: FoodCart.getDummy(), isFocus: false)
     }
 }
