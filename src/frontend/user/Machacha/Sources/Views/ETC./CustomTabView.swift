@@ -36,6 +36,9 @@ class TabBarManager: ObservableObject {
 			}
 		}
 	}
+    
+    //등록 Alert
+    @Published var showToast: Bool = false
 	
 	let hight: CGFloat = Screen.maxHeight * 0.10	// Tab의 높이
 }
@@ -45,6 +48,7 @@ struct CustomTabView: View {
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@ObservedObject var tabbarManager = TabBarManager.shared
 	
+    
 	var body: some View {
 		GeometryReader { geometry in
 			VStack(spacing: 0) {

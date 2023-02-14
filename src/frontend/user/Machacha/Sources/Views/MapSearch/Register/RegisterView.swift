@@ -139,7 +139,7 @@ struct RegisterView: View {
                         foodCartViewModel.addFoodCart(foodCart)
                         tabbarManager.isShowingModal = false
                         SoundManager.instance.playSound(sound: .register)
-                        
+                        TabBarManager.shared.showToast = true
                     }
                 }, message: {
                     Text("작성하신 내용을 제출하면 더 이상 수정할 수 없습니다.")
