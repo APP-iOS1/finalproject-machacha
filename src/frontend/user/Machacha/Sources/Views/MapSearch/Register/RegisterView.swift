@@ -109,6 +109,7 @@ struct RegisterView: View {
 					//                        .font(.machachaTitle)
 					//                    Spacer()
 					AddressView()
+                        .padding(.top,40)
 					EditNameView()
 					//RatingView()
 					DaysView()
@@ -122,35 +123,44 @@ struct RegisterView: View {
 				}) {
 					Text("등록하기")
 						.font(.machachaTitle)
-						.foregroundColor(isRegisterDisable ? .secondary: Color("Color3"))
+						.foregroundColor(isRegisterDisable ? .gray: Color("Color3"))
+                        .frame(width: Screen.maxWidth*0.7)
 				}
 				.disabled(isRegisterDisable)
 				.buttonStyle(.bordered)
 				.tint(isRegisterDisable ? .secondary: Color("Color3"))
 				.padding()
-				.alert("새로운 포장마차를 등록하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
-					Button("아니오", role: .cancel) {
-						isRegisterAlertShowing = false
-					}
-					Button("예") {
-						let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
-						foodCartViewModel.addFoodCart(foodCart)
-						tabbarManager.isShowingModal = false
-						SoundManager.instance.playSound(sound: .register)
-						
-					}
-				}, message: {
-					Text("등록한 포장마차 위치가 지도에 표시되고, 포장마차 등록정보를 다른 유저들이 확인할 수 있습니다.")
-				})
+                .alert("포장마차를 등록하시겠습니까?", isPresented: $isRegisterAlertShowing, actions: {
+                    Button("계속 작성", role: .cancel) {
+                        isRegisterAlertShowing = false
+                    }
+                    Button("등록하기") {
+                        let foodCart : FoodCart = FoodCart(id: UUID().uuidString, createdAt: Date.now, updatedAt: Date.now, geoPoint: GeoPoint(latitude: cameraCoord.0, longitude: cameraCoord.1), region: naverAPIVM.region, name: name, address: naverAPIVM.address, visitedCnt: 0, favoriteCnt: 0, paymentOpt: paymentOpt, openingDays: openingDays, menu: menu, bestMenu: bestMenu, imageId: [], grade: grade, reportCnt: 0, reviewId: [], registerId: UserViewModel.shared.uid!)
+                        foodCartViewModel.addFoodCart(foodCart)
+                        tabbarManager.isShowingModal = false
+                        SoundManager.instance.playSound(sound: .register)
+                        TabBarManager.shared.showToast = true
+                    }
+                }, message: {
+                    Text("작성하신 내용을 제출하면 더 이상 수정할 수 없습니다.")
+                })
 				
 			}
 		}
-		.padding()
-		.navigationBarBackButtonHidden()
-		.navigationTitle("가게 등록")
-		.navigationBarTitleDisplayMode(.inline)
+        .padding()
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        //툴바
+        .toolbarBackground(Color("Color3"), for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
 		//툴바
 		.toolbar(content: {
+            ToolbarItem(placement: .principal) {
+                    Text("가게 등록")
+                    .foregroundColor(Color("bgColor"))
+                    .font(.machachaHeadlineBold)
+                        .accessibilityAddTraits(.isHeader)
+                }
 			// 오른쪽 툴바 버튼 - 등록 취소
 			ToolbarItem(placement: .navigationBarTrailing) {
 				Button {
@@ -161,22 +171,21 @@ struct RegisterView: View {
 						tabbarManager.curTabSelection = tabbarManager.preTabSelection
 					}
 				} label: {
-					HStack{
-						Image(systemName: "xmark")
-					}
-					.foregroundColor(Color("textColor"))
+                    Image(systemName: "xmark")
+                        .font(.headline)
+                        .foregroundColor(Color("bgColor"))
 				}
-				.alert("가게 등록을 취소하시겠습니까?", isPresented: $isDismissAlertShowing, actions: {
-					Button("아니오", role: .cancel) {
-						//..
-					}
-					Button("예",role: .destructive) {
-						tabbarManager.isShowingModal = false
-						tabbarManager.curTabSelection = tabbarManager.preTabSelection
-					}
-				}, message: {
-					Text("예 버튼을 누르면 현재 작성한 가게 정보가 사라집니다.")
-				})
+                .alert("가게 등록을 취소하시겠습니까?", isPresented: $isDismissAlertShowing, actions: {
+                    Button("계속 작성", role: .cancel) {
+                        //..
+                    }
+                    Button("등록 취소",role: .destructive) {
+                        tabbarManager.isShowingModal = false
+                        tabbarManager.curTabSelection = tabbarManager.preTabSelection
+                    }
+                }, message: {
+                    Text("취소하면 현재 작성한 가게 정보가 사라집니다.")
+                })
 			} // ToolbarItem
 		})
 		.background(Color("bgColor"))
@@ -214,14 +223,15 @@ extension RegisterView {
 				Button(action: {
 					self.presentation.wrappedValue.dismiss()
 				}) {
-					Text("수정하기")
-						.font(.machachaHeadlineBold)
+					Text("수정")
+                        .font(.machachaHeadline)
+                        .foregroundColor(Color("Color3"))
 				}
 			}
 			RoundedRectangle(cornerRadius: 10)
 				.foregroundColor(Color(.gray))
 				.opacity(0.1)
-				.frame(height: 35)
+				.frame(height: 43)
 				.overlay {
 					Text("\(naverAPIVM.address)")
 						.font(.machachaHeadline)
@@ -240,14 +250,26 @@ extension RegisterView {
 			RoundedRectangle(cornerRadius: 10)
 				.foregroundColor(Color(.gray))
 				.opacity(0.1)
-				.frame(height: 35)
+				.frame(height: 43)
 				.overlay {
 					TextField("ex) 마차챠붕어빵집, 망포역3번출구오른쪽떡볶이", text: $name)
+                        //글자수 20자 이내
+                        .onReceive(Just(name), perform: { _ in
+                                        if 20 < name.count {
+                                            name = String(name.prefix(20))
+                                        }
+                                    })
 						.font(.machachaHeadline)
 						.textInputAutocapitalization(.never)
 						.disableAutocorrection(true)
 						.padding(8)
 				}
+            HStack{
+                Spacer()
+                Text("\(name.count) / 20 자")
+                    .font(.machachaFootnoteBold)
+                    .foregroundColor(name.count == 20 ? Color("Color1") : .secondary)
+            }
 		}
 		
 	}
@@ -341,11 +363,12 @@ extension RegisterView {
 									.frame(width: Screen.maxWidth*0.16)
 									.font(.machachaFootnote)
 							}
-							.opacity((index == bestMenu) ? 1 : 0.1)
+							.opacity((index == bestMenu) ? 1 : 0.25)
 							.background{
 								RoundedRectangle(cornerRadius: 14)
 									.frame(width: Screen.maxWidth*0.18, height: Screen.maxWidth*0.18)
-									.opacity(0.1)
+                                    .foregroundColor(.gray)
+									.opacity(0.2)
 							}
 							.onTapGesture {
 								bestMenu = index
@@ -446,7 +469,7 @@ extension RegisterView {
 					.textFieldStyle(.roundedBorder)
 					.frame(width: Screen.maxWidth/4*2)
 				
-				Divider()
+				//Divider()
 				
 				TextField("가격", text: $menuPrice)
 					.font(.machachaHeadline)
@@ -473,13 +496,14 @@ extension RegisterView {
 				.foregroundColor(isMenuAddBtnDisable ? .secondary : Color("Color3"))
 				.disabled(isMenuAddBtnDisable)
 			}
+            .frame(width: Screen.maxWidth*0.9)
 			
 			//입력한 메뉴 정보
 			ForEach(Array(menu.keys),id:\.self){ menuName in
 				HStack{
 					Text(menuName)
 						.font(.machachaHeadline)
-						.frame(width: Screen.maxWidth/4*2,alignment: .center)
+						.frame(width: Screen.maxWidth/4*2,alignment: .leading)
 					
 					//Divider()
 					
@@ -492,13 +516,14 @@ extension RegisterView {
 					Button(action: {
 						menu.removeValue(forKey: menuName)
 					}) {
-						Image(systemName: "xmark")
-							.resizable()
-							.scaledToFit()
-							.frame(width:15)
+						Image(systemName: "xmark.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width:25)
 							.foregroundColor(.secondary)
 					}
 				}
+                .frame(width: Screen.maxWidth*0.9)
 			}
 			
 		}
@@ -529,21 +554,23 @@ struct JustEditNumberModifier : ViewModifier {
 }
 
 // MARK: - 프리뷰
-//struct RegisterView_Previews: PreviewProvider {
-//    static var cameraCoord : (Double,Double) = (37.56621548663492, 126.99223256544298)
-//    @State static var name : String = ""
-//    @State static var paymentOpt : [Bool] = Array(repeating: false, count: 3)
-//    @State static var openingDays : [Bool] = Array(repeating: false, count: 7)
-//    @State static var menu : [String : Int] = [:]
-//    @State static var grade : Double = 0
-//    @State static var bestMenu : Int = -1
-//
-//    @State static var menuCnt : Int = 1
-//    @State static var menuName : String = ""
-//    @State static var menuPrice : String = ""
-//
-//
-//    static var previews: some View {
-//        RegisterView(name: $name, paymentOpt: $paymentOpt, openingDays: $openingDays, menu: $menu, grade: $grade, bestMenu: $bestMenu, menuCnt: $menuCnt, menuName: $menuName, menuPrice: $menuPrice, cameraCoord: cameraCoord)
-//    }
-//}
+struct RegisterView_Previews: PreviewProvider {
+    static var cameraCoord : (Double,Double) = (37.56621548663492, 126.99223256544298)
+    @State static var name : String = ""
+    @State static var paymentOpt : [Bool] = Array(repeating: false, count: 3)
+    @State static var openingDays : [Bool] = Array(repeating: false, count: 7)
+    @State static var menu : [String : Int] = [:]
+    @State static var grade : Double = 0
+    @State static var bestMenu : Int = -1
+
+    @State static var menuCnt : Int = 1
+    @State static var menuName : String = ""
+    @State static var menuPrice : String = ""
+
+
+    static var previews: some View {
+        NavigationView{
+            RegisterView(name: $name, paymentOpt: $paymentOpt, openingDays: $openingDays, menu: $menu, grade: $grade, bestMenu: $bestMenu, menuCnt: $menuCnt, menuName: $menuName, menuPrice: $menuPrice, cameraCoord: cameraCoord)
+        }
+    }
+}

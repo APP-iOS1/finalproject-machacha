@@ -131,7 +131,7 @@ class FoodCartViewModel: ObservableObject {
     
     // MARK: - 서버에 RegisterView에서 입력한 가게정보 데이터들을 쓰는 Method
     func addFoodCart(_ foodCart: FoodCart) {
-        database.collection("FoodCart")
+        database.collection("Admin")
             .document(foodCart.id)
             .setData(["id": foodCart.id,
                       "name": foodCart.name,
