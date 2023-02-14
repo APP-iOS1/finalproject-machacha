@@ -28,11 +28,11 @@ struct ContentView: View {
 						Text("신고")
 					}.tag(Tab.report)
 				
-//				MagazineView()
-//					.tabItem {
-//						Image(systemName: "newspaper.fill")
-//						Text("매거진")
-//					}.tag(Tab.magazine)
+				ReportReviewView()
+					.tabItem {
+						Image(systemName: "newspaper.fill")
+						Text("리뷰신고")
+					}.tag(Tab.reportReview)
 				
 				NoticeView()
 					.tabItem {
@@ -53,7 +53,7 @@ struct ContentView: View {
 enum Tab: Int {
 	case approve = 1
 	case report = 2
-	case magazine = 3
+	case reportReview = 3
 	case notice = 4
 	case profile = 5
 	
@@ -63,8 +63,8 @@ enum Tab: Int {
 			return "가게 승인"
 		case .report:
 			return "신고 누적 가게"
-		case .magazine:
-			return "매거진 작성"
+		case .reportReview:
+			return "리뷰 신고"
 		case .notice:
 			return "전체 알림"
 		case .profile:
