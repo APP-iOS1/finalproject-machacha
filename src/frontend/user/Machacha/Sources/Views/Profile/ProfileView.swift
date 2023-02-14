@@ -117,7 +117,7 @@ extension ProfileView {
 						.frame(width: 40, height: 40)
 
 						VStack(alignment: .leading) {
-							HStack {
+							HStack(alignment: .bottom) {
 								Text(user.name)
 									.font(.machachaTitleBold)
 								Text("님".localized(language))
