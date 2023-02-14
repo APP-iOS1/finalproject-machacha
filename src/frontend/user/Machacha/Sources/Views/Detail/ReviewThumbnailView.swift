@@ -12,6 +12,7 @@ struct ReviewThumbnailView: View {
     @EnvironmentObject var reviewViewModel: ReviewViewModel
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @Binding var opacity: Double
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,7 +23,7 @@ struct ReviewThumbnailView: View {
                 } label: {
                     HStack(alignment: .top) {
                         Text("방문자 리뷰")
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                             .font(.machachaTitle2Bold)
                         Text("\(reviewViewModel.reviews.count)")
                             .foregroundColor(Color("Color3"))

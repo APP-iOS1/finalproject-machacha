@@ -110,7 +110,7 @@ struct ReportView: View {
                     } label: {
                         Text("제출")
                             .font(.machachaHeadline)
-                            .foregroundColor(checkArr == [false, false, false, false, false, false] ? Color(.gray) : Color(.black))
+                            .foregroundColor(checkArr == [false, false, false, false, false, false] ? Color(.gray) : Color("Color3"))
                     }
                     .disabled(checkArr == [false, false, false, false, false, false] ? true : false)
                 }
@@ -120,7 +120,7 @@ struct ReportView: View {
                     } label: {
                         Image(systemName: "chevron.backward")
                             .font(.machachaHeadline)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                     }
                 }
             }

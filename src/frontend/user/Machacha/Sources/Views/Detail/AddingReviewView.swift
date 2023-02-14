@@ -43,8 +43,6 @@ struct AddingReviewView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    var _ = print(profileViewModel.currentUser?.id)
-                    
                     //별점
                     HStack(spacing: 15){
                         ForEach(0..<5,id: \.self){ index in
@@ -147,7 +145,7 @@ struct AddingReviewView: View {
                     } label: {
                         Image(systemName: "chevron.backward")
                             .font(.machachaHeadline)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                     }
                 }
                 //리뷰 등록

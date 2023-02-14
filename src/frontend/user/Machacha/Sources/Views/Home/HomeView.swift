@@ -9,18 +9,20 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
     @State private var selection: Int = 0
     @State var opacity: Double = 0.8
     let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 //광고 배너
                 TabView(selection: $selection) {
-                    ForEach(0..<3, id: \.self) { i in
-                        Image("advertise2")
+                    ForEach(1..<4, id: \.self) { i in
+                        Image("advertise\(i)")
                             .resizable()
                             .scaledToFit()
                             .frame(width: Screen.maxWidth, height: 230)
@@ -41,7 +43,7 @@ struct HomeView: View {
                 
                 FoodCartListView(title: "맛잘알 마차챠의 PICK! 😮", subTitle: "이런 포장마차는 어떠세요?", foodCartList: foodCartViewModel.foodCarts1)
                 
-                FoodCartListView(title: "맛잘알 마차챠의 PICK! 😮", subTitle: "이런 포장마차는 어떠세요?", foodCartList: foodCartViewModel.foodCarts2)
+                FoodCartListView(title: "새로 오픈했어요! 😋", subTitle: "이런 포장마차는 어떠세요?", foodCartList: foodCartViewModel.foodCarts2)
                 
                 FoodCartVerticalListView(title: "요즘 인기있는 포장마차는", foodCartList: foodCartViewModel.foodCarts3)
                 
@@ -66,8 +68,8 @@ struct HomeView: View {
             }
             //알림 이모지
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    
+                NavigationLink {
+                    ProfileNotificationView(userNoti: profileViewModel.notification)
                 } label: {
                     Image(systemName: "bell.badge")
                         .foregroundColor(Color("Color3"))
@@ -95,19 +97,23 @@ extension HomeView {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(foodCartList) { foodCart in
+                        NavigationLink {
+                            DetailView(selectedStore: foodCart)
+                        } label: {
                             VStack(alignment: .leading, spacing: 8) {
                                 //가게 대표 이미지
                                 if let first = foodCart.imageId.first, let image = foodCartViewModel.imageDict[first] {
-                                        Image(uiImage: image)
-                                            .resizable()
-                                            .frame(width: 150, height: 170)
-                                            .scaledToFit()
-                                            .cornerRadius(7)
-                                    }
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .frame(width: 150, height: 170)
+                                        .scaledToFit()
+                                        .cornerRadius(7)
+                                }
                                 
                                 Text(foodCart.name)
                                     .lineLimit(1)
                                     .frame(width: 150, alignment: .leading)
+                                    .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                                     .font(.machachaHeadline)
                                 HStack(alignment: .bottom, spacing: 4) {
                                     Image(systemName: "heart.fill")
@@ -121,9 +127,11 @@ extension HomeView {
                                     Text("\(foodCart.reviewId.count)")
                                 }
                                 .font(.footnote)
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color("Color3"))
                                 .padding(.top, -5)
+                            }
                         }
+
                     }
                 }
             }
@@ -139,27 +147,32 @@ extension HomeView {
                 .font(.machachaTitle3Bold)
                 .padding(.bottom, 8)
             ForEach(foodCartList) { foodCart in
-                //가게 대표 이미지
-                if let first = foodCart.imageId.first, let image = foodCartViewModel.imageDict[first] {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 130)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding(.trailing)
-                        .overlay {
-                            ZStack {
-                                Color.black.opacity(0.38)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .padding(.trailing)
-                                Text(foodCart.name)
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .font(.machachaHeadlineBold)
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-                                    .padding([.leading, .bottom])
+                NavigationLink {
+                    DetailView(selectedStore: foodCart)
+                } label: {
+                    //가게 대표 이미지
+                    if let first = foodCart.imageId.first, let image = foodCartViewModel.imageDict[first] {
+                        Image(uiImage: image)
+                            .resizable()
+                            .padding(.bottom, 30)
+                            .scaledToFill()
+                            .frame(height: 130)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.trailing)
+                            .overlay {
+                                ZStack {
+                                    Color.black.opacity(0.38)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .padding(.trailing)
+                                    Text(foodCart.name)
+                                        .bold()
+                                        .foregroundColor(.white)
+                                        .font(.machachaHeadlineBold)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                                        .padding([.leading, .bottom])
+                                }
                             }
-                        }
+                    }
                 }
             }
         }
@@ -171,5 +184,6 @@ extension HomeView {
         static var previews: some View {
             HomeView()
                 .environmentObject(FoodCartViewModel())
+                .environmentObject(ProfileViewModel())
         }
     }

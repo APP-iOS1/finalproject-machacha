@@ -158,7 +158,7 @@ struct EditingReviewView: View {
                     } label: {
                         Image(systemName: "chevron.backward")
                             .font(.machachaHeadline)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                     }
                 }
                 
