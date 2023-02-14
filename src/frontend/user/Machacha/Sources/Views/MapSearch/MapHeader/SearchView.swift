@@ -11,13 +11,14 @@ import FirebaseFirestore
 struct SearchView: View {
     
     @State var searchText = ""
-    
+    @Binding var currentIndex: Int
     @State var searchResults: [String] = []
     @State var doneTextFieldEdit: Bool = true
     @EnvironmentObject var foodCartVM: FoodCartViewModel
     @EnvironmentObject var mapSearchVM: MapSearchViewModel
     @Environment(\.presentationMode) var presentationMode
-    
+    @Binding var fromSearchView: Bool
+
     @State var text: String = ""
     @ObservedObject var voiceViewModel = VoiceViewModel()
     
@@ -67,7 +68,13 @@ struct SearchView: View {
                         ForEach(foodCartVM.foodCarts.filter{$0.region.trimmingCharacters(in: .whitespaces).hasPrefix(searchText) || (searchText == "")}) { result in
                             Text(result.region)
                                 .onTapGesture {
+                                    // 화면을 되돌아갈 때 검색된 데이터만 보여줘야함
+                                    currentIndex = 0
+                                    Coordinator.shared.removeMarkers()
                                     mapSearchVM.foodCarts = [result]
+                                    Coordinator.shared.foodCarts = mapSearchVM.foodCarts
+                                    Coordinator.shared.setupMarkers()
+                                    fromSearchView.toggle()
                                     self.presentationMode.wrappedValue.dismiss()
                                 }
                         }
@@ -106,8 +113,10 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
+    @State static var currentIndex: Int = 0
+    @State static var fromSearchView = false
     static var previews: some View {
-        SearchView()
+        SearchView(currentIndex: $currentIndex, fromSearchView: $fromSearchView)
             .environmentObject(MapSearchViewModel())
             .environmentObject(FoodCartViewModel())
     }

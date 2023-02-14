@@ -12,7 +12,8 @@ struct MapHeader: View {
     @State var isTap = false
     @Binding var currentIndex: Int
     @Binding var cameraPosition: LatLng
-
+    @Binding var fromSearchView: Bool
+    
     var body: some View {
         VStack {
             HStack {
@@ -38,11 +39,11 @@ struct MapHeader: View {
             .cornerRadius(10)
             .shadow(radius: 3)
             .padding([.leading, .trailing, .top], 10)
-//            MapHeaderCell()
-//                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
+            MapHeaderCell()
+                .padding([.leading], 13)    //tag cell의 padding과 값을 맞춘거임
         }
         .navigationDestination(isPresented: $isTap) {
-            SearchView()
+            SearchView(currentIndex: $currentIndex, fromSearchView: $fromSearchView)
         }
     }
   
@@ -62,8 +63,8 @@ struct MapHeader: View {
 struct MapHeaderSearch_Previews: PreviewProvider {
     @State static var currentIndex = 0
     @State static var cameraPosition = (0.0, 0.0)
-
+    @State static var fromSearchView = false
     static var previews: some View {
-        MapHeader(currentIndex: $currentIndex, cameraPosition: $cameraPosition)
+        MapHeader(currentIndex: $currentIndex, cameraPosition: $cameraPosition, fromSearchView: $fromSearchView)
     }
 }
