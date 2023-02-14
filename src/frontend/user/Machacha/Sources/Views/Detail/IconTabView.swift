@@ -20,6 +20,7 @@ struct IconTabView: View {
             Divider()
                 .padding(.vertical, 15)
             HStack(alignment: .bottom, spacing: 38) {
+                //즐겨찾기
                 Button {
                     isFavorited.toggle()
                     Task {
@@ -35,6 +36,7 @@ struct IconTabView: View {
                             .font(.headline)
                     }
                 }
+                //가봤어요
                 Button {
                     isVisited.toggle()
                     Task {
@@ -50,7 +52,7 @@ struct IconTabView: View {
                             .font(.headline)
                     }
                 }
-
+                //리뷰쓰기
                 Button {
                     foodCartViewModel.isShowingReviewSheet.toggle()
                 } label: {
@@ -61,14 +63,17 @@ struct IconTabView: View {
                             .font(.headline)
                     }
                 }
-
-                VStack(spacing: 10) {
-                    Image(systemName: "map")
-                        .font(.system(size: 28))
-                    Text("길찾기")
-                        .font(.headline)
+                //제보하기
+                Button {
+                    foodCartViewModel.isShowingReportSheet.toggle()
+                } label: {
+                    VStack(spacing: 10) {
+                        Image(systemName: "light.beacon.max")
+                            .font(.system(size: 35))
+                        Text("제보하기")
+                            .font(.headline)
+                    }
                 }
-                
             }//HStack
             .foregroundColor(Color("Color3"))
             .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
@@ -76,8 +81,8 @@ struct IconTabView: View {
     }
 }
 
-//struct IconTabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IconTabView(selectedStore: FoodCart.getDummy())
-//    }
-//}
+struct IconTabView_Previews: PreviewProvider {
+    static var previews: some View {
+        IconTabView(selectedStore: FoodCart.getDummy(), isFavorited: .constant(false), isVisited: .constant(false), opacity: .constant(0.8))
+    }
+}

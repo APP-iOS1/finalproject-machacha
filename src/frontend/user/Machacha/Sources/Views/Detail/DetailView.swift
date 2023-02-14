@@ -13,6 +13,7 @@ struct DetailView: View {
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @EnvironmentObject var reviewViewModel: ReviewViewModel
     @EnvironmentObject var profileViewModel: ProfileViewModel
+    @StateObject var reportViewModel: ReportViewModel = ReportViewModel()
     @State var isFavorited: Bool = false
     @State var isVisited: Bool = false
     @State var showToast = false
@@ -76,6 +77,7 @@ struct DetailView: View {
                     Text(selectedStore.name)
                         .font(.machachaTitle)
                         .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+                        .lineLimit(3)
                     Spacer()
                     Text("★ \(String(format: "%.1f", selectedStore.grade))")
                         .foregroundColor(Color("Color3"))
@@ -112,8 +114,7 @@ struct DetailView: View {
                     self.opacity = opacity == 0.4 ? 0.8 : 0.4
                 }
                 Task {
-                    await foodCartViewModel.fetchFoodCarts()
-                    reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
+                    reviewViewModel.reviews = try await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
                     profileViewModel.currentUser = try await profileViewModel.fetchUser()
                     if let user = profileViewModel.currentUser?.id {
                         isFavorited = try await foodCartViewModel.fetchUserFavoriteFoodCart(userId: user, foodCartId: selectedStore.id)
@@ -126,23 +127,18 @@ struct DetailView: View {
             }
         }
 		.navigationBarTitle("", displayMode: .inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing){
-                Button {
-                    foodCartViewModel.isShowingReportSheet.toggle()
-                } label: {
-                    Image(systemName: "exclamationmark.circle")
-                        .font(.machachaHeadline)
-                        .foregroundColor(Color("Color3"))
-                }
-            }
-        }
         .toast(isPresenting: $showToast){
             //댓글 삭제 후 화면 하단 토스트 메세지 출력
             AlertToast(displayMode: .banner(.pop), type: .regular, title: "리뷰가 등록되었습니다.")
         }
+        .toast(isPresenting: $reportViewModel.reportShowToast){
+            //제보 접수 후 하단 토스트 메세지 출력
+            AlertToast(displayMode: .banner(.pop), type: .regular, title: "제보가 접수되었습니다.")
+        }
         .fullScreenCover(isPresented: $foodCartViewModel.isShowingReportSheet) {
-            ReportView(reportType: 1)
+            if let user = profileViewModel.currentUser?.id {
+                ReportView(reportViewModel: reportViewModel, reportType: 0, targetId:selectedStore.id, userId: user)
+            }
         }
         .fullScreenCover(isPresented: $foodCartViewModel.isShowingReviewSheet) {
             AddingReviewView(showToast: $showToast, selectedStore: selectedStore)

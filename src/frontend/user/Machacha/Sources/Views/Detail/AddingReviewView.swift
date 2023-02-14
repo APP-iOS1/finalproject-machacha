@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import PhotosUI
+import AlertToast
 
 
 struct AddingReviewView: View {
@@ -42,8 +43,6 @@ struct AddingReviewView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    var _ = print(profileViewModel.currentUser?.id)
-                    
                     //별점
                     HStack(spacing: 15){
                         ForEach(0..<5,id: \.self){ index in
@@ -85,10 +84,9 @@ struct AddingReviewView: View {
                         
                         // 최대 5장의 사진을 지원
                         PhotosPicker(selection: $selectedItems, maxSelectionCount: 5, matching: .images) {
-                            HStack {
+                            HStack(alignment: .center) {
                                 Image(systemName: "camera")
-                                    .resizable()
-                                    .frame(width: 33, height: 30)
+                                    .font(.machachaTitle2)
                                 Text("사진 첨부하기")
                                     .foregroundColor(.black)
                                     .font(.machachaCallout)
@@ -139,16 +137,44 @@ struct AddingReviewView: View {
                 self.endTextEditing()
             }
             .navigationBarTitle("리뷰 작성", displayMode: .inline)
-            .toolbar { //뒤로가기
+            .toolbar {
+                //뒤로가기
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
                             .font(.machachaHeadline)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                     }
                 }
+                //리뷰 등록
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        reviewViewModel.isLoading = true
+                        if let user = profileViewModel.currentUser?.id {
+                            let review: Review = Review(id: UUID().uuidString, reviewer: user, foodCartId: selectedStore.id, grade: grade, description: text, imageId: [], updatedAt: Date(), createdAt: Date())
+                            reviewViewModel.addReview(review: review, images: images, foodCart: selectedStore)
+                            Task {
+                                reviewViewModel.reviews = try await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
+                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { // 사진 등록 시간
+                                    reviewViewModel.isLoading = false
+                                    foodCartViewModel.isShowingReviewSheet.toggle()
+                                }
+                            }
+                        }
+                        showToast = true
+                    } label: {
+                            Text("등록")
+                                .font(.machachaHeadlineBold)
+                                .foregroundColor(text.count > 0 && text != "" ? Color("Color3") : Color(.lightGray))
+                    }
+                    .disabled(text.count > 0 ? false : true)
+                }
+            }
+            .toast(isPresenting: $reviewViewModel.isLoading){
+                //리뷰 등록 시  ProgressView 작동
+                AlertToast(type: .loading)
             }
             //선택된 이미지를 변수에 저장
             .onChange(of: selectedItems) { newItems in
@@ -162,32 +188,6 @@ struct AddingReviewView: View {
                 }
             }
             //리뷰 등록
-            Button {
-                if let user = profileViewModel.currentUser?.id {
-                    let review: Review = Review(id: UUID().uuidString, reviewer: user, foodCartId: selectedStore.id, grade: grade, description: text, imageId: [], updatedAt: Date(), createdAt: Date())
-                    reviewViewModel.addReview(review: review, images: images, foodCart: selectedStore)
-                    Task {
-                        reviewViewModel.reviews = await reviewViewModel.fetchReviews(foodCartId: selectedStore.id)
-                        foodCartViewModel.isShowingReviewSheet.toggle()
-                    }
-                }
-                showToast = true
-            } label: {
-                if reviewViewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: Color(
-                            .white)))
-                } else {
-                    Text("리뷰 등록하기")
-                        .font(.machachaHeadline)
-                        .padding(.vertical, 15)
-                        .padding(.horizontal, 120)
-                        .background(text.count > 0 && text != "" ? Color("Color3") : Color(.lightGray))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                }
-            }
-            .disabled(text.count > 0 ? false : true)
         }
     }
 

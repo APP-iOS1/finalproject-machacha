@@ -28,7 +28,7 @@ class ReviewViewModel: ObservableObject {
     
     // MARK: - 서버에서 가게에 맞는 Review Collection의 데이터들을 불러오는 Method
     @MainActor
-	func fetchReviews(foodCartId: String) async -> [Review] {
+	func fetchReviews(foodCartId: String) async throws -> [Review] {
 		var reviews = [Review]()
 
         do {
@@ -64,18 +64,20 @@ class ReviewViewModel: ObservableObject {
         } catch {
             print("fetchReviews error: \(error.localizedDescription)")
         }
-        return reviews.sorted{$0.updatedAt > $1.updatedAt}
+        return reviews.sorted{$0.createdAt > $1.createdAt}
 
     }
     
     // MARK: - 서버에서 가게에 맞는 2개의 리뷰를 Review Collection의 데이터들을 불러오는 Method
     @MainActor
-    func fetchTwoReviews(foodCartId: String) async {
+    func fetchTwoReviews(foodCartId: String) async throws -> [Review] {
+        var twoReviews: [Review] = []
+        
         do {
             let querysnapshot = try await database.collection("Review")
                 .whereField("foodCartId", isEqualTo: foodCartId)
-                .limit(to: 2)
                 .getDocuments()
+            
             self.twoReviews.removeAll()
             
             for document in querysnapshot.documents {
@@ -99,10 +101,11 @@ class ReviewViewModel: ObservableObject {
                 
                 twoReviews.append(review)
             }
-            print("twoReviews = \(twoReviews)")
         } catch {
             print("fetchTwoReviews error: \(error.localizedDescription)")
         }
+        twoReviews.sort{$0.createdAt > $1.createdAt}
+        return twoReviews.count < 3 ? twoReviews : Array(twoReviews[0...1])
     }
     
     // MARK: - 서버의 Storage에서 이미지를 가져오는 Method

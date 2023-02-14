@@ -12,6 +12,7 @@ struct ReviewThumbnailView: View {
     @EnvironmentObject var reviewViewModel: ReviewViewModel
     @EnvironmentObject var foodCartViewModel: FoodCartViewModel
     @Binding var opacity: Double
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,7 +23,7 @@ struct ReviewThumbnailView: View {
                 } label: {
                     HStack(alignment: .top) {
                         Text("방문자 리뷰")
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                             .font(.machachaTitle2Bold)
                         Text("\(reviewViewModel.reviews.count)")
                             .foregroundColor(Color("Color3"))
@@ -36,18 +37,21 @@ struct ReviewThumbnailView: View {
                 .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 .padding(.trailing, 14)
                 .padding(.bottom)
+            
+            //리뷰 두개 불러오기
             ForEach(reviewViewModel.twoReviews, id: \.self) { review in
                 ReviewThumbnailListCellView(review: review)
                     .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                 if reviewViewModel.twoReviews.last != review {
                     Divider()
-                        .padding(.vertical)
+                        .padding(.vertical, 5)
                 }
             }
+            .padding(.bottom)
         }
         .onAppear {
             Task {
-                await reviewViewModel.fetchTwoReviews(foodCartId: selectedStore.id)
+                reviewViewModel.twoReviews = try await reviewViewModel.fetchTwoReviews(foodCartId: selectedStore.id)
             }
         }
         .font(.machachaTitle2Bold)

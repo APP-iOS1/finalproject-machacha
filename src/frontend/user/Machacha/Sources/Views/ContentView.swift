@@ -18,20 +18,18 @@ struct ContentView: View {
 		GeometryReader { geometry in
 			NavigationStack {
 				ZStack {
-					ZStack {
-						switch tabbarManager.curTabSelection {
-						case .home:
-							DetailView(selectedStore: FoodCart.getDummy())
-							//HomeView()
-						case .mapSearch:
-							MapSearchView()
-						case .register:
-							EmptyView()
-						case .magazine:
-							MagazineView()
-						case .profile:
-							ProfileView()
-						}
+					switch tabbarManager.curTabSelection {
+					case .home:
+						HomeView()
+//                        DetailView(selectedStore: FoodCart.getDummy())
+					case .mapSearch:
+						MapSearchView()
+					case .register:
+						EmptyView()
+					case .magazine:
+                        MagazineView()
+					case .profile:
+						ProfileView()
 					}
 					.padding(.bottom, tabbarManager.hight)
 					.overlay {
