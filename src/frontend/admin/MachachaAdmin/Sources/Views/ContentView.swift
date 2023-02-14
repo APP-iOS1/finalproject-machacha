@@ -25,7 +25,7 @@ struct ContentView: View {
 				ReportView()
 					.tabItem {
 						Image(systemName: "light.beacon.max.fill")
-						Text("신고")
+						Text("가게신고")
 					}.tag(Tab.report)
 				
 				ReportReviewView()
@@ -46,6 +46,7 @@ struct ContentView: View {
 //						Text("프로필")
 //					}.tag(Tab.profile)
 			} // TabView
+			
 		} // NavigationStack
 	}
 }

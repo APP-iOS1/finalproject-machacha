@@ -82,7 +82,7 @@ struct ReportReviewCellView: View {
 						.cornerRadius(40)
 						
 						VStack(alignment: .leading, spacing: 4) {
-							Text(userName)
+							Text("신고자 : \(userName)")
 								.font(.system(size: 17))
 								.foregroundColor(Color("textColor"))
 							
@@ -114,9 +114,6 @@ struct ReportReviewCellView: View {
 					
 					LazyVStack {
 						if isLoading {
-							Rectangle()
-								.foregroundColor(.gray)
-								.frame(width: Screen.maxWidth - 32, height: 200)
 						} else {
 							if !imageList.isEmpty {
 								if imageList.count == 1, let image = imageList.first! { // 사진이 1개 일떄
@@ -155,14 +152,14 @@ struct ReportReviewCellView: View {
 				.onAppear {
 					isLoading = true
 					Task {
-						print(#function, #line, reportReview)
+//						print(#function, #line, reportReview)
 						review = await reportVM.fetchReviews(reviewId: reportReview.targetId)
 						
 						let (name, profileId) = await reportVM.fetchReviews(userId: reportReview.userId)
-						print(#line, name, profileId)
+//						print(#line, name, profileId)
 						self.userName = name
 						self.userProfile = await reportVM.fetchImage(foodCartId: reportReview.userId, imageName: profileId)
-						print(#function, #line, review.imageId)
+//						print(#function, #line, review.imageId)
 						for imageId in review.imageId {
 							let image = await reportVM.fetchImage(foodCartId: review.id, imageName: imageId)
 							imageList.append(image)
