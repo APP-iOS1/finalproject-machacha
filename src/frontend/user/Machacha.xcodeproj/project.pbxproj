@@ -1158,14 +1158,14 @@
 			);
 			mainGroup = C4A5872B2975A77000B04A98;
 			packageReferences = (
-				6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */,
+				6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */,
 				FAFDD4772977873A008E28AD /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios-spm" */,
 				FAFDD47A29779202008E28AD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FAFDD47D2977B02D008E28AD /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				FAFDD4932977C680008E28AD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster.git" */,
+				C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */,
 				C4D5C054297A7E22003CF061 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast.git" */,
+				1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				C4F42039298EC1C200B615C6 /* XCRemoteSwiftPackageReference "FlagKit" */,
 				C4D2D3202994F6DA0004661B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				80FFB96C29968DD000850436 /* XCRemoteSwiftPackageReference "voice-overlay-ios" */,
@@ -1709,6 +1709,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
 				DEVELOPMENT_TEAM = CX5D2L45PC;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Machacha copy-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -1750,6 +1751,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
 				DEVELOPMENT_TEAM = CX5D2L45PC;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Machacha copy-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -2103,7 +2105,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast.git" */ = {
+		1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
 			requirement = {
@@ -2111,7 +2113,7 @@
 				kind = branch;
 			};
 		};
-		6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */ = {
+		6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
 			requirement = {
@@ -2119,7 +2121,7 @@
 				kind = branch;
 			};
 		};
-		6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */ = {
+		6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jaemyeong/NMapsMap-SPM.git";
 			requirement = {
@@ -2159,7 +2161,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster.git" */ = {
+		6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/efremidze/Cluster.git";
 			requirement = {
@@ -2175,7 +2177,7 @@
 				kind = branch;
 			};
 		};
-		6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast.git" */ = {
+		6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
 			requirement = {
@@ -2207,7 +2209,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster.git" */ = {
+		C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/efremidze/Cluster.git";
 			requirement = {
@@ -2268,7 +2270,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		1A439E9029902A68000EF1A2 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast.git" */;
+			package = 1A439E8F29902A68000EF1A2 /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
 		};
 		6A15E7D02998DA1B00F0FADA /* FirebaseAnalytics */ = {
@@ -2278,12 +2280,12 @@
 		};
 		6A8EBDA329778AB300964C9D /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */;
+			package = 6A8EBDA229778AB300964C9D /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
 		};
 		6AF063432994749000BCDC2A /* NMapsMap */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM.git" */;
+			package = 6AF063442994749000BCDC2A /* XCRemoteSwiftPackageReference "NMapsMap-SPM" */;
 			productName = NMapsMap;
 		};
 		6AF063452994749000BCDC2A /* NaverThirdPartyLogin */ = {
@@ -2348,7 +2350,7 @@
 		};
 		6AF063552994749000BCDC2A /* Cluster */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster.git" */;
+			package = 6AF063562994749000BCDC2A /* XCRemoteSwiftPackageReference "Cluster" */;
 			productName = Cluster;
 		};
 		6AF063572994749000BCDC2A /* FirebaseAuth */ = {
@@ -2373,7 +2375,7 @@
 		};
 		6AF0635C2994749000BCDC2A /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast.git" */;
+			package = 6AF0635D2994749000BCDC2A /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
 		};
 		6AF0635E2994749000BCDC2A /* FlagKit */ = {
@@ -2413,7 +2415,7 @@
 		};
 		C4D5C051297A73F7003CF061 /* Cluster */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster.git" */;
+			package = C4D5C050297A73F7003CF061 /* XCRemoteSwiftPackageReference "Cluster" */;
 			productName = Cluster;
 		};
 		C4D5C055297A7E22003CF061 /* FirebaseAuth */ = {
