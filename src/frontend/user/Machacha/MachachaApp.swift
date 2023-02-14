@@ -212,11 +212,11 @@ struct MachachaApp: App {
                             // Check if `user` exists; otherwise, do something with `error`
                         }
                         //자동 로그인
-                        if let userId = UserDefaults.standard.string(forKey: "userIdToken"){
-                            userVM.uid = userId
-                            userVM.requestUserCheck()
-                            authVM.loginState = .authenticated
-                        }
+//                        if let userId = UserDefaults.standard.string(forKey: "userIdToken"){
+//                            userVM.uid = userId
+//                            userVM.requestUserCheck()
+//                            authVM.loginState = .authenticated
+//                        }
                     }
             } else {
                 SplashView()
