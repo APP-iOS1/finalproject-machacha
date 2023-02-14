@@ -98,7 +98,7 @@ extension ProfileView {
 			ProfileEditView()
 		} label: {
 			HStack {
-				VStack(alignment: .leading, spacing: 8) {
+				VStack(alignment: .leading, spacing: 16) {
 					Text("우리 자주 만나요!".localized(language))
 						.font(.machachaHeadline)
 					HStack(spacing: 16) {
