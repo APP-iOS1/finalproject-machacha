@@ -65,7 +65,7 @@
       </tr>
       <tr>
           <td align="center">신기술을 사용할래요</td>
-          <td align="center">포폴에 넣고 싶어요</td>
+          <td align="center">UIKit, 이미지 </td>
           <td align="center">UIKit, 의존성 주입</td>
           <td align="center">Clean Code, 팀원 코드</td>
           <td align="center">UIKit, 실시간, 알림</td>
