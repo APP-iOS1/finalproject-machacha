@@ -68,7 +68,7 @@ class VoiceViewController: UIViewController, VoiceOverlayDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let margins = view.layoutMarginsGuide
+        let _ = view.layoutMarginsGuide
         
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
@@ -84,13 +84,15 @@ class VoiceViewController: UIViewController, VoiceOverlayDelegate {
         //    button.backgroundColor = UIColor(red: 255/255.0, green: 64/255.0, blue: 129/255.0, alpha: 1)
         //        button.setImage(UIImage(systemName: "mic"), for: .normal)
         
-        config.buttonSize = .large
-        config.baseBackgroundColor = .white
-        config.baseForegroundColor = .black
+        config.buttonSize = .medium
+        config.baseBackgroundColor = UIColor.clear //UIColor.clear
+        config.baseForegroundColor = UIColor(named: "textColor")
         config.image = UIImage(systemName: "mic")
+//        config.titleAlignment = .leading
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .large)
         
         button.configuration = config
+        button.contentVerticalAlignment = .center
         
         
         
@@ -121,7 +123,7 @@ class VoiceViewController: UIViewController, VoiceOverlayDelegate {
         voiceOverlayController.settings.showResultScreen = false
         
         //    voiceOverlayController.settings.layout.inputScreen.subtitleBulletList = ["Suggestion1", "Suggestion2"]
-        voiceOverlayController.settings.layout.inputScreen.subtitleBulletList = ["명동", "붕어빵"]
+        voiceOverlayController.settings.layout.inputScreen.subtitleBulletList = ["서울", "서울특별시 중구"]
         voiceOverlayController.settings.layout.inputScreen.titleListening = "듣고 있습니다..."
         voiceOverlayController.settings.layout.inputScreen.subtitleInitial = "이렇게 말해보세요:"
         voiceOverlayController.settings.layout.inputScreen.titleInProgress = "검색 중..."

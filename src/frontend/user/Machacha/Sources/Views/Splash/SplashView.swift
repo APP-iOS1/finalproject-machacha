@@ -2,7 +2,7 @@
 //  SplashView.swift
 //  Machacha
 //
-//  Created by geonhyeong on 2023/01/17.
+//  Created by Sue on 2023/02/15.
 //
 
 import SwiftUI
@@ -12,50 +12,56 @@ struct SplashView: View {
     @State private var rotation = 100.0
     
     var body: some View {
-        ZStack {
-            Image("tteokboki")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: Screen.maxWidth * 1.2)
-                .offset(x: -32, y: rotation )
-            
-            
-            Image("sweetpotato")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: Screen.maxWidth * 0.7)
-                .offset(x: -14, y: rotation - 50 )
-            
-            
-            Image("fishcake")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: Screen.maxWidth * 0.66)
-                .offset(x: 90, y: rotation - 45)
-            
-            Image("bbungbread")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: Screen.maxWidth * 0.5)
-                .rotationEffect(Angle(degrees: 100))
-                .offset(x: 58, y: rotation - 10)
-            
-            Image("store")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: Screen.maxWidth * 1.4)
-                .padding(.leading, Screen.maxWidth * 0.06)
-                .offset(y: -100)
-            // 손글씨
-            // 폰트
-            
-            if isAnimation {
+        GeometryReader { geometry in
+            ZStack {
+                HStack {
+                    Image("tteokboki2")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geometry.size.width * 0.35)
+                        .offset(x: 36, y: rotation )
+                    
+                    
+                    
+                    Image("sweetpotato2")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geometry.size.width * 0.354)
+                        .offset(x: -geometry.size.width * 0.12, y: rotation ) //70
+                    
+                    
+                    Image("fishcake2")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geometry.size.width * 0.35)
+                        .offset(x: -geometry.size.width * 0.34, y: rotation - 3)
+                    
+                    Image("bbungbread2")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geometry.size.width * 0.31)
+                        .rotationEffect(Angle(degrees: 100))
+                        .offset(x: -geometry.size.width * 0.55, y: rotation - 7)
+                }
+                .offset(y: geometry.size.height * 0.16)
+
+                Image("store2")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geometry.size.width * 0.9)
+//                    .padding(.leading, Screen.maxWidth * 0.06)
+                    .offset(x: -geometry.size.width * 0.22, y: geometry.size.height * 0.17 )
                 
-                Text("마차챠")
-                    .font(.custom("나눔손글씨 느릿느릿체", size: 100))
-                    .bold()
-                    .offset(y: 100)
+                
+                if isAnimation {
+                    
+                    Text("마차챠")
+                        .font(.custom("나눔손글씨 느릿느릿체", size: 97))
+                        .bold()
+                        .offset(x:  -geometry.size.width * 0.2 ,y: geometry.size.height * 0.312)
+                }
             }
+            
         }
         .background {
             Color("cellColor")

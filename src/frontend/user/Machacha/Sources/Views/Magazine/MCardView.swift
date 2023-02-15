@@ -21,17 +21,20 @@ struct MCardView: View {
                 
                 Text(magazine.title) // SwiftUI for iOS 15
                     .font(.machachaLargeTitleBold)
+                    .shadow(radius: 1.6)
                     
                     // matchedGeometryEffect ?
                     // 같은 id를 가진 모든 View를 하나의 그룹으로 인식하여, 각기 다른 View라도 이 View들의 위치를 기반으로 애니메이션 궤적의 시작점과 끝점을 계산할 수 있도록 함
                     .matchedGeometryEffect(id: "title\(magazine.id)", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .lineLimit(3)
                 
                 Text(magazine.subtitle) //20 sections - 3 hours
                     .font(.machachaTitle3Bold)
+                    .shadow(radius: 1.6)
                     .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
                     .padding(.bottom, 10)
-                
+                    .lineLimit(1)
 //                Text(magazine.text) // Build an iOS app for iOS 15 with custom layouts,
 //                    .font(.footnote)
 //                    .matchedGeometryEffect(id: "text\(magazine.id)", in: namespace)
@@ -40,20 +43,24 @@ struct MCardView: View {
                 .background(
                     Rectangle()
                         .fill(.ultraThinMaterial)
-                        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                        .blur(radius: 30)
+//                        .fill(.red)
+                        .mask(
+                            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                                .frame(height: 80)
+                            ) //30
+                        .blur(radius: 35) //원래 30
                         .matchedGeometryEffect(id: "blue\(magazine.id)", in: namespace)
                 )
         }
 
         .foregroundStyle(.white)
-        .background(
-            Image(magazine.image) // Illustration 5 - 저 머리모양 그림
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(20)
-                .matchedGeometryEffect(id: "image\(magazine.id)", in: namespace)
-        )
+//        .background(
+//            Image(magazine.image) // Illustration 5 - 저 머리모양 그림
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .padding(20)
+//                .matchedGeometryEffect(id: "image\(magazine.id)", in: namespace)
+//        )
         .background(
             Image(magazine.background) //Background 5 - 핑크 보라 배경
                 .resizable()

@@ -37,7 +37,7 @@ struct MCardDetailView: View {
 
     var body: some View {
         ZStack {
-            ScrollView {
+            ScrollView (showsIndicators: false) {
             
                 cover // 리스트와 버튼을 제외한 저기 상위 뷰
                 // 스켈레톤 뷰 무조건 필요
@@ -121,9 +121,10 @@ struct MCardDetailView: View {
             print("detail disappeared")
         }
 //        .refreshable {
+//            
 //            magazineVM.magazineFoodCart = try await
 //            magazineVM.fetchFoodCarts(foodCartIds: magazine.foodCartId)
-//
+////
 //        } //37.512483, 127.058934
         .onChange(of: show) { _ in
             fadeOut()
@@ -148,16 +149,16 @@ struct MCardDetailView: View {
             .frame(maxWidth: .infinity)
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
             .foregroundStyle(.black)
-            .background(
-                Image(magazine.image) // 핸드폰 사진들
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(20)
-                    .frame(maxWidth: 500)
-                    .matchedGeometryEffect(id: "image\(magazine.id)", in: namespace)
-                    .offset(y: scrollY > 0 ? scrollY * -0.8 : 0)
-                    .accessibilityLabel("Cover Image")
-            )
+//            .background(
+//                Image(magazine.image) // 핸드폰 사진들
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .padding(20)
+//                    .frame(maxWidth: 500)
+//                    .matchedGeometryEffect(id: "image\(magazine.id)", in: namespace)
+//                    .offset(y: scrollY > 0 ? scrollY * -0.8 : 0)
+//                    .accessibilityLabel("Cover Image")
+//            )
             .background(
                 Image(magazine.background) // 핑크 물결 배경
                     .resizable()
@@ -246,10 +247,12 @@ struct MCardDetailView: View {
                 .font(.machachaLargeTitleBold)
                 .matchedGeometryEffect(id: "title\(magazine.id)", in: namespace)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(3)
             
             Text(magazine.subtitle) //20 sections - 3 hours
                 .font(.machachaTitle3Bold)
                 .matchedGeometryEffect(id: "subtitle\(magazine.id)", in: namespace)
+                .lineLimit(1)
 
             Divider()
                 .opacity(appear[0] ? 1 : 0)
@@ -263,6 +266,7 @@ struct MCardDetailView: View {
                 
                 Text("\"\(magazine.editorCommemt)\"")
                     .font(.machachaSubhead)
+                    .lineSpacing(8)
             }
             .opacity(appear[2] ? 1 : 0)
         }
