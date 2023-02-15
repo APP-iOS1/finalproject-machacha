@@ -442,4 +442,4 @@ https://github.com/APPSCHOOL1-REPO/finalproject-machacha/tree/main/docs
 
 
 ## 라이센스
-<br>
+Machacha is available under the MIT license. See the LICENSE file for more info.
