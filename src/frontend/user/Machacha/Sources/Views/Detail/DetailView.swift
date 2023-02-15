@@ -14,6 +14,7 @@ struct DetailView: View {
     @EnvironmentObject var reviewViewModel: ReviewViewModel
     @EnvironmentObject var profileViewModel: ProfileViewModel
     @StateObject var reportViewModel: ReportViewModel = ReportViewModel()
+    @Environment(\.dismiss) var dismiss
     @State var isFavorited: Bool = false
     @State var isVisited: Bool = false
     @State var showToast = false
@@ -23,12 +24,16 @@ struct DetailView: View {
 
     
     var body: some View {
+        ZStack {
+            Color("bgColor")
+                .ignoresSafeArea()
         ScrollView {
-            VStack(alignment: .leading){
-                ScrollView (.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top) {
-                        if foodCartViewModel.imageDict.count > 0 {
-                            ForEach(0..<selectedStore.imageId.count, id: \.self) { index in
+                
+                VStack(alignment: .leading){
+                    ScrollView (.horizontal, showsIndicators: false) {
+                        HStack(alignment: .top) {
+                            if foodCartViewModel.imageDict.count > 0 {
+                                ForEach(0..<selectedStore.imageId.count, id: \.self) { index in
                                     if let image = foodCartViewModel.imageDict[selectedStore.imageId[index]] {
                                         Image(uiImage: image)
                                             .resizable()
@@ -56,57 +61,58 @@ struct DetailView: View {
                                     }
                                     
                                 }
-                        } else {
-                            ForEach(basicImages, id:\.self) { images in
-                                Rectangle()
-                                    .frame(width: 200, height: 200)
-                                    .foregroundColor(.white)
-                                    .overlay {
-                                        Image(images)
-                                            .resizable()
-                                            .frame(width: 100, height: 100)
-                                    }
- 
+                            } else {
+                                ForEach(basicImages, id:\.self) { images in
+                                    Rectangle()
+                                        .frame(width: 200, height: 200)
+                                        .foregroundColor(.white)
+                                        .overlay {
+                                            Image(images)
+                                                .resizable()
+                                                .frame(width: 100, height: 100)
+                                        }
+                                    
+                                }
                             }
-                        }
-                    }//HStack
-                }//ScrollView
-                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
-                
-                HStack {
-                    Text(selectedStore.name)
-                        .font(.machachaTitle)
-                        .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
-                        .lineLimit(3)
-                    Spacer()
-                    Text("★ \(String(format: "%.1f", selectedStore.grade))")
-                        .foregroundColor(Color("Color3"))
-                        .font(.machachaTitle2Bold)
-                        .padding(.trailing, 20)
-                        .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+                        }//HStack
+                    }//ScrollView
+                    .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+                    
+                    HStack {
+                        Text(selectedStore.name)
+                            .font(.machachaTitle)
+                            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+                            .lineLimit(3)
+                        Spacer()
+                        Text("★ \(String(format: "%.1f", selectedStore.grade))")
+                            .foregroundColor(Color("Color3"))
+                            .font(.machachaTitle2Bold)
+                            .padding(.trailing, 20)
+                            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+                    }
+                    .padding(.leading, 20)
+                    .padding(.top, 20)
+                    .padding(.bottom, 5)
+                    
+                    HStack(spacing: 5) {
+                        Image(systemName: "heart.fill")
+                        Text("\(selectedStore.favoriteCnt)")
+                            .padding(.trailing, 5)
+                        Image(systemName: "checkmark.seal.fill")
+                        Text("\(selectedStore.visitedCnt)")
+                    }
+                    .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+                    .padding(.horizontal, 20)
+                    .foregroundColor(.gray)
+                    
+                    IconTabView(selectedStore: selectedStore, isFavorited: $isFavorited, isVisited: $isVisited, opacity: $opacity) // 아이콘 4개
+                    StoreInformView(selectedStore: selectedStore, opacity: $opacity) // 가게정보
+                        .padding(.leading, 20)
+                    FoodCartMenuView(selectedStore: selectedStore, opacity: $opacity) // 메뉴 정보
+                        .padding(.leading, 20)
+                    ReviewThumbnailView(selectedStore: selectedStore, opacity: $opacity)
+                        .padding(.leading, 20)
                 }
-                .padding(.leading, 20)
-                .padding(.top, 20)
-                .padding(.bottom, 5)
-                
-                HStack(spacing: 5) {
-                    Image(systemName: "heart.fill")
-                    Text("\(selectedStore.favoriteCnt)")
-                        .padding(.trailing, 5)
-                    Image(systemName: "checkmark.seal.fill")
-                    Text("\(selectedStore.visitedCnt)")
-                }
-                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
-                .padding(.horizontal, 20)
-                .foregroundColor(.gray)
-                
-                IconTabView(selectedStore: selectedStore, isFavorited: $isFavorited, isVisited: $isVisited, opacity: $opacity) // 아이콘 4개
-                StoreInformView(selectedStore: selectedStore, opacity: $opacity) // 가게정보
-                    .padding(.leading, 20)
-                FoodCartMenuView(selectedStore: selectedStore, opacity: $opacity) // 메뉴 정보
-                    .padding(.leading, 20)
-                ReviewThumbnailView(selectedStore: selectedStore, opacity: $opacity)
-                    .padding(.leading, 20)
             }
             .onAppear {
                 foodCartViewModel.isLoading = true // progressview를 위해 선언
@@ -119,13 +125,27 @@ struct DetailView: View {
                     if let user = profileViewModel.currentUser?.id {
                         isFavorited = try await foodCartViewModel.fetchUserFavoriteFoodCart(userId: user, foodCartId: selectedStore.id)
                         isVisited = try await foodCartViewModel.fetchUserVisitedFoodCart(userId: user, foodCartId: selectedStore.id)
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.5) { // 스켈레톤 View를 위해
+//                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.5) { // 스켈레톤 View를 위해
                             foodCartViewModel.isLoading = false
-                        } // DispatchQueue
+//                        } // DispatchQueue
                     }
                 }
             }
         }
+        .toolbar {
+            //뒤로가기
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.machachaHeadline)
+                        .foregroundColor(Color("Color3"))
+                        .padding(.bottom)
+                }
+            }
+        }
+        .navigationBarBackButtonHidden()
 		.navigationBarTitle("", displayMode: .inline)
         .toast(isPresenting: $showToast){
             //댓글 삭제 후 화면 하단 토스트 메세지 출력
