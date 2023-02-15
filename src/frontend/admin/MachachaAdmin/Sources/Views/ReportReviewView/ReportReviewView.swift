@@ -20,6 +20,12 @@ struct ReportReviewView: View {
 				} // ForEach
 
 			} // List
+			.refreshable {
+				Task {
+					reportVM.report = await reportVM.fetchReports()
+					reportVM.reportReview = reportVM.report.filter {$0.type == 1}
+				} // Task
+			}
 			.padding(.top, 16)
 			.background(Color("bgColor"))
 			.scrollContentBackground(.hidden)
@@ -180,6 +186,8 @@ struct ReportReviewCellView: View {
 
 struct ReportReviewView_Previews: PreviewProvider {
     static var previews: some View {
-		ReportReviewView()
+		NavigationStack {
+			ReportReviewView()
+		}
     }
 }

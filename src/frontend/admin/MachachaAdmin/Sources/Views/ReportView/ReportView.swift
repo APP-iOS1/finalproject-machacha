@@ -19,6 +19,12 @@ struct ReportView: View {
 						.listRowBackground(Color.white.overlay(Rectangle().stroke(Color.black, lineWidth: 0.5)))
 				} // ForEach
 			} // List
+			.refreshable {
+				Task {
+					reportVM.report = await reportVM.fetchReports()
+					reportVM.reportFoodCart = reportVM.report.filter {$0.type == 0}
+				} // Task
+			}
 			.padding(.top, 16)
 			.background(Color("bgColor"))
 			.scrollContentBackground(.hidden)
