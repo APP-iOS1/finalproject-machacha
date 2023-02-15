@@ -76,7 +76,7 @@ class ApproveViewModel: ObservableObject {
 			print("fetchImage error: \(error.localizedDescription)")
 		}
 		
-		return UIImage(data: data)!
+		return UIImage(data: data) ?? UIImage()
 	}
 	
 	// MARK: - 서버에 RegisterView에서 입력한 가게정보 데이터들을 쓰는 Method

@@ -185,6 +185,6 @@ class ReportViewModel: ObservableObject {
 			print("fetchImage error: \(error.localizedDescription)")
 		}
 		
-		return UIImage(data: data)!
+		return UIImage(data: data) ?? UIImage()
 	}
 }

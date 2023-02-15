@@ -95,7 +95,7 @@ struct FoodCartCellView: View {
 							Menu {
 								Button {
 									Task {
-										
+                                        await approveVM.addFoodCart(foodCart)
 										try await approveVM.removeFoodCart(foodCart)
 										approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
 									}
@@ -104,7 +104,6 @@ struct FoodCartCellView: View {
 								}
 								Button(role: .destructive) {
 									Task {
-										await approveVM.addFoodCart(foodCart)
 										try await approveVM.removeFoodCart(foodCart)
 										approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
 									}
