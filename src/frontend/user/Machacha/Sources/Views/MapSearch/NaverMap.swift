@@ -106,10 +106,10 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         mapView.mapView.isNightModeEnabled = true
         mapView.showZoomControls = false
         mapView.mapView.positionMode = .normal
+        mapView.mapView.zoomLevel = 16.6
         mapView.mapView.minZoomLevel = 14
         
         if let userLocation = userLocation {
-            print("🍎🍎🍎🍎 get User Location!!!")
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: userLocation.0, lng: userLocation.1))
             mapView.mapView.moveCamera(cameraUpdate)
         }
@@ -129,6 +129,10 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         polyLineOverlay?.mapView = mapView.mapView
         
         checkIfLocationServicesIsEnabled()
+    }
+    
+    func mapViewCameraIdle(_ mapView: NMFMapView) {
+        print("zoom Level : \(mapView.zoomLevel)")
     }
     
     deinit {
@@ -208,7 +212,6 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         if let locationManager = locationManager {
             let lat = locationManager.location?.coordinate.latitude
             let lng = locationManager.location?.coordinate.longitude
-            print("🍎🍎🍎🍎 get User Location!!!")
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0))
             cameraUpdate.animation = .easeIn
             cameraUpdate.animationDuration = 0.3
@@ -228,25 +231,9 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
                 
                 // marker의 인덱스와 footerCell의 Index 동기화
                 self.currentIndex = index
-                //                cameraPosition = (marker.position.lat, marker.position.lng)
-                //                print("geoPoint : \(cameraPosition)")
-                //
-                //                print("naverMap Index : \(currentIndex)")
-                //                currentIndex = index
                 return true
             }
             marker.mapView = mapView.mapView
         }
-    }
-    
-    func cellScrolled() {
-        print("🍎🍎🍎🍎 currentIndex : \(currentIndex)")
-        let lat = markers[currentIndex].position.lat
-        let lng = markers[currentIndex].position.lng
-        
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng))
-        cameraUpdate.animation = .easeIn
-        cameraUpdate.animationDuration = 0.3
-        print("🍎🍎🍎🍎 cell Scrolled")
     }
 }

@@ -66,7 +66,7 @@ struct SearchView: View {
                 } else {
                     List {
                         ForEach(foodCartVM.foodCarts.filter{$0.region.trimmingCharacters(in: .whitespaces).hasPrefix(searchText) || (searchText == "")}) { result in
-                            Text(result.region)
+                            Text(result.address)
                                 .onTapGesture {
                                     // 화면을 되돌아갈 때 검색된 데이터만 보여줘야함
                                     currentIndex = 0
@@ -88,9 +88,6 @@ struct SearchView: View {
 //            .onTapGesture {
 //                hideKeyboard()
 //            }
-        }
-        .onAppear {
-            print("count : \(foodCartVM.foodCarts.count)")
         }
     }
 

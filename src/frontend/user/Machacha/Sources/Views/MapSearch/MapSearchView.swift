@@ -26,7 +26,6 @@ struct MapSearchView: View {
     @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var mapSearchViewModel: MapSearchViewModel
     @State var cameraCoord: LatLng = (37.566249, 126.992227)
-//    @State var currentIndex: Int = Coordinator.shared.currentIndex
     @State var isTap: Bool = false
     @State var fromToSearchView = false
     @StateObject var coordinator: Coordinator = Coordinator.shared
@@ -36,32 +35,19 @@ struct MapSearchView: View {
             ZStack {
                 VStack {
                     MapHeader(currentIndex: $coordinator.currentIndex, cameraPosition: $mapSearchViewModel.cameraPosition, fromSearchView: $fromToSearchView)
-                    Spacer()
                     
                     Button {
-                        print("현재 위치 조회")
                         Coordinator.shared.userLocation = mapSearchViewModel.userLocation
                         Coordinator.shared.fetchUserLocation()
                     } label: {
-                        HStack {
-                            Spacer()
-                            ZStack {
-                                Circle()
-                                    .fill(.white)
-                                    .frame(width: 30)
-                                    .shadow(radius: 10)
-                                Image(systemName: "scope")
-                                    .foregroundColor(Color("Color3"))
-                            }
-                        }.padding()
-                        
+                        CustomLocationButton()
                     }
-                    
+                    .padding(.trailing, 10)
+                    .padding(.top, Screen.maxHeight * 0.5)
                     
                     SnapCarousel(index: $coordinator.currentIndex, foodCarts: mapSearchViewModel.foodCarts, coord: $mapSearchViewModel.cameraPosition) { foodCart in
                         MapFooterCell(foodCart: foodCart, isFocus: false)
                             .aspectRatio(contentMode: .fill)
-                            .padding(.vertical, Screen.maxHeight - 460)
                             .onTapGesture {
                                 self.isTap = true
                             }
@@ -69,11 +55,7 @@ struct MapSearchView: View {
                     
                 }
                 .navigationDestination(isPresented: $isTap) {
-                    //                    TestView(name: mapSearchViewModel.foodCarts[currentIndex].name)
-                    //                    if !mapSearchViewModel.foodCarts.isEmpty {
-                    //                        DetailView(selectedStore: mapSearchViewModel.foodCarts[currentIndex])
-                    //                    }
-                    
+                    DetailView(selectedStore: foodCartViewModel.foodCarts[coordinator.currentIndex])
                 }
                 .zIndex(1)
                 NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $coordinator.currentIndex)
@@ -81,20 +63,31 @@ struct MapSearchView: View {
             }
             .onAppear {
                 if !fromToSearchView {
+//                    mapSearchViewModel.foodCarts = FoodCart.getListDummy()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
                     Coordinator.shared.setupMarkers()
                 } else {
                     fromToSearchView.toggle()
                 }
-                print("🍎🍎🍎🍎 Map searchView onappear")
             }
-            
         }
     }
-    @ViewBuilder private func TestView(name: String) -> some View {
-        VStack {
-            Text("가게 이름 : \(name)")
+}
+
+struct CustomLocationButton: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            ZStack {
+                Circle()
+                    .fill(Color("cellColor"))
+                    .frame(width: 40)
+                    .shadow(radius: 10)
+                Image(systemName: "scope")
+                    .foregroundColor(Color("Color3"))
+                    .padding(3)
+            }
         }
     }
 }
@@ -105,5 +98,6 @@ struct MapSearchView_Previews: PreviewProvider {
             .environmentObject(LocationManager())
             .environmentObject(MapSearchViewModel())
             .environmentObject(FoodCartViewModel())
+//            .previewDevice(PreviewDevice(rawValue: DeviceName.iPhone_SE_3rd_generation.rawValue))
     }
 }
