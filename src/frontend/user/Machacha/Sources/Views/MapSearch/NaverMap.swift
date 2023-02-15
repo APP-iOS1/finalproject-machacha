@@ -24,19 +24,7 @@ struct NaverMap: UIViewRepresentable {
     
     // MARK: - Map이 업데이트 될 때 발생하는 메서드
     func updateUIView(_ uiView: UIViewType, context: Context) {
-
-        if !Coordinator.shared.markers.isEmpty {
-            let lat = Coordinator.shared.markers[currentIndex].position.lat
-            let lng = Coordinator.shared.markers[currentIndex].position.lng
-
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng))
-            cameraUpdate.animation = .easeIn
-            cameraUpdate.animationDuration = 0.3
-            Coordinator.shared.mapView.mapView.moveCamera(cameraUpdate)
-        }
-
         print("updateUIView")
-        
     }
     // MARK: - makeCoordinator
     func makeCoordinator() -> Coordinator {
@@ -96,7 +84,7 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         NMGLatLng(lat: 37.56874, lng: 126.98275),
         NMGLatLng(lat: 37.56910, lng: 126.97747),
         NMGLatLng(lat: 37.57009, lng: 126.97567)
-
+        
     ]
     private override init() {
         super.init()
@@ -106,11 +94,16 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         mapView.mapView.isNightModeEnabled = true
         mapView.showZoomControls = false
         mapView.mapView.positionMode = .normal
+        mapView.mapView.zoomLevel = 16.6
         mapView.mapView.minZoomLevel = 14
         
+        checkIfLocationServicesIsEnabled()
+        
         if let userLocation = userLocation {
-            print("🍎🍎🍎🍎 get User Location!!!")
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: userLocation.0, lng: userLocation.1))
+            mapView.mapView.moveCamera(cameraUpdate)
+        } else {
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.561059, lng: 126.984996))
             mapView.mapView.moveCamera(cameraUpdate)
         }
         
@@ -127,8 +120,10 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         
         polygonOverlay?.mapView = mapView.mapView
         polyLineOverlay?.mapView = mapView.mapView
-        
-        checkIfLocationServicesIsEnabled()
+    }
+    
+    func mapViewCameraIdle(_ mapView: NMFMapView) {
+        //        print("zoom Level : \(mapView.zoomLevel)")
     }
     
     deinit {
@@ -208,7 +203,6 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
         if let locationManager = locationManager {
             let lat = locationManager.location?.coordinate.latitude
             let lng = locationManager.location?.coordinate.longitude
-            print("🍎🍎🍎🍎 get User Location!!!")
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0))
             cameraUpdate.animation = .easeIn
             cameraUpdate.animationDuration = 0.3
@@ -228,25 +222,21 @@ final class Coordinator: NSObject, NMFMapViewCameraDelegate, NMFMapViewTouchDele
                 
                 // marker의 인덱스와 footerCell의 Index 동기화
                 self.currentIndex = index
-                //                cameraPosition = (marker.position.lat, marker.position.lng)
-                //                print("geoPoint : \(cameraPosition)")
-                //
-                //                print("naverMap Index : \(currentIndex)")
-                //                currentIndex = index
                 return true
             }
             marker.mapView = mapView.mapView
         }
     }
     
-    func cellScrolled() {
-        print("🍎🍎🍎🍎 currentIndex : \(currentIndex)")
-        let lat = markers[currentIndex].position.lat
-        let lng = markers[currentIndex].position.lng
-        
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng))
-        cameraUpdate.animation = .easeIn
-        cameraUpdate.animationDuration = 0.3
-        print("🍎🍎🍎🍎 cell Scrolled")
+    func carouselScrolled() {
+        if !Coordinator.shared.markers.isEmpty {
+            let lat = Coordinator.shared.markers[currentIndex].position.lat
+            let lng = Coordinator.shared.markers[currentIndex].position.lng
+            
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng))
+            cameraUpdate.animation = .easeIn
+            cameraUpdate.animationDuration = 0.3
+            Coordinator.shared.mapView.mapView.moveCamera(cameraUpdate)
+        }
     }
 }

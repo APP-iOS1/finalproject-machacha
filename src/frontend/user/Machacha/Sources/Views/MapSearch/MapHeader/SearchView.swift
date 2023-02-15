@@ -122,27 +122,8 @@ struct SearchView: View {
                 }
             } // ToolbarItem
         })
-        .onAppear {
-            print("count : \(foodCartVM.foodCarts.count)")
-        }
     }
 
-    
-    
-    //    // firestore 실시간 쿼리
-    //    func getDatafromFirestore(query: String) {
-    //        let db = Firestore.firestore()
-    //        db.collection("FoodCart").whereField("name", isEqualTo: query).addSnapshotListener { snapshot, error in
-    //            if let error = error {
-    //                print("Error getting data \(error.localizedDescription)")
-    //                return
-    //            }
-    //
-    //            if let snapshot = snapshot {
-    //                self.searchResults = snapshot.documents.map { $0["name"] as! String }
-    //            }
-    //        }
-    //    }
 }
 
 struct SearchView_Previews: PreviewProvider {

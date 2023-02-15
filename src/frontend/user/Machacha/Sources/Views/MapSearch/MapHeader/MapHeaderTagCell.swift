@@ -97,11 +97,12 @@ struct MapHeaderTagCell: View {
                     Text(tag)
                         .offset(x: -17)
                         .font(.machachaFootnote)
+                        .fixedSize()
                 }
             }
         }
-        .foregroundColor(.gray)
-        .background(Color.white)
+        .foregroundColor(Color("textColor2"))
+        .background(Color("cellColor"))
         .cornerRadius(20)
         .shadow(radius: 3)
         .padding(3)

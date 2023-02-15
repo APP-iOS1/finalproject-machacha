@@ -66,7 +66,7 @@ struct SnapCarousel<Content: View, T: Identifiable>: View {
                         if let points = list as? [FoodCart] {
                             coord = (points[index].geoPoint.latitude, points[index].geoPoint.longitude)
                         }
-                        
+                        Coordinator.shared.carouselScrolled()
                         print("carousel index : \(index)")
                         
                     })

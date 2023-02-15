@@ -70,6 +70,6 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(ProfileViewModel())
             .environmentObject(MapSearchViewModel())
             .environmentObject(LocationManager())
-            .previewDevice(PreviewDevice(rawValue: DeviceName.iPhone_SE_3rd_generation.rawValue))
+			.previewDevice(PreviewDevice(rawValue: DeviceName.iPhone_SE_3rd_generation.rawValue))
     }
 }

@@ -21,10 +21,6 @@ struct ApproveView: View {
 				.onDelete { indexSet in
 					// TODO: delete items
 					Task {
-						indexSet.sorted(by: <).forEach { i in
-							print(i.hashValue)
-							//						try await approveVM.removeFoodCart(approveVM.approveFoodCarts[index])
-						}
 						approveVM.approveFoodCarts.remove(atOffsets: indexSet)
 					}
 				}
@@ -54,14 +50,15 @@ struct FoodCartCellView: View {
 	//MARK: Property Wrapper
 	@ObservedObject var approveVM: ApproveViewModel
 	@State private var image: UIImage?
+	@State private var showDetail = false
 
 	//MARK: Property
 	let index: Int
 	var foodCart: FoodCart
 	
 	var body: some View {
-		NavigationLink {
-			
+		Button {
+			showDetail.toggle()
 		} label: {
 			VStack(alignment: .leading) {
 				HStack(spacing: 16) {
@@ -88,10 +85,39 @@ struct FoodCartCellView: View {
 					.frame(width: 70, height: 70)
 					
 					VStack(alignment: .leading, spacing: 8) {
-						Text(foodCart.name)
-							.multilineTextAlignment(.leading)
-							.lineLimit(2)
-							.foregroundColor(Color(uiColor: .label))
+						HStack {
+							Text(foodCart.name)
+								.multilineTextAlignment(.leading)
+								.lineLimit(2)
+								.foregroundColor(Color(uiColor: .label))
+
+							Spacer()
+							Menu {
+								Button {
+									Task {
+										
+										try await approveVM.removeFoodCart(foodCart)
+										approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
+									}
+								} label: {
+									Label("승인", systemImage: "square.and.arrow.up")
+								}
+								Button(role: .destructive) {
+									Task {
+										await approveVM.addFoodCart(foodCart)
+										try await approveVM.removeFoodCart(foodCart)
+										approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
+									}
+								} label: {
+									Label("제거", systemImage: "trash.fill")
+								}
+							} label: {
+								Image(systemName: "ellipsis")
+									.foregroundColor(.gray)
+									.padding(20)
+							} // Menu
+
+						}
 
 						Text(foodCart.address) // 가게 주소
 							.font(.caption)
@@ -144,6 +170,9 @@ struct FoodCartCellView: View {
 					image = await approveVM.fetchImage(foodCartId: foodCart.id, imageName: first)
 				}
 			}
+		}
+		.navigationDestination(isPresented: $showDetail) {
+			DetailView(selectedStore: foodCart)
 		}
 	}
 }

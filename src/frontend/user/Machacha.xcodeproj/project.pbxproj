@@ -26,6 +26,13 @@
 		1ACB032C2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ACB032B2977C46E00D57C48 /* 나눔손글씨 느릿느릿체.ttf */; };
 		1AE18BE5299A054E00095FB4 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE18BE4299A054D00095FB4 /* Report.swift */; };
 		1AE18BE7299A860100095FB4 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE18BE6299A860100095FB4 /* ReportViewModel.swift */; };
+		2B4D8E0A9AB2816A6C1F9082 /* Pods_Machacha_push.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6B5A19772A71CB3968F774 /* Pods_Machacha_push.framework */; };
+		48009C064C963ADA1DB55F04 /* Pods_Machacha_MachachaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00ADAB2008826B4A88B0CA /* Pods_Machacha_MachachaUITests.framework */; };
+		66B2CC997D1CED0D2CAE6156 /* Pods_MachachaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DB1D698C14D95CC82916F0 /* Pods_MachachaTests.framework */; };
+		6A037E28299C005C00931213 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE18BE6299A860100095FB4 /* ReportViewModel.swift */; };
+		6A037E29299C006600931213 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE18BE4299A054D00095FB4 /* Report.swift */; };
+		6A037E2A299C009400931213 /* OCRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E0678299AA2EC00D57502 /* OCRViewModel.swift */; };
+		6A037E2B299C00BE00931213 /* ProfileAppNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B567E2997CB6300E2A188 /* ProfileAppNotificationView.swift */; };
 		6A0601E8298DE1AE00B1AC0E /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601E7298DE1AE00B1AC0E /* MapSearchViewModel.swift */; };
 		6A0601EB298E5E5200B1AC0E /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EA298E5E5200B1AC0E /* FirebaseService.swift */; };
 		6A0601ED298E603300B1AC0E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0601EC298E603300B1AC0E /* FirebaseError.swift */; };
@@ -1222,6 +1229,8 @@
 				6AF0636A2994749000BCDC2A /* FirebaseService.swift in Sources */,
 				6AF063F629948FAD00BCDC2A /* SearchView.swift in Sources */,
 				6AF0636B2994749000BCDC2A /* IconTabView.swift in Sources */,
+				6A037E2B299C00BE00931213 /* ProfileAppNotificationView.swift in Sources */,
+				6A037E2A299C009400931213 /* OCRViewModel.swift in Sources */,
 				6AF0636C2994749000BCDC2A /* MagazineView.swift in Sources */,
 				6AF0636D2994749000BCDC2A /* MStoreCellView.swift in Sources */,
 				6AF0636B2994749000BCDC2A /* IconTabView.swift in Sources */,
@@ -1245,7 +1254,7 @@
 				6AF0637C2994749000BCDC2A /* BtnModifier.swift in Sources */,
 				6AF0637D2994749000BCDC2A /* LocationManager.swift in Sources */,
 				6AF0637E2994749000BCDC2A /* MapHeader.swift in Sources */,
-				FADD0B5A299BB5E00057E8A5 /* Report.swift in Sources */,
+				6A037E29299C006600931213 /* Report.swift in Sources */,
 				6AF0637F2994749000BCDC2A /* MapHeaderTagCell.swift in Sources */,
 				6AF063802994749000BCDC2A /* ReviewThumbnailListCellView.swift in Sources */,
 				6AF063812994749000BCDC2A /* FirebaseError.swift in Sources */,
@@ -1296,7 +1305,7 @@
 				6AF063AB2994749000BCDC2A /* Constants.swift in Sources */,
 				6AF063AC2994749000BCDC2A /* LanguageType.swift in Sources */,
 				6AF063AD2994749000BCDC2A /* RegisterMapView.swift in Sources */,
-				FADD0B59299BB5A30057E8A5 /* ReportViewModel.swift in Sources */,
+				6A037E28299C005C00931213 /* ReportViewModel.swift in Sources */,
 				6AF063AE2994749000BCDC2A /* User.swift in Sources */,
 				6AF063AF2994749000BCDC2A /* TopTest.swift in Sources */,
 				6AF063B02994749000BCDC2A /* Magazine.swift in Sources */,
@@ -1673,7 +1682,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = 9V72DK4T4M;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;
@@ -1715,7 +1724,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Machacha/Preview Content\"";
-				DEVELOPMENT_TEAM = CX5D2L45PC;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Machacha/Info.plist;

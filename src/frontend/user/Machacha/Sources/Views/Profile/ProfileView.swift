@@ -27,6 +27,10 @@ struct ProfileView: View {
 				SettingSection() // Setting Section
 				
 				WebViewSection() // WebView Section
+				
+				Text("MACHACHA V1.0")
+					.font(.machachaCaption)
+					.foregroundColor(.secondary)
 			}
 			.background(Color("bgColor"))
 			.onAppear {
@@ -98,7 +102,7 @@ extension ProfileView {
 			ProfileEditView()
 		} label: {
 			HStack {
-				VStack(alignment: .leading, spacing: 8) {
+				VStack(alignment: .leading, spacing: 16) {
 					Text("우리 자주 만나요!".localized(language))
 						.font(.machachaHeadline)
 					HStack(spacing: 16) {
@@ -106,18 +110,21 @@ extension ProfileView {
 							if let image = profileVM.profileImage {
 								Image(uiImage: image)
 									.resizable()
-									.cornerRadius(8)
-									.overlay(RoundedRectangle(cornerRadius: 8)
+									.scaledToFit()
+									.frame(width: 45, height: 45)
+									.cornerRadius(100)
+									.overlay(RoundedRectangle(cornerRadius: 100)
 											.stroke(Color("bgColor"), lineWidth: 2))
 							} else {
-								RoundedRectangle(cornerRadius: 8) // 임시
+								RoundedRectangle(cornerRadius: 100) // 임시
+									.frame(width: 45, height: 45)
 									.foregroundColor(Color("bgColor"))
 							}
 						} // VStack
 						.frame(width: 40, height: 40)
 
 						VStack(alignment: .leading) {
-							HStack {
+							HStack(alignment: .bottom) {
 								Text(user.name)
 									.font(.machachaTitleBold)
 								Text("님".localized(language))
@@ -300,7 +307,7 @@ extension ProfileView {
 			.overlay(RoundedRectangle(cornerRadius: 8)
 				.stroke(Color("textCoor"), lineWidth: 0.1))
 		} header: {
-			SectionHeaderView(name: "Machacha 정보")
+			SectionHeaderView(name: "MACHACHA 정보")
 		} // Section
 		.padding(.horizontal, 10)
 		.sheet(item: $showSafari) {
