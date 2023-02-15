@@ -80,41 +80,33 @@ class ApproveViewModel: ObservableObject {
 	}
 	
 	// MARK: - 서버에 RegisterView에서 입력한 가게정보 데이터들을 쓰는 Method
-	func addFoodCart() async -> [FoodCart] {
+	func addFoodCart(_ foodCart: FoodCart) async {
 		do {
-			for (i, foodCart) in approveFoodCarts.enumerated() {
-				if checkBox[i] {
-					try await database
-						.collection("FoodCart")
-						.document(foodCart.id)
-						.setData(["id": foodCart.id,
-								  "name": foodCart.name,
-								  "address": foodCart.address,
-								  "region": foodCart.region,
-								  "geoPoint": foodCart.geoPoint,
-								  "visitedCnt": foodCart.visitedCnt,
-								  "favoriteCnt": foodCart.favoriteCnt,
-								  "paymentOpt": foodCart.paymentOpt,
-								  "openingDays": foodCart.openingDays,
-								  "menu": foodCart.menu,
-								  "bestMenu": foodCart.bestMenu,
-								  "imageId": foodCart.imageId,
-								  "grade": foodCart.grade,
-								  "reportCnt": foodCart.reportCnt,
-								  "reviewId": foodCart.reviewId,
-								  "registerId": foodCart.registerId,
-								  "updatedAt": foodCart.updatedAt,
-								  "createdAt": foodCart.createdAt
-								 ])
-					
-					try await removeFoodCart(foodCart)
-				}
-			}
+			try await database
+				.collection("FoodCart")
+				.document(foodCart.id)
+				.setData(["id": foodCart.id,
+						  "name": foodCart.name,
+						  "address": foodCart.address,
+						  "region": foodCart.region,
+						  "geoPoint": foodCart.geoPoint,
+						  "visitedCnt": foodCart.visitedCnt,
+						  "favoriteCnt": foodCart.favoriteCnt,
+						  "paymentOpt": foodCart.paymentOpt,
+						  "openingDays": foodCart.openingDays,
+						  "menu": foodCart.menu,
+						  "bestMenu": foodCart.bestMenu,
+						  "imageId": foodCart.imageId,
+						  "grade": foodCart.grade,
+						  "reportCnt": foodCart.reportCnt,
+						  "reviewId": foodCart.reviewId,
+						  "registerId": foodCart.registerId,
+						  "updatedAt": foodCart.updatedAt,
+						  "createdAt": foodCart.createdAt
+						 ])
 		} catch {
 			print("addFoodCart error: \(error.localizedDescription)")
 		}
-		
-		return await fetchFoodCarts()
 	}
 	
 	// MARK: - 서버에 RegisterView에서 입력한 가게정보 데이터를 삭제하는 Method

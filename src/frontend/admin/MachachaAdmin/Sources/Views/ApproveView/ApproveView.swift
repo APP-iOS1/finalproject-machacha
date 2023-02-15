@@ -97,12 +97,17 @@ struct FoodCartCellView: View {
 							Spacer()
 							Menu {
 								Button {
-									
+									Task {
+										
+										try await approveVM.removeFoodCart(foodCart)
+										approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
+									}
 								} label: {
 									Label("승인", systemImage: "square.and.arrow.up")
 								}
 								Button(role: .destructive) {
 									Task {
+										await approveVM.addFoodCart(foodCart)
 										try await approveVM.removeFoodCart(foodCart)
 										approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
 									}
