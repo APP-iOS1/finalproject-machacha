@@ -70,7 +70,7 @@ struct NoticeView: View {
                             noticeVM.userId = try await noticeVM.fetchUserId() // 유저 목록 불러오기
                             noticeVM.userTokens = try await noticeVM.fetchUserToken() // 유저 토큰 불러오기
                             await noticeVM.sendMessageToDevice() // send FCM
-//                            await noticeVM.addNotice()
+                            await noticeVM.addNotice()
                             noticeVM.initData() // Data 초기화
                             
                         }
