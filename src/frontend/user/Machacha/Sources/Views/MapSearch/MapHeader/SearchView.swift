@@ -45,7 +45,7 @@ struct SearchView: View {
                         
                         VoiceView(text: $searchText, voiceViewModel: voiceViewModel)
                             .frame(width: 40, height: 40)
-                            .padding(.top, 7)
+                            .padding(.top, 8.2)
                             .padding(.trailing, 2)
 
                     }
