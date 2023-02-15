@@ -73,13 +73,13 @@ struct MapHeaderTagCell: View {
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
                     Coordinator.shared.setupMarkers()
-//                    Coordinator.shared.mapView
+                    Coordinator.shared.carouselScrolled()
                 } else {
                     Coordinator.shared.removeMarkers()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts.filter{ $0.bestMenu == bestMenu }
                     Coordinator.shared.setupMarkers()
-
+                    Coordinator.shared.carouselScrolled()
                     
                     mapSearchViewModel.sortedBy(by: bestMenu)
                 }
