@@ -182,9 +182,11 @@ struct FoodCartReportCellView: View {
 
 				let (name, profileId) = await reportVM.fetchReviews(userId: reportFoodCart.userId)
 				self.userName = name
-				self.userProfile = await reportVM.fetchImage(foodCartId: reportFoodCart.userId, imageName: profileId)
+				if profileId != "" {
+					self.userProfile = await reportVM.fetchImage(foodCartId: reportFoodCart.userId, imageName: profileId)
+				}
 				
-				if let first = foodCart.imageId.first {
+				if let first = foodCart.imageId.first, first != "" {
 					image = await reportVM.fetchImage(foodCartId: foodCart.id, imageName: first)
 				}
 				isLoading = false
