@@ -62,13 +62,16 @@ struct MapSearchView: View {
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
+                print("🍎🍎\(coordinator.currentIndex)")
                 if !fromToSearchView {
 //                    mapSearchViewModel.foodCarts = FoodCart.getListDummy()
+                    Coordinator.shared.checkIfLocationServicesIsEnabled()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
                     Coordinator.shared.setupMarkers()
                 } else {
-                    fromToSearchView.toggle()
+                    Coordinator.shared.carouselScrolled()
+                    fromToSearchView.toggle()                    
                 }
             }
         }

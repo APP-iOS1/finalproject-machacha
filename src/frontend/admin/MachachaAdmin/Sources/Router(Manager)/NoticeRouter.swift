@@ -16,7 +16,8 @@ enum NoticeRouter: URLRequestConvertible {
 	private var baseURL: URL {
 		switch self {
 		case .postNotice:
-			return URL(string: "\(APIConstants.url)")!
+            return URL(string: "")!
+//			return URL(string: "\(APIConstants.url)")!
 		}
 	}
 	
@@ -35,7 +36,7 @@ enum NoticeRouter: URLRequestConvertible {
 	
 	private var headers: HTTPHeaders {
 		var headers = HTTPHeaders()
-		headers["Authorization"] = "key=\(APIConstants.serverKey)"
+//		headers["Authorization"] = "key=\(APIConstants.serverKey)"
 		headers["Content-Type"] = "application/json"
 
 		return headers

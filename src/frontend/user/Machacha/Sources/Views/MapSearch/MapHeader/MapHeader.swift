@@ -24,7 +24,7 @@ struct MapHeader: View {
                     isTap = true
                 } label: {
                     HStack {
-                        Text("장소, 식당 이름. 주소 검색")
+                        Text("도로명 주소 검색")
                             .foregroundColor(Color("textColor2"))
                         Spacer()
                     }
