@@ -73,6 +73,7 @@ struct MapHeaderTagCell: View {
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
                     Coordinator.shared.setupMarkers()
+                    Coordinator.shared.currentIndex = 0
                     Coordinator.shared.carouselScrolled()
 //                    Coordinator.shared.mapView
                 } else {
@@ -80,6 +81,7 @@ struct MapHeaderTagCell: View {
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts.filter{ $0.bestMenu == bestMenu }
                     Coordinator.shared.setupMarkers()
+                    Coordinator.shared.currentIndex = 0
                     Coordinator.shared.carouselScrolled()
                     
                     mapSearchViewModel.sortedBy(by: bestMenu)

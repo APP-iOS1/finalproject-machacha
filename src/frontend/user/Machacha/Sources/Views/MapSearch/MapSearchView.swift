@@ -62,6 +62,7 @@ struct MapSearchView: View {
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
+                print("🍎🍎\(coordinator.currentIndex)")
                 if !fromToSearchView {
 //                    mapSearchViewModel.foodCarts = FoodCart.getListDummy()
                     Coordinator.shared.checkIfLocationServicesIsEnabled()
