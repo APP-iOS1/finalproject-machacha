@@ -47,6 +47,8 @@ struct CustomTabView: View {
 	//MARK: Property Wrapper
 	@EnvironmentObject var profileVM: ProfileViewModel
 	@ObservedObject var tabbarManager = TabBarManager.shared
+    //MARK: Property wrapper
+    @AppStorage("language") private var language = LocalizationViewModel.shared.language
 	
     
 	var body: some View {
@@ -71,12 +73,12 @@ struct CustomTabView: View {
 						} label: {
 							VStack {
 								switch index {
-								case 0: TabButton(isSelection: tabbarManager.curTabSelection == .home, name: "맛집찾기", systemName: "fork.knife.circle.fill", systemNameByNotSelected: "fork.knife.circle")
+                                case 0: TabButton(isSelection: tabbarManager.curTabSelection == .home, name: "맛집찾기".localized(language), systemName: "fork.knife.circle.fill", systemNameByNotSelected: "fork.knife.circle")
 								case 1:
-									TabButton(isSelection: tabbarManager.curTabSelection == .mapSearch, name: "검색", systemName: "magnifyingglass.circle.fill", systemNameByNotSelected: "magnifyingglass.circle")
+									TabButton(isSelection: tabbarManager.curTabSelection == .mapSearch, name: "검색".localized(language), systemName: "magnifyingglass.circle.fill", systemNameByNotSelected: "magnifyingglass.circle")
 								case 2: PlusTabButton(isSelection: tabbarManager.curTabSelection == .register, name: "", systemName: "plus.circle.fill")
-								case 3: TabButton(isSelection: tabbarManager.curTabSelection == .magazine, name: "매거진", systemName: "newspaper.circle.fill", systemNameByNotSelected: "newspaper.circle")
-								default: TabButton(isSelection: tabbarManager.curTabSelection == .profile, name: "내정보", systemName: "person.circle.fill", systemNameByNotSelected: "person.circle")
+								case 3: TabButton(isSelection: tabbarManager.curTabSelection == .magazine, name: "매거진".localized(language), systemName: "newspaper.circle.fill", systemNameByNotSelected: "newspaper.circle")
+								default: TabButton(isSelection: tabbarManager.curTabSelection == .profile, name: "내정보".localized(language), systemName: "person.circle.fill", systemNameByNotSelected: "person.circle")
 								}
 							} // VStack
 							.padding(.horizontal, 20) // 버튼 영역까지 고려
