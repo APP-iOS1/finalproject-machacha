@@ -21,10 +21,6 @@ struct ApproveView: View {
 				.onDelete { indexSet in
 					// TODO: delete items
 					Task {
-						indexSet.sorted(by: <).forEach { i in
-							print(i.hashValue)
-							//						try await approveVM.removeFoodCart(approveVM.approveFoodCarts[index])
-						}
 						approveVM.approveFoodCarts.remove(atOffsets: indexSet)
 					}
 				}
@@ -54,14 +50,15 @@ struct FoodCartCellView: View {
 	//MARK: Property Wrapper
 	@ObservedObject var approveVM: ApproveViewModel
 	@State private var image: UIImage?
+	@State private var showDetail = false
 
 	//MARK: Property
 	let index: Int
 	var foodCart: FoodCart
 	
 	var body: some View {
-		NavigationLink {
-			
+		Button {
+			showDetail.toggle()
 		} label: {
 			VStack(alignment: .leading) {
 				HStack(spacing: 16) {
@@ -173,6 +170,9 @@ struct FoodCartCellView: View {
 					image = await approveVM.fetchImage(foodCartId: foodCart.id, imageName: first)
 				}
 			}
+		}
+		.navigationDestination(isPresented: $showDetail) {
+			DetailView(selectedStore: foodCart)
 		}
 	}
 }

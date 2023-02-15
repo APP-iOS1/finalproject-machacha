@@ -186,6 +186,8 @@ struct ReportReviewCellView: View {
 
 struct ReportReviewView_Previews: PreviewProvider {
     static var previews: some View {
-		ReportReviewView()
+		NavigationStack {
+			ReportReviewView()
+		}
     }
 }

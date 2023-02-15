@@ -20,6 +20,11 @@
 		C439358D299B452800D7593A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C439358C299B452800D7593A /* User.swift */; };
 		C4393591299B51D000D7593A /* ReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4393590299B51D000D7593A /* ReportDetailView.swift */; };
 		C4393594299BEECD00D7593A /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4393593299BEECD00D7593A /* APIConstants.swift */; };
+		C4393596299C789300D7593A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4393595299C789300D7593A /* DetailView.swift */; };
+		C4393598299C789D00D7593A /* IconTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4393597299C789D00D7593A /* IconTabView.swift */; };
+		C439359A299C78A500D7593A /* StoreInformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4393599299C78A500D7593A /* StoreInformView.swift */; };
+		C439359C299C78AB00D7593A /* FoodCartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C439359B299C78AB00D7593A /* FoodCartMenuView.swift */; };
+		C439359E299C791800D7593A /* FoodCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C439359D299C791800D7593A /* FoodCartViewModel.swift */; };
 		C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B116429929EFE00BE312A /* MachachaAdminApp.swift */; };
 		C43B116929929F0000BE312A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116829929F0000BE312A /* Assets.xcassets */; };
 		C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43B116B29929F0000BE312A /* Preview Assets.xcassets */; };
@@ -75,6 +80,11 @@
 		C439358E299B497D00D7593A /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C4393590299B51D000D7593A /* ReportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailView.swift; sourceTree = "<group>"; };
 		C4393593299BEECD00D7593A /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		C4393595299C789300D7593A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C4393597299C789D00D7593A /* IconTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTabView.swift; sourceTree = "<group>"; };
+		C4393599299C78A500D7593A /* StoreInformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformView.swift; sourceTree = "<group>"; };
+		C439359B299C78AB00D7593A /* FoodCartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartMenuView.swift; sourceTree = "<group>"; };
+		C439359D299C791800D7593A /* FoodCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCartViewModel.swift; sourceTree = "<group>"; };
 		C43B116129929EFE00BE312A /* MachachaAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachachaAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43B116429929EFE00BE312A /* MachachaAdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaAdminApp.swift; sourceTree = "<group>"; };
 		C43B116829929F0000BE312A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,6 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				C482134F2993620700CE4CA2 /* ApproveView.swift */,
+				C4393595299C789300D7593A /* DetailView.swift */,
+				C4393597299C789D00D7593A /* IconTabView.swift */,
+				C4393599299C78A500D7593A /* StoreInformView.swift */,
+				C439359B299C78AB00D7593A /* FoodCartMenuView.swift */,
 			);
 			path = ApproveView;
 			sourceTree = "<group>";
@@ -296,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D2D309299379A90004661B /* ApproveViewModel.swift */,
+				C439359D299C791800D7593A /* FoodCartViewModel.swift */,
 				C41B56C4299951D500E2A188 /* NoticeViewModel.swift */,
 				C41B56D029996CD700E2A188 /* ReportViewModel.swift */,
 			);
@@ -472,8 +487,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C41B56D129996CD700E2A188 /* ReportViewModel.swift in Sources */,
+				C4393596299C789300D7593A /* DetailView.swift in Sources */,
 				C4393591299B51D000D7593A /* ReportDetailView.swift in Sources */,
 				C48213572993628C00CE4CA2 /* ProfileView.swift in Sources */,
+				C439359E299C791800D7593A /* FoodCartViewModel.swift in Sources */,
 				C4D2D30E29937AAB0004661B /* Constants.swift in Sources */,
 				C41B56CF2999667D00E2A188 /* Ex+View.swift in Sources */,
 				C41B56C82999545800E2A188 /* NoticeRouter.swift in Sources */,
@@ -481,11 +498,13 @@
 				C4D2D2FF2993788B0004661B /* UserNotification.swift in Sources */,
 				C41B56C5299951D500E2A188 /* NoticeViewModel.swift in Sources */,
 				C482134C29935ED900CE4CA2 /* ContentView.swift in Sources */,
+				C4393598299C789D00D7593A /* IconTabView.swift in Sources */,
 				C4D2D31F29937D0D0004661B /* Ex+Date.swift in Sources */,
 				C439358B299B40A900D7593A /* Report.swift in Sources */,
 				C4D2D31D29937D010004661B /* Ex+String.swift in Sources */,
 				C4D2D30A299379A90004661B /* ApproveViewModel.swift in Sources */,
 				6AA71DAF299AD1D6004CD514 /* Notification.swift in Sources */,
+				C439359C299C78AB00D7593A /* FoodCartMenuView.swift in Sources */,
 				C4D2D2FD2993787C0004661B /* FoodCart.swift in Sources */,
 				C4393589299B3FD000D7593A /* Review.swift in Sources */,
 				C482135B299362C300CE4CA2 /* NoticeView.swift in Sources */,
@@ -494,6 +513,7 @@
 				C4821359299362AA00CE4CA2 /* ReportReviewView.swift in Sources */,
 				C43B116529929EFE00BE312A /* MachachaAdminApp.swift in Sources */,
 				C439358D299B452800D7593A /* User.swift in Sources */,
+				C439359A299C78A500D7593A /* StoreInformView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
