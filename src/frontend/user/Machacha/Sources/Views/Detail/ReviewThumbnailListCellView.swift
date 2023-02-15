@@ -10,6 +10,9 @@ import SwiftUI
 struct ReviewThumbnailListCellView: View {
     var review: Review
     @EnvironmentObject var reviewViewModel: ReviewViewModel
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @State private var reviewer: User?
+    @State private var profileImage: UIImage?
     
     var body: some View {
         HStack(alignment: .top) {
@@ -18,15 +21,20 @@ struct ReviewThumbnailListCellView: View {
                     .padding(.bottom, 13)
                 HStack {
                     //프로필 사진
-                    if let image = reviewViewModel.reviewerImageDict[reviewViewModel.reviewer.profileId] {
+                    if let image = profileImage {
                         Image(uiImage: image)
                             .resizable()
                             .frame(width: 41, height: 41)
                             .aspectRatio(contentMode: .fit)
                             .cornerRadius(40)
+                    } else {
+                        Color(uiColor: .lightGray)
+                            .frame(width: 41, height: 41)
+                            .cornerRadius(40)
                     }
+                    
                     VStack(alignment: .leading, spacing: 3) {
-                        Text(reviewViewModel.reviewer.name)
+                        Text(reviewer?.name ?? "사용자 이름")
                             .font(.machachaHeadline)
                         Text(review.updatedAt.getDay())
                             .font(.machachaSubhead)
@@ -52,7 +60,10 @@ struct ReviewThumbnailListCellView: View {
         .padding(.trailing, 20)
         .onAppear {
             Task {
-                reviewViewModel.reviewer = try await reviewViewModel.fetchReviewer(userId: review.reviewer)
+                reviewer = try await reviewViewModel.fetchReviewer(userId: review.reviewer)
+                if let reviewer = reviewer {
+                    profileImage = try await profileViewModel.fetchImage(foodCartId: reviewer.id, imageName: reviewer.profileId)
+                }
             }
         }
     }

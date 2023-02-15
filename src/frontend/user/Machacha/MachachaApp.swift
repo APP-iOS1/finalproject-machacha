@@ -110,6 +110,7 @@ extension AppDelegate: MessagingDelegate {
         print("FCM 등록 토큰 갱신: \(token)")
         print("AppDelegate - 파베 토큰 받음")
         print("AppDelegate - Firebase registration token: \(String(describing: fcmToken))")
+        FCMTokenViewModel.shared.fcmToken = fcmToken
     }
 }
 
@@ -184,7 +185,6 @@ struct MachachaApp: App {
                     .environmentObject(mapSearchVM)
                     .preferredColorScheme(profileVM.isDarkMode ? .dark : .light)
                     .environmentObject(profileVM) // 프로필 탭에서 사용할 environmentObject
-                
                     .onOpenURL { url in
                         //네이버
                         if NaverThirdPartyLoginConnection
@@ -218,7 +218,6 @@ struct MachachaApp: App {
                             userVM.requestUserCheck()
                             authVM.loginState = .authenticated
                         }
-                        
                     }
             } else {
                 SplashView()

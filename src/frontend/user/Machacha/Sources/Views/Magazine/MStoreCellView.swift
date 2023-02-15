@@ -41,21 +41,20 @@ struct MStoreCellView: View {
             VStack (alignment: .leading) {
                 
                 // MARK: - 포장마차 이름, 위치
-                HStack (alignment: .bottom, spacing: -0.6) {
+                HStack (alignment: .bottom ) {
                     
                     
-                    Image("store")
+                    Image("mainIcon")
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 100, alignment: .leading)
+                        .frame(height: 53, alignment: .leading)
                     
                     
                     VStack (alignment: .leading) {
                         Text(foodcart.name)
                             .font(.machachaTitle2Bold)
                             .foregroundColor(Color("textColor"))
-                        //                            .padding(.top, 20)
-                            .padding(.bottom, 0.1)
+                            .padding(.bottom, 0.01)
                             
                         
                         
@@ -63,13 +62,14 @@ struct MStoreCellView: View {
                         Text(foodcart.address)
                             .font(.machachaSubhead)
                             .foregroundColor(Color("textColor2"))
-                            .padding(.bottom, 12.1)
+                            .padding(.bottom, 4.1)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     
                     Spacer()
                 } //hstack
+                .padding(.bottom, 1)
                
                 
                 /*
@@ -132,6 +132,7 @@ struct MStoreCellView: View {
             }
         }//hstack
         .padding(.horizontal, 10)
+        .padding(.top, 40)
     }
 }
 

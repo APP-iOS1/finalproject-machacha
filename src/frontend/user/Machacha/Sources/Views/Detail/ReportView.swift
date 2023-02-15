@@ -24,72 +24,77 @@ struct ReportView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                VStack(alignment: .leading, spacing: 7) {
-
-                    if reportType == 0 { //가게 정보 신고
-                        ForEach(storeReportList.indices, id: \.self) { idx in
-                            HStack {
-                                Text(storeReportList[idx])
-                                Spacer()
-                                Button {
-                                    checkArr[idx].toggle()
-                                } label: {
-                                    checkArr[idx] ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+            ZStack {
+                Color("bgColor")
+                    .ignoresSafeArea()
+                
+                VStack {
+                    VStack(alignment: .leading, spacing: 7) {
+                        
+                        if reportType == 0 { //가게 정보 신고
+                            ForEach(storeReportList.indices, id: \.self) { idx in
+                                HStack {
+                                    Text(storeReportList[idx])
+                                    Spacer()
+                                    Button {
+                                        checkArr[idx].toggle()
+                                    } label: {
+                                        checkArr[idx] ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+                                    }
+                                    .foregroundColor(Color("Color3"))
+                                    .font(.system(size: 20))
                                 }
-                                .foregroundColor(Color("Color3"))
-                                .font(.system(size: 20))
-                            }
-                            Divider()
-                                .padding(.vertical, 5)
-                        } //ForEach
-                    } else if reportType == 1 { //댓글 신고
-                        ForEach(commentReportList.indices, id: \.self) { idx in
-                            HStack {
-                                Text(commentReportList[idx])
-                                Spacer()
-                                Button {
-                                    checkArr[idx].toggle()
-                                } label: {
-                                    checkArr[idx] ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+                                Divider()
+                                    .padding(.vertical, 5)
+                            } //ForEach
+                        } else if reportType == 1 { //댓글 신고
+                            ForEach(commentReportList.indices, id: \.self) { idx in
+                                HStack {
+                                    Text(commentReportList[idx])
+                                    Spacer()
+                                    Button {
+                                        checkArr[idx].toggle()
+                                    } label: {
+                                        checkArr[idx] ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+                                    }
+                                    .foregroundColor(Color("Color3"))
+                                    .font(.system(size: 20))
                                 }
-                                .foregroundColor(Color("Color3"))
-                                .font(.system(size: 20))
+                                Divider()
+                                    .padding(.vertical, 5)
                             }
-                            Divider()
-                                .padding(.vertical, 5)
                         }
-                    }
-                    
-                    
-                    ZStack {
-                        if text.isEmpty {
-                            TextEditor(text: .constant("기타 사유를 입력해주세요."))
-                                .foregroundColor(.gray)
-                                .disabled(true)
-                                .scrollContentBackground(.hidden) // HERE
-                                .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
+                        
+                        
+                        ZStack {
+                            if text.isEmpty {
+                                TextEditor(text: .constant("기타 사유를 입력해주세요."))
+                                    .foregroundColor(.gray)
+                                    .disabled(true)
+                                    .scrollContentBackground(.hidden) // HERE
+                                    .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
+                            }
+                            TextEditor(text: $text)
+                                .focused($isInFocusText)
+                                .opacity(text.isEmpty ? 0.25 : 1)
                         }
-                        TextEditor(text: $text)
-                            .focused($isInFocusText)
-                            .opacity(text.isEmpty ? 0.25 : 1)
-                    }
-                    .padding([.leading, .trailing])
-                    .scrollContentBackground(.hidden) // HERE
-                    .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
-                    .frame(height: 150)
-                    .padding(.top, 10)
-                    .onTapGesture {
-                        checkArr[5] = true
-                    }
-                    
-                    Spacer()
-                    
-                    
-                }//VStack
-                .padding(.horizontal, 20)
-                .padding(.top, 30)
-            } //VStack
+                        .padding([.leading, .trailing])
+                        .scrollContentBackground(.hidden) // HERE
+                        .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
+                        .frame(height: 150)
+                        .padding(.top, 10)
+                        .onTapGesture {
+                            checkArr[5] = true
+                        }
+                        
+                        Spacer()
+                        
+                        
+                    }//VStack
+                    .padding(.horizontal, 20)
+                    .padding(.top, 30)
+                } //VStack
+            }
             .onTapGesture { // 키보드가 올라왔을 때 다른 화면 터치 시 키보드가 내려감
                 self.endTextEditing()
             }

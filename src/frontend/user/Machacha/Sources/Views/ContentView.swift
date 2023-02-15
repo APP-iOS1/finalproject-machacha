@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ContentView: View {
     //MARK: Property Wrapper
@@ -40,6 +41,11 @@ struct ContentView: View {
                 } // ZStack
                 .edgesIgnoringSafeArea(.bottom)
                 .preferredColorScheme(profileVM.isDarkMode ? .dark : .light) // PreView 용
+                // toast 메세지
+                .toast(isPresenting: $tabbarManager.showToast){
+                    //댓글 삭제 후 화면 하단 토스트 메세지 출력
+                    AlertToast(displayMode: .banner(.pop), type: .regular, title: "등록하신 가게가 심사중입니다.",style: AlertToast.AlertStyle.style(titleFont: .machachaHeadline))
+                }
             } // NavigationStack
             .task {
                 locationManager.checkIfLocationServicesIsEnabled()

@@ -22,6 +22,10 @@ struct FirstLoginView: View {
     //MARK: Property
     let maxHeight = Screen.maxHeight * 0.35
     
+    private var isButtonDisable: Bool {
+        return profileVM.name == "" || !isAgree
+    }
+    
     var body: some View {
         GeometryReader{ proxi in
             let topEdge = proxi.safeAreaInsets.top
@@ -118,7 +122,10 @@ struct FirstLoginView: View {
                                 }
                             }
                             
-                            if result { withAnimation(.easeInOut){userVM.userCheck = .correct} }
+                            if result {
+                                FCMTokenViewModel.shared.addToken()
+                                withAnimation(.easeInOut){userVM.userCheck = .correct}
+                            }
                         } label: {
                             Text("계속하기")
                                 .font(.machachaTitle3Bold)
@@ -128,6 +135,7 @@ struct FirstLoginView: View {
                         .cornerRadius(20)
                         .tint(Color("Color3"))
                         .buttonStyle(.bordered)
+                        .disabled(isButtonDisable)
                     }
                     .zIndex(0)
                 }

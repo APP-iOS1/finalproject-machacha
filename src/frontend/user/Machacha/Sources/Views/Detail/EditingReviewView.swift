@@ -57,94 +57,98 @@ struct EditingReviewView: View {
     
     var body: some View {
         NavigationStack {
+            ZStack {
+                Color("bgColor")
+                    .ignoresSafeArea()
+                
             ScrollView {
-                VStack {
-                    //별점
-                    var _ = print(profileViewModel.currentUser?.id)
-                    HStack(spacing: 15){
-                        ForEach(0..<5,id: \.self){ index in
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .foregroundColor(Double(index) < grade ? Color("Color3") : Color.secondary)
-                                .frame(width: 44, height: 44)
-                                .onTapGesture {
-                                    grade = Double(index+1)
-                                }
-                        }
-                    } //HStack
-                    .padding(.vertical, 40)
                     VStack {
-                        //후기 Text
-                        Text("상세한 후기를 써주세요.")
-                            .font(.machachaTitle3Bold)
-                        ZStack {
-                            if text.isEmpty {
-                                TextEditor(text: .constant("작성 내용은 마이페이지와 장소 리뷰에 노출되며 매장주를 포함한 다른 사용자들이 볼 수 있으니, 서로를 배려하는 마음을 담아 작성 부탁드립니다."))
-                                    .lineSpacing(8)
-                                    .foregroundColor(.gray)
-                                    .disabled(true)
-                                    .scrollContentBackground(.hidden) // HERE
-                                    .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
-                            }
-                            TextEditor(text: $text)
-                                .opacity(text.isEmpty ? 0.25 : 1)
-                        } //ZStack
-                        .focused($isInFocusText)
-                        .padding([.leading, .trailing])
-                        .scrollContentBackground(.hidden) // HERE
-                        .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
-                        .frame(height: 300)
-                        .padding(.vertical, 10)
-                        
-                        // 최대 5장의 사진을 지원
-                        PhotosPicker(selection: $selectedItems, maxSelectionCount: 5, matching: .images) {
-                            HStack(alignment: .center) {
-                                Image(systemName: "camera")
-                                    .font(.machachaTitle2)
-                                Text("사진 첨부하기")
-                                    .foregroundColor(.black)
-                                    .font(.machachaCallout)
-                            }
-                            .foregroundColor(.black)
-                            .frame(width: 350, height: 60)
-                            .cornerRadius(10)
-                            .border(.black)
-                        }
-                        .padding(.bottom, 10)
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                //Spacer()
-                                ForEach(selectedPhotosData.indices, id: \.self) { photoData in
-                                    if let image = UIImage(data: selectedPhotosData[photoData]) {
-                                        
-                                        Image(uiImage: image)
-                                            .resizable()
-                                            .cornerRadius(5)
-                                            .frame(width: 120, height: 120)
-                                            .aspectRatio(contentMode: .fit)
-                                            .overlay {
-                                                Button {
-                                                    selectedPhotosData.remove(at: photoData)
-                                                } label: {
-                                                    Image(systemName: "x.circle.fill")
-                                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                                                        .padding(.trailing, 5)
-                                                        .padding(.top, 5)
-                                                        .foregroundColor(.white)
-                                                }
-                                            }
-                                        Spacer()
+                        //별점
+                        HStack(spacing: 15){
+                            ForEach(0..<5,id: \.self){ index in
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .foregroundColor(Double(index) < grade ? Color("Color3") : Color.secondary)
+                                    .frame(width: 44, height: 44)
+                                    .onTapGesture {
+                                        grade = Double(index+1)
                                     }
-                                }//FoEeach
-                                //Spacer()
-                            }//HStack
-                        }//ScrollView
-                        .padding(.leading, 5)
-                        .padding(.bottom, 30)
-                        
-                        
-                    }//VStack
-                    .padding(.horizontal, 20)
+                            }
+                        } //HStack
+                        .padding(.vertical, 40)
+                        VStack {
+                            //후기 Text
+                            Text("상세한 후기를 써주세요.")
+                                .font(.machachaTitle3Bold)
+                            ZStack {
+                                if text.isEmpty {
+                                    TextEditor(text: .constant("작성 내용은 마이페이지와 장소 리뷰에 노출되며 매장주를 포함한 다른 사용자들이 볼 수 있으니, 서로를 배려하는 마음을 담아 작성 부탁드립니다."))
+                                        .lineSpacing(8)
+                                        .foregroundColor(.gray)
+                                        .disabled(true)
+                                        .scrollContentBackground(.hidden) // HERE
+                                        .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
+                                }
+                                TextEditor(text: $text)
+                                    .opacity(text.isEmpty ? 0.25 : 1)
+                            } //ZStack
+                            .focused($isInFocusText)
+                            .padding([.leading, .trailing])
+                            .scrollContentBackground(.hidden) // HERE
+                            .background(colorScheme == .dark ? Color("cellColor") : Color("bgColor"))
+                            .frame(height: 300)
+                            .padding(.vertical, 10)
+                            
+                            // 최대 5장의 사진을 지원
+                            PhotosPicker(selection: $selectedItems, maxSelectionCount: 5, matching: .images) {
+                                HStack(alignment: .center) {
+                                    Image(systemName: "camera")
+                                        .font(.machachaTitle2)
+                                    Text("사진 첨부하기")
+                                        .foregroundColor(.black)
+                                        .font(.machachaCallout)
+                                }
+                                .foregroundColor(.black)
+                                .frame(width: 350, height: 60)
+                                .cornerRadius(10)
+                                .border(.black)
+                            }
+                            .padding(.bottom, 10)
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    //Spacer()
+                                    ForEach(selectedPhotosData.indices, id: \.self) { photoData in
+                                        if let image = UIImage(data: selectedPhotosData[photoData]) {
+                                            
+                                            Image(uiImage: image)
+                                                .resizable()
+                                                .cornerRadius(5)
+                                                .frame(width: 120, height: 120)
+                                                .aspectRatio(contentMode: .fit)
+                                                .overlay {
+                                                    Button {
+                                                        selectedPhotosData.remove(at: photoData)
+                                                    } label: {
+                                                        Image(systemName: "x.circle.fill")
+                                                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                                            .padding(.trailing, 5)
+                                                            .padding(.top, 5)
+                                                            .foregroundColor(.white)
+                                                    }
+                                                }
+                                            Spacer()
+                                        }
+                                    }//FoEeach
+                                    //Spacer()
+                                }//HStack
+                            }//ScrollView
+                            .padding(.leading, 5)
+                            .padding(.bottom, 30)
+                            
+                            
+                        }//VStack
+                        .padding(.horizontal, 20)
+                    }
                 }
             } // selectedItem 변경 사항이 있을 때마다 loadTransferable 데이터를 로드하는 메서드를 호출
             .onTapGesture { // 키보드가 올라왔을 때 다른 화면 터치 시 키보드가 내려감
