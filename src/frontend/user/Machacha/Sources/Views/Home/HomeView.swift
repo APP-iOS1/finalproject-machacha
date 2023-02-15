@@ -17,38 +17,68 @@ struct HomeView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                //광고 배너
-                TabView(selection: $selection) {
-                    ForEach(1..<4, id: \.self) { i in
-                        Image("advertise\(i)")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: Screen.maxWidth, height: 230)
-                            .tag(i)
+        ZStack {
+            Color("bgColor")
+                .ignoresSafeArea()
+            ScrollView {
+                
+                VStack(alignment: .leading) {
+                    //광고 배너
+                    ZStack {
+                        TabView(selection: $selection) {
+                            ForEach(0..<3, id: \.self) { i in
+                                Image("advertise\(i+1)")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: Screen.maxWidth, height: 240)
+                                    .tag(i)
+                            }
+                        }
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                        Text("\(selection+1) / 3")
+                            .font(.machachaSubhead)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 2)
+                            .background(Color(.gray).opacity(0.7))
+                            .cornerRadius(30)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                            .padding([.bottom, .trailing])
+                        
                     }
-                }
-                .tabViewStyle(PageTabViewStyle())
-                .frame(height: 200)
-                .onReceive(timer) { t in
-                    selection += 1
+                    //                    .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                    .frame(height: 200)
+                    .onReceive(timer) { t in
+                        selection += 1
+                        
+                        if selection == 3 {
+                            selection = 0
+                        }
+                    }
+                    .animation(.easeIn, value: selection)
+                    .padding(.bottom, 30)
+                    .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                     
-                    if selection == 4 {
-                        selection = 0
+                    FoodCartListView(title: "맛잘알 마차챠의 PICK! 😮", subTitle: "이런 포장마차는 어떠세요?", foodCartList: foodCartViewModel.foodCarts1)
+                    
+                    FoodCartListView(title: "새로 오픈했어요! 😋", subTitle: "이런 포장마차는 어떠세요?", foodCartList: foodCartViewModel.foodCarts2)
+                    
+                    FoodCartVerticalListView(title: "요즘 인기있는 포장마차는", foodCartList: foodCartViewModel.foodCarts3)
+                    
+                }
+                .padding(.bottom, 25)
+            }
+            .toolbar {
+                //알림 이모지
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        ProfileNotificationView(userNoti: profileViewModel.notification)
+                    } label: {
+                        Image(systemName: "bell.badge")
+                            .foregroundColor(Color("Color3"))
                     }
                 }
-                .animation(.easeIn, value: selection)
-                .padding(.bottom, 30)
-                
-                FoodCartListView(title: "맛잘알 마차챠의 PICK! 😮", subTitle: "이런 포장마차는 어떠세요?", foodCartList: foodCartViewModel.foodCarts1)
-                
-                FoodCartListView(title: "새로 오픈했어요! 😋", subTitle: "이런 포장마차는 어떠세요?", foodCartList: foodCartViewModel.foodCarts2)
-                
-                FoodCartVerticalListView(title: "요즘 인기있는 포장마차는", foodCartList: foodCartViewModel.foodCarts3)
-                
             }
-            .padding(.bottom)
         }
         .onAppear {
             foodCartViewModel.isLoading = true // progressview를 위해 선언
@@ -57,25 +87,13 @@ struct HomeView: View {
             }
             Task {
                 await foodCartViewModel.fetchFoodCarts()
-                foodCartViewModel.isLoading = false
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { // 스켈레톤 View를 위해
+                    foodCartViewModel.isLoading = false
+                } // DispatchQueue
             }
         }
-        .toolbar {
-            //마차챠 텍스트
-            ToolbarItem(placement: .navigationBarLeading) {
-                Text("마차챠")
-                    .font(.machachaTitle2)
-            }
-            //알림 이모지
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    ProfileNotificationView(userNoti: profileViewModel.notification)
-                } label: {
-                    Image(systemName: "bell.badge")
-                        .foregroundColor(Color("Color3"))
-                }
-            }
-        }
+        //        .toolbarBackground(Color("Color3"), for: .navigationBar)
+        //        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 
@@ -87,13 +105,15 @@ extension HomeView {
     private func FoodCartListView(title: String, subTitle: String, foodCartList: [FoodCart]) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             //추천 멘트
-                Text(title)
-                    .font(.machachaTitle3Bold)
-                Text(subTitle)
-                    .font(.machachaSubhead)
-                    .foregroundColor(.gray)
-                    .padding(.bottom, 5)
-
+            Text(title)
+                .font(.machachaTitle3Bold)
+                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+            Text(subTitle)
+                .font(.machachaSubhead)
+                .foregroundColor(.gray)
+                .padding(.bottom, 5)
+                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(foodCartList) { foodCart in
@@ -108,6 +128,7 @@ extension HomeView {
                                         .frame(width: 150, height: 170)
                                         .scaledToFit()
                                         .cornerRadius(7)
+                                        .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                                 }
                                 
                                 Text(foodCart.name)
@@ -115,6 +136,7 @@ extension HomeView {
                                     .frame(width: 150, alignment: .leading)
                                     .foregroundColor(colorScheme == .dark ? Color(.white) : Color(.black))
                                     .font(.machachaHeadline)
+                                    .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                                 HStack(alignment: .bottom, spacing: 4) {
                                     Image(systemName: "heart.fill")
                                         .padding(.trailing, -3)
@@ -126,14 +148,16 @@ extension HomeView {
                                         .padding(.trailing, -3)
                                     Text("\(foodCart.reviewId.count)")
                                 }
+                                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                                 .font(.footnote)
                                 .foregroundColor(Color("Color3"))
                                 .padding(.top, -5)
                             }
                         }
-
+                        
                     }
                 }
+                .padding(.trailing)
             }
             .padding(.bottom, 30)
         }
@@ -146,6 +170,7 @@ extension HomeView {
             Text(title)
                 .font(.machachaTitle3Bold)
                 .padding(.bottom, 8)
+                .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
             ForEach(foodCartList) { foodCart in
                 NavigationLink {
                     DetailView(selectedStore: foodCart)
@@ -161,17 +186,19 @@ extension HomeView {
                             .padding(.trailing)
                             .overlay {
                                 ZStack {
-                                    Color.black.opacity(0.38)
+                                    Color.black.opacity(0.3)
                                         .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .padding(.trailing)
                                     Text(foodCart.name)
                                         .bold()
+                                        .shadow(color: .black, radius: 9)
                                         .foregroundColor(.white)
                                         .font(.machachaHeadlineBold)
                                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                                         .padding([.leading, .bottom])
                                 }
                             }
+                            .setSkeletonView(opacity: opacity, shouldShow: foodCartViewModel.isLoading)
                     }
                 }
             }
@@ -179,11 +206,11 @@ extension HomeView {
         .padding(.leading)
     }
 }
-    
-    struct HomeView_Previews: PreviewProvider {
-        static var previews: some View {
-            HomeView()
-                .environmentObject(FoodCartViewModel())
-                .environmentObject(ProfileViewModel())
-        }
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+            .environmentObject(FoodCartViewModel())
+            .environmentObject(ProfileViewModel())
     }
+}
