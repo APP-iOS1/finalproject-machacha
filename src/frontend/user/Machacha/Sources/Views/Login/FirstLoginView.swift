@@ -122,7 +122,10 @@ struct FirstLoginView: View {
                                 }
                             }
                             
-                            if result { withAnimation(.easeInOut){userVM.userCheck = .correct} }
+                            if result {
+                                FCMTokenViewModel.shared.addToken()
+                                withAnimation(.easeInOut){userVM.userCheck = .correct}
+                            }
                         } label: {
                             Text("계속하기")
                                 .font(.machachaTitle3Bold)
