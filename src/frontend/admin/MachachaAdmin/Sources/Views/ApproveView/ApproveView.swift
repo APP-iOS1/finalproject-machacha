@@ -88,10 +88,34 @@ struct FoodCartCellView: View {
 					.frame(width: 70, height: 70)
 					
 					VStack(alignment: .leading, spacing: 8) {
-						Text(foodCart.name)
-							.multilineTextAlignment(.leading)
-							.lineLimit(2)
-							.foregroundColor(Color(uiColor: .label))
+						HStack {
+							Text(foodCart.name)
+								.multilineTextAlignment(.leading)
+								.lineLimit(2)
+								.foregroundColor(Color(uiColor: .label))
+
+							Spacer()
+							Menu {
+								Button {
+									
+								} label: {
+									Label("승인", systemImage: "square.and.arrow.up")
+								}
+								Button(role: .destructive) {
+									Task {
+										try await approveVM.removeFoodCart(foodCart)
+										approveVM.approveFoodCarts = await approveVM.fetchFoodCarts()
+									}
+								} label: {
+									Label("제거", systemImage: "trash.fill")
+								}
+							} label: {
+								Image(systemName: "ellipsis")
+									.foregroundColor(.gray)
+									.padding(20)
+							} // Menu
+
+						}
 
 						Text(foodCart.address) // 가게 주소
 							.font(.caption)
