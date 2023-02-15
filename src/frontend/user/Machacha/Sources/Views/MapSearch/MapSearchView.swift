@@ -55,22 +55,31 @@ struct MapSearchView: View {
                     
                 }
                 .navigationDestination(isPresented: $isTap) {
-                    DetailView(selectedStore: foodCartViewModel.foodCarts[coordinator.currentIndex])
+                    if !mapSearchViewModel.foodCarts.isEmpty {
+                        DetailView(selectedStore: mapSearchViewModel.foodCarts[coordinator.currentIndex])
+                    } else {
+                        DetailView(selectedStore: foodCartViewModel.foodCarts[coordinator.currentIndex])
+                    }
                 }
                 .zIndex(1)
                 NaverMap(cameraPosition: $mapSearchViewModel.cameraPosition, currentIndex: $coordinator.currentIndex)
                     .ignoresSafeArea(.all, edges: .top)
             }
             .onAppear {
-                if !fromToSearchView {
-//                    mapSearchViewModel.foodCarts = FoodCart.getListDummy()
+                print("🍎🍎onappear")
+                if mapSearchViewModel.foodCarts.isEmpty {
                     Coordinator.shared.checkIfLocationServicesIsEnabled()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
                     Coordinator.shared.setupMarkers()
+                }
+                
+                if !fromToSearchView {
+                    Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
+                    Coordinator.shared.setupMarkers()
                 } else {
                     Coordinator.shared.carouselScrolled()
-                    fromToSearchView.toggle()                    
+                    fromToSearchView.toggle()
                 }
             }
         }

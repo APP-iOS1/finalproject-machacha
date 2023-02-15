@@ -73,14 +73,13 @@ struct MapHeaderTagCell: View {
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts
                     Coordinator.shared.setupMarkers()
-                    Coordinator.shared.currentIndex = 0
                     Coordinator.shared.carouselScrolled()
+                    
                 } else {
                     Coordinator.shared.removeMarkers()
                     mapSearchViewModel.foodCarts = foodCartViewModel.foodCarts
                     Coordinator.shared.foodCarts = mapSearchViewModel.foodCarts.filter{ $0.bestMenu == bestMenu }
                     Coordinator.shared.setupMarkers()
-                    Coordinator.shared.currentIndex = 0
                     Coordinator.shared.carouselScrolled()
                     
                     mapSearchViewModel.sortedBy(by: bestMenu)
@@ -89,6 +88,8 @@ struct MapHeaderTagCell: View {
                     cameraPosition = (mapSearchViewModel.foodCarts[0].geoPoint.latitude, mapSearchViewModel.foodCarts[0].geoPoint.longitude)
                     currentIndex = 0
                 }
+                print("🍎🍎 currentIndex: \(currentIndex)")
+                print("🍎🍎 coordinator.currentIndex\(Coordinator.shared.currentIndex)")
             } label: {
                 HStack {
                     Image(image)
