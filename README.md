@@ -84,21 +84,22 @@
 <Blockquote>
 실제 앱 구동화면입니다
 </Blockquote>
+
 ### Machacha
 
 | <img src="./image/login.gif" width="180"/> | <img src="./image/home.gif" width="180"/> | <img src="./image/detail.gif" width="180"/> | <img src="./image/review.gif" width="180"/> | <img src="./image/report.gif" width="180"/> |
 |:-:|:-:|:-:|:-:|:-:|
 | 로그인 | Home | Detail | 리뷰 | 제보 |
-| <img src="./image/search.gif" width="180"/> | <img src="./image/stt.gif" width="180"/> | <img src="./image/search.gif" width="180"/> | <img src="./image/ocr.gif" width="180"/> | <img src="./image/magazine.gif" width="180"/> |
+| <img src="./image/search.gif" width="180"/> | <img src="./image/stt.gif" width="180"/> | <img src="./image/register.gif" width="180"/> | <img src="./image/ocr.gif" width="180"/> | <img src="./image/magazine.gif" width="180"/> |
 | 검색 | STT | 등록 | OCR | 매거진 |
-| <img src="./image/profilEdit.gif" width="180"/> | <img src="./image/stt.gif" width="180"/> ||||
+| <img src="./image/profilEdit.gif" width="180"/> | <img src="./image/setting.gif" width="180"/> ||||
 | 프로필 수정 | 설정 |  |  |  |
 
 ### MachachaAdmin
 
-| <img src="./image/adminApprove.gif" width="180"/> | <img src="./image/setting.gif" width="180"/> | <img src="./image/noti.gif" width="180"/> |
+| <img src="./image/adminApprove.gif" width="360"/> | <img src="./image/adminReport.gif" width="360"/> | <img src="./image/noti.gif" width="360"/> |
 |:-:|:-:|:-:|
-| 승인 | 설정 | 공지알림 |
+| 승인 | 제보(신고) | 공지알림 |
 <br/>
 
 ## 🏃‍ 기능
