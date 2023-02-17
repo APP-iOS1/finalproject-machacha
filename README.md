@@ -1,8 +1,12 @@
 # 🍢 마차챠
 ![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
 ![Swift](https://img.shields.io/badge/SwiftUI-0052CC?style=for-the-badge&logo=swift&logoColor=white)
+![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Xcode](https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white)
+
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![Google](https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![KakaoTalk](https://img.shields.io/badge/kakaotalk-ffcd00.svg?style=for-the-badge&logo=kakaotalk&logoColor=000000)
 ![Naver](https://img.shields.io/badge/Naver-00C300?style=for-the-badge&logo=naver&logoColor=white)
 
@@ -59,10 +63,10 @@
       </tr>
       <tr>
           <td align="center">신기술을 사용할래요</td>
-          <td align="center">UIKit, 이미지 캐싱</td>
-          <td align="center">UIKit, 의존성 주입</td>
-          <td align="center">Clean Code, 팀원 코드</td>
-          <td align="center">UIKit, 실시간, 알림</td>
+          <td align="center">UIKit + SwiftUI, 이미지 캐싱</td>
+          <td align="center">UIKit + SwiftUI, 모듈화</td>
+          <td align="center">Clean Code, SkeletonView 적용</td>
+          <td align="center">Oauth 2.0, 코드 리뷰</td>
       </tr>
       <tr>
           <td align="center">김건형</td>
