@@ -279,8 +279,9 @@
 <div markdown="1">
 
 - iOS 16.0 이상
+- xcode 13.0
 - iPhone 14 Pro에서 최적화됨
-- 가로모드 미지원, 다크모드 미지원
+- 가로모드 미지원
 
 </div>
 </details>
@@ -289,13 +290,14 @@
 <summary>⚒️ 활용한 기술</summary>
 <div markdown="1">
 
-- JSON/ mocki.io // Mock API 제작 서비스
-- FireStore
-- FireBaseAuth
-- GoogleSignIn
-- KakaoOpenSDK
-- MapKit
-- FCM / APNs
+- Firebase(Auth, Store, Storage, Cloud Functions)
+- Google(SignIn, MLKit)
+- KakaoSDK(Auth, User, Talk, Share, CommonCore 등)
+- NaverSDK(NMapsMap, NaverThirdPartyLogin) 
+- STT(InstantSearchVoiceOverlay)
+- Kingfisher
+- FlagKit
+- AlertToast
 
 </div>
 </details>
@@ -307,23 +309,25 @@
 <div markdown="1">
 
 ```
-1. 존중, 배려(존대), 재미
+1. 존중, 배려(경어), 재미
 2. 9-6시 개발하고 야근 지양하기
 3. 매일 데일리 스크럼 진행 (am 10:00 ~ am 10:15 15분간)
     ◦ 특강이 있을 경우, 끝난 다음 정각부터 시작
     ◦ 보이스 및 화상 의무
-    ◦ 요일마다 돌아가면서 진행하기
+    ◦ 요일마다 진행자 돌아가면서  진행하기
 4. PR은 'pm 5:00'과 'am 2:00'에 각자 올리기
-    ◦ Reviewer는 팀원 전부(GeonHyeongKim, suekim999, jwoo820, jeoneeee, Heodoo)
-    ◦ Merge는 2번째 사람이 Merge 해주기
+    ◦ Reviewer는 보조 기능인 개발자에게 걸기(GeonHyeongKim, suekim999, jwoo820, jeoneeee, Heodoo)
+    ◦ Merge는 보조 기능을 역할을 맡은 개발자가 해주기
 5. 개발도 중요하지만, 기록도 생각하기
-    ◦ Project 카반보드 활용 
+    ◦ Docs Folde 참고
+    ◦ Project 카반보드 활용
 7. '아!’ & ‘어?’ 참아보기
 8. 막힐때, @맨션을 걸어서 Pair 코딩하기
 9. 세미나(발표) - 자유주제(요청)
+    ◦ Seminar Folder 참고
     ◦ 목(pm 10시)
     ◦ 5~10분 (max 15분)
-10. 실제로 오프라인으로 같이 개발하기
+10. 실제로 오프라인으로 자료 수집하기
 ```
 
 </div>
@@ -362,49 +366,119 @@ feat/26-tab2/recipe
 </details>
 
 <details>
-<summary>폴더링 컨벤션</summary>
+<summary>전체 폴더링 컨벤션</summary>
 <div markdown="3">
 
 ```
-📦 Machacha
+📦 finalproject-machacha
 | 
++ 🗂 Seminar      // 매주(3주) 진행한 세미나 자료들
+|         
++ 🗂 Docs         // 매일 Daily Scrum 회의록
+│         
++ 🗂 src          // Project File
+│         
++------🗂 backend         // Firebase cloud function 
+|
++------🗂 frontend      
+        |
+        +------🗂 MachachaAdmin   // Machacha admin Project
+        |
+        +------🗂 Machacha        // Machacha Project
+```
+</div>
+</details>
+
+<details>
+<summary>Machacha 폴더링 컨벤션</summary>
+<div markdown="4">
+
+```
+📦 Machacha
+|
++ 🗂 Settings
+|
++------🗂 MachachaPush    // GoogleService-Info, PushConfig
+|
++------🗂 Machacha        // GoogleService-Info, Config
+|
 + 🗂 Configuration
 |         
-+------🗂 Constants   // 기기의 제약사항: width, height를 struct로 관리
++------🗂 Constants       // 기기의 제약사항: width, height를 struct로 관리
 │         
-+------🗂 Extensions  // extension 모음
++------🗂 Extensions      // extension 모음
 │         
-+------🗂 Fonts       // 폰트 모음: 무료 폰트인 Pretendard 사용
++------🗂 Fonts           // 폰트 모음: 무료 폰트인 Pretendard 사용
 |
-+------🗂 Modifiers   // modifier 모음
++------🗂 Localizable     // 다국어 지원 파일 
+|
++------🗂 Modifiers       // View Modifier 모음
+|
++------🗂 PreviewDevice   // PreView에서 Deivce 기기 보기
+|
++------🗂 SoundEffects    // 소리 Assets
 │         
 + 🗂 Sources
 |
-+------🗂 Models      // Json을 받기 위한 Hashable, Codable, Identifiable 프로토콜을 체택한 struct 관리
-│         
-+------🗂 Network     // ObservableObject을 체택하여 네트워크 관리
++------🗂 Services        // Firebase Request Router/Error
 |
-+------🗂 Views       // 여러 View를 모음
++------🗂 Models          // Json을 위한 Hashable, Codable, Identifiable 프로토콜을 체택한 struct 관리
+│         
++------🗂 ViewModels      // ObservableObject을 체택하여 네트워크 관리
+|
++------🗂 Views           // 여러 View를 모음
         |
-        +------🗂 Welcome       // SignIn / SignUp
+        +------🗂 Login         // Login
         |
         +------🗂 Splash        // Splash View
         │         
         +------🗂 Home          // Tab 1
         |
-        +------🗂 Search        // Tab 2
+        +------🗂 MapSearch     // Tab 2
         |
         +------🗂 Register(+)   // Tab 3
         │         
-        +------🗂 Bookmark      // Tab 4
+        +------🗂 Magazine      // Tab 4
         |
         +------🗂 Profile       // Tab 5
         |
         +------🗂 Detail        // Tab 1, 2, 4 -> 가게 상세 View
-        │         
-        +------🗂 Map           // MapView
         |
         +------🗂 ETC.          // 여분의 View: CustomTabView, TextButtonClearButton 등
+```
+</div>
+</details>
+
+<details>
+<summary>MachachaAdmin 폴더링 컨벤션</summary>
+<div markdown="5">
+
+```
+📦 MachachaAdmin
+| 
++ 🗂 Configuration
+|         
++------🗂 Constants         // 기기의 제약사항: width, height를 struct로 관리
+│         
++------🗂 Extensions        // extension 모음
+|
++ 🗂 Sources
+|
++------🗂 Router(Manager)   // Firebase Request Router
+|
++------🗂 Models            // Json을 위한 Hashable, Codable, Identifiable 프로토콜을 체택한 struct 관리
+│         
++------🗂 Network           // ObservableObject을 체택하여 네트워크 관리
+|
++------🗂 Views             // 여러 View를 모음
+        |
+        +------🗂 ApproveView       // Tab 1 사용자가 요청한 가게 승인
+        │         
+        +------🗂 ReportView        // Tab 2 사용자가 신고한 가게
+        |
+        +------🗂 ReportReviewView  // Tab 3 사용자가 신고한 리뷰
+        |
+        +------🗂 NoticeView        // Tab 4 공지사항
 ```
 </div>
 </details>
