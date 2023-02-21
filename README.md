@@ -578,7 +578,7 @@ feat/26-tab2/recipe
 
 ## 📄 Docs
 <details>
-<summary> 문서정리 </summary>
+<summary> 회의록(Back log) </summary>
 <div markdown="1">
 
 https://github.com/APPSCHOOL1-REPO/finalproject-machacha/tree/main/docs
@@ -586,6 +586,14 @@ https://github.com/APPSCHOOL1-REPO/finalproject-machacha/tree/main/docs
 </div>
 </details>
 
+<details>
+<summary> 세미나 </summary>
+<div markdown="1">
+
+https://github.com/APPSCHOOL1-REPO/finalproject-machacha/tree/main/Seminar
+
+</div>
+</details>
 
 ## 라이센스
 Machacha is available under the MIT license. See the [LICENSE](https://github.com/APPSCHOOL1-REPO/finalproject-machacha/blob/main/LICENSE) file for more info.
