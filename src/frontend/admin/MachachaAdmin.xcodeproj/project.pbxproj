@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6A95F56F299AB17B0063A3ED /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6A95F56E299AB17B0063A3ED /* FirebaseMessaging */; };
 		6AA71DAF299AD1D6004CD514 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA71DAE299AD1D6004CD514 /* Notification.swift */; };
-		C41B56C329994D1500E2A188 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C41B56C229994D1400E2A188 /* GoogleService-Info.plist */; };
 		C41B56C5299951D500E2A188 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56C4299951D500E2A188 /* NoticeViewModel.swift */; };
 		C41B56C82999545800E2A188 /* NoticeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B56C72999545800E2A188 /* NoticeRouter.swift */; };
 		C41B56CB299954E100E2A188 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C41B56CA299954E100E2A188 /* Alamofire */; };
@@ -69,7 +68,6 @@
 		6A95F56B299AADFA0063A3ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6A95F56C299AAE000063A3ED /* MachachaAdmin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MachachaAdmin.entitlements; sourceTree = "<group>"; };
 		6AA71DAE299AD1D6004CD514 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		C41B56C229994D1400E2A188 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C41B56C4299951D500E2A188 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		C41B56C72999545800E2A188 /* NoticeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRouter.swift; sourceTree = "<group>"; };
 		C41B56CE2999667D00E2A188 /* Ex+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+View.swift"; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 			children = (
 				6A95F56C299AAE000063A3ED /* MachachaAdmin.entitlements */,
 				6A95F56B299AADFA0063A3ED /* Info.plist */,
-				C41B56C229994D1400E2A188 /* GoogleService-Info.plist */,
 				C43B116429929EFE00BE312A /* MachachaAdminApp.swift */,
 				C4D2D30B29937A880004661B /* Configuration */,
 				C482134D2993609500CE4CA2 /* Sources */,
@@ -461,7 +458,6 @@
 			files = (
 				C43B116C29929F0000BE312A /* Preview Assets.xcassets in Resources */,
 				C43B116929929F0000BE312A /* Assets.xcassets in Resources */,
-				C41B56C329994D1500E2A188 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

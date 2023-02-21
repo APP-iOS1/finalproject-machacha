@@ -211,10 +211,8 @@
 		C43B1155298F88E200BE312A /* CustomBoldLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43B1154298F88E200BE312A /* CustomBoldLabelView.swift */; };
 		C44E0679299AA2EC00D57502 /* OCRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44E0678299AA2EC00D57502 /* OCRViewModel.swift */; };
 		C44E067D299AB4E200D57502 /* Pods_Machacha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C44E067C299AB4E200D57502 /* Pods_Machacha.framework */; };
-		C45923CD29950DB1008BDBF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */; };
 		C45923CF29950DEE008BDBF7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C45923CE29950DEE008BDBF7 /* Kingfisher */; };
 		C45923D029950E05008BDBF7 /* EditingReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7CB1852994BA8300FE5720 /* EditingReviewView.swift */; };
-		C45923D8299510DF008BDBF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45923D7299510DF008BDBF7 /* GoogleService-Info.plist */; };
 		C492FAA7298D3DF90081E3B9 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */; };
 		C4A587382975A77000B04A98 /* MachachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587372975A77000B04A98 /* MachachaApp.swift */; };
 		C4A5873A2975A77000B04A98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A587392975A77000B04A98 /* ContentView.swift */; };
@@ -384,8 +382,6 @@
 		C44E0678299AA2EC00D57502 /* OCRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRViewModel.swift; sourceTree = "<group>"; };
 		C44E067A299AA46800D57502 /* Pods_Machacha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Machacha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44E067C299AB4E200D57502 /* Pods_Machacha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Machacha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C45923D7299510DF008BDBF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C492FAA6298D3DF90081E3B9 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C4A587342975A77000B04A98 /* Machacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Machacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A587372975A77000B04A98 /* MachachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachachaApp.swift; sourceTree = "<group>"; };
@@ -983,7 +979,6 @@
 		FAB963AF299A0B9F007CE35C /* Machacha */ = {
 			isa = PBXGroup;
 			children = (
-				C45923D7299510DF008BDBF7 /* GoogleService-Info.plist */,
 				FAB963B1299A0C0C007CE35C /* Config.xcconfig */,
 			);
 			path = Machacha;
@@ -993,7 +988,6 @@
 		FAB963B0299A0BAA007CE35C /* MachachaPush */ = {
 			isa = PBXGroup;
 			children = (
-				C45923CC29950DB1008BDBF7 /* GoogleService-Info.plist */,
 				FAFDD49C2977E8EC008E28AD /* PushConfig.xcconfig */,
 			);
 			path = MachachaPush;
@@ -1214,7 +1208,6 @@
 				6AF063DC2994749000BCDC2A /* Pretendard-Regular.otf in Resources */,
 				6AF063DD2994749000BCDC2A /* Pretendard-Black.otf in Resources */,
 				6AF063DE2994749000BCDC2A /* Localizable.strings in Resources */,
-				C45923CD29950DB1008BDBF7 /* GoogleService-Info.plist in Resources */,
 				6AF063DF2994749000BCDC2A /* Assets.xcassets in Resources */,
 				6AF063E02994749000BCDC2A /* Pretendard-Light.otf in Resources */,
 			);
@@ -1241,7 +1234,6 @@
 				C4A5877A2975A8D300B04A98 /* Pretendard-Black.otf in Resources */,
 				C4F42030298EACBC00B615C6 /* Localizable.strings in Resources */,
 				FAB963B2299A0C0C007CE35C /* Config.xcconfig in Resources */,
-				C45923D8299510DF008BDBF7 /* GoogleService-Info.plist in Resources */,
 				C4A5873C2975A77300B04A98 /* Assets.xcassets in Resources */,
 				C4A5877C2975A8D300B04A98 /* Pretendard-Light.otf in Resources */,
 			);
