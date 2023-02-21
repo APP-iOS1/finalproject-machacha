@@ -536,4 +536,11 @@ https://github.com/APPSCHOOL1-REPO/finalproject-machacha/tree/main/docs
 
 
 ## 라이센스
-Machacha is available under the MIT license. See the LICENSE file for more info.
+Machacha is available under the MIT license. See the [LICENSE](https://github.com/APPSCHOOL1-REPO/finalproject-machacha/blob/main/LICENSE) file for more info.
+
+- [Google MLKit](https://developers.google.com/ml-kit/terms) 
+- [InstantSearchVoiceOverlay](https://github.com/algolia/voice-overlay-ios)
+- [Kingfisher](https://github.com/onevcat/Kingfisher)
+- [FlagKit](https://github.com/madebybowtie/FlagKit)
+- [AlertToast](https://github.com/elai950/AlertToast)
+
