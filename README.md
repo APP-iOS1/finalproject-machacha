@@ -80,6 +80,110 @@
   </table>
 </div>
 
+<br>
+
+## 📚 실행 가이드 및 설치 방법(How to build)
+### 설치/실행 방법
+* ❗️❗️아래 1가지 파일은 필수 파일임으로 파일을 요청해주세요.
+```
+- Config.xcconfig           // KaKaoSDK, GOOGLE_CLIENT_ID, GOOGLE_REVERSED_CLIENT_ID, NAVER_URL_SCHEME, NMF_CLIENT_ID, NMF_SECRET_CLIENT
+```
+
+<br>
+<details>
+<summary>1. 개별적으로 Firebase 세팅을 진행해주세요.</summary>
+<div markdown="1">
+❗️ 필요한 Target만 세팅해주시면 됩니다.
+
+```
+* Machacha 번들 ID: lionlike.project.Machacha
+* Machacha-push 번들 ID: lionlike.project.MachachaNoti
+* MachachaAdmin 번들 ID: lionlike.project.MachachaAdmin
+* 3단계까지 진행: <https://firebase.google.com/docs/ios/setup?hl=ko>
+```
+
+</div>
+</details>
+
+<details>
+<summary>2. Firebase에서 Firestore Database, Storage를 설정해주세요.</summary>
+<div markdown="1">
+
+```
+* 보안 규칙을 `테스트 모드에서 시작`으로 설정해주세요
+```
+
+</div>
+</details>
+
+<details>
+<summary>3. `Podfile` 파일에 아래 코드가 잘 입력되어 있는지 확인해주시고, 안 되어 있다면 추가해주세요</summary>
+<div markdown="1">
+❗️M1에서는 OCR를 제공하지 않습니다.
+
+```sh
+  pod 'GoogleMLKit/TextRecognition', '3.2.0'
+  pod 'GoogleMLKit/TextRecognitionKorean', '3.2.0'
+```
+
+</div>
+</details>
+
+<details>
+<summary>4. pod을 설치하세요</summary>
+<div markdown="1">
+
+```sh
+$ cd your-project-directory
+```
+```sh
+$ pod install
+```
+
+</div>
+</details>
+
+<details>
+<summary>5. .xcworkspace파일을 열어서 앱을 실행하실 수 있습니다.</summary>
+</details>
+
+<details>
+<summary>6. 확인해주세요</summary>
+<div markdown="1">
+<img width="50%" alt="스크린샷 2023-02-21 오후 8 20 15" src="https://user-images.githubusercontent.com/48436020/220332292-ed7e8b89-c379-4fbc-9389-b473e1d6e17f.png">
+
+- **config** 파일을 **Machacha > Settings > Machacha && MachachaPush** 폴더에 각각 GoogleService-Info 추가한다.
+    - config.xcconfig 파일 안에는 
+        - KAKAO_NATIVE_APP_KEY        // 네이티브 앱 키가 들어있다.
+        - GOOGLE_CLIENT_ID            // Google에서 받아온 ID
+        - GOOGLE_REVERSED_CLIENT_ID   // Google에서 받아온 반전된 ID
+        - NAVER_URL_SCHEME            // 네이버 URL 스키마
+        - NMF_CLIENT_ID               // NMF에서 받아온 ID
+        - NMF_SECRET_CLIENT           // NMF에서 받아온 Secret
+        - pod file 목록들
+<br>
+    
+- **info** 파일에 **Information Property List**에 하단의 내용들이 잘 들어가 있는지 확인
+    - KAKAO_NAVTIVE_APP_KEY에 ${KAKAO_NAVTIVE_APP_KEY} 확인
+    - GIDClientID에 ${GOOGLE_CLIENT_ID} 확인
+    - NMFClientId에 ${NMF_CLIENT_ID} 확인
+    <img src="https://user-images.githubusercontent.com/48436020/220329880-4d399a52-04d2-40d7-b185-6f58eea71c6e.png" width = "80%">
+<br>
+
+- **Machacha**
+    - PROJECT의 Info
+        - Configurations의 각각 Debug, Release 안에 있는 2개의 파일 모두 Config로 설정
+            <img src = "https://user-images.githubusercontent.com/48436020/220332578-54739667-07df-4f9d-8d7f-711eb60911a4.png">
+        
+    - TARGETS의 Info
+        - URL Types을 펼쳐 URL Schemes에 **{NAVER_URL_SCHEME}, kakao{KAKAO_NAVTIVE_APP_KEY}, {GOOGLE_REVERSED_CLIENT_ID}** 가 들어있는지 확인
+        <img src = "https://user-images.githubusercontent.com/48436020/220330617-c8f4742a-4a3d-443f-9d81-969dc4d6fdce.png">
+<br> 
+</div>
+</details>
+
+<br>
+
 ## 📱 스크린샷
 <Blockquote>
 실제 앱 구동화면입니다
@@ -245,62 +349,9 @@
 </details>
 <br>
 
-## 📚 실행 가이드 및 설치 방법
-### 설치/실행 방법
-* ❗️❗️아래 2가지 파일은 필수 파일임으로 파일을 요청해주세요.
-```
-- Config.xcconfig           // KaKaoSDK 
-- GoogleService-Info.plist  // Google, FireBase
-```
-
-<br>
+## ⚙️ 개발 환경
 <details>
-<summary>1. 카카오톡 로그인을 위한 사전작업</summary>
-<div markdown="1">
-
-- **config** 파일을 **Tteokbokking** 폴더에 추가한다.
-    - config.xcconfig 파일 안에는 KAKAO_NAVTIVE_APP_KEY // 네이티브 앱 키가 들어있다.
-    
-<br>
-    
-- **info** 파일에 **Information Property List**에 하단의 내용들이 잘 들어가 있는지 확인
-    - LSApplicationQueriesSchemes 에 item 0, item1에 각각 kakaokompassauth, kakaolink 넣기
-    - KAKAO_NAVTIVE_APP_KEY에 ${KAKAO_NAVTIVE_APP_KEY}를 넣기
-    - App Transport Security Settings에 Allow Arbitrary Loads 가 NO라고 되어있는지 확인
-    <img src="https://user-images.githubusercontent.com/105197393/208856526-a1bd28d3-799f-45be-816c-5ac217448187.png">
-
-<br>
-
-- <img src = "https://user-images.githubusercontent.com/105197393/208857521-1d9f5cce-64c6-4903-953e-0da5e36efb5a.png" width="20"> **Tteokbokking**
-    - PROJECT의 Info
-        - Configurations의 각각 Debug, Release 안에 있는 2개의 파일 모두 Config로 설정
-            <img src = "https://user-images.githubusercontent.com/105197393/208858999-fdd802ae-944d-4a31-bb27-fc8e3b422575.png">
-        
-    - TARGETS의 Info
-        - URL Types을 펼쳐 URL Schemes에 kakao{KAKAO_NAVTIVE_APP_KEY} 가 들어있는지 확인
-        <img src = "https://user-images.githubusercontent.com/105197393/208859404-ce950c84-3293-487f-a64d-8bdca02be8bc.png">
-<br> 
-
-</div>
-</details>
-
-<details>
-<summary>2. 구글 로그인을 위한 사전 작업</summary>
-<div markdown="1">
-
-- **GoogleService-Info.plist**를 프로젝트에 추가
-    <img src = "https://user-images.githubusercontent.com/105197393/208861493-7931c43a-da9e-4410-83db-78eb3c3d24dd.png">
-    - plist 추가 후 REVERSED_CLIENT_ID의 값을 복사
-<br>
-
-- <img src = "https://user-images.githubusercontent.com/105197393/208857521-1d9f5cce-64c6-4903-953e-0da5e36efb5a.png" width="20"> **Tteokbokking**
-    - TARGETS의 Info
-        - URL Types를 펼쳐 URL Schemes에 **REVERSED_CLIENT_ID**이 들어 있는지 확인
-</div>
-</details>
-
-<details>
-<summary>⚙️ 개발 환경</summary>
+<summary>펼처서 보기</summary>
 <div markdown="1">
 
 - iOS 16.0 이상
@@ -311,8 +362,9 @@
 </div>
 </details>
 
+## ⚒️ 활용한 기술
 <details>
-<summary>⚒️ 활용한 기술</summary>
+<summary>펼처서 보기</summary>
 <div markdown="1">
 
 - Firebase(Auth, Store, Storage, Cloud Functions)
